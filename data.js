@@ -208,56 +208,126 @@ const researchData = [
 
 // 4. Publications (Full List)
 // Note: Due to size, adding all ~240 items. Users can add links later.
+// 4. Publications (Full List based on CV)
 const publicationData = [
-    // --- 2025 ---
-    { year: 2025, category: "journal", title: "Modeling Emotion Induced by Motion in 4D Rides", authors: "K. Kwon, S. H. Han, D. Jeong, J. Park, S. Choi", venue: "IEEE Transactions on Haptics (Accepted)", link: "" },
-    { year: 2025, category: "journal", title: "Simultaneous Decoding of Static, Dynamic, and Thermal Tactile Stimuli...", authors: "H. Choi et al.", venue: "npj Flexible Electronics", link: "" },
-    { year: 2025, category: "journal", title: "Emotional Experience of Audiences in 4D Content", authors: "J. Park et al.", venue: "Intl Journal of Human-Computer Interaction", link: "" },
-    { year: 2025, category: "journal", title: "Tactile Enhancement of Mid-Air Ultrasonic Stimulation by Wrist Vibration", authors: "D.-G. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2025, category: "journal", title: "Investigating Affective and Emotional Responses to Motion in 4D Movies", authors: "K. Kwon et al.", venue: "Intl Journal of Industrial Ergonomics", link: "" },
-    { year: 2025, category: "journal", title: "Assessment of Novel Haptic Interfaces for Digital Twin Teleoperation", authors: "J. Park et al.", venue: "IEEE Transactions on Industrial Informatics", link: "" },
-    { year: 2025, category: "journal", title: "Perceptual Alignment of Spatial Auditory and Tactile Stimuli", authors: "D. Lee, S. Choi", venue: "IEEE TVCG (IEEE VR 2025)", link: "" },
-    { year: 2025, category: "journal", title: "Digital Augmentation of Outdated Museum Exhibits", authors: "D. Lee, D. Nam, S. Choi", venue: "Intl Journal of Human-Computer Studies", link: "" },
-    { year: 2025, category: "journal", title: "Simple-Architectured Elastic Touch Sensor", authors: "J. Luo et al.", venue: "Advanced Materials Technologies", link: "" },
-    { year: 2025, category: "conference", title: "Automatic Generation of Haptic Motion Effects Expressing Human Dance", authors: "J. Ahn, S. Choi", venue: "IEEE VR 2025", link: "" },
-    { year: 2025, category: "conference", title: "Real-time Semantic Full-Body Haptic Feedback Converted from Sound", authors: "G. Yun, S. Choi", venue: "CHI 2025", link: "" },
-    { year: 2025, category: "conference", title: "Automatic Tuning of Haptic Motion Effects", authors: "J. Lee, D. Jeong, S. H. Han, S. Choi", venue: "CHI 2025", link: "" },
-    { year: 2025, category: "conference", title: "SkinHaptics: Exploring Skin Softness Perception...", authors: "J. Lee et al.", venue: "CHI 2025", link: "" },
-    { year: 2025, category: "conference", title: "Enhancing Body-Penetrating Phantom Sensations...", authors: "H. Kim, D. Lee, S. Choi", venue: "IEEE World Haptics Conference", link: "" },
-    { year: 2025, category: "conference", title: "Augmenting Pinch Selection Using Smart Ring Vibration", authors: "S. Nam, S. Choi", venue: "IEEE World Haptics Conference", link: "" },
+    // --- Books & Chapters ---
+    { year: 2020, category: "book", title: "Haptics (Translation of 'Haptics' by Lynette Jones)", authors: "K. Kim, S. Choi (Trans.)", venue: "Gimmyoung", link: "" },
+    { year: 2017, category: "chapter", title: "Haptic Augmented Reality: Taxonomy, Research Status, and Challenges", authors: "S. Jeon, S. Choi, M. Harders", venue: "Fundamentals of Wearable Computers and Augmented Reality, CRC Press", link: "" },
+    { year: 2014, category: "chapter", title: "Haptic Augmentation in Soft Tissue Interaction", authors: "S. Jeon, S. Choi, M. Harders", venue: "Multisensory Softness, Springer", link: "" },
+    { year: 2012, category: "chapter", title: "Evaluating the Effectiveness of Haptic feedback on a Steering Wheel for BSW", authors: "J. Chun et al.", venue: "Advances in Ergonomics in Manufacturing, CRC Press", link: "" },
 
-    // --- 2024 ---
-    { year: 2024, category: "journal", title: "A Comparative Study of Physical and Haptic Exhibits...", authors: "D. Lee et al.", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2024, category: "journal", title: "Interactive Deformable Colored Sound Display", authors: "D. Park et al.", venue: "Small", link: "" },
-    { year: 2024, category: "journal", title: "Telemetry-based Haptic Rendering for Racing Game...", authors: "J. Lee et al.", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2024, category: "journal", title: "Multimodal Haptic Feedback for Virtual Collisions", authors: "J. Lee, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2024, category: "journal", title: "Effects of Contact Force on Vibrotactile Perceived Intensity", authors: "D. Lee, G. Yun, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2024, category: "journal", title: "Sound-to-Touch Crossmodal Pitch Matching for Short Sounds", authors: "D.-G. Kim et al.", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2024, category: "conference", title: "Expressing the Social Intent of Touch Initiator in VR", authors: "H. Kim, S. Choi", venue: "ISMAR 2024 (Best Paper Nominee)", link: "" },
+    // --- International Journal Articles (2025) ---
+    { year: 2025, category: "journal", title: "Modeling Emotion Induced by Motion in 4D Rides", authors: "K. Kwon, S. H. Han, D. Jeong, J. Park, S. Choi", venue: "IEEE Transactions on Haptics (Accepted)", link: "" },
+    { year: 2025, category: "journal", title: "Simultaneous Decoding of Static, Dynamic, and Thermal Tactile Stimuli by Using Pulsed Spike Signals in Ion-Electronic Skin", authors: "H. Choi, J. Lee, S. Choi, T. Kim, U. Jeong", venue: "npj Flexible Electronics", link: "" },
+    { year: 2025, category: "journal", title: "Emotional Experience of Audiences in 4D Content", authors: "J. Park, S. H. Han, D. Jeong, K. Kwon, S. Choi", venue: "Intl Journal of Human-Computer Interaction", link: "" },
+    { year: 2025, category: "journal", title: "Tactile Enhancement of Mid-Air Ultrasonic Stimulation by Wrist Vibration: Perceived Intensity and Pattern Recognition", authors: "D.-G. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2025, category: "journal", title: "Investigating Affective and Emotional Responses to Motion in 4D Movies", authors: "K. Kwon, S. H. Han, D. Jeong, J. Park, S. Choi", venue: "Intl Journal of Industrial Ergonomics", link: "" },
+    { year: 2025, category: "journal", title: "Assessment of Novel Haptic Interfaces for Digital Twin Teleoperation in High-Risk Steel Production", authors: "J. Park, Y. Kim, I. S. Choi, S.-W. Choi, S. Choi, K. Kim", venue: "IEEE Transactions on Industrial Informatics", link: "" },
+    { year: 2025, category: "journal", title: "Perceptual Alignment of Spatial Auditory and Tactile Stimuli for Effective Directional Cueing", authors: "D. Lee, S. Choi", venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE VR 2025)", link: "" },
+    { year: 2025, category: "journal", title: "Digital Augmentation of Outdated Museum Exhibits for Learning Enhancement", authors: "D. Lee, D. Nam, S. Choi", venue: "Intl Journal of Human-Computer Studies", link: "" },
+    { year: 2025, category: "journal", title: "Simple-Architectured Elastic Touch Sensor with High Spatiotemporal Resolution", authors: "J. Luo, C. Park, Y. Park, J. Kim, S. Choi, U. Jeong", venue: "Advanced Materials Technologies", link: "" },
+
+    // --- International Journal Articles (2024) ---
+    { year: 2024, category: "journal", title: "A Comparative Study of Physical and Haptic Exhibits in an Informal Learning Environment", authors: "D. Lee, D. Nam, J. Yoon, D. Yoon, S. Jeong, K. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2024, category: "journal", title: "Interactive Deformable Colored Sound Display Achieved with Electrostrictive Fluoropolymer and Halide Perovskite", authors: "D. Park et al.", venue: "Small", link: "" },
+    { year: 2024, category: "journal", title: "Telemetry-based Haptic Rendering for Racing Game Experience Improvement", authors: "J. Lee, J. Kim, J. Kang, E. Jo, D. C. Park, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2024, category: "journal", title: "Multimodal Haptic Feedback for Virtual Collisions Combining Vibrotactile and Electrical Muscle Stimulation", authors: "J. Lee, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2024, category: "journal", title: "Effects of Contact Force on Vibrotactile Perceived Intensity Across the Upper Body", authors: "D. Lee, G. Yun, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2024, category: "journal", title: "Sound-to-Touch Crossmodal Pitch Matching for Short Sounds", authors: "D.-G. Kim, J. Lee, G. Yun, H. Z. Tan, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+
+    // --- International Journal Articles (2023) ---
+    { year: 2023, category: "journal", title: "Cable-Driven Haptic Interface with Movable Bases Achieving Maximum Workspace and Isotropic Force Exertion", authors: "J. Yoon et al.", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2023, category: "journal", title: "Sensory Cue Integration of Visual and Vestibular Stimuli: A Case Study for 4D Rides", authors: "J. Lee, S. H. Han, S. Choi", venue: "Virtual Reality", link: "" },
+    { year: 2023, category: "journal", title: "Intrinsically Synchronized Flexible Visuo-Haptic Device Operated by Single External Electric Field", authors: "G. Lee, C. Park, D. Park, S. Choi, U. Jeong", venue: "Advanced Optical Materials", link: "" },
+
+    // --- International Journal Articles (2022) ---
+    { year: 2022, category: "journal", title: "Data-Driven Haptic Modeling and Rendering of Viscoelastic Behavior Using Fractional Derivatives", authors: "H. Cha, A. Bhardwaj, S. Choi", venue: "IEEE Access", link: "" },
+    { year: 2022, category: "journal", title: "Motion Effects: Perceptual Space and Synthesis for Specific Perceptual Properties", authors: "S. Han, J. Lee, G. Yun, S. H. Han, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2022, category: "journal", title: "Data-Driven Rendering of Motion Effects for Walking Sensations in Different Gaits", authors: "H. Lee, S. Oh, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2022, category: "journal", title: "Prediction of Specific Anxiety Symptoms and VR Sickness...", authors: "C. H. Cho et al.", venue: "JMIR Serious Games", link: "" },
+    { year: 2022, category: "journal", title: "Emotion-Interactive Empathetic Transparent Skin Cushion...", authors: "D. S. Choi et al.", venue: "Chemical Engineering Journal", link: "" },
+    { year: 2022, category: "journal", title: "Perceived Intensity Model of Dual-Frequency Superimposed Vibration: Pythagorean Sum", authors: "Y. Yoo, I. Hwang, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+
+    // --- International Journal Articles (2021) ---
+    { year: 2021, category: "journal", title: "Small-sized Deformable Shear Sensor Array...", authors: "W. Suh et al.", venue: "Advanced Materials Technologies", link: "" },
+    { year: 2021, category: "journal", title: "Omni-Directional Tactile Profiling Using a Deformable Pressure Sensor Array...", authors: "J. Kim et al.", venue: "Advanced Materials Technologies", link: "" },
+    { year: 2021, category: "journal", title: "Investigating Perceived Emotions and Affects of a Scene...", authors: "D. Y. Jeong et al.", venue: "Intl Journal of Industrial Ergonomics", link: "" },
+    { year: 2021, category: "journal", title: "Investigating 4D Movie Audiences’ Emotional Responses...", authors: "D. Jeong et al.", venue: "Computers in Human Behavior", link: "" },
+    { year: 2021, category: "journal", title: "Length Perception Model for Handheld Controllers...", authors: "C. Park, J. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2021, category: "journal", title: "Driving Skill Modeling Using Neural Networks for Performance-based Haptic Assistance", authors: "H. Lee, H. Kim, S. Choi", venue: "IEEE Transactions on Human-Machine Systems", link: "" },
+    { year: 2021, category: "journal", title: "Virtual Reality-Based Psychotherapy in Social Anxiety Disorder...", authors: "J. W. Hur et al.", venue: "JMIR Mental Health", link: "" },
+    { year: 2021, category: "journal", title: "Magnetorheological Fluid Haptic Shoes for Walking in VR", authors: "T. H. Yang et al.", venue: "IEEE Transactions on Haptics", link: "" },
+
+    // --- International Journal Articles (2020 & older - Selected) ---
+    { year: 2020, category: "journal", title: "Effectiveness of a Participatory and Interactive Virtual Reality Intervention...", authors: "H. J. Kim et al.", venue: "JMIR", link: "" },
+    { year: 2020, category: "journal", title: "Hybrid Framework for Haptic Texture Modeling and Rendering", authors: "S. Shin, S. Choi", venue: "IEEE Access", link: "" },
+    { year: 2020, category: "journal", title: "A Review of Surface Haptics: Enabling Tactile Effects on Touch Surfaces", authors: "C. Basdogan, F. Giraud, V. Levesque, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2020, category: "journal", title: "Methodology for Maximizing Information Transmission of Haptic Devices", authors: "H. Z. Tan, S. Choi, F. Lau, F. Abnousi", venue: "Proceedings of the IEEE", link: "" },
+    { year: 2020, category: "journal", title: "Data-driven Texture Modeling and Rendering on Electrovibration Display", authors: "R. H. Osgouei, J. R. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2019, category: "journal", title: "Effects of Contact Force on Vibrotactile Sensitivity During Active Touch", authors: "S. Oh, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2019, category: "journal", title: "Data-Driven Haptic Modeling of Normal Interactions on Viscoelastic Deformable Objects", authors: "A. Bhardwaj, H. Cha, S. Choi", venue: "IEEE Robotics and Automation Letters", link: "" },
+    { year: 2018, category: "journal", title: "Haptic Enchanters: Attachable and Detachable Vibrotactile Modules", authors: "G. Park, H. Cha, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2017, category: "journal", title: "Improving 3D Shape Recognition with Electrostatic Friction Display", authors: "R. H. Osgouei, J. R. Kim, S. Choi", venue: "IEEE Transactions on Haptics", link: "" },
+    { year: 2016, category: "journal", title: "Motion Effects Synthesis for 4D Films", authors: "J. Lee, B. Han, S. Choi", venue: "IEEE TVCG", link: "" },
+    { year: 2013, category: "journal", title: "Vibrotactile Display: Perception, Technology, and Applications", authors: "S. Choi, K. J. Kuchenbecker", venue: "Proceedings of the IEEE", link: "" },
+    { year: 2004, category: "journal", title: "Towards Realistic Haptic Rendering of Surface Texture", authors: "S. Choi, H. Z. Tan", venue: "IEEE Computer Graphics & Applications", link: "" },
+
+    // --- International Conference Papers (2026) ---
+    { year: 2026, category: "conference", title: "Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification", authors: "D.-G. Kim et al.", venue: "IEEE Haptics Symposium (Conditionally Accepted)", link: "" },
+    { year: 2026, category: "conference", title: "Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration", authors: "D. Lee et al.", venue: "IEEE Haptics Symposium (Conditionally Accepted)", link: "" },
+
+    // --- International Conference Papers (2025) ---
+    { year: 2025, category: "conference", title: "Augmenting Pinch Selection Using Smart Ring Vibration", authors: "S. Nam, S. Choi", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2025, category: "conference", title: "Enhancing Body-Penetrating Phantom Sensations Through Multisensory Integration", authors: "H. Kim, D. Lee, S. Choi", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2025, category: "conference", title: "SkinHaptics: Exploring Skin Softness Perception...", authors: "J. Lee et al.", venue: "CHI 2025", link: "" },
+    { year: 2025, category: "conference", title: "Real-time Semantic Full-Body Haptic Feedback Converted from Sound", authors: "G. Yun, S. Choi", venue: "CHI 2025", link: "" },
+    { year: 2025, category: "conference", title: "Automatic Tuning of Haptic Motion Effects", authors: "J. Lee et al.", venue: "CHI 2025", link: "" },
+    { year: 2025, category: "conference", title: "Automatic Generation of Haptic Motion Effects Expressing Human Dance", authors: "J. Ahn, S. Choi", venue: "IEEE VR 2025", link: "" },
+
+    // --- International Conference Papers (2024) ---
+    { year: 2024, category: "conference", title: "Expressing the Social Intent of Touch Initiator in Virtual Reality Using Multimodal Haptics", authors: "H. Kim, S. Choi", venue: "ISMAR 2024", link: "" },
     { year: 2024, category: "conference", title: "Generating Haptic Motion Effects for General Scenes", authors: "S. Han, J. Ahn, S. Choi", venue: "ISMAR 2024", link: "" },
     { year: 2024, category: "conference", title: "Modulating Heart Activity and Task Performance Using Haptic Heartbeat", authors: "A. Valente et al.", venue: "UIST 2024", link: "" },
     { year: 2024, category: "conference", title: "Participatory Design for In-Vehicle Vibrotactile Warnings", authors: "D. Lee et al.", venue: "EuroHaptics 2024", link: "" },
-    { year: 2024, category: "conference", title: "A Feasibility Study of Tactile Enhancement...", authors: "D.-G. Kim, S. Choi", venue: "EuroHaptics 2024", link: "" },
+    { year: 2024, category: "conference", title: "A Feasibility Study of Tactile Enhancement of Mid-Air Ultrasonic Stimulation", authors: "D.-G. Kim, S. Choi", venue: "EuroHaptics 2024", link: "" },
     { year: 2024, category: "conference", title: "Audiovisual-Haptic Simultaneity Across the Body", authors: "J. Lee, G. Yun, S. Choi", venue: "EuroHaptics 2024", link: "" },
-    { year: 2024, category: "conference", title: "Human Identification Performance of Vibrotactile Stimuli...", authors: "J. Kim et al.", venue: "EuroHaptics 2024", link: "" },
+    { year: 2024, category: "conference", title: "Human Identification Performance of Vibrotactile Stimuli", authors: "J. Kim et al.", venue: "EuroHaptics 2024", link: "" },
     { year: 2024, category: "conference", title: "Augmenting Perceived Length of Handheld Controllers", authors: "C. Park, S. Choi", venue: "CHI 2024 (Honorable Mention)", link: "" },
 
-    // --- 2023 & Prior (Selected Key Papers from CV) ---
-    { year: 2023, category: "journal", title: "Cable-Driven Haptic Interface with Movable Bases", authors: "J. Yoon et al.", venue: "IEEE Transactions on Haptics", link: "" },
-    { year: 2023, category: "journal", title: "Sensory Cue Integration of Visual and Vestibular Stimuli", authors: "J. Lee et al.", venue: "Virtual Reality", link: "" },
-    { year: 2023, category: "conference", title: "Merging Camera and Object Haptic Motion Effects", authors: "J. Park et al.", venue: "ISMAR 2023", link: "" },
-    { year: 2023, category: "conference", title: "Visuo-haptic Crossmodal Shape Perception Model", authors: "C. Park et al.", venue: "CHI 2023 (Honorable Mention)", link: "" },
-    { year: 2023, category: "conference", title: "Generating Real-Time Haptic Effects from Sound", authors: "G. Yun et al.", venue: "CHI 2023", link: "" },
-    { year: 2023, category: "conference", title: "Generating Haptic Motion Effects for Multiple Articulated Bodies", authors: "S. Han et al.", venue: "CHI 2023", link: "" },
-    { year: 2022, category: "journal", title: "Perceived Intensity Model of Dual-Frequency Superimposed Vibration", authors: "Y. Yoo et al.", venue: "IEEE Transactions on Haptics (Best Paper Award)", link: "" },
+    // --- International Conference Papers (2023) ---
+    { year: 2023, category: "conference", title: "Merging Camera and Object Haptic Motion Effects", authors: "J. Park, S. Han, S. Choi", venue: "ISMAR 2023", link: "" },
+    { year: 2023, category: "conference", title: "Perceptual Simultaneity Between Vibrotactile and Impact Stimuli", authors: "C. Park, S. Choi", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2023, category: "conference", title: "Information Transfer of Full-Body Vibrotactile Stimuli", authors: "J. Park et al.", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2023, category: "conference", title: "Human Recognition Performance of Simple Spatial Vibrotactile Patterns", authors: "J. Kim et al.", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2023, category: "conference", title: "Visuo-haptic Crossmodal Shape Perception Model", authors: "C. Park, J. Kim, S. Choi", venue: "CHI 2023 (Honorable Mention)", link: "" },
+    { year: 2023, category: "conference", title: "Generating Real-Time, Selective, and Multimodal Haptic Effects from Sound", authors: "G. Yun et al.", venue: "CHI 2023", link: "" },
+    { year: 2023, category: "conference", title: "Generating Haptic Motion Effects for Multiple Articulated Bodies", authors: "S. Han, J. Park, S. Choi", venue: "CHI 2023", link: "" },
+
+    // --- International Conference Papers (2022 & older - Selected) ---
     { year: 2022, category: "conference", title: "Vibration-Augmented Buttons", authors: "C. Park et al.", venue: "CHI 2022", link: "" },
+    { year: 2022, category: "conference", title: "Perception of Electrostatic Friction Stimuli", authors: "Y. Yoo et al.", venue: "IEEE Haptics Symposium", link: "" },
+    { year: 2021, category: "conference", title: "Image-Based Texture Styling for Motion Effect Rendering", authors: "B. Lim, S. Han, S. Choi", venue: "VRST 2021", link: "" },
+    { year: 2021, category: "conference", title: "Identifying Contact Fingers on Touch Sensitive Surfaces by Ring-Based Vibratory Communication", authors: "S. Oh et al.", venue: "UIST 2021", link: "" },
+    { year: 2021, category: "conference", title: "Improving Viewing Experiences of First-Person Shooter Gameplays", authors: "G. Yun et al.", venue: "CHI 2021", link: "" },
+    { year: 2021, category: "conference", title: "Camera Space Synthesis of Motion Effects", authors: "S. Han, G. Yun, S. Choi", venue: "IEEE VR 2021", link: "" },
+    { year: 2020, category: "conference", title: "Augmenting Physical Buttons with Vibrotactile Feedback", authors: "C. Park et al.", venue: "UIST 2020", link: "" },
+    { year: 2020, category: "conference", title: "Body-Penetrating Tactile Phantom Sensations", authors: "J. Kim et al.", venue: "CHI 2020", link: "" },
+    { year: 2019, category: "conference", title: "TouchPhoto: Enabling Independent Picture Taking", authors: "J. Lim et al.", venue: "ICMI 2019", link: "" },
+    { year: 2019, category: "conference", title: "RealWalk: Haptic Shoes Using Actuated MR Fluid", authors: "H. Son et al.", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2019, category: "conference", title: "Realistic Haptic Rendering of Collision Effects", authors: "C. Park et al.", venue: "IEEE World Haptics Conference", link: "" },
+    { year: 2019, category: "conference", title: "VibEye: Vibration-Mediated Object Recognition", authors: "S. Oh et al.", venue: "CHI 2019", link: "" },
 
     // --- Patents (Registered International) ---
-    { year: 2024, category: "patent", title: "Method and Apparatus for Generating and Merging Image-based Texture Motion", authors: "S. Choi", venue: "US Patent 12,067,168 B2", link: "" },
-    { year: 2018, category: "patent", title: "Apparatus for Generating Motion Effects", authors: "S. Choi", venue: "US Patent 10,147,213 B2", link: "" },
-    { year: 2018, category: "patent", title: "Somatic Sensation Induction System Using Pulse Laser", authors: "S. Choi", venue: "US Patent 10,058,712 B2", link: "" },
-    { year: 2018, category: "patent", title: "Method and Device for Generating Vibration Based on an Adjective", authors: "S. Choi", venue: "US Patent 9,880,570 B2", link: "" },
-    { year: 2017, category: "patent", title: "Method and Apparatus for Generating Haptic Signal with Auditory Saliency", authors: "S. Choi", venue: "US Patent 9,640,047 B2", link: "" }
+    { year: 2025, category: "patent", title: "Haptic Feedback Control Apparatus and Method Thereof", authors: "S. Choi", venue: "US 2025/0195997 A1", link: "" },
+    { year: 2024, category: "patent", title: "Method and Apparatus for Generating and Merging Image-based Texture Motion", authors: "S. Choi", venue: "US 12,067,168 B2", link: "" },
+    { year: 2018, category: "patent", title: "Apparatus for Generating Motion Effects", authors: "S. Choi", venue: "US 10,147,213 B2", link: "" },
+    { year: 2018, category: "patent", title: "Somatic Sensation Induction System Using Pulse Laser", authors: "S. Choi", venue: "US 10,058,712 B2", link: "" },
+    { year: 2018, category: "patent", title: "Method and Device for Generating Vibration by Using Adjective Space", authors: "S. Choi", venue: "US 9,600,984 B2", link: "" },
+    { year: 2018, category: "patent", title: "Method and Device for Generating Vibration Based on an Adjective", authors: "S. Choi", venue: "US 9,880,570 B2", link: "" },
+    { year: 2017, category: "patent", title: "Method and Apparatus for Generating Haptic Signal with Auditory Saliency", authors: "S. Choi", venue: "US 9,640,047 B2", link: "" },
+    { year: 2015, category: "patent", title: "Laser Apparatus Capable of Controlling a Photo-mechanical Effect", authors: "S. Choi", venue: "US 9,092,955 B2", link: "" },
+    { year: 2013, category: "patent", title: "Apparatus and Method for Providing Haptic Augmented Reality", authors: "S. Choi", venue: "US 8,344,863 B2", link: "" },
+    { year: 2011, category: "patent", title: "Vibration Authoring Tool, Vibration Authoring Method", authors: "S. Choi", venue: "US 7,999,166 B2", link: "" }
 ];
 
 // 5. Awards Data (Selected)
