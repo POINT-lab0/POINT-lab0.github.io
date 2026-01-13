@@ -65,12 +65,32 @@ const researchAreas = [
         detail: "Full description about Novel Haptic Devices..."
     }
 ];
-// 5. YouTube Data (NEW)
+// 5. YouTube Data (수정됨: embed 링크로 변경)
 const youtubeVideos = [
-    { id: "video1", title: "Lab Introduction", embedUrl: "https://youtu.be/8CfCvSeBKAA?si=pSLH6Uzp6ctuR45t" }, // 예시 URL 교체 필요
-    { id: "video2", title: "Haptic Rendering Demo", embedUrl: "https://youtu.be/UeT9--by-eQ?si=1x4jCfymym1Yh5oJ" },
-    { id: "video3", title: "VR Interaction", embedUrl: "https://youtu.be/h7YkW53siNs?si=vqcBsnWQ7bPON3jZ" },
-    { id: "video4", title: "Research Highlights", embedUrl: "https://youtu.be/edUCvel4Ijc?si=yELyvhMYj3-7mprE" }
+    {
+        id: "video1",
+        title: "Lab Introduction",
+        // 원본: https://youtu.be/8CfCvSeBKAA
+        embedUrl: "https://www.youtube.com/embed/8CfCvSeBKAA"
+    },
+    {
+        id: "video2",
+        title: "Haptic Rendering Demo",
+        // 원본: https://youtu.be/UeT9--by-eQ
+        embedUrl: "https://www.youtube.com/embed/UeT9--by-eQ"
+    },
+    {
+        id: "video3",
+        title: "VR Interaction",
+        // 원본: https://youtu.be/h7YkW53siNs
+        embedUrl: "https://www.youtube.com/embed/h7YkW53siNs"
+    },
+    {
+        id: "video4",
+        title: "Research Highlights",
+        // 원본: https://youtu.be/edUCvel4Ijc
+        embedUrl: "https://www.youtube.com/embed/edUCvel4Ijc"
+    }
 ];
 // 2. Member Data (CV: Advising + Current Members)
 const memberData = [
