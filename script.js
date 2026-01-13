@@ -343,12 +343,15 @@ function applyPubFilter() {
    8. 수상 페이지 (Awards Page)
    ========================================= */
 function renderAwardsPage() {
+    // HTML의 ID인 'award-list-container'를 정확히 찾아야 함
     const container = document.getElementById('award-list-container');
+
+    // 컨테이너가 없거나 데이터가 없으면 중단
     if (!container || typeof awardData === 'undefined') return;
 
     container.innerHTML = '';
 
-    // 날짜(연도) 내림차순 정렬
+    // 날짜(연도) 내림차순 정렬 (최신순)
     const sorted = [...awardData].sort((a, b) => parseInt(b.date) - parseInt(a.date));
 
     sorted.forEach(item => {
@@ -356,7 +359,7 @@ function renderAwardsPage() {
             <div class="pub-item award-item-style">
                 <div class="pub-year" style="min-width:80px;">${item.date}</div>
                 <div class="pub-content">
-                    <h3>${item.title}</h3>
+                    <h3 style="margin:0 0 5px; font-size:1.15rem; color:var(--dark);">${item.title}</h3>
                     <div class="pub-venue" style="color:#666; font-style:normal;">${item.organization}</div>
                 </div>
             </div>`;

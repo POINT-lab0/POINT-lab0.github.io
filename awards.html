@@ -28,12 +28,18 @@
             <h1>Awards & Honors</h1>
             <p>Recognition of our research excellence.</p>
         </div>
-        <div id="award-list" style="max-width: 900px; margin: 0 auto;"></div>
+
+        <div id="award-list-container" style="max-width: 900px; margin: 0 auto;">
+            </div>
     </div>
 
     <footer>&copy; 2026 Interaction Lab. POSTECH.</footer>
+
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', renderAwardsPage);</script>
+    <script>
+        // 페이지가 로드되면 script.js 안에 있는 렌더링 함수 실행
+        document.addEventListener('DOMContentLoaded', renderAwardsPage);
+    </script>
 </body>
 </html>
