@@ -63,7 +63,6 @@ function renderHome() {
         newsContainer.innerHTML = '';
 
         sorted.slice(0, 3).forEach(item => {
-            // 원본 배열에서의 정확한 인덱스를 찾음 (ID 기반 안전 참조)
             const originalIndex = newsData.findIndex(n => n.id === item.id);
             const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" alt="${item.title}" onerror="this.style.display='none'">` : '';
 
@@ -223,7 +222,6 @@ function renderResearchPage() {
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
         researchAreas.forEach((area, idx) => {
-            // 영역 상세 설명은 필요 시 추가 가능
             areaContainer.innerHTML += `
                 <div class="area-card" style="cursor:default;">
                     <img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'">
@@ -275,7 +273,7 @@ function showProjectDetail(index) {
 
 
 /* =========================================
-   7. 논문 페이지 (Publications Page)
+   7. 논문 페이지 (Publications Page) - 자동 정렬 적용
    ========================================= */
 function renderPublications() {
     const container = document.getElementById('pub-list');
@@ -299,23 +297,25 @@ function applyPubFilter() {
     const container = document.getElementById('pub-list');
     if (!container) return;
 
-    // 현재 활성화된 탭 확인
     const activeTab = document.querySelector('.tab-btn.active');
     const category = activeTab ? activeTab.dataset.cat : 'all';
 
-    // 연도 필터 값 확인 (안전하게 처리)
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
     const startYear = startInput ? (parseInt(startInput.value) || 0) : 0;
     const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
 
-    // 필터링
-    const filtered = publicationData.filter(pub => {
+    // 1. 필터링 (카테고리 & 연도)
+    let filtered = publicationData.filter(pub => {
         const catMatch = category === 'all' || pub.category === category;
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
         return catMatch && yearMatch;
     });
 
+    // 2. [수정] 연도 내림차순 (최신순) 자동 정렬
+    filtered.sort((a, b) => b.year - a.year);
+
+    // 3. 렌더링
     container.innerHTML = '';
 
     if (filtered.length === 0) {
@@ -343,15 +343,12 @@ function applyPubFilter() {
    8. 수상 페이지 (Awards Page)
    ========================================= */
 function renderAwardsPage() {
-    // HTML의 ID인 'award-list-container'를 정확히 찾아야 함
     const container = document.getElementById('award-list-container');
-
-    // 컨테이너가 없거나 데이터가 없으면 중단
     if (!container || typeof awardData === 'undefined') return;
 
     container.innerHTML = '';
 
-    // 날짜(연도) 내림차순 정렬 (최신순)
+    // 날짜(연도) 내림차순 정렬
     const sorted = [...awardData].sort((a, b) => parseInt(b.date) - parseInt(a.date));
 
     sorted.forEach(item => {
@@ -359,7 +356,7 @@ function renderAwardsPage() {
             <div class="pub-item award-item-style">
                 <div class="pub-year" style="min-width:80px;">${item.date}</div>
                 <div class="pub-content">
-                    <h3 style="margin:0 0 5px; font-size:1.15rem; color:var(--dark);">${item.title}</h3>
+                    <h3>${item.title}</h3>
                     <div class="pub-venue" style="color:#666; font-style:normal;">${item.organization}</div>
                 </div>
             </div>`;
