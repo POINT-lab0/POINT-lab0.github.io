@@ -2955,5 +2955,6 @@ const awardData = [
 const publicationData = [
     ...journalPapers,
     ...conferencePapers,
-    ...posterDemoPapers, patentData// 이 부분 추가
+    ...posterDemoPapers,
+    ...patentData// 이 부분 추가
 ];
