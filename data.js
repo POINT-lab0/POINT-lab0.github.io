@@ -955,58 +955,8 @@ const publicationData = [
         authors: "Seungmoon Choi and Hong Z. Tan",
         venue: "Presence: Teleoperators and Virtual Environment, vol. 16, no. 3, pp. 263-278",
         link: ""
-    },
-
-    // --- 2006 ---
-    {
-        year: 2006,
-        category: "journal",
-        venueShort: "IJVR",
-        title: "Requirements, Implementation, and Applications of Hand-held Virtual Reality",
-        authors: "Jane Hwang, Jaehoon Jung, Sunghoon Yim, Jaeyoung Cheon, Sungkil Lee, Seungmoon Choi, and Gerard J. Kim",
-        venue: "International Journal of Virtual Reality, vol. 5, no. 2, pp.59-66",
-        link: ""
-    },
-
-    // --- 2005 ---
-    {
-        year: 2005,
-        category: "journal",
-        venueShort: "TAP",
-        title: "Force Constancy and its Effect on Haptic Perception of Virtual Surfaces",
-        authors: "Seungmoon Choi, Laron Walker, Hong Z. Tan, Scott Crittenden, and Ron Reifenberger",
-        venue: "ACM Transactions on Applied Perception, vol. 2, no. 2, pp. 89-105",
-        link: ""
-    },
-    {
-        year: 2005,
-        category: "journal",
-        venueShort: "Presence",
-        title: "Perceived Instability of Virtual Haptic Texture. II. Effect of Collision Detection Algorithm",
-        authors: "Seungmoon Choi and Hong Z. Tan",
-        venue: "Presence: Teleoperators and Virtual Environment, vol. 14, no. 4, pp. 463-481",
-        link: ""
-    },
-
-    // --- 2004 ---
-    {
-        year: 2004,
-        category: "journal",
-        venueShort: "Presence",
-        title: "Perceived Instability of Virtual Haptic Texture. I. Experimental Studies",
-        authors: "Seungmoon Choi and Hong Z. Tan",
-        venue: "Presence: Teleoperators and Virtual Environment, vol. 13, no. 4, pp. 395-415",
-        link: ""
-    },
-    {
-        year: 2004,
-        category: "journal",
-        venueShort: "IEEE CG&A",
-        title: "Towards Realistic Haptic Rendering of Surface Texture",
-        authors: "Seungmoon Choi and Hong Z. Tan",
-        venue: "IEEE Computer Graphics & Applications, vol. 24, pp. 40-47",
-        link: ""
     }
+
 ];
 
 // ... [Awards 데이터 등 나머지는 기존 유지] ...
