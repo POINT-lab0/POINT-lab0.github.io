@@ -205,12 +205,10 @@ function createMemberCard(m, index) {
         </div>`;
 }
 
-/* [수정됨] 멤버 상세 보기 (웹사이트 링크 추가) */
 function showMemberDetail(index) {
     const m = memberData[index];
     let extraInfo = '';
 
-    // 웹사이트 링크 HTML 생성 (주소가 있을 때만 표시)
     const websiteLink = m.website
         ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:10px; color:var(--primary); font-weight:700; text-decoration:none;">
              <i class="fas fa-globe"></i> Website
@@ -238,7 +236,7 @@ function showMemberDetail(index) {
 
 
 /* =========================================
-   6. 연구 페이지 (Research Page) - 수정됨
+   6. 연구 페이지 (Research Page)
    ========================================= */
 function renderResearchPage() {
     const ongoingContainer = document.getElementById('ongoing-list');
@@ -247,11 +245,10 @@ function renderResearchPage() {
 
     if (!ongoingContainer || typeof researchData === 'undefined') return;
 
-    // 1) Research Areas (클릭 가능하도록 수정)
+    // 1) Research Areas
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
         researchAreas.forEach((area, idx) => {
-            // onclick 이벤트 추가
             areaContainer.innerHTML += `
                 <div class="area-card" onclick="showAreaDetail(${idx})">
                     <img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'">
@@ -286,7 +283,6 @@ function renderResearchPage() {
     });
 }
 
-// [NEW] Research Area 상세 보기 함수
 function showAreaDetail(index) {
     const area = researchAreas[index];
     const html = `
@@ -316,39 +312,63 @@ function showProjectDetail(index) {
 
 
 /* =========================================
-   7. 논문 페이지 (Publications Page)
+   7. 논문 페이지 (Publications Page) - 수정됨
    ========================================= */
 function renderPublications() {
     const container = document.getElementById('pub-list');
     if (!container || typeof publicationData === 'undefined') return;
 
-    initVenueFilter();
+    // 1. 처음 로드시 All 탭 기준으로 Venue 초기화
+    updateVenueOptions('all');
     applyPubFilter();
 
+    // 2. 탭 버튼 이벤트 리스너 (탭 변경 시 Venue 필터도 자동 변경)
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
+            // 클릭된 탭의 카테고리(예: 'conference') 가져오기
+            const category = btn.dataset.cat;
+
+            // Venue 목록을 해당 카테고리에 맞게 갱신
+            updateVenueOptions(category);
+
+            // 필터 적용
             applyPubFilter();
         });
     });
 }
 
-function initVenueFilter() {
+// [새로 추가] 카테고리에 맞는 Venue만 셀렉트 박스에 넣기
+function updateVenueOptions(category) {
     const venueSelect = document.getElementById('venue-filter');
     if (!venueSelect) return;
 
+    // 1) 카테고리 필터링 (All이면 전체, 아니면 해당 카테고리만)
+    let targetPubs = publicationData;
+    if (category !== 'all') {
+        targetPubs = publicationData.filter(pub => pub.category === category);
+    }
+
+    // 2) Venue 추출 및 중복 제거
     const venueSet = new Set();
-    publicationData.forEach(pub => {
+    targetPubs.forEach(pub => {
         if (pub.venueShort) venueSet.add(pub.venueShort);
     });
 
+    // 3) 알파벳순 정렬
     const sortedVenues = Array.from(venueSet).sort();
+
+    // 4) 셀렉트 박스 다시 그리기
     venueSelect.innerHTML = '<option value="all">All Venues</option>';
     sortedVenues.forEach(shortName => {
         venueSelect.innerHTML += `<option value="${shortName}">${shortName}</option>`;
     });
+
+    // 탭을 바꿀 때 Venue 선택값은 'All'로 초기화
+    venueSelect.value = 'all';
 }
 
 function applyPubFilter() {
@@ -448,7 +468,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 모바일 메뉴 토글 (필요 없으면 삭제, 혹시 몰라 남겨둠)
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
