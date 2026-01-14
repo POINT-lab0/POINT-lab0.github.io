@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --primary: #6366f1;       /* Indigo */
+    --primary: #6366f1;
     --primary-light: #818cf8;
-    --secondary: #0ea5e9;     /* Sky */
-    --accent: #ff6b6b;        /* Rose */
-    --dark: #0f172a;          /* Slate 900 */
-    --gray: #64748b;          /* Slate 500 */
-    --bg-body: #f8fafc;       /* Slate 50 */
+    --secondary: #0ea5e9;
+    --accent: #ff6b6b;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --bg-body: #f8fafc;
     --white: #ffffff;
     --radius: 16px;
     --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
@@ -31,7 +31,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px;
     display: flex; justify-content: space-between; align-items: center;
 }
-.logo img { height: 40px; }
+.logo img { height: 40px; transition: transform 0.3s; }
+.logo img:hover { transform: scale(1.05); }
 .menu-toggle { display: none !important; }
 
 /* 네비게이션 링크 */
@@ -94,10 +95,9 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .news-card p { flex: 1; font-size: 0.95rem; color: var(--gray); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .read-more { margin-top: 15px; font-size: 0.9rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 5px; }
 
-/* --- Research Areas (수정: 모바일 잘림 방지) --- */
+/* --- Research Areas --- */
 .research-areas-grid {
     display: grid;
-    /* 중요: minmax를 작게 잡아서 모바일에서 튀어나가지 않게 함 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 80px;
@@ -133,15 +133,18 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 .tab-btn:hover { background: #e2e8f0; }
 
-/* [수정] 탭별 Active 색상 복구 */
+/* Active 상태 색상 */
 .tab-btn.active[data-cat="all"] { background: var(--dark); color: white; border-color: var(--dark); }
 .tab-btn.active[data-cat="journal"] { background: var(--primary); color: white; border-color: var(--primary); }
 .tab-btn.active[data-cat="conference"] { background: var(--secondary); color: white; border-color: var(--secondary); }
 .tab-btn.active[data-cat="patent"] { background: var(--accent); color: white; border-color: var(--accent); }
 
+/* 검색 및 필터 */
+.search-container { display: flex; gap: 10px; width: 100%; margin-top: 15px; justify-content: center; }
+.search-input { flex: 2; padding: 10px 15px; border: 1px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.95rem; }
+.venue-select { flex: 1; padding: 10px 15px; border: 1px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.95rem; background: white; cursor: pointer; }
 .year-filter { display: flex; align-items: center; gap: 10px; }
 .year-input { width: 80px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 10px; text-align: center; }
-.apply-btn { background: var(--dark); color: white; border: none; padding: 8px 20px; border-radius: 10px; cursor: pointer; }
 
 /* Pub List */
 .pub-item { background: var(--white); padding: 30px; border-radius: var(--radius); margin-bottom: 20px; box-shadow: var(--shadow-sm); display: flex; gap: 25px; transition: var(--transition); border: 1px solid transparent; }
@@ -151,6 +154,16 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .pub-authors { color: var(--gray); font-size: 0.95rem; margin-bottom: 5px; }
 .pub-venue { font-style: italic; font-weight: 600; color: var(--secondary); }
 .pub-link { margin-left: auto; color: #ccc; font-size: 1.2rem; }
+
+/* Badges */
+.badge-container { display: flex; gap: 8px; margin-bottom: 8px; }
+.pub-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.5px; }
+.pub-badge.journal { background: var(--primary); }
+.pub-badge.conference { background: var(--secondary); }
+.pub-badge.patent { background: var(--accent); }
+.pub-badge.venue-tag { background: #e2e8f0; color: var(--dark); font-weight: 600; }
+
+/* Lists */
 .alumni-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
 .alumni-item { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: var(--shadow-sm); border-left: 4px solid #cbd5e1; }
 .award-item-style { border-left: 5px solid gold; align-items: center; }
@@ -171,10 +184,10 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
    [모바일 반응형 디자인 최적화]
    ========================================= */
 @media (max-width: 768px) {
-    /* 1. Navbar */
+    /* 1. Navbar: 가로 스크롤 메뉴 (흔들림 방지 & Active 유지) */
     .nav-container {
         display: flex; flex-direction: column; height: auto; padding: 10px 0;
-        align-items: flex-start;
+        align-items: flex-start; /* 좌측 정렬 */
     }
     .logo { padding-left: 20px; margin-bottom: 10px; }
 
@@ -195,39 +208,29 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         white-space: nowrap; color: var(--dark);
     }
 
+    /* 모바일 Active 상태 복구 */
     .nav-item.active { color: var(--primary); }
     .nav-item.active::after {
         content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
         background: linear-gradient(90deg, var(--primary), var(--secondary));
     }
 
-    /* 2. YouTube */
+    /* 2. YouTube: 1열 꽉 차게 */
     .youtube-grid { grid-template-columns: 1fr; gap: 20px; }
 
-    /* 3. Publications Filters: 스크롤 박스 안에서 한 줄로 보이게 수정 */
-    .pub-controls {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        padding: 15px;
-        overflow: hidden; /* 박스 벗어나는 것 방지 */
-    }
-
+    /* 3. Publications Filters: 가로 스크롤 & 흔들림 방지 */
+    .pub-controls { flex-direction: column; align-items: stretch; gap: 15px; padding: 15px; }
     .filter-tabs {
-        display: flex;
-        flex-wrap: nowrap; /* 절대 줄바꿈 금지 */
-        overflow-x: auto; /* 가로 스크롤 허용 */
-        gap: 10px;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        width: 100%; /* 부모 너비에 맞춤 */
+        display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 10px; padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch; justify-content: flex-start;
+        touch-action: pan-x;
     }
-    /* 스크롤바 숨김 */
     .filter-tabs::-webkit-scrollbar { display: none; }
 
     .tab-btn { flex-shrink: 0; font-size: 0.85rem; padding: 8px 14px; }
     .year-filter { justify-content: center; }
+    .search-container { flex-direction: column; }
+    .search-input, .venue-select { width: 100%; }
 
     /* 4. 리서치 그리드 (잘림 방지) */
     .research-areas-grid {
@@ -235,65 +238,11 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         gap: 20px;
     }
 
-    /* 5. 기타 */
+    /* 5. 기타 모바일 조정 */
     .hero h1 { font-size: 2rem; }
     .news-thumb { height: auto; aspect-ratio: 16/9; }
     .member-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .member-card img { width: 100px !important; height: 100px !important; }
     .project-card { flex-direction: column; align-items: flex-start; gap: 15px; }
     .project-card i { display: none; }
-}
-/* ... [이전 코드 유지] ... */
-
-/* --- [NEW] Publication Badges & Search --- */
-
-/* 1. 검색 및 베뉴 필터 영역 */
-.search-container {
-    display: flex; gap: 10px; width: 100%; margin-top: 15px;
-    justify-content: center;
-}
-
-.search-input {
-    flex: 2; padding: 10px 15px; border: 1px solid #e2e8f0; border-radius: 12px;
-    font-family: inherit; font-size: 0.95rem;
-}
-
-.venue-select {
-    flex: 1; padding: 10px 15px; border: 1px solid #e2e8f0; border-radius: 12px;
-    font-family: inherit; font-size: 0.95rem; background: white; cursor: pointer;
-}
-
-
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .search-container { flex-direction: column; }
-    .search-input, .venue-select { width: 100%; }
-}
-
-/* style.css 맨 아래에 추가하거나 해당 부분 수정 */
-
-/* ... [기존 코드 유지] ... */
-
-/* [NEW] Publication Badges */
-.badge-container {
-    display: flex; gap: 8px; margin-bottom: 8px;
-}
-
-.pub-badge {
-    display: inline-block; padding: 4px 10px; border-radius: 6px;
-    font-size: 0.75rem; font-weight: 700; color: white;
-    text-transform: uppercase; letter-spacing: 0.5px;
-}
-
-/* 카테고리별 색상 (탭 색상과 매칭) */
-.pub-badge.journal { background: var(--primary); }      /* 파란색 */
-.pub-badge.conference { background: var(--secondary); } /* 하늘색 */
-.pub-badge.patent { background: var(--accent); }        /* 분홍색 */
-
-/* 베뉴 뱃지 (회색 톤) */
-.pub-badge.venue-tag {
-    background: #e2e8f0;
-    color: var(--dark);
-    font-weight: 600;
 }

@@ -39,27 +39,22 @@ function getSortedNews() {
     return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
-// script.js
+// 학회명 정규화 및 배지 생성 헬퍼
+function getVenueTag(venueStr) {
+    if (!venueStr) return "Other";
+    if (venueStr.includes("CHI")) return "CHI";
+    if (venueStr.includes("UIST")) return "UIST";
+    if (venueStr.includes("Transactions on Haptics") || venueStr.includes("ToH")) return "ToH";
+    if (venueStr.includes("World Haptics") || venueStr.includes("WHC")) return "WHC";
+    if (venueStr.includes("Haptics Symposium")) return "Haptics Symp.";
+    if (venueStr.includes("ISMAR")) return "ISMAR";
+    if (venueStr.includes("VR")) return "IEEE VR";
+    if (venueStr.includes("EuroHaptics")) return "EuroHaptics";
+    if (venueStr.includes("Patent")) return "Patent";
+    return venueStr;
+}
 
-// ... [이전 코드는 그대로 유지] ...
 
-/* =========================================
-   0. 모바일 메뉴 토글
-   ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-});
-
-/* =========================================
-   1. 유틸리티: 상세 오버레이 ... (이하 기존 코드)
-   ========================================= */
 /* =========================================
    3. 메인 페이지 (Home Rendering)
    ========================================= */
@@ -76,7 +71,7 @@ function renderHome() {
         });
     }
 
-    // 2) Latest News (날짜순 정렬 + 상위 3개)
+    // 2) Latest News
     const newsContainer = document.getElementById('home-news');
     if (newsContainer && typeof newsData !== 'undefined') {
         const sorted = getSortedNews();
@@ -99,7 +94,7 @@ function renderHome() {
         });
     }
 
-    // 3) Research Highlights (Ongoing 상위 4개)
+    // 3) Research Highlights
     const resContainer = document.getElementById('home-research');
     if (resContainer && typeof researchData !== 'undefined') {
         resContainer.innerHTML = '';
@@ -166,7 +161,7 @@ function showNewsDetail(index) {
 
 
 /* =========================================
-   5. 멤버 페이지 (Members Page) - Alumni 정렬 추가
+   5. 멤버 페이지 (Members Page)
    ========================================= */
 function renderMembers() {
     const profList = document.getElementById('prof-list');
@@ -176,7 +171,7 @@ function renderMembers() {
 
     if (!profList) return;
 
-    // 중복 렌더링 방지를 위해 초기화
+    // 초기화
     profList.innerHTML = '';
     phdList.innerHTML = '';
     msList.innerHTML = '';
@@ -184,7 +179,7 @@ function renderMembers() {
 
     if (typeof memberData === 'undefined') return;
 
-    // 1. 교수님 및 재학생 렌더링 (기존 데이터 순서 유지)
+    // 교수 및 재학생
     memberData.forEach((m, index) => {
         if (m.role !== 'alumni') {
             const card = createMemberCard(m, index);
@@ -194,21 +189,17 @@ function renderMembers() {
         }
     });
 
-    // 2. Alumni 렌더링 (졸업 연도 내림차순 정렬)
+    // 졸업생 (연도순 정렬)
     if (alumniList) {
-        // Alumni만 따로 추출
         const alumni = memberData.filter(m => m.role === 'alumni');
-
-        // 연도 추출 및 정렬 함수 (내림차순)
         alumni.sort((a, b) => {
             const getYear = (str) => {
-                const match = str.match(/\((19|20)\d{2}\)/); // (19xx) 또는 (20xx) 찾기
+                const match = str.match(/\((19|20)\d{2}\)/);
                 return match ? parseInt(match[0].replace(/[()]/g, '')) : 0;
             };
-            return getYear(b.desc) - getYear(a.desc); // 최신순 정렬
+            return getYear(b.desc) - getYear(a.desc);
         });
 
-        // 정렬된 Alumni 렌더링
         alumni.forEach(m => {
             alumniList.innerHTML += `
                 <div class="alumni-item" style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); border-left:4px solid #ccc;">
@@ -218,6 +209,7 @@ function renderMembers() {
         });
     }
 }
+
 function createMemberCard(m, index) {
     return `
         <div class="member-card" onclick="showMemberDetail(${index})">
@@ -262,10 +254,10 @@ function renderResearchPage() {
 
     if (!ongoingContainer || typeof researchData === 'undefined') return;
 
-    // 1) Research Areas
+    // Areas
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
-        researchAreas.forEach((area, idx) => {
+        researchAreas.forEach((area) => {
             areaContainer.innerHTML += `
                 <div class="area-card" style="cursor:default;">
                     <img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'">
@@ -277,7 +269,7 @@ function renderResearchPage() {
         });
     }
 
-    // 2) Projects List
+    // Projects
     ongoingContainer.innerHTML = '';
     completedContainer.innerHTML = '';
 
@@ -302,25 +294,7 @@ function renderResearchPage() {
 
 function showProjectDetail(index) {
     const r = researchData[index];
-    const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : function initVenueFilter() {
-    const venueSelect = document.getElementById('venue-filter');
-    if (!venueSelect) return;
-
-    // 데이터에서 venueShort만 추출하여 중복 제거
-    const venueSet = new Set();
-    publicationData.forEach(pub => {
-        if (pub.venueShort) venueSet.add(pub.venueShort);
-    });
-
-    // 알파벳순 정렬
-    const sortedVenues = Array.from(venueSet).sort();
-
-    // 옵션 추가 (기존 옵션 초기화 후 추가)
-    venueSelect.innerHTML = '<option value="all">All Venues</option>';
-    sortedVenues.forEach(shortName => {
-        venueSelect.innerHTML += `<option value="${shortName}">${shortName}</option>`;
-    });
-}'#64748b';
+    const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
 
     const html = `
         <span style="background:${statusColor}; color:white; padding:5px 15px; border-radius:20px; font-size:0.9rem; font-weight:bold;">${r.status}</span>
@@ -335,59 +309,19 @@ function showProjectDetail(index) {
 
 
 /* =========================================
-   7. 논문 페이지 (Publications Page) - 자동 정렬 적용
-   ========================================= */
-   function renderPublications() {
-       const container = document.getElementById('pub-list');
-       if (!container || typeof publicationData === 'undefined') return;
-
-       // 1. 학회 필터 옵션 자동 생성 (venueShort 기준)
-       initVenueFilter();
-
-       // 2. 초기 렌더링
-       applyPubFilter();
-
-       // 탭 클릭 이벤트
-       const buttons = document.querySelectorAll('.tab-btn');
-       buttons.forEach(btn => {
-           btn.addEventListener('click', () => {
-               buttons.forEach(b => b.classList.remove('active'));
-               btn.classList.add('active');
-               applyPubFilter();
-           });
-       });
-   }
-/* =========================================
    7. 논문 페이지 (Publications Page)
    ========================================= */
-
-// [NEW] 학회명 정규화 및 배지 생성 헬퍼 함수
-function getVenueTag(venueStr) {
-    if (!venueStr) return "Other";
-    // 주요 학회/저널 키워드를 미리 정의 (필요하면 여기에 추가하면 됩니다)
-    if (venueStr.includes("CHI")) return "CHI";
-    if (venueStr.includes("UIST")) return "UIST";
-    if (venueStr.includes("Transactions on Haptics") || venueStr.includes("ToH")) return "ToH";
-    if (venueStr.includes("World Haptics") || venueStr.includes("WHC")) return "WHC";
-    if (venueStr.includes("Haptics Symposium")) return "Haptics Symp.";
-    if (venueStr.includes("ISMAR")) return "ISMAR";
-    if (venueStr.includes("VR")) return "IEEE VR";
-    if (venueStr.includes("EuroHaptics")) return "EuroHaptics";
-    if (venueStr.includes("Patent")) return "Patent";
-    return venueStr; // 매칭 안되면 원본 그대로 사용
-}
-
 function renderPublications() {
     const container = document.getElementById('pub-list');
     if (!container || typeof publicationData === 'undefined') return;
 
-    // 1. 학회 필터 옵션 자동 생성 (데이터 기반)
+    // 학회 필터 자동 생성
     initVenueFilter();
 
-    // 2. 초기 렌더링
+    // 초기 렌더링
     applyPubFilter();
 
-    // 탭 클릭 이벤트 설정
+    // 탭 클릭 이벤트
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -402,16 +336,12 @@ function initVenueFilter() {
     const venueSelect = document.getElementById('venue-filter');
     if (!venueSelect) return;
 
-    // 데이터에서 venueShort만 추출하여 중복 제거
     const venueSet = new Set();
     publicationData.forEach(pub => {
         if (pub.venueShort) venueSet.add(pub.venueShort);
     });
 
-    // 알파벳순 정렬
     const sortedVenues = Array.from(venueSet).sort();
-
-    // 옵션 추가 (기존 옵션 초기화 후 추가)
     venueSelect.innerHTML = '<option value="all">All Venues</option>';
     sortedVenues.forEach(shortName => {
         venueSelect.innerHTML += `<option value="${shortName}">${shortName}</option>`;
@@ -425,7 +355,6 @@ function applyPubFilter() {
     const activeTab = document.querySelector('.tab-btn.active');
     const category = activeTab ? activeTab.dataset.cat : 'all';
 
-    // 필터 입력값 가져오기 (없으면 기본값)
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
     const searchInput = document.getElementById('search-keyword');
@@ -436,7 +365,6 @@ function applyPubFilter() {
     const searchKeyword = searchInput ? searchInput.value.toLowerCase() : "";
     const selectedVenue = venueSelect ? venueSelect.value : 'all';
 
-    // 필터링 로직
     let filtered = publicationData.filter(pub => {
         const catMatch = category === 'all' || pub.category === category;
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
@@ -459,11 +387,7 @@ function applyPubFilter() {
 
     filtered.forEach(pub => {
         const linkHtml = pub.link ? `<a href="${pub.link}" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>` : '';
-
-        // 배지 HTML 생성 (카테고리 + 베뉴)
-        // 카테고리 배지 클래스: journal, conference, patent
         const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`;
-        // 베뉴 배지 (회색 배경 등 스타일 적용)
         const venueBadge = pub.venueShort ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
 
         container.innerHTML += `
@@ -483,6 +407,7 @@ function applyPubFilter() {
     });
 }
 
+
 /* =========================================
    8. 수상 페이지 (Awards Page)
    ========================================= */
@@ -491,8 +416,6 @@ function renderAwardsPage() {
     if (!container || typeof awardData === 'undefined') return;
 
     container.innerHTML = '';
-
-    // 날짜(연도) 내림차순 정렬
     const sorted = [...awardData].sort((a, b) => parseInt(b.date) - parseInt(a.date));
 
     sorted.forEach(item => {
@@ -506,23 +429,29 @@ function renderAwardsPage() {
             </div>`;
     });
 }
+
+
 /* =========================================
-   9. 자동 네비게이션 활성화 (Auto Active Nav)
+   9. 자동 네비게이션 활성화
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    // 현재 페이지 파일명 가져오기 (예: 'publications.html')
     const currentPage = window.location.pathname.split("/").pop() || 'index.html';
-
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
-        // 링크의 href 속성값 (예: 'publications.html')
         const linkPage = item.getAttribute('href');
-
-        // 현재 페이지와 링크가 일치하면 active 클래스 추가
         if (currentPage === linkPage) {
             item.classList.add('active');
         } else {
             item.classList.remove('active');
         }
     });
+
+    // 모바일 메뉴 토글 (필요 없으면 삭제, 혹시 몰라 남겨둠)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 });
