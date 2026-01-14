@@ -94,19 +94,13 @@ const memberData = [
         detail: {
             position: [
                 "Head, Department of Computer Science and Engineering",
-                "Professor, Department of Convergence IT Engineering (Joint)",
-                "Outside Director, bHaptics"
+                "Professor, Department of Convergence IT Engineering (Joint appointment)",
+                "Pohang University of Science and Technology (POSTECH)"
             ],
             education: [
-                "Ph.D. Purdue University (2003)",
-                "M.S. Seoul National University (1997)",
-                "B.S. Seoul National University (1995)"
-            ],
-            membership: [
-                "IEEE Senior Member",
-                "ACM Member",
-                "Korea Robotics Society (Lifetime)",
-                "Korea HCI Society (Lifetime)"
+                "Ph.D. Electrical and Computer Engineering, Purdue University (2003)",
+                "M.S. Control and Instrumentation Engineering, Seoul National University (1997)",
+                "B.S. Control and Instrumentation Engineering, Seoul National University (1995)"
             ]
         }
     },
