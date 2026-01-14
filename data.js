@@ -1302,7 +1302,7 @@ const publicationData = [
         title: "Augmenting Physical Buttons with Vibrotactile Feedback for Programmable Feels",
         authors: "Chaeyong Park, Jinhyuk Yoon, Seungjae Oh, and Seungmoon Choi",
         venue: "ACM Symposium on User Interface Software and Technology",
-        link: "https://doi.org/10.1145/3379337.3415863"
+        link: "https://dl.acm.org/doi/10.1145/3379337.3415837"
     },
     {
         year: 2020,
@@ -1322,7 +1322,7 @@ const publicationData = [
         title: "TouchPhoto: Enabling Independent Picture Taking and Understanding for Visually-Impaired Users",
         authors: "Jongho Lim, Yongjae Yoo, Hanseul Cho, and Seungmoon Choi",
         venue: "ACM International Conference on Multimodal Interaction",
-        link: "https://doi.org/10.1145/3340555.3353723"
+        link: "https://dl.acm.org/doi/fullHtml/10.1145/3340555.3353728"
     },
     {
         year: 2019,
@@ -1331,7 +1331,7 @@ const publicationData = [
         title: "👑 RealWalk: Haptic Shoes Using Actuated MR Fluid for Walking in VR",
         authors: "Hyungki Son, Inwook Hwang, Tae-Heon Yang, Seungmoon Choi, Sang-Youn Kim, and Jin Ryong Kim",
         venue: "IEEE World Haptics Conference (Candidate for Best Paper Award)",
-        link: "https://ieeexplore.ieee.org/document/8816153"
+        link: "https://ieeexplore.ieee.org/document/8816165"
     },
     {
         year: 2019,
@@ -1340,7 +1340,7 @@ const publicationData = [
         title: "Seamless Phantom Sensation Moving across a Wide Range of Body",
         authors: "Gyeore Yun, Seungjae Oh, and Seungmoon Choi",
         venue: "IEEE World Haptics Conference",
-        link: "https://ieeexplore.ieee.org/document/8816131"
+        link: "https://ieeexplore.ieee.org/document/8816104"
     },
     {
         year: 2019,
@@ -1349,7 +1349,7 @@ const publicationData = [
         title: "👑 Realistic Haptic Rendering of Collision Effects Using Multimodal Vibrotactile and Impact Feedback",
         authors: "Chaeyong Park, Jaeyoung Park, Seungjae Oh, and Seungmoon Choi",
         venue: "IEEE World Haptics Conference (Candidate for Best Paper Award)",
-        link: "https://ieeexplore.ieee.org/document/8816127"
+        link: "https://ieeexplore.ieee.org/document/88161167"
     },
     {
         year: 2019,
@@ -1358,7 +1358,7 @@ const publicationData = [
         title: "Guidance-based Two-Dimensional Haptic Contour Rendering for Accessible Photography",
         authors: "Jongho Lim, Yongjae Yoo, and Seungmoon Choi",
         venue: "IEEE World Haptics Conference",
-        link: "https://ieeexplore.ieee.org/document/8816104"
+        link: "https://ieeexplore.ieee.org/document/8816151"
     },
     {
         year: 2019,
@@ -1367,7 +1367,7 @@ const publicationData = [
         title: "👑 Perceptual Space of Regular Homogeneous Haptic Textures Rendered Using Electrovibration",
         authors: "Sunung Mun, Hojin Lee, and Seungmoon Choi",
         venue: "IEEE World Haptics Conference (Finalist for Best Paper Award)",
-        link: "https://ieeexplore.ieee.org/document/8816167"
+        link: "https://ieeexplore.ieee.org/document/8816143"
     },
     {
         year: 2019,
@@ -1376,7 +1376,7 @@ const publicationData = [
         title: "VibEye: Vibration-Mediated Object Recognition for Tangible Interactive Applications",
         authors: "Seungjae Oh, Gyeore Yun, Chaeyong Park, Jinsoo Kim, and Seungmoon Choi",
         venue: "ACM CHI Conference on Human Factors in Computing Systems",
-        link: "https://doi.org/10.1145/3290605.3300906"
+        link: "https://dl.acm.org/doi/10.1145/3290605.3300906"
     },
 
     // --- 2018 ---
