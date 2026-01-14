@@ -227,14 +227,14 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     /* 1. Navbar */
     .nav-container {
         display: flex; flex-direction: column; height: auto; padding: 10px 0;
-        align-items: flex-start; /* 좌측 정렬 */
+        align-items: flex-start;
     }
     .logo { padding-left: 20px; margin-bottom: 10px; }
 
     .nav-links {
         display: flex !important;
         flex-direction: row; width: 100%;
-        overflow-x: auto; /* 가로 스크롤 */
+        overflow-x: auto;
         padding: 0 20px 5px 20px;
         gap: 25px;
         -webkit-overflow-scrolling: touch;
@@ -247,42 +247,70 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         padding: 10px 0; font-size: 0.95rem;
         white-space: nowrap; color: var(--dark);
     }
-
-    /* 모바일 Active 상태 복구 */
     .nav-item.active { color: var(--primary); }
     .nav-item.active::after {
         content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
         background: linear-gradient(90deg, var(--primary), var(--secondary));
     }
 
-    /* 2. YouTube */
-    .youtube-grid { grid-template-columns: 1fr; gap: 20px; }
+    /* 2. Publications Controls (박스 밖으로 나가는 현상 수정) */
+    .pub-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 20px; /* 내부 여백 확보 */
+        width: 100%; /* 부모 너비에 맞춤 */
+        box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    }
 
-    /* 3. Publications Filters: 스크롤 박스 안에서 한 줄로 보이게 수정 */
-    .pub-controls { flex-direction: column; align-items: stretch; gap: 15px; padding: 15px; }
+    /* 탭 메뉴 가로 스크롤 안전하게 처리 */
     .filter-tabs {
-        display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 10px; padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch; justify-content: flex-start;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 5px;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
         touch-action: pan-x;
     }
     .filter-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { flex-shrink: 0; font-size: 0.85rem; padding: 8px 16px; }
 
-    .tab-btn { flex-shrink: 0; font-size: 0.85rem; padding: 10px 16px; }
-    .year-filter { justify-content: center; flex-wrap: wrap; }
-    .year-input { width: 80px; }
-    .apply-btn { width: 100%; margin-top: 5px; } /* 모바일에서 버튼 꽉 차게 */
+    /* 연도 필터와 Apply 버튼 정렬 수정 */
+    .year-filter {
+        display: flex;
+        flex-wrap: wrap; /* 공간 부족시 줄바꿈 */
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+    }
 
-    .search-container { flex-direction: column; }
+    /* 입력창 두 개는 한 줄에 꽉 차게 */
+    .year-input {
+        flex: 1; /* 남은 공간 균등 분할 */
+        width: auto;
+        min-width: 0; /* Flexbox 넘침 방지 */
+        text-align: center;
+    }
+
+    /* Apply 버튼은 아래로 내려서 꽉 차게 */
+    .apply-btn {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* 검색창과 드롭다운 */
+    .search-container { flex-direction: column; width: 100%; }
     .search-input, .venue-select { width: 100%; }
 
-    /* 4. 리서치 그리드 */
-    .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
-
-    /* 5. 기타 */
+    /* 3. 기타 레이아웃 */
+    .youtube-grid { grid-template-columns: 1fr; gap: 20px; }
     .hero h1 { font-size: 2rem; }
     .news-thumb { height: auto; aspect-ratio: 16/9; }
     .member-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .member-card img { width: 100px !important; height: 100px !important; }
     .project-card { flex-direction: column; align-items: flex-start; gap: 15px; }
     .project-card i { display: none; }
+    .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
 }
