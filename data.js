@@ -1547,7 +1547,7 @@ const posterDemoPapers = [
     }
 ];
 
-const conferencePapers[
+const conferencePapers = [
 
     {
         year: 2026,
@@ -3020,5 +3020,6 @@ const awardData = [
 const publicationData = [
     ...journalPapers,
     ...conferencePapers,
-    ...posterDemoPapers, patentData// 이 부분 추가
+    ...posterDemoPapers,
+    ...patentData  // <- 점 3개(...) 추가!
 ];
