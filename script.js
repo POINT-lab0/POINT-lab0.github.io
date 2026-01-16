@@ -1,4 +1,4 @@
-/* script.js - 페이지 이동(Routing) 방식 적용 */
+/* script.js - Research Area 상세 보기 기능 추가됨 */
 
 /* =========================================
    1. 유틸리티 (URL 파라미터 확인)
@@ -36,11 +36,9 @@ function renderHome() {
         newsContainer.innerHTML = '';
 
         sorted.slice(0, 3).forEach(item => {
-            // 원본 데이터에서의 인덱스 찾기 (ID 역할)
             const originalIndex = newsData.findIndex(n => n.id === item.id);
             const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" alt="${item.title}" onerror="this.style.display='none'">` : '';
 
-            // [수정] 클릭 시 news.html?id=... 로 이동
             newsContainer.innerHTML += `
                 <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                     ${imgHtml}
@@ -58,13 +56,11 @@ function renderHome() {
     const resContainer = document.getElementById('home-research');
     if (resContainer && typeof researchData !== 'undefined') {
         resContainer.innerHTML = '';
-        // Ongoing 프로젝트 찾기
         const ongoingProjects = researchData.map((r, idx) => ({ ...r, originalIndex: idx }))
                                             .filter(r => r.status === 'Ongoing')
                                             .slice(0, 4);
 
         ongoingProjects.forEach(item => {
-            // [수정] 클릭 시 research.html?id=... 로 이동
             resContainer.innerHTML += `
                 <div class="member-card" onclick="location.href='research.html?id=${item.originalIndex}'">
                     <div style="background:var(--primary); height:4px; width:100%; position:absolute; top:0; left:0;"></div>
@@ -79,19 +75,15 @@ function renderHome() {
 }
 
 /* =========================================
-   3. 뉴스 페이지 (News) - 상세 보기 포함
+   3. 뉴스 페이지 (News)
    ========================================= */
 function renderNewsPage() {
-    // 1. URL에 id가 있는지 확인
     const id = getQueryParam('id');
-
-    // 2. id가 있으면 -> 상세 페이지 렌더링
     if (id !== null && newsData[id]) {
         renderNewsDetail(id);
         return;
     }
 
-    // 3. id가 없으면 -> 목록 렌더링
     const container = document.getElementById('news-grid-full');
     if (!container || typeof newsData === 'undefined') return;
 
@@ -102,7 +94,6 @@ function renderNewsPage() {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
 
-        // [수정] 클릭 시 해당 페이지 리로드하며 쿼리스트링 추가
         container.innerHTML += `
             <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                 ${imgHtml}
@@ -118,10 +109,9 @@ function renderNewsPage() {
 
 function renderNewsDetail(index) {
     const item = newsData[index];
-    const container = document.querySelector('.container'); // 전체 컨테이너 교체
+    const container = document.querySelector('.container');
     const imgHtml = item.image ? `<img src="${item.image}" style="width:100%; max-height:400px; border-radius:16px; object-fit:cover; margin-bottom:30px;" onerror="this.style.display='none'">` : '';
 
-    // 상세 페이지 HTML 주입
     container.innerHTML = `
         <div style="max-width:800px; margin:0 auto; padding-top:20px;">
             <a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
@@ -135,23 +125,19 @@ function renderNewsDetail(index) {
             </div>
         </div>
     `;
-    window.scrollTo(0, 0); // 맨 위로 스크롤
+    window.scrollTo(0, 0);
 }
 
 /* =========================================
-   4. 멤버 페이지 (Members) - 상세 보기 포함
+   4. 멤버 페이지 (Members)
    ========================================= */
 function renderMembers() {
-    // 1. URL에 id가 있는지 확인
     const id = getQueryParam('id');
-
-    // 2. id가 있으면 -> 상세 페이지 렌더링
     if (id !== null && memberData[id]) {
         renderMemberDetail(id);
         return;
     }
 
-    // 3. id가 없으면 -> 목록 렌더링
     const profList = document.getElementById('prof-list');
     const postdocList = document.getElementById('postdoc-list');
     const postdocHeader = document.getElementById('postdoc-header');
@@ -173,7 +159,6 @@ function renderMembers() {
 
     memberData.forEach((m, index) => {
         if (m.role !== 'alumni') {
-            // [수정] 카드 생성 시 링크 추가
             const card = `
                 <div class="member-card" onclick="location.href='members.html?id=${index}'">
                     <img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">
@@ -264,32 +249,38 @@ function renderMemberDetail(index) {
 }
 
 /* =========================================
-   5. 연구 페이지 (Research) - 상세 보기 포함
+   5. 연구 페이지 (Research) - [수정됨] Area/Project 상세 보기
    ========================================= */
 function renderResearchPage() {
-    // 1. URL 확인
-    const id = getQueryParam('id');
+    // 1. URL 파라미터 확인 (area 또는 id)
+    const areaId = getQueryParam('area');
+    const projectId = getQueryParam('id');
 
-    // 2. 상세 페이지
-    if (id !== null && researchData[id]) {
-        renderProjectDetail(id);
+    // 2. Area 상세 페이지
+    if (areaId !== null && researchAreas[areaId]) {
+        renderAreaDetail(areaId);
         return;
     }
 
-    // 3. 목록 페이지
+    // 3. Project 상세 페이지
+    if (projectId !== null && researchData[projectId]) {
+        renderProjectDetail(projectId);
+        return;
+    }
+
+    // 4. 목록 페이지 렌더링
     const ongoingContainer = document.getElementById('ongoing-list');
     const completedContainer = document.getElementById('completed-list');
     const areaContainer = document.getElementById('research-areas');
 
     if (!ongoingContainer || typeof researchData === 'undefined') return;
 
-    // Research Areas 렌더링
+    // Research Areas 렌더링 [수정됨: 클릭 시 링크 이동]
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
         researchAreas.forEach((area, idx) => {
-            // Areas는 별도 상세 페이지보다는 일단 팝업 유지 혹은 텍스트만 표시 (여기서는 유지)
             areaContainer.innerHTML += `
-                <div class="area-card" style="cursor:default;">
+                <div class="area-card" onclick="location.href='research.html?area=${idx}'">
                     <img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'">
                     <div class="area-content">
                         <h3>${area.title}</h3>
@@ -319,6 +310,29 @@ function renderResearchPage() {
         if (r.status === 'Ongoing') ongoingContainer.innerHTML += html;
         else completedContainer.innerHTML += html;
     });
+}
+
+// [추가됨] Research Area 상세 페이지 렌더링 함수
+function renderAreaDetail(index) {
+    const area = researchAreas[index];
+    const container = document.querySelector('.container');
+
+    container.innerHTML = `
+        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
+            <a href="research.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to Research
+            </a>
+
+            <img src="${area.thumbnail}" style="width:100%; height:300px; object-fit:cover; border-radius:16px; margin-bottom:30px;" onerror="this.src='images/lab_intro1.jpg'">
+
+            <h1 style="font-size:2.5rem; margin-bottom:20px; line-height:1.3;">${area.title}</h1>
+
+            <div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:1.1rem; line-height:1.8; color:#333;">
+                ${area.detail || area.desc}
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
 }
 
 function renderProjectDetail(index) {
