@@ -1,45 +1,23 @@
-/* script.js */
+/* script.js - 페이지 이동(Routing) 방식 적용 */
 
 /* =========================================
-   1. 유틸리티 & 오버레이
+   1. 유틸리티 (URL 파라미터 확인)
    ========================================= */
-function openDetail(html) {
-    const overlay = document.getElementById('detail-overlay');
-    const body = document.getElementById('detail-body');
-    if (overlay && body) {
-        body.innerHTML = html;
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
 
-function closeDetail() {
-    const overlay = document.getElementById('detail-overlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-document.addEventListener('click', function (e) {
-    const overlay = document.getElementById('detail-overlay');
-    if (overlay && e.target === overlay) {
-        closeDetail();
-    }
-});
-
-/* =========================================
-   2. 데이터 헬퍼
-   ========================================= */
 function getSortedNews() {
     if (typeof newsData === 'undefined') return [];
     return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 /* =========================================
-   3. 메인 페이지
+   2. 메인 페이지 (Home)
    ========================================= */
 function renderHome() {
+    // 1. YouTube
     const ytContainer = document.getElementById('youtube-gallery');
     if (ytContainer && typeof youtubeVideos !== 'undefined') {
         ytContainer.innerHTML = '';
@@ -51,15 +29,20 @@ function renderHome() {
         });
     }
 
+    // 2. News (최신 3개)
     const newsContainer = document.getElementById('home-news');
     if (newsContainer && typeof newsData !== 'undefined') {
         const sorted = getSortedNews();
         newsContainer.innerHTML = '';
+
         sorted.slice(0, 3).forEach(item => {
+            // 원본 데이터에서의 인덱스 찾기 (ID 역할)
             const originalIndex = newsData.findIndex(n => n.id === item.id);
             const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" alt="${item.title}" onerror="this.style.display='none'">` : '';
+
+            // [수정] 클릭 시 news.html?id=... 로 이동
             newsContainer.innerHTML += `
-                <div class="news-card" onclick="showNewsDetail(${originalIndex})">
+                <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                     ${imgHtml}
                     <div class="news-body">
                         <span class="news-date">${item.date}</span>
@@ -71,13 +54,19 @@ function renderHome() {
         });
     }
 
+    // 3. Research Highlights (Ongoing 중 4개)
     const resContainer = document.getElementById('home-research');
     if (resContainer && typeof researchData !== 'undefined') {
         resContainer.innerHTML = '';
-        const highlights = researchData.filter(r => r.status === 'Ongoing').slice(0, 4);
-        highlights.forEach(item => {
+        // Ongoing 프로젝트 찾기
+        const ongoingProjects = researchData.map((r, idx) => ({ ...r, originalIndex: idx }))
+                                            .filter(r => r.status === 'Ongoing')
+                                            .slice(0, 4);
+
+        ongoingProjects.forEach(item => {
+            // [수정] 클릭 시 research.html?id=... 로 이동
             resContainer.innerHTML += `
-                <div class="member-card" onclick="location.href='research.html'">
+                <div class="member-card" onclick="location.href='research.html?id=${item.originalIndex}'">
                     <div style="background:var(--primary); height:4px; width:100%; position:absolute; top:0; left:0;"></div>
                     <div style="padding-top:15px;">
                         <h3 style="margin-bottom:10px;">${item.title}</h3>
@@ -90,18 +79,32 @@ function renderHome() {
 }
 
 /* =========================================
-   4. 뉴스 페이지
+   3. 뉴스 페이지 (News) - 상세 보기 포함
    ========================================= */
 function renderNewsPage() {
+    // 1. URL에 id가 있는지 확인
+    const id = getQueryParam('id');
+
+    // 2. id가 있으면 -> 상세 페이지 렌더링
+    if (id !== null && newsData[id]) {
+        renderNewsDetail(id);
+        return;
+    }
+
+    // 3. id가 없으면 -> 목록 렌더링
     const container = document.getElementById('news-grid-full');
     if (!container || typeof newsData === 'undefined') return;
+
     const sorted = getSortedNews();
     container.innerHTML = '';
+
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
+
+        // [수정] 클릭 시 해당 페이지 리로드하며 쿼리스트링 추가
         container.innerHTML += `
-            <div class="news-card" onclick="showNewsDetail(${originalIndex})">
+            <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                 ${imgHtml}
                 <div class="news-body">
                     <span class="news-date">${item.date}</span>
@@ -113,150 +116,180 @@ function renderNewsPage() {
     });
 }
 
-function showNewsDetail(index) {
+function renderNewsDetail(index) {
     const item = newsData[index];
-    const imgHtml = item.image ? `<img src="${item.image}" class="detail-img-lg" style="width:100%; height:300px; border-radius:16px; border:none; object-fit:cover;" onerror="this.style.display='none'">` : '';
-    const html = `
-        ${imgHtml}
-        <h1 class="detail-title" style="margin-top:20px;">${item.title}</h1>
-        <p style="color:var(--primary); font-weight:700; margin-bottom:30px;">${item.date}</p>
-        <div class="detail-body">
-            <div style="font-size:1.1rem; line-height:1.8; color:#333;">
+    const container = document.querySelector('.container'); // 전체 컨테이너 교체
+    const imgHtml = item.image ? `<img src="${item.image}" style="width:100%; max-height:400px; border-radius:16px; object-fit:cover; margin-bottom:30px;" onerror="this.style.display='none'">` : '';
+
+    // 상세 페이지 HTML 주입
+    container.innerHTML = `
+        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
+            <a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to News
+            </a>
+            ${imgHtml}
+            <span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span>
+            <h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1>
+            <div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
                 ${item.detailContent || item.content}
             </div>
         </div>
     `;
-    openDetail(html);
+    window.scrollTo(0, 0); // 맨 위로 스크롤
 }
 
 /* =========================================
-   5. 멤버 페이지
+   4. 멤버 페이지 (Members) - 상세 보기 포함
    ========================================= */
-   /* script.js - renderMembers 함수 수정본 */
+function renderMembers() {
+    // 1. URL에 id가 있는지 확인
+    const id = getQueryParam('id');
 
-   function renderMembers() {
-       const profList = document.getElementById('prof-list');
-       const postdocList = document.getElementById('postdoc-list'); // [추가]
-       const postdocHeader = document.getElementById('postdoc-header'); // [추가]
-       const phdList = document.getElementById('phd-list');
-       const msList = document.getElementById('ms-list');
-       const alumniList = document.getElementById('alumni-list');
+    // 2. id가 있으면 -> 상세 페이지 렌더링
+    if (id !== null && memberData[id]) {
+        renderMemberDetail(id);
+        return;
+    }
 
-       if (!profList) return;
+    // 3. id가 없으면 -> 목록 렌더링
+    const profList = document.getElementById('prof-list');
+    const postdocList = document.getElementById('postdoc-list');
+    const postdocHeader = document.getElementById('postdoc-header');
+    const phdList = document.getElementById('phd-list');
+    const msList = document.getElementById('ms-list');
+    const alumniList = document.getElementById('alumni-list');
 
-       // 초기화
-       profList.innerHTML = '';
-       if (postdocList) postdocList.innerHTML = '';
-       phdList.innerHTML = '';
-       msList.innerHTML = '';
-       if (alumniList) alumniList.innerHTML = '';
+    if (!profList) return;
 
-       if (typeof memberData === 'undefined') return;
+    profList.innerHTML = '';
+    if (postdocList) postdocList.innerHTML = '';
+    phdList.innerHTML = '';
+    msList.innerHTML = '';
+    if (alumniList) alumniList.innerHTML = '';
 
-       let hasPostDoc = false;
+    if (typeof memberData === 'undefined') return;
 
-       memberData.forEach((m, index) => {
-           if (m.role !== 'alumni') {
-               const card = createMemberCard(m, index);
-               const descLower = m.desc.toLowerCase();
+    let hasPostDoc = false;
 
-               if (m.role === 'prof') {
-                   profList.innerHTML += card;
-               }
-               // [수정] Post-Doc 분류 로직
-               else if (descLower.includes('post-doc') || descLower.includes('researcher')) {
-                   if (postdocList) {
-                       postdocList.innerHTML += card;
-                       hasPostDoc = true;
-                   }
-               }
-               else if (descLower.includes('ph.d') || descLower.includes('direct')) {
-                   phdList.innerHTML += card;
-               }
-               else if (descLower.includes('master') || descLower.includes('m.s')) {
-                   msList.innerHTML += card;
-               }
-           }
-       });
+    memberData.forEach((m, index) => {
+        if (m.role !== 'alumni') {
+            // [수정] 카드 생성 시 링크 추가
+            const card = `
+                <div class="member-card" onclick="location.href='members.html?id=${index}'">
+                    <img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">
+                    <span class="role-text">${m.desc.split(',')[0]}</span>
+                    <h3>${m.name}</h3>
+                    <p style="font-size:0.85rem; color:#888;">${m.email || ''}</p>
+                </div>`;
 
-       // Post-Doc이 있을 때만 헤더 표시
-       if (postdocHeader) {
-           postdocHeader.style.display = hasPostDoc ? 'block' : 'none';
-       }
+            const descLower = m.desc.toLowerCase();
 
-       // Alumni 처리
-       if (alumniList) {
-           const alumni = memberData.filter(m => m.role === 'alumni');
-           alumni.sort((a, b) => {
-               const getYear = (str) => {
-                   const match = str.match(/\((19|20)\d{2}\)/);
-                   return match ? parseInt(match[0].replace(/[()]/g, '')) : 0;
-               };
-               return getYear(b.desc) - getYear(a.desc);
-           });
+            if (m.role === 'prof') {
+                profList.innerHTML += card;
+            }
+            else if (descLower.includes('post-doc') || descLower.includes('researcher')) {
+                if (postdocList) {
+                    postdocList.innerHTML += card;
+                    hasPostDoc = true;
+                }
+            }
+            else if (descLower.includes('ph.d') || descLower.includes('direct')) {
+                phdList.innerHTML += card;
+            }
+            else if (descLower.includes('master') || descLower.includes('m.s')) {
+                msList.innerHTML += card;
+            }
+        }
+    });
 
-           alumni.forEach(m => {
-               alumniList.innerHTML += `
-                   <div class="alumni-item" style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); border-left:4px solid #ccc;">
-                       <strong style="color:var(--dark);">${m.name}</strong>
-                       <span style="font-size:0.85rem; color:#666; display:block; margin-top:4px;">${m.desc}</span>
-                   </div>`;
-           });
-       }
-   }
-function createMemberCard(m, index) {
-    return `
-        <div class="member-card" onclick="showMemberDetail(${index})">
-            <img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">
-            <span class="role-text">${m.desc.split(',')[0]}</span>
-            <h3>${m.name}</h3>
-            <p style="font-size:0.85rem; color:#888;">${m.email || ''}</p>
-        </div>`;
+    if (postdocHeader) postdocHeader.style.display = hasPostDoc ? 'block' : 'none';
+
+    if (alumniList) {
+        const alumni = memberData.filter(m => m.role === 'alumni');
+        alumni.sort((a, b) => {
+            const getYear = (str) => {
+                const match = str.match(/\((19|20)\d{2}\)/);
+                return match ? parseInt(match[0].replace(/[()]/g, '')) : 0;
+            };
+            return getYear(b.desc) - getYear(a.desc);
+        });
+
+        alumni.forEach(m => {
+            alumniList.innerHTML += `
+                <div class="alumni-item" style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); border-left:4px solid #ccc;">
+                    <strong style="color:var(--dark);">${m.name}</strong>
+                    <span style="font-size:0.85rem; color:#666; display:block; margin-top:4px;">${m.desc}</span>
+                </div>`;
+        });
+    }
 }
 
-function showMemberDetail(index) {
+function renderMemberDetail(index) {
     const m = memberData[index];
+    const container = document.querySelector('.container');
     let extraInfo = '';
+
     const websiteLink = m.website
         ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:10px; color:var(--primary); font-weight:700; text-decoration:none;">
              <i class="fas fa-globe"></i> Website
-           </a>`
-        : '';
+           </a>` : '';
 
     if (m.detail) {
-        if (m.detail.education) extraInfo += `<div class="info-group"><h4>Education</h4><ul>${m.detail.education.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
-        if (m.detail.position) extraInfo += `<div class="info-group"><h4>Positions</h4><ul>${m.detail.position.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
-        if (m.detail.membership) extraInfo += `<div class="info-group"><h4>Memberships</h4><ul>${m.detail.membership.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        if (m.detail.education) extraInfo += `<div class="info-group" style="margin-bottom:20px;"><h4 style="color:var(--primary); border-bottom:1px solid #eee; padding-bottom:5px;">Education</h4><ul style="padding-left:20px; margin-top:10px;">${m.detail.education.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        if (m.detail.position) extraInfo += `<div class="info-group" style="margin-bottom:20px;"><h4 style="color:var(--primary); border-bottom:1px solid #eee; padding-bottom:5px;">Positions</h4><ul style="padding-left:20px; margin-top:10px;">${m.detail.position.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        if (m.detail.membership) extraInfo += `<div class="info-group" style="margin-bottom:20px;"><h4 style="color:var(--primary); border-bottom:1px solid #eee; padding-bottom:5px;">Memberships</h4><ul style="padding-left:20px; margin-top:10px;">${m.detail.membership.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
     } else {
         extraInfo = `<div class="info-group"><h4>Info</h4><p>${m.desc}</p></div>`;
     }
 
-    const html = `
-        <div class="detail-header-center">
-            <img src="${m.image}" class="detail-img-lg" onerror="this.src='images/member_placeholder.png'">
-            <h1 class="detail-title" style="margin-bottom:5px;">${m.name}</h1>
-            <p style="color:#666; margin-bottom:5px;">${m.email || ''}</p>
-            ${websiteLink} </div>
-        <div class="detail-body" style="margin-top:30px;">${extraInfo}</div>
+    container.innerHTML = `
+        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
+            <a href="members.html" class="back-btn" style="margin-bottom:40px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to Members
+            </a>
+
+            <div style="text-align:center; margin-bottom:40px;">
+                <img src="${m.image}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:5px solid #fff; box-shadow:0 10px 30px rgba(0,0,0,0.1);" onerror="this.src='images/member_placeholder.png'">
+                <h1 style="font-size:2.5rem; margin:20px 0 5px;">${m.name}</h1>
+                <p style="color:#666; font-size:1.1rem; margin-bottom:10px;">${m.email || ''}</p>
+                ${websiteLink}
+            </div>
+
+            <div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.05);">
+                ${extraInfo}
+            </div>
+        </div>
     `;
-    openDetail(html);
+    window.scrollTo(0, 0);
 }
 
 /* =========================================
-   6. 연구 페이지
+   5. 연구 페이지 (Research) - 상세 보기 포함
    ========================================= */
 function renderResearchPage() {
+    // 1. URL 확인
+    const id = getQueryParam('id');
+
+    // 2. 상세 페이지
+    if (id !== null && researchData[id]) {
+        renderProjectDetail(id);
+        return;
+    }
+
+    // 3. 목록 페이지
     const ongoingContainer = document.getElementById('ongoing-list');
     const completedContainer = document.getElementById('completed-list');
     const areaContainer = document.getElementById('research-areas');
 
     if (!ongoingContainer || typeof researchData === 'undefined') return;
 
+    // Research Areas 렌더링
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
         researchAreas.forEach((area, idx) => {
+            // Areas는 별도 상세 페이지보다는 일단 팝업 유지 혹은 텍스트만 표시 (여기서는 유지)
             areaContainer.innerHTML += `
-                <div class="area-card" onclick="showAreaDetail(${idx})">
+                <div class="area-card" style="cursor:default;">
                     <img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'">
                     <div class="area-content">
                         <h3>${area.title}</h3>
@@ -272,7 +305,7 @@ function renderResearchPage() {
     researchData.forEach((r, idx) => {
         const statusClass = r.status === 'Ongoing' ? 'ongoing' : 'completed';
         const html = `
-            <div class="project-card ${statusClass}" onclick="showProjectDetail(${idx})">
+            <div class="project-card ${statusClass}" onclick="location.href='research.html?id=${idx}'">
                 <div class="proj-info">
                     <h4>${r.title}</h4>
                     <div class="proj-meta">
@@ -288,34 +321,36 @@ function renderResearchPage() {
     });
 }
 
-function showAreaDetail(index) {
-    const area = researchAreas[index];
-    const html = `
-        <img src="${area.thumbnail}" class="detail-img-lg" style="width:100%; height:300px; border-radius:16px; object-fit:cover;" onerror="this.src='images/lab_intro1.jpg'">
-        <h1 class="detail-title" style="margin-top:20px;">${area.title}</h1>
-        <div class="detail-body">
-            <p style="font-size:1.1rem; line-height:1.8; color:#444;">${area.detail || area.desc}</p>
-        </div>
-    `;
-    openDetail(html);
-}
-
-function showProjectDetail(index) {
+function renderProjectDetail(index) {
     const r = researchData[index];
+    const container = document.querySelector('.container');
     const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
-    const html = `
-        <span style="background:${statusColor}; color:white; padding:5px 15px; border-radius:20px; font-size:0.9rem; font-weight:bold;">${r.status}</span>
-        <h1 class="detail-title" style="margin-top:15px; font-size:2rem;">${r.title}</h1>
-        <p style="color:#666; margin-bottom:30px; font-size:1.1rem;"><strong>${r.agency}</strong> | ${r.period}</p>
-        <div class="detail-body">
-            <p style="font-size:1.1rem; line-height:1.8;">${r.description}</p>
+
+    container.innerHTML = `
+        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
+            <a href="research.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+
+            <div style="margin-bottom:20px;">
+                <span style="background:${statusColor}; color:white; padding:6px 15px; border-radius:20px; font-size:0.9rem; font-weight:bold;">${r.status}</span>
+            </div>
+
+            <h1 style="font-size:2.2rem; margin-bottom:15px; line-height:1.3;">${r.title}</h1>
+            <p style="color:#666; font-size:1.1rem; margin-bottom:40px; border-left:4px solid var(--secondary); padding-left:15px;">
+                <strong>${r.agency}</strong> <br> ${r.period}
+            </p>
+
+            <div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:1.1rem; line-height:1.8;">
+                ${r.description}
+            </div>
         </div>
     `;
-    openDetail(html);
+    window.scrollTo(0, 0);
 }
 
 /* =========================================
-   7. 논문 페이지 (Publications) - 수정됨
+   6. 논문 페이지 (Publications) - 수정됨
    ========================================= */
 function renderPublications() {
     const container = document.getElementById('pub-list');
@@ -411,8 +446,7 @@ function applyPubFilter() {
         return;
     }
 
-    // [수상 키워드 정규식] - 이곳에 키워드 추가 가능
-    // Best, Award, Honorable, Prize, Choice, Candidate, Finalist, Teaser, Cover Paper 등 포함
+    // 수상 키워드 (정규식)
     const awardRegex = /(Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)/i;
 
     filtered.forEach(pub => {
@@ -430,21 +464,15 @@ function applyPubFilter() {
             ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>`
             : '';
 
-        // 4. [자동 왕관 처리]
-        // data.js에 이미 왕관이 있든 없든, venue에 수상 키워드가 있으면 왕관을 붙인다.
-        // 먼저 기존 제목에서 왕관 제거 (중복 방지)
+        // 4. [왕관 자동 추가]
         let displayTitle = pub.title.replace('👑', '').trim();
-
-        // Venue에 수상 키워드가 있으면 제목 앞에 왕관 추가
         if (pub.venue && awardRegex.test(pub.venue)) {
             displayTitle = "👑 " + displayTitle;
         }
 
-        // 5. [문구 하이라이트 처리]
-        // 괄호 안에 수상 키워드가 포함된 경우 -> 괄호 전체를 빨갛게 처리
+        // 5. [문구 하이라이트]
         let highlightedVenue = pub.venue || "";
         if (highlightedVenue) {
-            // 예: (Accepted, Cover Paper) 전체를 찾아서 <span>으로 감쌈
             highlightedVenue = highlightedVenue.replace(
                 /(\([^)]*(?:Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)[^)]*\))/gi,
                 '<span class="award-text">$1</span>'
@@ -471,7 +499,7 @@ function applyPubFilter() {
 }
 
 /* =========================================
-   8. 수상 페이지
+   7. 수상 페이지 (Awards)
    ========================================= */
 function renderAwardsPage() {
     const container = document.getElementById('award-list-container');
@@ -491,17 +519,25 @@ function renderAwardsPage() {
 }
 
 /* =========================================
-   9. 자동 네비게이션
+   8. 페이지 로드 및 네비게이션 설정
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+    // 현재 페이지 파악
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || 'index.html';
+
+    // 네비게이션 활성화
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         const linkPage = item.getAttribute('href');
-        if (currentPage === linkPage) item.classList.add('active');
-        else item.classList.remove('active');
+        if (page === linkPage || (page === '' && linkPage === 'index.html')) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
     });
 
+    // 모바일 메뉴 토글
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
@@ -509,4 +545,12 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
     }
+
+    // 페이지별 렌더링 함수 호출
+    if (page === 'index.html' || page === '') renderHome();
+    else if (page === 'news.html') renderNewsPage();
+    else if (page === 'members.html') renderMembers();
+    else if (page === 'research.html') renderResearchPage();
+    else if (page === 'publications.html') renderPublications();
+    else if (page === 'awards.html') renderAwardsPage();
 });
