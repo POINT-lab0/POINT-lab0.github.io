@@ -369,6 +369,11 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         gap: 15px;
         padding: 20px;
     }
+    /* [추가] 수상 내역 강조 텍스트 (빨간색) */
+    .award-text {
+        color: #dc2626;   /* 진한 빨간색 */
+        font-weight: 800; /* 아주 굵게 */
+    }
 
     /* 모바일에서는 왼쪽 기둥(년도+버튼)을 풀어줌 */
     .pub-left-col {

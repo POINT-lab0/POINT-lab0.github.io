@@ -366,6 +366,8 @@ function updateVenueOptions(category) {
     venueSelect.value = 'all';
 }
 
+/* script.js - applyPubFilter 함수 수정본 */
+
 function applyPubFilter() {
     const container = document.getElementById('pub-list');
     if (!container) return;
@@ -403,14 +405,25 @@ function applyPubFilter() {
     }
 
     filtered.forEach(pub => {
-        // [수정됨] 링크 버튼: 작은 뱃지 형태
+        // 1. 링크 버튼 HTML
         const linkHtml = pub.link ?
             `<a href="${pub.link}" class="pub-link" target="_blank">
                 <span>View</span> <i class="fas fa-external-link-alt"></i>
              </a>` : '';
 
+        // 2. 뱃지 HTML
         const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`;
         const venueBadge = pub.venueShort ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
+
+        // 3. [핵심 수정] 수상 문구 하이라이트 처리 (Venue 텍스트)
+        // 괄호 안에 'Award', 'Best', 'Honorable', 'Prize' 등이 있으면 빨간색 클래스(.award-text) 적용
+        let highlightedVenue = pub.venue;
+        if (pub.venue) {
+            highlightedVenue = pub.venue.replace(
+                /\(([^)]*(?:Best|Award|Honorable|Prize|Choice)[^)]*)\)/g,
+                '(<span class="award-text">$1</span>)'
+            );
+        }
 
         container.innerHTML += `
             <div class="pub-item">
@@ -426,7 +439,7 @@ function applyPubFilter() {
                     </div>
                     <h3>${pub.title}</h3>
                     <div class="pub-authors">${pub.authors}</div>
-                    <div class="pub-venue">${pub.venue}</div>
+                    <div class="pub-venue">${highlightedVenue}</div>
                 </div>
             </div>`;
     });
