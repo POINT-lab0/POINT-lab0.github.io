@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    /* [수정됨] 로고 기반 컬러 팔레트 */
-    --primary: #5D5FEF;       /* 로고의 진한 보라빛 블루 */
-    --primary-light: #8B8DFF; /* Primary의 밝은 버전 */
-    --secondary: #2DCCD3;     /* 로고의 밝은 청록색 (Teal) */
+    /* [수정됨] 로고 기반 Green-Blue 팔레트 */
+    --primary: #0085CA;       /* 로고의 아래쪽 진한 파랑 (Deep Blue) - 메인 버튼/텍스트용 */
+    --primary-light: #38bdf8; /* 밝은 하늘색 */
+    --secondary: #00C6BD;     /* 로고의 위쪽 밝은 청록 (Teal/Green) - 그라데이션/강조용 */
 
-    --accent: #ff6b6b;        /* Rose (기존 유지 - 강조용) */
+    --accent: #ff6b6b;        /* Rose (기존 유지 - 경고/강조용) */
     --dark: #0f172a;          /* Slate 900 */
     --gray: #64748b;          /* Slate 500 */
     --bg-body: #f8fafc;       /* Slate 50 */
@@ -15,7 +15,8 @@
 
     --radius: 16px;
     --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-    --shadow-hover: 0 15px 30px rgba(93, 95, 239, 0.2); /* 그림자 색상도 Primary에 맞게 조정 */
+    /* 그림자 색상도 파란색 계열로 변경 */
+    --shadow-hover: 0 15px 30px rgba(0, 133, 202, 0.2);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
