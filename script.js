@@ -386,20 +386,23 @@ const itemsPerPage = 10;
 
 /* script.js 수정/추가 */
 
-// [수정됨] renderPublications: 빠른 연도 필터 로직 추가됨
+/* script.js - 수정된 Publications 관련 함수들 */
+
 function renderPublications() {
     const container = document.getElementById('pub-list');
     if (!container || typeof publicationData === 'undefined') return;
 
-    // 1. 연도 범위 설정 (기존 로직)
+    // 1. 연도 범위 및 초기값 설정
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
-    let minYear = 2000, maxYear = 2026;
+
+    let minYear = 2000;
+    let maxYear = new Date().getFullYear();
 
     if (startInput && endInput && publicationData.length > 0) {
         const years = publicationData.map(p => p.year);
         minYear = Math.min(...years);
-        maxYear = Math.max(...years); // 데이터 중 가장 최신 연도 자동 파악
+        maxYear = Math.max(...years);
 
         startInput.min = minYear;
         startInput.max = maxYear;
@@ -407,16 +410,20 @@ function renderPublications() {
         endInput.max = maxYear;
         startInput.placeholder = minYear;
         endInput.placeholder = maxYear;
+
+        // [중요] 초기값을 All Time(전체 기간)으로 설정
+        startInput.value = minYear;
+        endInput.value = maxYear;
     }
 
-    // 2. [NEW] 빠른 연도 버튼 생성 (여기서 호출!)
+    // 2. 빠른 연도 버튼 생성 (맨 왼쪽 All Time + Active 상태)
     renderQuickYearFilters(minYear, maxYear);
 
     // 3. 초기화
     updateVenueOptions('all');
     applyPubFilter();
 
-    // 4. 탭 버튼 이벤트
+    // 탭 버튼 이벤트
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -428,53 +435,50 @@ function renderPublications() {
     });
 }
 
-// [추가됨] 빠른 연도 필터 버튼 생성 및 동작 함수
+// [수정됨] 빠른 연도 필터 생성 (All Time 맨 앞, 검색창 위에 배치)
 function renderQuickYearFilters(minDataYear, maxDataYear) {
-    // 버튼을 넣을 위치 찾기 (pub-controls 안, year-filter 위)
     const controls = document.querySelector('.pub-controls');
-    const yearFilterDiv = document.querySelector('.year-filter');
+    const searchContainer = document.querySelector('.search-container');
 
-    if (!controls || !yearFilterDiv) return;
+    if (!controls || !searchContainer) return;
 
-    // 이미 존재하면 삭제 (중복 방지)
+    // 기존 버튼 있으면 삭제
     const existing = document.querySelector('.quick-year-container');
     if (existing) existing.remove();
 
-    // 컨테이너 생성
     const quickContainer = document.createElement('div');
     quickContainer.className = 'quick-year-container';
 
-    // 최신 5개년 버튼 생성 (예: 2026, 2025, 2024, 2023, 2022)
-    // maxDataYear를 기준으로 5개를 만듭니다.
+    // 1. [All Time] 버튼 (맨 왼쪽 & 기본 Active)
+    const allBtn = document.createElement('button');
+    allBtn.className = 'year-chip active'; // 기본 활성화
+    allBtn.innerText = 'All Time';
+    allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn);
+    quickContainer.appendChild(allBtn);
+
+    // 2. 최근 5개년 버튼
     for (let i = 0; i < 5; i++) {
         const year = maxDataYear - i;
         const btn = document.createElement('button');
         btn.className = 'year-chip';
         btn.innerText = year;
-        btn.onclick = () => setYearRange(year, year, btn); // 클릭 시 해당 연도만 선택
+        btn.onclick = () => setYearRange(year, year, btn);
         quickContainer.appendChild(btn);
     }
 
-    // "Before ~" 버튼 생성 (예: ~ 2021)
+    // 3. [Before ~] 버튼
     const cutoffYear = maxDataYear - 5;
     const prevBtn = document.createElement('button');
     prevBtn.className = 'year-chip';
-    prevBtn.innerText = `${cutoffYear}~`; // "Before 2021"
+    prevBtn.innerText = `${cutoffYear}~`;
     prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn);
     quickContainer.appendChild(prevBtn);
 
-    // [전체 보기] 버튼 (선택 해제용)
-    const allBtn = document.createElement('button');
-    allBtn.className = 'year-chip';
-    allBtn.innerText = 'All Time';
-    allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn);
-    quickContainer.appendChild(allBtn);
-
-    // 입력창 위에 삽입
-    controls.insertBefore(quickContainer, yearFilterDiv);
+    // [중요] 검색창 바로 위에 삽입 (레이아웃 순서: 탭/숫자 -> 버튼 -> 검색)
+    controls.insertBefore(quickContainer, searchContainer);
 }
 
-// [추가됨] 연도 설정 헬퍼 함수
+// 연도 설정 및 필터 적용 헬퍼
 function setYearRange(start, end, activeBtn) {
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
@@ -483,7 +487,6 @@ function setYearRange(start, end, activeBtn) {
         startInput.value = start;
         endInput.value = end;
 
-        // 필터 적용
         applyPubFilter();
 
         // 버튼 스타일 활성화 처리
@@ -491,7 +494,6 @@ function setYearRange(start, end, activeBtn) {
         if(activeBtn) activeBtn.classList.add('active');
     }
 }
-
 function updateVenueOptions(category) {
     const venueSelect = document.getElementById('venue-filter');
     if (!venueSelect) return;
