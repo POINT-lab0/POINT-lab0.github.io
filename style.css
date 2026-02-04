@@ -462,3 +462,205 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     .project-card { flex-direction: column; align-items: flex-start; gap: 15px; }
     .project-card i { display: none; }
 }
+/* style.css 맨 아래에 추가 */
+
+/* --- New News Layout (Split View) --- */
+.news-split-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* 왼쪽 리스트 영역 */
+.news-list-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-list-item {
+    padding: 25px 0;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.news-list-item:hover {
+    padding-left: 15px;
+    border-bottom-color: var(--primary);
+}
+
+.news-list-item:hover .news-item-title {
+    color: var(--primary);
+}
+
+.news-item-date {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.news-item-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.3s;
+}
+
+/* 오른쪽 프리뷰 영역 */
+.news-preview-pane {
+    flex: 1;
+    position: sticky;
+    top: 100px; /* 스크롤 시 따라오도록 설정 */
+    height: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #f1f5f9;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.news-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeIn 0.5s ease;
+}
+
+.news-preview-text {
+    padding: 50px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #475569;
+    line-height: 1.6;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    word-break: keep-all;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 모바일 대응: 프리뷰 숨기고 리스트만 표시 */
+@media (max-width: 768px) {
+    .news-split-layout {
+        flex-direction: column;
+    }
+    .news-preview-pane {
+        display: none;
+    }
+    .news-list-item:hover {
+        padding-left: 0;
+    }
+}
+
+/* style.css 맨 아래에 추가 */
+
+/* --- Home News Section (Split Layout) --- */
+.news-split-layout {
+    display: flex;
+    gap: 40px;
+    align-items: stretch; /* 높이 맞춤 */
+    min-height: 400px;
+}
+
+/* 왼쪽 리스트 */
+.news-list-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 간격 균등 배치 */
+}
+
+.news-list-item {
+    padding: 20px 15px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+}
+
+.news-list-item:hover {
+    background: #f8fafc;
+    transform: translateX(5px);
+}
+
+.news-list-item:hover .news-item-title {
+    color: var(--primary);
+}
+
+.news-item-date {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary); /* 날짜에 포인트 컬러 */
+    display: block;
+    margin-bottom: 4px;
+}
+
+.news-item-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+/* 오른쪽 프리뷰 창 */
+.news-preview-pane {
+    flex: 1.2; /* 사진 영역을 좀 더 넓게 */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.news-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 0.5s ease;
+}
+
+.news-preview-pane:hover .news-preview-img {
+    transform: scale(1.05);
+}
+
+/* 이미지가 없을 때 텍스트 표시용 */
+.news-preview-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-align: center;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .news-split-layout {
+        flex-direction: column;
+    }
+    .news-preview-pane {
+        display: none; /* 모바일에서는 리스트만 보여줌 */
+    }
+}

@@ -1,45 +1,21 @@
-/* script.js - 헤더/푸터 및 공통 Head 설정 적용 */
+/* script.js */
 
 /* =========================================
-   [1] 공통 레이아웃 (Head/Header/Footer) 로드
+   [1] 공통 레이아웃 & 유틸리티
    ========================================= */
-
-// 1. 공통 Head 태그 (CSS, 파비콘, 폰트 등) 주입
 function loadCommonHead() {
     const head = document.head;
-
-    // (1) 파비콘 (Favicon)
-    const favicon = document.createElement('link');
-    favicon.rel = 'icon';
-    favicon.type = 'image/png';
-    favicon.href = 'images/Logo_small.png';
-    head.appendChild(favicon);
-
-    // (2) 메인 스타일시트 (style.css)
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.href = 'style.css';
-    head.appendChild(style);
-
-    // (3) 폰트어썸 (FontAwesome - 아이콘용)
-    const fa = document.createElement('link');
-    fa.rel = 'stylesheet';
-    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
-    head.appendChild(fa);
+    const favicon = document.createElement('link'); favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = 'images/Logo_small.png'; head.appendChild(favicon);
+    const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css'; head.appendChild(style);
+    const fa = document.createElement('link'); fa.rel = 'stylesheet'; fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'; head.appendChild(fa);
 }
 
-// 2. 헤더 및 푸터 HTML 로드
 function loadLayout() {
-    // 먼저 공통 Head 설정을 불러옵니다.
     loadCommonHead();
-
-    // 헤더 HTML
     const headerHTML = `
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a>
-                </div>
+                <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a></div>
                 <div class="menu-toggle"><i class="fas fa-bars"></i></div>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-item">Home</a></li>
@@ -51,10 +27,7 @@ function loadLayout() {
                     <li><a href="contact.html" class="nav-item">Contact</a></li>
                 </ul>
             </div>
-        </nav>
-    `;
-
-    // 푸터 HTML
+        </nav>`;
     const footerHTML = `
         <footer>
             <div style="line-height: 1.6;">
@@ -63,53 +36,35 @@ function loadLayout() {
                     Engineering Building 4, Room 125, 77 Cheongam-Ro, Nam-Gu, Pohang, Gyeongbuk, 37673, Korea
                 </span>
             </div>
-        </footer>
-    `;
-
+        </footer>`;
     const headerPlaceholder = document.getElementById('global-header');
     const footerPlaceholder = document.getElementById('global-footer');
-
     if (headerPlaceholder) headerPlaceholder.innerHTML = headerHTML;
     if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
-
     highlightActiveMenu();
-
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
     }
 }
-
 function highlightActiveMenu() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop() || 'index.html';
+    const path = window.location.pathname; const page = path.split("/").pop() || 'index.html';
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         const linkPage = item.getAttribute('href');
-        if (page === linkPage || (page === '' && linkPage === 'index.html')) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
+        if (page === linkPage || (page === '' && linkPage === 'index.html')) item.classList.add('active');
+        else item.classList.remove('active');
     });
 }
+function getQueryParam(param) { const urlParams = new URLSearchParams(window.location.search); return urlParams.get(param); }
+function getSortedNews() { if (typeof newsData === 'undefined') return []; return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)); }
 
 /* =========================================
-   [2] 유틸리티 & 페이지별 기능 (기존 유지)
+   [2] 메인 페이지 (Home) - [수정됨: 뉴스 디자인 변경]
    ========================================= */
-function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-function getSortedNews() {
-    if (typeof newsData === 'undefined') return [];
-    return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
-}
-
 function renderHome() {
+    // 1. YouTube
     const ytContainer = document.getElementById('youtube-gallery');
     if (ytContainer && typeof youtubeVideos !== 'undefined') {
         ytContainer.innerHTML = '';
@@ -117,42 +72,127 @@ function renderHome() {
             ytContainer.innerHTML += `<div class="video-wrapper"><iframe src="${v.embedUrl}" title="${v.title}" allowfullscreen></iframe></div>`;
         });
     }
+
+    // 2. Latest News - [새로운 디자인: 리스트 + 호버 프리뷰]
     const newsContainer = document.getElementById('home-news');
     if (newsContainer && typeof newsData !== 'undefined') {
-        const sorted = getSortedNews(); newsContainer.innerHTML = '';
-        sorted.slice(0, 3).forEach(item => {
+        const sorted = getSortedNews();
+        const latestNews = sorted.slice(0, 5); // 최신 5개 표시
+
+        // 레이아웃 뼈대 생성
+        newsContainer.innerHTML = `
+            <div class="news-split-layout">
+                <div class="news-list-container" id="home-news-list"></div>
+                <div class="news-preview-pane" id="home-news-preview"></div>
+            </div>`;
+
+        const listContainer = document.getElementById('home-news-list');
+        const previewPane = document.getElementById('home-news-preview');
+
+        // 리스트 아이템 생성
+        latestNews.forEach((item, index) => {
             const originalIndex = newsData.findIndex(n => n.id === item.id);
-            const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" alt="${item.title}" onerror="this.style.display='none'">` : '';
-            newsContainer.innerHTML += `<div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">${imgHtml}<div class="news-body"><span class="news-date">${item.date}</span><h3>${item.title}</h3><p style="color:#666; font-size:0.9rem; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;">${item.content}</p><div class="read-more">Read More &rarr;</div></div></div>`;
+
+            const li = document.createElement('div');
+            li.className = 'news-list-item';
+            li.innerHTML = `
+                <span class="news-item-date">${item.date}</span>
+                <h3 class="news-item-title">${item.title}</h3>
+            `;
+
+            // 마우스 올리면(Hover) 프리뷰 변경
+            li.addEventListener('mouseenter', () => {
+                updateHomeNewsPreview(previewPane, item);
+            });
+
+            // 클릭하면 상세 페이지 이동
+            li.addEventListener('click', () => {
+                location.href = `news.html?id=${originalIndex}`;
+            });
+
+            listContainer.appendChild(li);
         });
+
+        // 초기 화면: 첫 번째 뉴스 프리뷰 보여주기
+        if (latestNews.length > 0) {
+            updateHomeNewsPreview(previewPane, latestNews[0]);
+        }
     }
-    const resContainer = document.getElementById('home-research');
-    if (resContainer && typeof researchData !== 'undefined') {
-        resContainer.innerHTML = '';
-        const ongoingProjects = researchData.map((r, idx) => ({ ...r, originalIndex: idx })).filter(r => r.status === 'Ongoing').slice(0, 4);
-        ongoingProjects.forEach(item => {
-            resContainer.innerHTML += `<div class="member-card" onclick="location.href='research.html?id=${item.originalIndex}'"><div style="background:var(--primary); height:4px; width:100%; position:absolute; top:0; left:0;"></div><div style="padding-top:15px;"><h3 style="margin-bottom:10px;">${item.title}</h3><p style="font-size:0.9rem; color:#666;">${item.description.substring(0, 80)}...</p><div style="margin-top:15px; color:var(--primary); font-size:0.85rem; font-weight:bold;">View Research &rarr;</div></div></div>`;
-        });
+    // Research Highlights 삭제됨
+}
+
+// 홈 뉴스 프리뷰 업데이트 헬퍼 함수
+function updateHomeNewsPreview(pane, item) {
+    if (item.image) {
+        pane.innerHTML = `<img src="${item.image}" class="news-preview-img" alt="Preview">`;
+    } else {
+        // 이미지가 없을 때 내용 일부 보여주기
+        const shortContent = item.content.length > 120 ? item.content.substring(0, 120) + "..." : item.content;
+        pane.innerHTML = `
+            <div class="news-preview-content">
+                <i class="far fa-newspaper" style="font-size:3rem; margin-bottom:15px; opacity:0.8;"></i>
+                <h3 style="margin-bottom:10px;">${item.title}</h3>
+                <p style="font-size:0.95rem; opacity:0.9;">${shortContent}</p>
+            </div>`;
     }
 }
 
+
+/* =========================================
+   [3] 뉴스 페이지 (News) - [기존 카드 그리드 복구]
+   ========================================= */
 function renderNewsPage() {
-    const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
-    const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
-    const sorted = getSortedNews(); container.innerHTML = '';
+    const id = getQueryParam('id');
+    if (id !== null && newsData[id]) {
+        renderNewsDetail(id);
+        return;
+    }
+
+    const container = document.getElementById('news-grid-full');
+    if (!container || typeof newsData === 'undefined') return;
+
+    const sorted = getSortedNews();
+    container.innerHTML = '';
+
+    // 원래의 카드 그리드 방식 유지
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
-        container.innerHTML += `<div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">${imgHtml}<div class="news-body"><span class="news-date">${item.date}</span><h3>${item.title}</h3><p style="color:#666; font-size:0.95rem;">${item.content}</p><div class="read-more">Read More &rarr;</div></div></div>`;
+        container.innerHTML += `
+            <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
+                ${imgHtml}
+                <div class="news-body">
+                    <span class="news-date">${item.date}</span>
+                    <h3>${item.title}</h3>
+                    <p style="color:#666; font-size:0.95rem;">${item.content}</p>
+                    <div class="read-more">Read More &rarr;</div>
+                </div>
+            </div>`;
     });
 }
+
 function renderNewsDetail(index) {
-    const item = newsData[index]; const container = document.querySelector('.container');
+    const item = newsData[index];
+    const container = document.querySelector('.container');
     const imgHtml = item.image ? `<img src="${item.image}" style="width:100%; max-height:400px; border-radius:16px; object-fit:cover; margin-bottom:30px;" onerror="this.style.display='none'">` : '';
-    container.innerHTML = `<div style="max-width:800px; margin:0 auto; padding-top:20px;"><a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to News</a>${imgHtml}<span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span><h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1><div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">${item.detailContent || item.content}</div></div>`;
+    container.innerHTML = `
+        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
+            <a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to News
+            </a>
+            ${imgHtml}
+            <span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span>
+            <h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1>
+            <div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+                ${item.detailContent || item.content}
+            </div>
+        </div>`;
     window.scrollTo(0, 0);
 }
 
+/* =========================================
+   [4] 나머지 페이지 (Members, Research, etc) - 기존 유지
+   ========================================= */
 function renderMembers() {
     const id = getQueryParam('id'); if (id !== null && memberData[id]) { renderMemberDetail(id); return; }
     const profList = document.getElementById('prof-list'); const postdocList = document.getElementById('postdoc-list'); const postdocHeader = document.getElementById('postdoc-header'); const phdList = document.getElementById('phd-list'); const msList = document.getElementById('ms-list'); const alumniList = document.getElementById('alumni-list');
@@ -244,10 +284,10 @@ function renderAwardsPage() {
 }
 
 /* =========================================
-   [3] 페이지 로드 시 실행
+   [6] 페이지 로드 시 실행
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    loadLayout(); // 헤더, 푸터, Head 설정 로드
+    loadLayout();
     const path = window.location.pathname; const page = path.split("/").pop() || 'index.html';
     if (page === 'index.html' || page === '') renderHome();
     else if (page === 'news.html') renderNewsPage();
