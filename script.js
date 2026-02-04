@@ -1,4 +1,4 @@
-/* script.js - 통합 전체 코드 (베뉴 필터 연동 업그레이드) */
+/* script.js - 통합 전체 코드 (필터 버그 수정 & Patent 버튼 적용) */
 
 /* =========================================
    [1] 공통 레이아웃 & 유틸리티
@@ -244,7 +244,7 @@ function renderMemberDetail(index) {
 
 
 /* =========================================
-   [5] 논문 페이지 (베뉴 연동 & 페이지네이션)
+   [5] 논문 페이지 (베뉴 연동 & 페이지네이션 & Patent 버튼 수정)
    ========================================= */
 let currentPubList = [];
 let currentPage = 1;
@@ -277,20 +277,19 @@ function renderPublications() {
 
         // [중요] 사용자가 입력창 숫자를 직접 바꿨을 때도 베뉴가 업데이트되도록 리스너 추가
         [startInput, endInput].forEach(input => {
-            // 기존 인라인 onchange는 무시하고 새로 등록
             input.onchange = null;
             input.addEventListener('change', () => {
-                updateVenueOptions(); // 베뉴 목록 갱신
-                applyPubFilter();     // 리스트 갱신
-                document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active')); // 칩 선택 해제
+                updateVenueOptions();
+                applyPubFilter();
+                document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active'));
             });
         });
     }
 
-    // 2. 빠른 연도 버튼 생성 (All Time, 2026, 2025...)
+    // 2. 빠른 연도 버튼 생성
     renderQuickYearFilters(minYear, maxYear);
 
-    // 3. 초기 로드 (베뉴 목록 만들기 -> 필터링)
+    // 3. 초기 로드
     updateVenueOptions();
     applyPubFilter();
 
@@ -300,7 +299,7 @@ function renderPublications() {
         btn.addEventListener('click', () => {
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            updateVenueOptions(); // 탭 바뀔 때도 베뉴 목록 갱신
+            updateVenueOptions();
             applyPubFilter();
         });
     });
@@ -311,33 +310,32 @@ function updateVenueOptions() {
     const venueSelect = document.getElementById('venue-filter');
     if (!venueSelect) return;
 
-    // 1. 현재 활성 탭 (저널/컨퍼런스 등)
     const activeTab = document.querySelector('.tab-btn.active');
     const category = activeTab ? activeTab.dataset.cat : 'all';
 
-    // 2. 현재 입력된 연도 범위
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
     const startYear = startInput ? (parseInt(startInput.value) || 0) : 0;
     const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
 
-    // 3. 현재 선택된 베뉴 값 기억 (리스트 갱신 후 복구 위해)
     const currentVenue = venueSelect.value;
 
-    // 4. 데이터 필터링: 해당 카테고리 + 해당 연도에 논문이 있는 베뉴만 찾기
     const targetPubs = publicationData.filter(pub => {
-        const catMatch = category === 'all' || pub.category === category;
+        // [수정됨] Poster/Demo 탭일 경우 poster와 demo 모두 포함
+        let catMatch = false;
+        if (category === 'all') catMatch = true;
+        else if (category === 'poster') catMatch = (pub.category === 'poster' || pub.category === 'demo');
+        else catMatch = (pub.category === category);
+
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
         return catMatch && yearMatch;
     });
 
-    // 5. 베뉴 이름 수집 (중복 제거)
     const venueSet = new Set();
     targetPubs.forEach(pub => {
         if (pub.venueShort) venueSet.add(pub.venueShort);
     });
 
-    // 6. 옵션 다시 그리기
     venueSelect.innerHTML = '<option value="all">All Venues</option>';
     Array.from(venueSet).sort().forEach(shortName => {
         const option = document.createElement('option');
@@ -346,7 +344,6 @@ function updateVenueOptions() {
         venueSelect.appendChild(option);
     });
 
-    // 7. 이전에 선택한 베뉴가 새 목록에도 있으면 유지, 없으면 'all'로 초기화
     if (venueSet.has(currentVenue)) {
         venueSelect.value = currentVenue;
     } else {
@@ -402,7 +399,7 @@ function setYearRange(start, end, activeBtn) {
         startInput.value = start;
         endInput.value = end;
 
-        updateVenueOptions(); // [중요] 연도가 바뀌었으니 베뉴 목록도 갱신
+        updateVenueOptions();
         applyPubFilter();
 
         document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active'));
@@ -425,7 +422,12 @@ function applyPubFilter() {
     const selectedVenue = venueSelect ? venueSelect.value : 'all';
 
     currentPubList = publicationData.filter(pub => {
-        const catMatch = category === 'all' || pub.category === category;
+        // [수정됨] 필터링 시 Poster/Demo 탭 처리
+        let catMatch = false;
+        if (category === 'all') catMatch = true;
+        else if (category === 'poster') catMatch = (pub.category === 'poster' || pub.category === 'demo');
+        else catMatch = (pub.category === category);
+
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
         const textMatch = pub.title.toLowerCase().includes(searchKeyword) ||
                           pub.authors.toLowerCase().includes(searchKeyword);
@@ -467,10 +469,21 @@ function renderPubPage(page) {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'pub-item';
 
+        // [수정됨] 링크 버튼 로직 (Patent 처리 추가)
         let linkButtons = '';
+
         if (pub.link && !pub.link.includes('youtu')) {
-            linkButtons += `<a href="${pub.link}" class="pub-link btn-paper" target="_blank"><i class="far fa-file-alt"></i><span>Paper</span></a>`;
+            let btnText = "Paper";
+            let btnIcon = "fa-file-alt";
+
+            if (pub.category === 'patent') {
+                btnText = "Patent";
+                btnIcon = "fa-certificate"; // 인증서 아이콘
+            }
+
+            linkButtons += `<a href="${pub.link}" class="pub-link btn-paper" target="_blank"><i class="fas ${btnIcon}"></i><span>${btnText}</span></a>`;
         }
+
         let videoUrl = pub.video || (pub.link && pub.link.includes('youtu') ? pub.link : null);
         if (videoUrl) {
             linkButtons += `<a href="${videoUrl}" class="pub-link btn-video" target="_blank"><i class="fab fa-youtube"></i><span>Video</span></a>`;
