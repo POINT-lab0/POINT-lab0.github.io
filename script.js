@@ -459,7 +459,7 @@ function renderQuickYearFilters(minDataYear, maxDataYear) {
     const cutoffYear = maxDataYear - 5;
     const prevBtn = document.createElement('button');
     prevBtn.className = 'year-chip';
-    prevBtn.innerText = `~ ${cutoffYear}`; // "Before 2021"
+    prevBtn.innerText = `${cutoffYear}~`; // "Before 2021"
     prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn);
     quickContainer.appendChild(prevBtn);
 
