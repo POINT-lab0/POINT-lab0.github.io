@@ -331,10 +331,16 @@ function createMemberCard(m, index) {
         </div>`;
 }
 
+/* script.js - renderMemberDetail 함수 교체 */
+
 function renderMemberDetail(index) {
     const m = memberData[index];
     const container = document.querySelector('.container');
     let extraInfo = '';
+
+    // [핵심] 상세용 이미지가 따로 지정되어 있으면 그것을 쓰고, 없으면 기본 이미지를 씀
+    // (data.js에 detailImage 속성을 추가하면 작동합니다)
+    const imgSrc = m.detailImage || m.image;
 
     const websiteLink = m.website
         ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:15px; color:var(--primary); font-weight:700; text-decoration:none; font-size:1.1rem;">
@@ -356,8 +362,9 @@ function renderMemberDetail(index) {
             </a>
 
             <div style="text-align:center; margin-bottom:60px;">
-                <img src="${m.image}" style="width:350px; height:350px; border-radius:50%; object-fit:cover; border:8px solid #fff; box-shadow:0 15px 40px rgba(0,0,0,0.15);" onerror="this.src='images/member_placeholder.png'">
-                <h1 style="font-size:3rem; margin:30px 0 10px; font-weight:800;">${m.name}</h1>
+                <img src="${imgSrc}" class="detail-profile-img" onerror="this.src='images/member_placeholder.png'">
+
+                <h1 style="font-size:3rem; margin:10px 0 10px; font-weight:800;">${m.name}</h1>
                 <p style="color:#64748b; font-size:1.3rem; margin-bottom:15px;">${m.email || ''}</p>
                 ${websiteLink}
             </div>
@@ -369,7 +376,6 @@ function renderMemberDetail(index) {
     `;
     window.scrollTo(0, 0);
 }
-
 
 /* =========================================
    [5] 논문 페이지 (Pagination & Link Separation)

@@ -278,3 +278,17 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     .pub-actions { flex-direction: row; width: 100%; }
     .pub-link { flex: 1; }
 }
+/* style.css 맨 아래 추가 */
+
+/* [NEW] 멤버 상세 페이지 프로필 사진 스타일 */
+.detail-profile-img {
+    width: 100%;
+    max-width: 450px;    /* 사진 크기 확대 (기존 350px -> 450px) */
+    height: auto;        /* 원본 비율 유지 (직사각형 가능) */
+    border-radius: 24px; /* 둥근 모서리 사각형 */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* 입체감 있는 그림자 */
+    margin-bottom: 30px;
+    object-fit: cover;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.05); /* 얇은 테두리 */
+}
