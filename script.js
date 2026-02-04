@@ -384,27 +384,39 @@ let currentPubList = [];
 let currentPage = 1;
 const itemsPerPage = 10;
 
+/* script.js 수정/추가 */
+
+// [수정됨] renderPublications: 빠른 연도 필터 로직 추가됨
 function renderPublications() {
     const container = document.getElementById('pub-list');
     if (!container || typeof publicationData === 'undefined') return;
 
-    // 연도 필터 범위 설정
+    // 1. 연도 범위 설정 (기존 로직)
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
+    let minYear = 2000, maxYear = 2026;
 
     if (startInput && endInput && publicationData.length > 0) {
         const years = publicationData.map(p => p.year);
-        startInput.min = Math.min(...years);
-        startInput.max = Math.max(...years);
-        endInput.min = Math.min(...years);
-        endInput.max = Math.max(...years);
-        startInput.placeholder = Math.min(...years);
-        endInput.placeholder = Math.max(...years);
+        minYear = Math.min(...years);
+        maxYear = Math.max(...years); // 데이터 중 가장 최신 연도 자동 파악
+
+        startInput.min = minYear;
+        startInput.max = maxYear;
+        endInput.min = minYear;
+        endInput.max = maxYear;
+        startInput.placeholder = minYear;
+        endInput.placeholder = maxYear;
     }
 
-    updateVenueOptions('all');
-    applyPubFilter(); // 초기 로드
+    // 2. [NEW] 빠른 연도 버튼 생성 (여기서 호출!)
+    renderQuickYearFilters(minYear, maxYear);
 
+    // 3. 초기화
+    updateVenueOptions('all');
+    applyPubFilter();
+
+    // 4. 탭 버튼 이벤트
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -414,6 +426,70 @@ function renderPublications() {
             applyPubFilter();
         });
     });
+}
+
+// [추가됨] 빠른 연도 필터 버튼 생성 및 동작 함수
+function renderQuickYearFilters(minDataYear, maxDataYear) {
+    // 버튼을 넣을 위치 찾기 (pub-controls 안, year-filter 위)
+    const controls = document.querySelector('.pub-controls');
+    const yearFilterDiv = document.querySelector('.year-filter');
+
+    if (!controls || !yearFilterDiv) return;
+
+    // 이미 존재하면 삭제 (중복 방지)
+    const existing = document.querySelector('.quick-year-container');
+    if (existing) existing.remove();
+
+    // 컨테이너 생성
+    const quickContainer = document.createElement('div');
+    quickContainer.className = 'quick-year-container';
+
+    // 최신 5개년 버튼 생성 (예: 2026, 2025, 2024, 2023, 2022)
+    // maxDataYear를 기준으로 5개를 만듭니다.
+    for (let i = 0; i < 5; i++) {
+        const year = maxDataYear - i;
+        const btn = document.createElement('button');
+        btn.className = 'year-chip';
+        btn.innerText = year;
+        btn.onclick = () => setYearRange(year, year, btn); // 클릭 시 해당 연도만 선택
+        quickContainer.appendChild(btn);
+    }
+
+    // "Before ~" 버튼 생성 (예: ~ 2021)
+    const cutoffYear = maxDataYear - 5;
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'year-chip';
+    prevBtn.innerText = `~ ${cutoffYear}`; // "Before 2021"
+    prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn);
+    quickContainer.appendChild(prevBtn);
+
+    // [전체 보기] 버튼 (선택 해제용)
+    const allBtn = document.createElement('button');
+    allBtn.className = 'year-chip';
+    allBtn.innerText = 'All Time';
+    allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn);
+    quickContainer.appendChild(allBtn);
+
+    // 입력창 위에 삽입
+    controls.insertBefore(quickContainer, yearFilterDiv);
+}
+
+// [추가됨] 연도 설정 헬퍼 함수
+function setYearRange(start, end, activeBtn) {
+    const startInput = document.getElementById('year-start');
+    const endInput = document.getElementById('year-end');
+
+    if (startInput && endInput) {
+        startInput.value = start;
+        endInput.value = end;
+
+        // 필터 적용
+        applyPubFilter();
+
+        // 버튼 스타일 활성화 처리
+        document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active'));
+        if(activeBtn) activeBtn.classList.add('active');
+    }
 }
 
 function updateVenueOptions(category) {
