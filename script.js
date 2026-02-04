@@ -452,7 +452,7 @@ function renderQuickYearFilters(minDataYear, maxDataYear) {
     // 1. [All Time] 버튼 (맨 왼쪽 & 기본 Active)
     const allBtn = document.createElement('button');
     allBtn.className = 'year-chip active'; // 기본 활성화
-    allBtn.innerText = 'All Time';
+    allBtn.innerText = 'All';
     allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn);
     quickContainer.appendChild(allBtn);
 
