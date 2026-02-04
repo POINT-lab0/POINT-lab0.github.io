@@ -1,66 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="images/Logo_small.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research - Interaction Lab</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
-  <div class="nav-container">
-      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a></div>
-
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-
-      <ul class="nav-links">
-          <li><a href="index.html" class="nav-item">Home</a></li>
-          <li><a href="news.html" class="nav-item">News</a></li>
-          <li><a href="research.html" class="nav-item">Research</a></li>
-          <li><a href="members.html" class="nav-item">Members</a></li>
-          <li><a href="publications.html" class="nav-item">Publications</a></li>
-          <li><a href="awards.html" class="nav-item">Award</a></li>
-          <li><a href="contact.html" class="nav-item">Contact</a></li>
-      </ul>
-  </div>
-</nav>
+    <div id="global-header"></div>
 
     <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-            <h1 style="font-size:3rem; font-weight:800; color:var(--dark);">Research Areas</h1>
-            <p style="color:var(--gray); font-size:1.1rem;">Our core research themes and projects.</p>
+        <div class="page-header">
+            <h1>Research Areas</h1>
+            <p>Exploring the frontiers of Haptics and VR/AR.</p>
         </div>
+        <div class="research-areas-grid" id="research-areas"></div>
 
-        <div id="research-areas" class="research-areas-grid"></div>
-
-        <br><br>
-
-        <div class="section-header">
+        <div class="section-header" style="margin-top:80px;">
             <h2>Ongoing Projects</h2>
-            <span class="proj-status ongoing">Active</span>
         </div>
-        <div id="ongoing-list" class="research-list"></div>
+        <div class="research-list" id="ongoing-list"></div>
 
-        <br><br>
-
-        <div class="section-header">
+        <div class="section-header" style="margin-top:80px;">
             <h2>Completed Projects</h2>
         </div>
-        <div id="completed-list" class="research-list"></div>
+        <div class="research-list" id="completed-list"></div>
     </div>
 
-    <div id="detail-overlay" class="detail-overlay">
-        <div class="detail-nav">
-            <button class="back-btn" onclick="closeDetail()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-        <div class="detail-content" id="detail-body"></div>
-    </div>
+    <div id="global-footer"></div>
 
-    <footer>&copy; 2026 Interaction Lab. POSTECH.</footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', renderResearchPage);</script>
 </body>
 </html>

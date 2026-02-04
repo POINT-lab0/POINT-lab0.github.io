@@ -1,67 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="images/Logo_small.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications - Interaction Lab</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a></div>
-        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-item">Home</a></li>
-            <li><a href="news.html" class="nav-item">News</a></li>
-            <li><a href="research.html" class="nav-item">Research</a></li>
-            <li><a href="members.html" class="nav-item">Members</a></li>
-            <li><a href="publications.html" class="nav-item">Publications</a></li>
-            <li><a href="awards.html" class="nav-item">Award</a></li>
-            <li><a href="contact.html" class="nav-item">Contact</a></li>
-        </ul>
-    </div>
-  </nav>
+    <div id="global-header"></div>
 
     <div class="container">
         <div class="page-header">
             <h1>Publications</h1>
+            <p>Our academic contributions to the field.</p>
         </div>
 
         <div class="pub-controls">
-          <div class="filter-tabs">
-            <button class="tab-btn active" data-cat="all">All</button>
-            <button class="tab-btn" data-cat="journal">Journals</button>
-            <button class="tab-btn" data-cat="conference">Conferences</button>
-            <button class="tab-btn" data-cat="poster">Posters</button>
-            <button class="tab-btn" data-cat="demo">Demos</button>
-            <button class="tab-btn" data-cat="patent">Patents</button>
-          </div>
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-cat="all">All</button>
+                <button class="tab-btn" data-cat="journal">Journal</button>
+                <button class="tab-btn" data-cat="conference">Conference</button>
+                <button class="tab-btn" data-cat="poster">Poster/Demo</button>
+                <button class="tab-btn" data-cat="patent">Patent</button>
+            </div>
 
             <div class="year-filter">
-                <input type="number" id="year-start" class="year-input" placeholder="Start">
-                <span style="color:#cbd5e1; font-weight:300;">—</span>
-                <input type="number" id="year-end" class="year-input" placeholder="End">
+                <input type="number" id="year-start" class="year-input" placeholder="Start" onchange="applyPubFilter()">
+                <span>~</span>
+                <input type="number" id="year-end" class="year-input" placeholder="End" onchange="applyPubFilter()">
                 <button class="apply-btn" onclick="applyPubFilter()">Apply</button>
             </div>
 
             <div class="search-container">
+                <input type="text" id="search-keyword" class="search-input" placeholder="Search title or author..." onkeyup="applyPubFilter()">
                 <select id="venue-filter" class="venue-select" onchange="applyPubFilter()">
                     <option value="all">All Venues</option>
                 </select>
-                <input type="text" id="search-keyword" class="search-input" placeholder="Search title or author..." onkeyup="applyPubFilter()">
             </div>
         </div>
 
         <div id="pub-list"></div>
     </div>
 
-    <footer>&copy; 2026 Interaction Lab. POSTECH.</footer>
+    <div id="global-footer"></div>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', renderPublications);</script>
 </body>
 </html>

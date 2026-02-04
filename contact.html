@@ -1,70 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="images/Logo_small.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Interaction Lab</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        .contact-wrapper { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
-        .contact-box { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); flex: 1; min-width: 300px; text-align: center; }
-        .contact-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
-        .contact-box h3 { margin-bottom: 15px; font-size: 1.5rem; }
-        .contact-box p { color: #666; line-height: 1.8; font-size: 1.1rem; }
-    </style>
 </head>
 <body>
-  <nav class="navbar">
-  <div class="nav-container">
-      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a></div>
-
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-
-      <ul class="nav-links">
-          <li><a href="index.html" class="nav-item">Home</a></li>
-          <li><a href="news.html" class="nav-item">News</a></li>
-          <li><a href="research.html" class="nav-item">Research</a></li>
-          <li><a href="members.html" class="nav-item">Members</a></li>
-          <li><a href="publications.html" class="nav-item">Publications</a></li>
-          <li><a href="awards.html" class="nav-item">Award</a></li>
-          <li><a href="contact.html" class="nav-item">Contact</a></li>
-      </ul>
-  </div>
-</nav>
+    <div id="global-header"></div>
 
     <div class="container">
         <div class="page-header">
             <h1>Contact Us</h1>
         </div>
 
-        <div class="contact-wrapper">
-            <div class="contact-box">
-                <i class="fas fa-map-marker-alt contact-icon"></i>
-                <h3>Location</h3>
-                <p>
-                    Engineering Building 4, Room 125<br>
-                    Department of Computer Science and Engineering<br>
-                    POSTECH, 77 Cheongam-Ro, Nam-Gu<br>
-                    Pohang, Gyeongbuk, 37673, Korea
-                </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; margin-top:40px;">
+            <div style="border-radius:24px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); height:400px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.346265778239!2d129.32938457630784!3d36.01257400813735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567039c3629b357%3A0xc33075c2e35b719!2sEngineering%20Building%204!5e0!3m2!1sen!2skr!4v1707321456789!5m2!1sen!2skr"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <div class="contact-box">
-                <i class="fas fa-envelope contact-icon"></i>
-                <h3>Contact Info</h3>
-                <p>
-                    <strong>Email:</strong> choism@postech.ac.kr<br>
-                    <strong>Phone:</strong> +82-54-279-2384<br>
-                    <strong>Fax:</strong> +82-54-279-2299
+            <div style="background:#fff; padding:40px; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+                <h3 style="margin-top:0; color:var(--primary); font-size:1.5rem;">Address</h3>
+                <p style="font-size:1.1rem; color:#444; margin-bottom:30px;">
+                    Engineering Building 4, Room 125<br>
+                    77 Cheongam-Ro, Nam-Gu, Pohang, Gyeongbuk<br>
+                    37673, Republic of Korea
                 </p>
+
+                <h3 style="color:var(--primary); font-size:1.5rem;">Email</h3>
+                <p style="font-size:1.1rem; color:#444;">choism@postech.ac.kr</p>
+
+                <h3 style="color:var(--primary); font-size:1.5rem; margin-top:30px;">Phone</h3>
+                <p style="font-size:1.1rem; color:#444;">+82-54-279-2228</p>
             </div>
         </div>
     </div>
 
-    <footer>&copy; 2026 Interaction Lab. POSTECH.</footer>
+    <div id="global-footer"></div>
+
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

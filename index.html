@@ -4,30 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interaction Lab - POSTECH</title>
-
-    <link rel="icon" type="image/png" href="images/Logo_small.png">
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
-  <div class="nav-container">
-      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Lab Logo"></a></div>
-
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-
-      <ul class="nav-links">
-          <li><a href="index.html" class="nav-item">Home</a></li>
-          <li><a href="news.html" class="nav-item">News</a></li>
-          <li><a href="research.html" class="nav-item">Research</a></li>
-          <li><a href="members.html" class="nav-item">Members</a></li>
-          <li><a href="publications.html" class="nav-item">Publications</a></li>
-          <li><a href="awards.html" class="nav-item">Award</a></li>
-          <li><a href="contact.html" class="nav-item">Contact</a></li>
-      </ul>
-  </div>
-</nav>
+    <div id="global-header"></div>
 
     <div class="container" style="text-align:center; padding: 80px 24px 60px;">
         <h1 style="font-size:3.5rem; margin-bottom:20px; font-weight:800; letter-spacing:-1px;">
@@ -36,32 +15,35 @@
         <p style="font-size:1.25rem; color:#64748b; max-width:700px; margin:0 auto 50px;">
             Creating immersive and realistic experiences through cutting-edge Haptics, VR/AR, and Multimodal Interfaces.
         </p>
-        <img src="images/lab_intro1.jpg" style="width:100%; border-radius:24px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.15);">
+        <img src="images/lab_intro1.jpg" style="width:100%; border-radius:24px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.15);" onerror="this.src='https://via.placeholder.com/1200x600?text=Lab+Intro+Image'">
+    </div>
+
+    <div class="container" style="padding-top:0;">
+        <div class="section-header">
+            <h2><i class="fab fa-youtube" style="color:#ff0000;"></i> Featured Videos</h2>
+        </div>
+        <div class="youtube-grid" id="youtube-gallery"></div>
+    </div>
+
+    <div class="container" style="background:#fff; border-radius:30px; margin-bottom:80px; padding:60px 40px; box-shadow:0 10px 30px rgba(0,0,0,0.03);">
+        <div class="section-header">
+            <h2><i class="far fa-newspaper" style="color:var(--secondary);"></i> Latest News</h2>
+            <a href="news.html" style="margin-left:auto; font-weight:700; color:var(--primary);">View All &rarr;</a>
+        </div>
+        <div class="news-grid" id="home-news"></div>
     </div>
 
     <div class="container">
-        <div class="section-header"><h2>Lab Introduction</h2></div>
-        <div id="youtube-gallery" class="youtube-grid">
-            </div>
-
         <div class="section-header">
-            <h2>Latest News</h2>
-            <a href="news.html" style="color:var(--primary); font-weight:600;">View All &rarr;</a>
+            <h2><i class="fas fa-microchip" style="color:var(--primary);"></i> Research Highlights</h2>
+            <a href="research.html" style="margin-left:auto; font-weight:700; color:var(--primary);">View All &rarr;</a>
         </div>
-        <div id="home-news" class="news-grid">
-            </div>
+        <div class="member-grid" id="home-research"></div>
     </div>
 
-    <div id="detail-overlay" class="detail-overlay">
-        <div class="detail-nav">
-            <button class="back-btn" onclick="closeDetail()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-        <div class="detail-content" id="detail-body"></div>
-    </div>
+    <div id="global-footer"></div>
 
-    <footer>&copy; 2026 Interaction Lab. POSTECH.</footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', renderHome);</script>
 </body>
 </html>
