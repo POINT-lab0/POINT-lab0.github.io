@@ -496,7 +496,7 @@ function renderPubPage(page) {
         if (pub.link && !pub.link.includes('youtu')) {
             linkButtons += `
                 <a href="${pub.link}" class="pub-link btn-paper" target="_blank">
-                    <i class="far fa-file-alt"></i> <span>Paper</span>
+                    <i class="far fa-file-alt"></i> <span>Link</span>
                 </a>`;
         }
 
