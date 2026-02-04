@@ -63,64 +63,68 @@ function getSortedNews() { if (typeof newsData === 'undefined') return []; retur
 /* =========================================
    [2] 메인 페이지 (Home) - [수정됨: 뉴스 디자인 변경]
    ========================================= */
-function renderHome() {
-    // 1. YouTube
-    const ytContainer = document.getElementById('youtube-gallery');
-    if (ytContainer && typeof youtubeVideos !== 'undefined') {
-        ytContainer.innerHTML = '';
-        youtubeVideos.forEach(v => {
-            ytContainer.innerHTML += `<div class="video-wrapper"><iframe src="${v.embedUrl}" title="${v.title}" allowfullscreen></iframe></div>`;
-        });
-    }
+   /* script.js - renderHome 함수 수정 */
 
-    // 2. Latest News - [새로운 디자인: 리스트 + 호버 프리뷰]
-    const newsContainer = document.getElementById('home-news');
-    if (newsContainer && typeof newsData !== 'undefined') {
-        const sorted = getSortedNews();
-        const latestNews = sorted.slice(0, 5); // 최신 5개 표시
+   function renderHome() {
+       // 1. YouTube
+       const ytContainer = document.getElementById('youtube-gallery');
+       if (ytContainer && typeof youtubeVideos !== 'undefined') {
+           ytContainer.innerHTML = '';
+           youtubeVideos.forEach(v => {
+               ytContainer.innerHTML += `<div class="video-wrapper"><iframe src="${v.embedUrl}" title="${v.title}" allowfullscreen></iframe></div>`;
+           });
+       }
 
-        // 레이아웃 뼈대 생성
-        newsContainer.innerHTML = `
-            <div class="news-split-layout">
-                <div class="news-list-container" id="home-news-list"></div>
-                <div class="news-preview-pane" id="home-news-preview"></div>
-            </div>`;
+       // 2. Latest News - [수정됨: 5개 표시]
+       const newsContainer = document.getElementById('home-news');
+       if (newsContainer && typeof newsData !== 'undefined') {
+           const sorted = getSortedNews();
 
-        const listContainer = document.getElementById('home-news-list');
-        const previewPane = document.getElementById('home-news-preview');
+           // [여기 수정] 3 -> 5로 변경하여 5개까지 표시
+           const latestNews = sorted.slice(0, 5);
 
-        // 리스트 아이템 생성
-        latestNews.forEach((item, index) => {
-            const originalIndex = newsData.findIndex(n => n.id === item.id);
+           // 레이아웃 뼈대 생성
+           newsContainer.innerHTML = `
+               <div class="news-split-layout">
+                   <div class="news-list-container" id="home-news-list"></div>
+                   <div class="news-preview-pane" id="home-news-preview"></div>
+               </div>`;
 
-            const li = document.createElement('div');
-            li.className = 'news-list-item';
-            li.innerHTML = `
-                <span class="news-item-date">${item.date}</span>
-                <h3 class="news-item-title">${item.title}</h3>
-            `;
+           const listContainer = document.getElementById('home-news-list');
+           const previewPane = document.getElementById('home-news-preview');
 
-            // 마우스 올리면(Hover) 프리뷰 변경
-            li.addEventListener('mouseenter', () => {
-                updateHomeNewsPreview(previewPane, item);
-            });
+           // 리스트 아이템 생성
+           latestNews.forEach((item, index) => {
+               const originalIndex = newsData.findIndex(n => n.id === item.id);
 
-            // 클릭하면 상세 페이지 이동
-            li.addEventListener('click', () => {
-                location.href = `news.html?id=${originalIndex}`;
-            });
+               const li = document.createElement('div');
+               li.className = 'news-list-item';
+               li.innerHTML = `
+                   <span class="news-item-date">${item.date}</span>
+                   <h3 class="news-item-title">${item.title}</h3>
+               `;
 
-            listContainer.appendChild(li);
-        });
+               // 마우스 올리면(Hover) 프리뷰 변경
+               li.addEventListener('mouseenter', () => {
+                   updateHomeNewsPreview(previewPane, item);
+               });
 
-        // 초기 화면: 첫 번째 뉴스 프리뷰 보여주기
-        if (latestNews.length > 0) {
-            updateHomeNewsPreview(previewPane, latestNews[0]);
-        }
-    }
-    // Research Highlights 삭제됨
-}
+               // 클릭하면 상세 페이지 이동
+               li.addEventListener('click', () => {
+                   location.href = `news.html?id=${originalIndex}`;
+               });
 
+               listContainer.appendChild(li);
+           });
+
+           // 초기 화면: 첫 번째 뉴스 프리뷰 보여주기
+           if (latestNews.length > 0) {
+               updateHomeNewsPreview(previewPane, latestNews[0]);
+           }
+       }
+   }
+
+   // (나머지 함수들은 그대로 두시면 됩니다)
 // 홈 뉴스 프리뷰 업데이트 헬퍼 함수
 function updateHomeNewsPreview(pane, item) {
     if (item.image) {
