@@ -3,11 +3,11 @@
 
 :root {
     /* [수정됨] 로고 기반 Green-Blue 팔레트 */
-    --primary: #0085CA;       /* 로고의 아래쪽 진한 파랑 (Deep Blue) - 메인 버튼/텍스트용 */
-    --primary-light: #38bdf8; /* 밝은 하늘색 */
-    --secondary: #00C6BD;     /* 로고의 위쪽 밝은 청록 (Teal/Green) - 그라데이션/강조용 */
+    --primary: #0085CA;       /* Deep Blue */
+    --primary-light: #38bdf8; /* Light Blue */
+    --secondary: #00C6BD;     /* Teal/Green */
 
-    --accent: #ff6b6b;        /* Rose (기존 유지 - 경고/강조용) */
+    --accent: #ff6b6b;        /* Rose */
     --dark: #0f172a;          /* Slate 900 */
     --gray: #64748b;          /* Slate 500 */
     --bg-body: #f8fafc;       /* Slate 50 */
@@ -15,10 +15,10 @@
 
     --radius: 16px;
     --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-    /* 그림자 색상도 파란색 계열로 변경 */
     --shadow-hover: 0 15px 30px rgba(0, 133, 202, 0.2);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--dark); margin: 0; line-height: 1.6; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -66,22 +66,72 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* --- Member Cards --- */
+/* --- Member Cards (Updated) --- */
 .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; margin-bottom: 60px; }
+
 .member-card {
-    background: var(--white); padding: 30px 20px; border-radius: var(--radius); text-align: center;
-    box-shadow: var(--shadow-sm); cursor: pointer; position: relative; overflow: hidden;
-    border: 1px solid transparent; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: var(--white);
+    padding: 30px 20px;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     will-change: transform;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
-.member-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(99, 102, 241, 0.1); }
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(0, 133, 202, 0.1);
+}
+
 .member-card img {
     width: 140px !important; height: 140px !important; border-radius: 50%; object-fit: cover;
     margin-bottom: 20px; border: 4px solid #f1f5f9; display: inline-block;
 }
+
 .role-text { font-size: 0.85rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 5px; }
-.member-card h3 { margin: 5px 0; font-size: 1.2rem; color: var(--dark); }
-.member-card p { font-size: 0.9rem; color: var(--gray); margin-top: 5px; }
+
+/* [NEW] 이름 및 이메일 스타일 */
+.member-name-group {
+    margin: 10px 0 8px 0;
+}
+
+.name-eng {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+}
+
+.name-kor {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+    margin-top: 4px;
+}
+
+.member-email {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;
+
+    /* [핵심] 이메일 줄바꿈 처리 */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+    width: 100%;
+}
 
 /* --- News Cards --- */
 .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
@@ -233,7 +283,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .pub-authors { color: var(--gray); font-size: 0.95rem; margin-bottom: 5px; }
 .pub-venue { font-style: italic; font-weight: 600; color: var(--secondary); }
 
-/* [수정] 링크 버튼 스타일 (작은 박스 형태) */
+/* [수정] 링크 버튼 스타일 */
 .pub-link {
     display: inline-flex;
     align-items: center;
@@ -260,7 +310,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
-/* [중요] 수상 내역 강조 텍스트 (모든 화면 공통 적용) */
+/* [중요] 수상 내역 강조 텍스트 */
 .award-text {
     color: #e11d48 !important; /* 선명한 빨간색 */
     font-weight: 800 !important; /* 굵게 */

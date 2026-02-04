@@ -1,7 +1,7 @@
-/* script.js - Research Area 상세 보기 기능 추가됨 */
+/* script.js */
 
 /* =========================================
-   1. 유틸리티 (URL 파라미터 확인)
+   1. 유틸리티 & 오버레이
    ========================================= */
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -13,11 +13,13 @@ function getSortedNews() {
     return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+function closeDetail() { /* 사용 안함 (페이지 이동 방식) */ }
+
 /* =========================================
    2. 메인 페이지 (Home)
    ========================================= */
 function renderHome() {
-    // 1. YouTube
+    // YouTube
     const ytContainer = document.getElementById('youtube-gallery');
     if (ytContainer && typeof youtubeVideos !== 'undefined') {
         ytContainer.innerHTML = '';
@@ -29,16 +31,14 @@ function renderHome() {
         });
     }
 
-    // 2. News (최신 3개)
+    // News
     const newsContainer = document.getElementById('home-news');
     if (newsContainer && typeof newsData !== 'undefined') {
         const sorted = getSortedNews();
         newsContainer.innerHTML = '';
-
         sorted.slice(0, 3).forEach(item => {
             const originalIndex = newsData.findIndex(n => n.id === item.id);
             const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" alt="${item.title}" onerror="this.style.display='none'">` : '';
-
             newsContainer.innerHTML += `
                 <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                     ${imgHtml}
@@ -52,14 +52,13 @@ function renderHome() {
         });
     }
 
-    // 3. Research Highlights (Ongoing 중 4개)
+    // Research Highlights
     const resContainer = document.getElementById('home-research');
     if (resContainer && typeof researchData !== 'undefined') {
         resContainer.innerHTML = '';
         const ongoingProjects = researchData.map((r, idx) => ({ ...r, originalIndex: idx }))
                                             .filter(r => r.status === 'Ongoing')
                                             .slice(0, 4);
-
         ongoingProjects.forEach(item => {
             resContainer.innerHTML += `
                 <div class="member-card" onclick="location.href='research.html?id=${item.originalIndex}'">
@@ -89,11 +88,9 @@ function renderNewsPage() {
 
     const sorted = getSortedNews();
     container.innerHTML = '';
-
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
-
         container.innerHTML += `
             <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
                 ${imgHtml}
@@ -129,7 +126,7 @@ function renderNewsDetail(index) {
 }
 
 /* =========================================
-   4. 멤버 페이지 (Members)
+   4. 멤버 페이지 (Members) - [수정됨]
    ========================================= */
 function renderMembers() {
     const id = getQueryParam('id');
@@ -159,13 +156,8 @@ function renderMembers() {
 
     memberData.forEach((m, index) => {
         if (m.role !== 'alumni') {
-            const card = `
-                <div class="member-card" onclick="location.href='members.html?id=${index}'">
-                    <img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">
-                    <span class="role-text">${m.desc.split(',')[0]}</span>
-                    <h3>${m.name}</h3>
-                    <p style="font-size:0.85rem; color:#888;">${m.email || ''}</p>
-                </div>`;
+            // [중요] createMemberCard 함수를 호출하여 카드 생성
+            const card = createMemberCard(m, index);
 
             const descLower = m.desc.toLowerCase();
 
@@ -209,6 +201,32 @@ function renderMembers() {
     }
 }
 
+// [부활한 함수] 멤버 카드 생성 및 이름 분리 로직
+function createMemberCard(m, index) {
+    let engName = m.name;
+    let korName = "";
+
+    // "Seungmoon Choi (최승문)" 형태인 경우 괄호를 기준으로 분리
+    if (m.name.includes('(')) {
+        const parts = m.name.split('(');
+        engName = parts[0].trim();
+        korName = parts[1].replace(')', '').trim();
+    }
+
+    return `
+        <div class="member-card" onclick="location.href='members.html?id=${index}'">
+            <img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">
+            <span class="role-text">${m.desc.split(',')[0]}</span>
+
+            <div class="member-name-group">
+                <div class="name-eng">${engName}</div>
+                ${korName ? `<div class="name-kor">${korName}</div>` : ''}
+            </div>
+
+            <p class="member-email">${m.email || ''}</p>
+        </div>`;
+}
+
 function renderMemberDetail(index) {
     const m = memberData[index];
     const container = document.querySelector('.container');
@@ -249,33 +267,27 @@ function renderMemberDetail(index) {
 }
 
 /* =========================================
-   5. 연구 페이지 (Research) - [수정됨] Area/Project 상세 보기
+   5. 연구 페이지 (Research)
    ========================================= */
 function renderResearchPage() {
-    // 1. URL 파라미터 확인 (area 또는 id)
     const areaId = getQueryParam('area');
     const projectId = getQueryParam('id');
 
-    // 2. Area 상세 페이지
     if (areaId !== null && researchAreas[areaId]) {
         renderAreaDetail(areaId);
         return;
     }
-
-    // 3. Project 상세 페이지
     if (projectId !== null && researchData[projectId]) {
         renderProjectDetail(projectId);
         return;
     }
 
-    // 4. 목록 페이지 렌더링
     const ongoingContainer = document.getElementById('ongoing-list');
     const completedContainer = document.getElementById('completed-list');
     const areaContainer = document.getElementById('research-areas');
 
     if (!ongoingContainer || typeof researchData === 'undefined') return;
 
-    // Research Areas 렌더링 [수정됨: 클릭 시 링크 이동]
     if (areaContainer && typeof researchAreas !== 'undefined') {
         areaContainer.innerHTML = '';
         researchAreas.forEach((area, idx) => {
@@ -312,21 +324,16 @@ function renderResearchPage() {
     });
 }
 
-// [추가됨] Research Area 상세 페이지 렌더링 함수
 function renderAreaDetail(index) {
     const area = researchAreas[index];
     const container = document.querySelector('.container');
-
     container.innerHTML = `
         <div style="max-width:800px; margin:0 auto; padding-top:20px;">
             <a href="research.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
                 <i class="fas fa-arrow-left"></i> Back to Research
             </a>
-
             <img src="${area.thumbnail}" style="width:100%; height:300px; object-fit:cover; border-radius:16px; margin-bottom:30px;" onerror="this.src='images/lab_intro1.jpg'">
-
             <h1 style="font-size:2.5rem; margin-bottom:20px; line-height:1.3;">${area.title}</h1>
-
             <div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:1.1rem; line-height:1.8; color:#333;">
                 ${area.detail || area.desc}
             </div>
@@ -339,22 +346,18 @@ function renderProjectDetail(index) {
     const r = researchData[index];
     const container = document.querySelector('.container');
     const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
-
     container.innerHTML = `
         <div style="max-width:800px; margin:0 auto; padding-top:20px;">
             <a href="research.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
                 <i class="fas fa-arrow-left"></i> Back to Projects
             </a>
-
             <div style="margin-bottom:20px;">
                 <span style="background:${statusColor}; color:white; padding:6px 15px; border-radius:20px; font-size:0.9rem; font-weight:bold;">${r.status}</span>
             </div>
-
             <h1 style="font-size:2.2rem; margin-bottom:15px; line-height:1.3;">${r.title}</h1>
             <p style="color:#666; font-size:1.1rem; margin-bottom:40px; border-left:4px solid var(--secondary); padding-left:15px;">
                 <strong>${r.agency}</strong> <br> ${r.period}
             </p>
-
             <div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:1.1rem; line-height:1.8;">
                 ${r.description}
             </div>
@@ -364,13 +367,12 @@ function renderProjectDetail(index) {
 }
 
 /* =========================================
-   6. 논문 페이지 (Publications) - 수정됨
+   6. 논문 페이지 (Publications)
    ========================================= */
 function renderPublications() {
     const container = document.getElementById('pub-list');
     if (!container || typeof publicationData === 'undefined') return;
 
-    // 연도 필터 자동 설정
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
 
@@ -378,14 +380,9 @@ function renderPublications() {
         const years = publicationData.map(p => p.year);
         const minYear = Math.min(...years);
         const maxYear = Math.max(...years);
-
-        startInput.min = minYear;
-        startInput.max = maxYear;
-        endInput.min = minYear;
-        endInput.max = maxYear;
-
-        startInput.placeholder = minYear;
-        endInput.placeholder = maxYear;
+        startInput.min = minYear; startInput.max = maxYear;
+        endInput.min = minYear; endInput.max = maxYear;
+        startInput.placeholder = minYear; endInput.placeholder = maxYear;
     }
 
     updateVenueOptions('all');
@@ -406,22 +403,15 @@ function renderPublications() {
 function updateVenueOptions(category) {
     const venueSelect = document.getElementById('venue-filter');
     if (!venueSelect) return;
-
     let targetPubs = publicationData;
     if (category !== 'all') {
         targetPubs = publicationData.filter(pub => pub.category === category);
     }
-
     const venueSet = new Set();
-    targetPubs.forEach(pub => {
-        if (pub.venueShort) venueSet.add(pub.venueShort);
-    });
-
+    targetPubs.forEach(pub => { if (pub.venueShort) venueSet.add(pub.venueShort); });
     const sortedVenues = Array.from(venueSet).sort();
     venueSelect.innerHTML = '<option value="all">All Venues</option>';
-    sortedVenues.forEach(shortName => {
-        venueSelect.innerHTML += `<option value="${shortName}">${shortName}</option>`;
-    });
+    sortedVenues.forEach(shortName => { venueSelect.innerHTML += `<option value="${shortName}">${shortName}</option>`; });
     venueSelect.value = 'all';
 }
 
@@ -431,7 +421,6 @@ function applyPubFilter() {
 
     const activeTab = document.querySelector('.tab-btn.active');
     const category = activeTab ? activeTab.dataset.cat : 'all';
-
     const startInput = document.getElementById('year-start');
     const endInput = document.getElementById('year-end');
     const searchInput = document.getElementById('search-keyword');
@@ -445,14 +434,12 @@ function applyPubFilter() {
     let filtered = publicationData.filter(pub => {
         const catMatch = category === 'all' || pub.category === category;
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
-        const textMatch = pub.title.toLowerCase().includes(searchKeyword) ||
-                          pub.authors.toLowerCase().includes(searchKeyword);
+        const textMatch = pub.title.toLowerCase().includes(searchKeyword) || pub.authors.toLowerCase().includes(searchKeyword);
         const venueMatch = selectedVenue === 'all' || pub.venueShort === selectedVenue;
         return catMatch && yearMatch && textMatch && venueMatch;
     });
 
     filtered.sort((a, b) => b.year - a.year);
-
     container.innerHTML = '';
 
     if (filtered.length === 0) {
@@ -460,31 +447,18 @@ function applyPubFilter() {
         return;
     }
 
-    // 수상 키워드 (정규식)
     const awardRegex = /(Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)/i;
 
     filtered.forEach(pub => {
-        // 1. 링크 버튼
-        const linkHtml = pub.link ?
-            `<a href="${pub.link}" class="pub-link" target="_blank">
-                <span>View</span> <i class="fas fa-external-link-alt"></i>
-             </a>` : '';
-
-        // 2. 카테고리 뱃지
+        const linkHtml = pub.link ? `<a href="${pub.link}" class="pub-link" target="_blank"><span>View</span> <i class="fas fa-external-link-alt"></i></a>` : '';
         const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`;
+        const venueBadge = (pub.category === 'patent' && pub.venueShort) ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
 
-        // 3. 베뉴 뱃지 (Patent만 표시)
-        const venueBadge = (pub.category === 'patent' && pub.venueShort)
-            ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>`
-            : '';
-
-        // 4. [왕관 자동 추가]
         let displayTitle = pub.title.replace('👑', '').trim();
         if (pub.venue && awardRegex.test(pub.venue)) {
             displayTitle = "👑 " + displayTitle;
         }
 
-        // 5. [문구 하이라이트]
         let highlightedVenue = pub.venue || "";
         if (highlightedVenue) {
             highlightedVenue = highlightedVenue.replace(
@@ -500,10 +474,7 @@ function applyPubFilter() {
                     ${linkHtml}
                 </div>
                 <div class="pub-content">
-                    <div class="badge-container">
-                        ${catBadge}
-                        ${venueBadge}
-                    </div>
+                    <div class="badge-container">${catBadge}${venueBadge}</div>
                     <h3>${displayTitle}</h3>
                     <div class="pub-authors">${pub.authors}</div>
                     <div class="pub-venue">${highlightedVenue}</div>
@@ -536,11 +507,9 @@ function renderAwardsPage() {
    8. 페이지 로드 및 네비게이션 설정
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    // 현재 페이지 파악
     const path = window.location.pathname;
     const page = path.split("/").pop() || 'index.html';
 
-    // 네비게이션 활성화
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         const linkPage = item.getAttribute('href');
@@ -551,7 +520,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 모바일 메뉴 토글
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
@@ -560,7 +528,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 페이지별 렌더링 함수 호출
     if (page === 'index.html' || page === '') renderHome();
     else if (page === 'news.html') renderNewsPage();
     else if (page === 'members.html') renderMembers();
