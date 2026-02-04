@@ -294,11 +294,9 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
 /* Mobile Responsive */
 /* style.css - 맨 아래 @media 부분 교체 */
 
-/* Mobile Responsive */
-/* Mobile Responsive (최종 수정본) */
 /* Mobile Responsive (최종 수정본) */
 @media (max-width: 900px) {
-    /* 1. 네비게이션: 로고와 햄버거 버튼 양옆 배치 */
+    /* 1. 네비게이션: 햄버거 메뉴 적용 */
     .nav-container {
         display: flex;
         flex-direction: row;
@@ -309,12 +307,8 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         position: relative;
     }
 
-    .logo {
-        padding-left: 0;
-        margin-bottom: 0;
-    }
+    .logo { padding-left: 0; margin-bottom: 0; }
 
-    /* 2. 햄버거 버튼 보이기 */
     .menu-toggle {
         display: block !important;
         font-size: 1.5rem;
@@ -323,7 +317,6 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         padding: 10px;
     }
 
-    /* 3. 메뉴 리스트 (드롭다운) */
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -335,56 +328,63 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         padding: 0;
-
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    .nav-links.active {
-        max-height: 500px;
-        padding-bottom: 20px;
-    }
+    .nav-links.active { max-height: 500px; padding-bottom: 20px; }
 
     .nav-item {
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #f1f5f9;
-        display: block;
+        width: 100%; text-align: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9; display: block;
     }
-
     .nav-item:last-child { border-bottom: none; }
-
     .nav-item.active::after {
-        width: 4px; height: 4px; border-radius: 50%;
-        left: 50%; transform: translateX(-50%); bottom: 5px;
+        width: 4px; height: 4px; border-radius: 50%; left: 50%; transform: translateX(-50%); bottom: 5px;
     }
 
-    /* 4. [복구됨] YouTube Grid: 모바일에서 2x2 배치 */
-    .youtube-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2개씩 배치 */
+    /* 2. Publications 컨트롤 (모바일 최적화) */
+    .pub-controls {
+        flex-direction: column;
+        align-items: stretch;
         gap: 15px;
+        padding: 20px; /* 내부 여백 확보 */
     }
 
-    /* 5. 나머지 레이아웃 조정 */
-    .news-split-layout { flex-direction: column; }
-    .news-preview-pane { display: none; }
-
-    .pub-controls { flex-direction: column; align-items: stretch; }
     .filter-tabs { justify-content: center; }
-    .year-filter { justify-content: center; width: 100%; margin-top: 10px; }
-    .quick-year-container { overflow-x: auto; padding-bottom: 5px; white-space: nowrap; }
+
+    /* [핵심 수정] 년도 버튼: 중앙 정렬 + 줄바꿈 + 간격 조절 */
+    .quick-year-container {
+        justify-content: center;
+        flex-wrap: wrap;        /* 줄바꿈 허용 */
+        gap: 6px;               /* 버튼 사이 간격 좁힘 */
+        overflow-x: visible;    /* 스크롤 제거 */
+        white-space: normal;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    /* 모바일용 버튼 스타일 (작게) */
+    .year-chip {
+        padding: 6px 10px;      /* 여백 축소 */
+        font-size: 0.85rem;     /* 글자 크기 축소 */
+        flex: 0 0 auto;
+    }
+
+    .year-filter { justify-content: center; width: 100%; margin-top: 5px; }
     .search-container { flex-direction: column; }
     .search-input, .venue-select { width: 100%; }
 
+    /* 3. 그리드 및 레이아웃 */
+    .youtube-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 유튜브 2x2 */
+    .member-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
+
+    /* 4. 기타 */
+    .news-split-layout { flex-direction: column; }
+    .news-preview-pane { display: none; }
     .pub-item { flex-direction: column; }
     .pub-actions { flex-direction: row; width: 100%; }
     .pub-link { flex: 1; }
-
-    .member-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-
-    /* [복구됨] 연구 분야 그리드 */
-    .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
 }
