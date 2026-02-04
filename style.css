@@ -66,12 +66,19 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* --- Member Cards --- */
-.member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; margin-bottom: 60px; }
+/* style.css - Member Cards 수정됨 */
+
+.member-grid {
+    display: grid;
+    /* 카드가 커졌으므로 최소 너비를 220px -> 260px로 늘림 */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
 
 .member-card {
     background: var(--white);
-    padding: 30px 20px;
+    padding: 40px 20px; /* 내부 여백도 조금 늘림 */
     border-radius: var(--radius);
     text-align: center;
     box-shadow: var(--shadow-sm);
@@ -81,7 +88,11 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     border: 1px solid transparent;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     will-change: transform;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .member-card:hover {
@@ -90,33 +101,37 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     border-color: rgba(0, 133, 202, 0.1);
 }
 
+/* [수정 1] 리스트에서 사람 얼굴 크게 (140px -> 200px) */
 .member-card img {
-    width: 140px !important; height: 140px !important; border-radius: 50%; object-fit: cover;
-    margin-bottom: 20px; border: 4px solid #f1f5f9; display: inline-block;
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 5px solid #f1f5f9; /* 테두리도 조금 두껍게 */
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
-.role-text { font-size: 0.85rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 5px; }
+/* [수정 2] 이름 위 연구 분야 키워드 스타일 */
+.member-keyword {
+    font-size: 0.85rem;
+    color: var(--secondary); /* 청록색 포인트 */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    background: #e0f2f1; /* 아주 연한 배경 */
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
 
+/* 이름 스타일 */
 .member-name-group { margin: 10px 0 8px 0; }
-.name-eng { font-size: 1.25rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
-.name-kor { font-size: 1rem; font-weight: 600; color: var(--gray); margin-top: 4px; }
-.member-email { font-size: 0.9rem; color: #888; margin-top: 5px; word-break: break-all; overflow-wrap: anywhere; line-height: 1.4; width: 100%; }
-
-/* --- News Cards (For news.html) --- */
-.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-.news-card {
-    background: var(--white); border-radius: var(--radius); overflow: hidden;
-    box-shadow: var(--shadow-sm); border: 1px solid #f1f5f9; cursor: pointer; transition: transform 0.2s ease;
-    display: flex; flex-direction: column;
-}
-.news-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-.news-thumb { width: 100%; height: 200px; object-fit: cover; background: #eee; }
-.news-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-.news-date { color: var(--primary); font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 8px; }
-.news-card h3 { font-size: 1.25rem; margin: 0 0 10px; line-height: 1.4; color: var(--dark); font-weight: 700; }
-.news-card p { flex: 1; font-size: 0.95rem; color: var(--gray); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.read-more { margin-top: 15px; font-size: 0.9rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 5px; }
-
+.name-eng { font-size: 1.35rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
+.name-kor { font-size: 1.05rem; font-weight: 600; color: var(--gray); margin-top: 4px; }
+.member-email { font-size: 0.9rem; color: #888; margin-top: 8px; word-break: break-all; overflow-wrap: anywhere; line-height: 1.4; width: 100%; }
 /* --- Research Areas --- */
 .research-areas-grid {
     display: grid;
