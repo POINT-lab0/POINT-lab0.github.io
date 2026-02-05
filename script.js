@@ -1,9 +1,8 @@
-/* script.js - 통합 전체 코드 (필터 버그 수정 & Patent 버튼 적용) */
+/* script.js */
 
 /* =========================================
    [1] 공통 레이아웃 & 유틸리티
    ========================================= */
-
 function loadCommonHead() {
     const head = document.head;
     if (!document.querySelector('link[href="images/Logo_small.png"]')) {
@@ -19,7 +18,6 @@ function loadCommonHead() {
 
 function loadLayout() {
     loadCommonHead();
-
     const headerHTML = `
         <nav class="navbar">
             <div class="nav-container">
@@ -36,7 +34,6 @@ function loadLayout() {
                 </ul>
             </div>
         </nav>`;
-
     const footerHTML = `
         <footer>
             <div style="line-height: 1.6;">
@@ -46,160 +43,130 @@ function loadLayout() {
                 </span>
             </div>
         </footer>`;
-
     const headerPlaceholder = document.getElementById('global-header');
     const footerPlaceholder = document.getElementById('global-footer');
-
     if (headerPlaceholder) headerPlaceholder.innerHTML = headerHTML;
     if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
-
     highlightActiveMenu();
-
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
         const newToggle = menuToggle.cloneNode(true);
         menuToggle.parentNode.replaceChild(newToggle, menuToggle);
-        newToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        newToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
     }
 }
 
 function highlightActiveMenu() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop() || 'index.html';
+    const path = window.location.pathname; const page = path.split("/").pop() || 'index.html';
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         const linkPage = item.getAttribute('href');
-        if (page === linkPage || (page === '' && linkPage === 'index.html')) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
+        if (page === linkPage || (page === '' && linkPage === 'index.html')) item.classList.add('active');
+        else item.classList.remove('active');
     });
 }
-
-function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
-function getSortedNews() {
-    if (typeof newsData === 'undefined') return [];
-    return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
-}
-
+function getQueryParam(param) { const urlParams = new URLSearchParams(window.location.search); return urlParams.get(param); }
+function getSortedNews() { if (typeof newsData === 'undefined') return []; return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)); }
 
 /* =========================================
-   [2] 메인 페이지 (Home)
+   [2] 메인 페이지 (Home) & 슬라이더
    ========================================= */
+let currentSlideIndex = 0;
+let slideInterval;
+
+function initSlider() {
+    const slider = document.getElementById('main-slider');
+    if (!slider) return;
+    const slides = slider.getElementsByClassName('slide');
+    const dotsContainer = document.getElementById('slider-dots');
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = i === 0 ? 'dot active' : 'dot';
+        dot.onclick = () => showSlide(i);
+        dotsContainer.appendChild(dot);
+    }
+    startSlideTimer();
+}
+function startSlideTimer() { stopSlideTimer(); slideInterval = setInterval(() => moveSlide(1), 5000); }
+function stopSlideTimer() { if (slideInterval) clearInterval(slideInterval); }
+function moveSlide(step) {
+    const slides = document.getElementsByClassName('slide');
+    if (!slides.length) return;
+    let newIndex = currentSlideIndex + step;
+    if (newIndex >= slides.length) newIndex = 0;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    showSlide(newIndex);
+}
+function showSlide(index) {
+    currentSlideIndex = index;
+    const slides = document.getElementsByClassName('slide');
+    const dots = document.getElementsByClassName('dot');
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
+    }
+    slides[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
+    startSlideTimer();
+}
+
 function renderHome() {
+    initSlider(); // 슬라이더 초기화
     const ytContainer = document.getElementById('youtube-gallery');
     if (ytContainer && typeof youtubeVideos !== 'undefined') {
         ytContainer.innerHTML = '';
         youtubeVideos.forEach(v => {
-            ytContainer.innerHTML += `
-                <div class="video-wrapper">
-                    <iframe src="${v.embedUrl}" title="${v.title}" allowfullscreen></iframe>
-                </div>`;
+            ytContainer.innerHTML += `<div class="video-wrapper"><iframe src="${v.embedUrl}" title="${v.title}" allowfullscreen></iframe></div>`;
         });
     }
-
     const newsContainer = document.getElementById('home-news');
     if (newsContainer && typeof newsData !== 'undefined') {
         const sorted = getSortedNews();
         const latestNews = sorted.slice(0, 5);
-
-        newsContainer.innerHTML = `
-            <div class="news-split-layout">
-                <div class="news-list-container" id="home-news-list"></div>
-                <div class="news-preview-pane" id="home-news-preview"></div>
-            </div>`;
-
+        newsContainer.innerHTML = `<div class="news-split-layout"><div class="news-list-container" id="home-news-list"></div><div class="news-preview-pane" id="home-news-preview"></div></div>`;
         const listContainer = document.getElementById('home-news-list');
         const previewPane = document.getElementById('home-news-preview');
-
         latestNews.forEach((item, index) => {
             const originalIndex = newsData.findIndex(n => n.id === item.id);
-            const li = document.createElement('div');
-            li.className = 'news-list-item';
-            li.innerHTML = `
-                <span class="news-item-date">${item.date}</span>
-                <h3 class="news-item-title">${item.title}</h3>
-            `;
+            const li = document.createElement('div'); li.className = 'news-list-item';
+            li.innerHTML = `<span class="news-item-date">${item.date}</span><h3 class="news-item-title">${item.title}</h3>`;
             li.addEventListener('mouseenter', () => { updateHomeNewsPreview(previewPane, item); });
             li.addEventListener('click', () => { location.href = `news.html?id=${originalIndex}`; });
             listContainer.appendChild(li);
         });
-
-        if (latestNews.length > 0) {
-            updateHomeNewsPreview(previewPane, latestNews[0]);
-        }
+        if (latestNews.length > 0) updateHomeNewsPreview(previewPane, latestNews[0]);
     }
 }
-
 function updateHomeNewsPreview(pane, item) {
-    if (item.image) {
-        pane.innerHTML = `<img src="${item.image}" class="news-preview-img" alt="Preview">`;
-    } else {
+    if (item.image) pane.innerHTML = `<img src="${item.image}" class="news-preview-img" alt="Preview">`;
+    else {
         const shortContent = item.content.length > 120 ? item.content.substring(0, 120) + "..." : item.content;
-        pane.innerHTML = `
-            <div class="news-preview-content">
-                <i class="far fa-newspaper" style="font-size:3rem; margin-bottom:15px; opacity:0.8;"></i>
-                <h3 style="margin-bottom:10px;">${item.title}</h3>
-                <p style="font-size:0.95rem; opacity:0.9;">${shortContent}</p>
-            </div>`;
+        pane.innerHTML = `<div class="news-preview-content"><i class="far fa-newspaper" style="font-size:3rem; margin-bottom:15px; opacity:0.8;"></i><h3 style="margin-bottom:10px;">${item.title}</h3><p style="font-size:0.95rem; opacity:0.9;">${shortContent}</p></div>`;
     }
 }
-
 
 /* =========================================
-   [3] 뉴스 페이지 (News)
+   [3] 뉴스 페이지
    ========================================= */
 function renderNewsPage() {
-    const id = getQueryParam('id');
-    if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
-    const container = document.getElementById('news-grid-full');
-    if (!container || typeof newsData === 'undefined') return;
-    const sorted = getSortedNews();
-    container.innerHTML = '';
+    const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
+    const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
+    const sorted = getSortedNews(); container.innerHTML = '';
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
-        container.innerHTML += `
-            <div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">
-                ${imgHtml}
-                <div class="news-body">
-                    <span class="news-date">${item.date}</span>
-                    <h3>${item.title}</h3>
-                    <p style="color:#666; font-size:0.95rem;">${item.content}</p>
-                    <div class="read-more">Read More &rarr;</div>
-                </div>
-            </div>`;
+        container.innerHTML += `<div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">${imgHtml}<div class="news-body"><span class="news-date">${item.date}</span><h3>${item.title}</h3><p style="color:#666; font-size:0.95rem;">${item.content}</p><div class="read-more">Read More &rarr;</div></div></div>`;
     });
 }
-
 function renderNewsDetail(index) {
-    const item = newsData[index];
-    const container = document.querySelector('.container');
+    const item = newsData[index]; const container = document.querySelector('.container');
     const imgHtml = item.image ? `<img src="${item.image}" style="width:100%; max-height:400px; border-radius:16px; object-fit:cover; margin-bottom:30px;" onerror="this.style.display='none'">` : '';
-    container.innerHTML = `
-        <div style="max-width:800px; margin:0 auto; padding-top:20px;">
-            <a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;">
-                <i class="fas fa-arrow-left"></i> Back to News
-            </a>
-            ${imgHtml}
-            <span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span>
-            <h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1>
-            <div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
-                ${item.detailContent || item.content}
-            </div>
-        </div>
-    `;
+    container.innerHTML = `<div style="max-width:800px; margin:0 auto; padding-top:20px;"><a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to News</a>${imgHtml}<span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span><h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1><div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">${item.detailContent || item.content}</div></div>`;
     window.scrollTo(0, 0);
 }
-
 
 /* =========================================
    [4] 멤버 페이지 (Members)
@@ -221,8 +188,7 @@ function renderMembers() {
     });
     if (postdocHeader) postdocHeader.style.display = hasPostDoc ? 'block' : 'none';
     if (alumniList) {
-        const alumni = memberData.filter(m => m.role === 'alumni');
-        alumni.sort((a, b) => { const getYear = (str) => { const match = str.match(/\((19|20)\d{2}\)/); return match ? parseInt(match[0].replace(/[()]/g, '')) : 0; }; return getYear(b.desc) - getYear(a.desc); });
+        const alumni = memberData.filter(m => m.role === 'alumni'); alumni.sort((a, b) => { const getYear = (str) => { const match = str.match(/\((19|20)\d{2}\)/); return match ? parseInt(match[0].replace(/[()]/g, '')) : 0; }; return getYear(b.desc) - getYear(a.desc); });
         alumni.forEach(m => { alumniList.innerHTML += `<div class="alumni-item" style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); border-left:4px solid #ccc;"><strong style="color:var(--dark);">${m.name}</strong><span style="font-size:0.85rem; color:#666; display:block; margin-top:4px;">${m.desc}</span></div>`; });
     }
 }
@@ -242,319 +208,108 @@ function renderMemberDetail(index) {
     window.scrollTo(0, 0);
 }
 
-
 /* =========================================
-   [5] 논문 페이지 (베뉴 연동 & 페이지네이션 & Patent 버튼 수정)
+   [5] 논문 페이지 (베뉴 연동 & 페이지네이션)
    ========================================= */
-let currentPubList = [];
-let currentPage = 1;
-const itemsPerPage = 10;
-
+let currentPubList = []; let currentPage = 1; const itemsPerPage = 10;
 function renderPublications() {
-    const container = document.getElementById('pub-list');
-    if (!container || typeof publicationData === 'undefined') return;
-
-    // 1. 연도 범위 및 초기값 설정 (최신순)
-    const startInput = document.getElementById('year-start');
-    const endInput = document.getElementById('year-end');
-
-    let minYear = 2000;
-    let maxYear = new Date().getFullYear();
-
+    const container = document.getElementById('pub-list'); if (!container || typeof publicationData === 'undefined') return;
+    const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
+    let minYear = 2000; let maxYear = new Date().getFullYear();
     if (startInput && endInput && publicationData.length > 0) {
-        const years = publicationData.map(p => p.year);
-        minYear = Math.min(...years);
-        maxYear = Math.max(...years);
-
-        startInput.min = minYear;
-        startInput.max = maxYear;
-        endInput.min = minYear;
-        endInput.max = maxYear;
-
-        // 초기값: 전체 기간
-        startInput.value = minYear;
-        endInput.value = maxYear;
-
-        // [중요] 사용자가 입력창 숫자를 직접 바꿨을 때도 베뉴가 업데이트되도록 리스너 추가
+        const years = publicationData.map(p => p.year); minYear = Math.min(...years); maxYear = Math.max(...years);
+        startInput.min = minYear; startInput.max = maxYear; endInput.min = minYear; endInput.max = maxYear;
+        startInput.value = minYear; endInput.value = maxYear;
         [startInput, endInput].forEach(input => {
-            input.onchange = null;
-            input.addEventListener('change', () => {
-                updateVenueOptions();
-                applyPubFilter();
-                document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active'));
-            });
+            input.addEventListener('change', () => { updateVenueOptions(); applyPubFilter(); document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active')); });
         });
     }
-
-    // 2. 빠른 연도 버튼 생성
-    renderQuickYearFilters(minYear, maxYear);
-
-    // 3. 초기 로드
-    updateVenueOptions();
-    applyPubFilter();
-
-    // 탭 버튼 이벤트
+    renderQuickYearFilters(minYear, maxYear); updateVenueOptions(); applyPubFilter();
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateVenueOptions();
-            applyPubFilter();
-        });
+        btn.addEventListener('click', () => { buttons.forEach(b => b.classList.remove('active')); btn.classList.add('active'); updateVenueOptions(); applyPubFilter(); });
     });
 }
-
-// [핵심] 현재 선택된 탭 + 연도 범위에 맞는 베뉴만 보여주는 함수
 function updateVenueOptions() {
-    const venueSelect = document.getElementById('venue-filter');
-    if (!venueSelect) return;
-
-    const activeTab = document.querySelector('.tab-btn.active');
-    const category = activeTab ? activeTab.dataset.cat : 'all';
-
-    const startInput = document.getElementById('year-start');
-    const endInput = document.getElementById('year-end');
-    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0;
-    const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
-
+    const venueSelect = document.getElementById('venue-filter'); if (!venueSelect) return;
+    const activeTab = document.querySelector('.tab-btn.active'); const category = activeTab ? activeTab.dataset.cat : 'all';
+    const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
+    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0; const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
     const currentVenue = venueSelect.value;
-
     const targetPubs = publicationData.filter(pub => {
-        // [수정됨] Poster/Demo 탭일 경우 poster와 demo 모두 포함
-        let catMatch = false;
-        if (category === 'all') catMatch = true;
-        else if (category === 'poster') catMatch = (pub.category === 'poster' || pub.category === 'demo');
-        else catMatch = (pub.category === category);
-
-        const yearMatch = pub.year >= startYear && pub.year <= endYear;
-        return catMatch && yearMatch;
+        let catMatch = category === 'all' || (category === 'poster' ? (pub.category === 'poster' || pub.category === 'demo') : pub.category === category);
+        return catMatch && pub.year >= startYear && pub.year <= endYear;
     });
-
-    const venueSet = new Set();
-    targetPubs.forEach(pub => {
-        if (pub.venueShort) venueSet.add(pub.venueShort);
-    });
-
+    const venueSet = new Set(); targetPubs.forEach(pub => { if (pub.venueShort) venueSet.add(pub.venueShort); });
     venueSelect.innerHTML = '<option value="all">All Venues</option>';
-    Array.from(venueSet).sort().forEach(shortName => {
-        const option = document.createElement('option');
-        option.value = shortName;
-        option.innerText = shortName;
-        venueSelect.appendChild(option);
-    });
-
-    if (venueSet.has(currentVenue)) {
-        venueSelect.value = currentVenue;
-    } else {
-        venueSelect.value = 'all';
-    }
+    Array.from(venueSet).sort().forEach(shortName => { const option = document.createElement('option'); option.value = shortName; option.innerText = shortName; venueSelect.appendChild(option); });
+    if (venueSet.has(currentVenue)) venueSelect.value = currentVenue; else venueSelect.value = 'all';
 }
-
 function renderQuickYearFilters(minDataYear, maxDataYear) {
-    const controls = document.querySelector('.pub-controls');
-    const searchContainer = document.querySelector('.search-container');
-
+    const controls = document.querySelector('.pub-controls'); const searchContainer = document.querySelector('.search-container');
     if (!controls || !searchContainer) return;
-
-    const existing = document.querySelector('.quick-year-container');
-    if (existing) existing.remove();
-
-    const quickContainer = document.createElement('div');
-    quickContainer.className = 'quick-year-container';
-
-    // [All Time]
-    const allBtn = document.createElement('button');
-    allBtn.className = 'year-chip active';
-    allBtn.innerText = 'All Time';
-    allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn);
-    quickContainer.appendChild(allBtn);
-
-    // [Recent 5 Years]
-    for (let i = 0; i < 5; i++) {
-        const year = maxDataYear - i;
-        const btn = document.createElement('button');
-        btn.className = 'year-chip';
-        btn.innerText = year;
-        btn.onclick = () => setYearRange(year, year, btn);
-        quickContainer.appendChild(btn);
-    }
-
-    // [Before ~]
-    const cutoffYear = maxDataYear - 5;
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'year-chip';
-    prevBtn.innerText = `~ ${cutoffYear}`;
-    prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn);
-    quickContainer.appendChild(prevBtn);
-
+    const existing = document.querySelector('.quick-year-container'); if (existing) existing.remove();
+    const quickContainer = document.createElement('div'); quickContainer.className = 'quick-year-container';
+    const allBtn = document.createElement('button'); allBtn.className = 'year-chip active'; allBtn.innerText = 'All Time'; allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn); quickContainer.appendChild(allBtn);
+    for (let i = 0; i < 5; i++) { const year = maxDataYear - i; const btn = document.createElement('button'); btn.className = 'year-chip'; btn.innerText = year; btn.onclick = () => setYearRange(year, year, btn); quickContainer.appendChild(btn); }
+    const cutoffYear = maxDataYear - 5; const prevBtn = document.createElement('button'); prevBtn.className = 'year-chip'; prevBtn.innerText = `~ ${cutoffYear}`; prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn); quickContainer.appendChild(prevBtn);
     controls.insertBefore(quickContainer, searchContainer);
 }
-
 function setYearRange(start, end, activeBtn) {
-    const startInput = document.getElementById('year-start');
-    const endInput = document.getElementById('year-end');
-
-    if (startInput && endInput) {
-        startInput.value = start;
-        endInput.value = end;
-
-        updateVenueOptions();
-        applyPubFilter();
-
-        document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active'));
-        if(activeBtn) activeBtn.classList.add('active');
-    }
+    const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
+    if (startInput && endInput) { startInput.value = start; endInput.value = end; updateVenueOptions(); applyPubFilter(); document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active')); if(activeBtn) activeBtn.classList.add('active'); }
 }
-
 function applyPubFilter() {
-    const activeTab = document.querySelector('.tab-btn.active');
-    const category = activeTab ? activeTab.dataset.cat : 'all';
-
-    const startInput = document.getElementById('year-start');
-    const endInput = document.getElementById('year-end');
-    const searchInput = document.getElementById('search-keyword');
-    const venueSelect = document.getElementById('venue-filter');
-
-    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0;
-    const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
-    const searchKeyword = searchInput ? searchInput.value.toLowerCase() : "";
-    const selectedVenue = venueSelect ? venueSelect.value : 'all';
-
+    const activeTab = document.querySelector('.tab-btn.active'); const category = activeTab ? activeTab.dataset.cat : 'all';
+    const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
+    const searchInput = document.getElementById('search-keyword'); const venueSelect = document.getElementById('venue-filter');
+    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0; const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
+    const searchKeyword = searchInput ? searchInput.value.toLowerCase() : ""; const selectedVenue = venueSelect ? venueSelect.value : 'all';
     currentPubList = publicationData.filter(pub => {
-        // [수정됨] 필터링 시 Poster/Demo 탭 처리
-        let catMatch = false;
-        if (category === 'all') catMatch = true;
-        else if (category === 'poster') catMatch = (pub.category === 'poster' || pub.category === 'demo');
-        else catMatch = (pub.category === category);
-
+        let catMatch = category === 'all' || (category === 'poster' ? (pub.category === 'poster' || pub.category === 'demo') : pub.category === category);
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
-        const textMatch = pub.title.toLowerCase().includes(searchKeyword) ||
-                          pub.authors.toLowerCase().includes(searchKeyword);
+        const textMatch = pub.title.toLowerCase().includes(searchKeyword) || pub.authors.toLowerCase().includes(searchKeyword);
         const venueMatch = selectedVenue === 'all' || pub.venueShort === selectedVenue;
         return catMatch && yearMatch && textMatch && venueMatch;
     });
-
-    currentPubList.sort((a, b) => b.year - a.year);
-
-    currentPage = 1;
-    renderPubPage(currentPage);
-    renderPagination();
+    currentPubList.sort((a, b) => b.year - a.year); currentPage = 1; renderPubPage(currentPage); renderPagination();
 }
-
 function renderPubPage(page) {
-    const container = document.getElementById('pub-list');
-    container.innerHTML = '';
-
-    if (currentPubList.length === 0) {
-        container.innerHTML = '<div style="text-align:center; padding:40px; color:#999;">No publications found.</div>';
-        return;
-    }
-
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, currentPubList.length);
-    const batch = currentPubList.slice(startIndex, endIndex);
-
+    const container = document.getElementById('pub-list'); container.innerHTML = ''; if (currentPubList.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#999;">No publications found.</div>'; return; }
+    const startIndex = (page - 1) * itemsPerPage; const endIndex = Math.min(startIndex + itemsPerPage, currentPubList.length); const batch = currentPubList.slice(startIndex, endIndex);
     let lastYear = null;
-
     batch.forEach(pub => {
-        if (pub.year !== lastYear) {
-            const yearHeader = document.createElement('div');
-            yearHeader.className = 'pub-year-header';
-            yearHeader.innerText = pub.year;
-            container.appendChild(yearHeader);
-            lastYear = pub.year;
-        }
-
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'pub-item';
-
-        // [수정됨] 링크 버튼 로직 (Patent 처리 추가)
+        if (pub.year !== lastYear) { const yearHeader = document.createElement('div'); yearHeader.className = 'pub-year-header'; yearHeader.innerText = pub.year; container.appendChild(yearHeader); lastYear = pub.year; }
+        const itemDiv = document.createElement('div'); itemDiv.className = 'pub-item';
         let linkButtons = '';
-
         if (pub.link && !pub.link.includes('youtu')) {
-            let btnText = "Paper";
-            let btnIcon = "fa-file-alt";
-
-            if (pub.category === 'patent') {
-                btnText = "Patent";
-                btnIcon = "fa-certificate"; // 인증서 아이콘
-            }
-
+            let btnText = pub.category === 'patent' ? "Patent" : "Paper";
+            let btnIcon = pub.category === 'patent' ? "fa-certificate" : "fa-file-alt";
             linkButtons += `<a href="${pub.link}" class="pub-link btn-paper" target="_blank"><i class="fas ${btnIcon}"></i><span>${btnText}</span></a>`;
         }
-
         let videoUrl = pub.video || (pub.link && pub.link.includes('youtu') ? pub.link : null);
-        if (videoUrl) {
-            linkButtons += `<a href="${videoUrl}" class="pub-link btn-video" target="_blank"><i class="fab fa-youtube"></i><span>Video</span></a>`;
-        }
-
-        const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`;
-        const venueBadge = (pub.category === 'patent' && pub.venueShort) ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
+        if (videoUrl) linkButtons += `<a href="${videoUrl}" class="pub-link btn-video" target="_blank"><i class="fab fa-youtube"></i><span>Video</span></a>`;
+        const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`; const venueBadge = (pub.category === 'patent' && pub.venueShort) ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
         const awardRegex = /(Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)/i;
-        let displayTitle = pub.title.replace('👑', '').trim();
-        if (pub.venue && awardRegex.test(pub.venue)) displayTitle = "👑 " + displayTitle;
-        let highlightedVenue = pub.venue || "";
-        if (highlightedVenue) highlightedVenue = highlightedVenue.replace(/(\([^)]*(?:Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)[^)]*\))/gi, '<span class="award-text">$1</span>');
-
-        itemDiv.innerHTML = `
-            <div class="pub-content">
-                <div class="badge-container">${catBadge}${venueBadge}</div>
-                <h3>${displayTitle}</h3>
-                <div class="pub-authors">${pub.authors}</div>
-                <div class="pub-venue">${highlightedVenue}</div>
-            </div>
-            <div class="pub-actions">${linkButtons}</div>`;
+        let displayTitle = pub.title.replace('👑', '').trim(); if (pub.venue && awardRegex.test(pub.venue)) displayTitle = "👑 " + displayTitle;
+        let highlightedVenue = pub.venue || ""; if (highlightedVenue) highlightedVenue = highlightedVenue.replace(/(\([^)]*(?:Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)[^)]*\))/gi, '<span class="award-text">$1</span>');
+        itemDiv.innerHTML = `<div class="pub-content"><div class="badge-container">${catBadge}${venueBadge}</div><h3>${displayTitle}</h3><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${highlightedVenue}</div></div><div class="pub-actions">${linkButtons}</div>`;
         container.appendChild(itemDiv);
     });
 }
-
 function renderPagination() {
-    const oldPag = document.getElementById('pub-pagination');
-    if (oldPag) oldPag.remove();
-
-    const container = document.getElementById('pub-list');
-    if (currentPubList.length <= itemsPerPage) return;
-
-    const totalPages = Math.ceil(currentPubList.length / itemsPerPage);
-    const pagDiv = document.createElement('div');
-    pagDiv.id = 'pub-pagination';
-    pagDiv.className = 'pagination';
-
-    let html = '';
-    if (currentPage > 1) html += `<button class="page-btn prev" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
-
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, currentPage + 2);
-
-    if (startPage > 1) {
-        html += `<button class="page-btn" onclick="changePage(1)">1</button>`;
-        if (startPage > 2) html += `<span class="dots">...</span>`;
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-        html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
-    }
-
-    if (endPage < totalPages) {
-        if (endPage < totalPages - 1) html += `<span class="dots">...</span>`;
-        html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
-    }
-
+    const oldPag = document.getElementById('pub-pagination'); if (oldPag) oldPag.remove();
+    const container = document.getElementById('pub-list'); if (currentPubList.length <= itemsPerPage) return;
+    const totalPages = Math.ceil(currentPubList.length / itemsPerPage); const pagDiv = document.createElement('div'); pagDiv.id = 'pub-pagination'; pagDiv.className = 'pagination';
+    let html = ''; if (currentPage > 1) html += `<button class="page-btn prev" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
+    let startPage = Math.max(1, currentPage - 2); let endPage = Math.min(totalPages, currentPage + 2);
+    if (startPage > 1) { html += `<button class="page-btn" onclick="changePage(1)">1</button>`; if (startPage > 2) html += `<span class="dots">...</span>`; }
+    for (let i = startPage; i <= endPage; i++) html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+    if (endPage < totalPages) { if (endPage < totalPages - 1) html += `<span class="dots">...</span>`; html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`; }
     if (currentPage < totalPages) html += `<button class="page-btn next" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>`;
-
-    pagDiv.innerHTML = html;
-    container.parentNode.appendChild(pagDiv);
+    pagDiv.innerHTML = html; container.parentNode.appendChild(pagDiv);
 }
-
-function changePage(page) {
-    currentPage = page;
-    renderPubPage(page);
-    renderPagination();
-    const pubSection = document.querySelector('.pub-controls');
-    if(pubSection) pubSection.scrollIntoView({ behavior: 'smooth' });
-}
-
+function changePage(page) { currentPage = page; renderPubPage(page); renderPagination(); const pubSection = document.querySelector('.pub-controls'); if(pubSection) pubSection.scrollIntoView({ behavior: 'smooth' }); }
 
 /* =========================================
    [6] 연구/수상/기타 페이지

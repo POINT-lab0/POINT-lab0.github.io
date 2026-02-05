@@ -19,11 +19,22 @@
                     The <strong>Interaction Lab</strong> is an interdisciplinary research group within the Department of Computer Science and Engineering at <strong>POSTECH</strong>.
                 </p>
                 <p>
-                  We explore easy, effective, and novel methods for <strong>interactions between humans and computers</strong>, with a primary focus on physical and tactile feedback. Our research spans the fundamental science and technologies of <strong>haptics, virtual reality (VR), and perception</strong>.
+                    We explore easy, effective, and novel methods for <strong>interactions between humans and computers</strong>, with a primary focus on physical and tactile feedback. Our research spans the fundamental science and technologies of <strong>haptics, virtual reality (VR), and perception</strong>.
                 </p>
             </div>
 
-            <img src="images/lab_intro1.jpg" style="width:100%; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08);" onerror="this.src='https://via.placeholder.com/1200x500?text=Lab+Overview'">
+            <div class="main-slider-container">
+                <div class="slider-wrapper" id="main-slider">
+                    <img src="images/lab_intro1.jpg" class="slide active" alt="Lab View 1">
+                    <img src="images/lab_intro2.jpg" class="slide" alt="Lab View 2">
+                    <img src="images/lab_intro3.jpg" class="slide" alt="Lab View 3">
+                </div>
+
+                <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
+
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
         </div>
     </div>
 
