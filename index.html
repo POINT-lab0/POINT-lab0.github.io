@@ -24,17 +24,21 @@
             </div>
 
             <div class="main-slider-container">
-                <div class="slider-wrapper" id="main-slider">
-                    <img src="images/lab_intro1.jpg" class="slide active" alt="Lab View 1">
-                    <img src="images/lab_intro2.jpg" class="slide" alt="Lab View 2">
-                    <img src="images/lab_intro3.jpg" class="slide" alt="Lab View 3">
-                </div>
+              <div class="slider-wrapper" id="main-slider">
+                  <img src="images/lab_intro1.jpg" class="slide active" alt="Lab View 1">
+                  <img src="images/lab_intro2.jpg" class="slide" alt="Lab View 2">
+                  <img src="images/lab_intro3.jpg" class="slide" alt="Lab View 3">
+              </div>
 
-                <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
+              <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+              </button>
+              <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+              </button>
 
-                <div class="slider-dots" id="slider-dots"></div>
-            </div>
+              <div class="slider-dots" id="slider-dots"></div>
+          </div>
         </div>
     </div>
 

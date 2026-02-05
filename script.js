@@ -72,47 +72,63 @@ function getSortedNews() { if (typeof newsData === 'undefined') return []; retur
 /* =========================================
    [2] 메인 페이지 (Home) & 슬라이더
    ========================================= */
-let currentSlideIndex = 0;
-let slideInterval;
+   let currentSlide = 0;
+   let slideInterval;
 
-function initSlider() {
-    const slider = document.getElementById('main-slider');
-    if (!slider) return;
-    const slides = slider.getElementsByClassName('slide');
-    const dotsContainer = document.getElementById('slider-dots');
-    if (!dotsContainer) return;
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < slides.length; i++) {
-        const dot = document.createElement('div');
-        dot.className = i === 0 ? 'dot active' : 'dot';
-        dot.onclick = () => showSlide(i);
-        dotsContainer.appendChild(dot);
-    }
-    startSlideTimer();
-}
-function startSlideTimer() { stopSlideTimer(); slideInterval = setInterval(() => moveSlide(1), 5000); }
-function stopSlideTimer() { if (slideInterval) clearInterval(slideInterval); }
-function moveSlide(step) {
-    const slides = document.getElementsByClassName('slide');
-    if (!slides.length) return;
-    let newIndex = currentSlideIndex + step;
-    if (newIndex >= slides.length) newIndex = 0;
-    if (newIndex < 0) newIndex = slides.length - 1;
-    showSlide(newIndex);
-}
-function showSlide(index) {
-    currentSlideIndex = index;
-    const slides = document.getElementsByClassName('slide');
-    const dots = document.getElementsByClassName('dot');
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove('active');
-        if (dots[i]) dots[i].classList.remove('active');
-    }
-    slides[index].classList.add('active');
-    if (dots[index]) dots[index].classList.add('active');
-    startSlideTimer();
-}
+   function initSlider() {
+       const slides = document.querySelectorAll('.slide');
+       const dotsContainer = document.getElementById('slider-dots');
 
+       if (!slides.length || !dotsContainer) return;
+
+       // 도트 생성
+       dotsContainer.innerHTML = '';
+       slides.forEach((_, i) => {
+           const dot = document.createElement('div');
+           dot.className = `dot ${i === 0 ? 'active' : ''}`;
+           dot.onclick = () => goToSlide(i);
+           dotsContainer.appendChild(dot);
+       });
+
+       startAutoSlide();
+   }
+
+   function updateSlides() {
+       const slides = document.querySelectorAll('.slide');
+       const dots = document.querySelectorAll('.dot');
+
+       slides.forEach((slide, i) => {
+           slide.classList.toggle('active', i === currentSlide);
+       });
+       dots.forEach((dot, i) => {
+           dot.classList.toggle('active', i === currentSlide);
+       });
+   }
+
+   function moveSlide(direction) {
+       const slides = document.querySelectorAll('.slide');
+       currentSlide = (currentSlide + direction + slides.length) % slides.length;
+       updateSlides();
+       resetAutoSlide();
+   }
+
+   function goToSlide(index) {
+       currentSlide = index;
+       updateSlides();
+       resetAutoSlide();
+   }
+
+   function startAutoSlide() {
+       slideInterval = setInterval(() => moveSlide(1), 5000);
+   }
+
+   function resetAutoSlide() {
+       clearInterval(slideInterval);
+       startAutoSlide();
+   }
+
+   // 페이지 로드 시 실행
+   document.addEventListener('DOMContentLoaded', initSlider);
 function renderHome() {
     initSlider(); // 슬라이더 초기화
     const ytContainer = document.getElementById('youtube-gallery');
