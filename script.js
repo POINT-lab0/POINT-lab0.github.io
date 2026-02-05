@@ -275,20 +275,57 @@ function setYearRange(start, end, activeBtn) {
     const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
     if (startInput && endInput) { startInput.value = start; endInput.value = end; updateVenueOptions(); applyPubFilter(); document.querySelectorAll('.year-chip').forEach(b => b.classList.remove('active')); if(activeBtn) activeBtn.classList.add('active'); }
 }
+/* script.js - applyPubFilter 함수 수정 */
+
 function applyPubFilter() {
-    const activeTab = document.querySelector('.tab-btn.active'); const category = activeTab ? activeTab.dataset.cat : 'all';
-    const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
-    const searchInput = document.getElementById('search-keyword'); const venueSelect = document.getElementById('venue-filter');
-    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0; const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
-    const searchKeyword = searchInput ? searchInput.value.toLowerCase() : ""; const selectedVenue = venueSelect ? venueSelect.value : 'all';
+    const activeTab = document.querySelector('.tab-btn.active');
+    const category = activeTab ? activeTab.dataset.cat : 'all';
+
+    const startInput = document.getElementById('year-start');
+    const endInput = document.getElementById('year-end');
+    const searchInput = document.getElementById('search-keyword');
+    const venueSelect = document.getElementById('venue-filter');
+
+    const startYear = startInput ? (parseInt(startInput.value) || 0) : 0;
+    const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
+    const searchKeyword = searchInput ? searchInput.value.toLowerCase() : "";
+    const selectedVenue = venueSelect ? venueSelect.value : 'all';
+
     currentPubList = publicationData.filter(pub => {
         let catMatch = category === 'all' || (category === 'poster' ? (pub.category === 'poster' || pub.category === 'demo') : pub.category === category);
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
-        const textMatch = pub.title.toLowerCase().includes(searchKeyword) || pub.authors.toLowerCase().includes(searchKeyword);
+        const textMatch = pub.title.toLowerCase().includes(searchKeyword) ||
+                          pub.authors.toLowerCase().includes(searchKeyword);
         const venueMatch = selectedVenue === 'all' || pub.venueShort === selectedVenue;
         return catMatch && yearMatch && textMatch && venueMatch;
     });
-    currentPubList.sort((a, b) => b.year - a.year); currentPage = 1; renderPubPage(currentPage); renderPagination();
+
+    currentPubList.sort((a, b) => b.year - a.year);
+
+    // [신규] 필터링된 개수 표시 로직
+    updatePubCount(currentPubList.length);
+
+    currentPage = 1;
+    renderPubPage(currentPage);
+    renderPagination();
+}
+
+// [신규] 개수 표시 헬퍼 함수
+function updatePubCount(count) {
+    let countContainer = document.getElementById('pub-count-display');
+
+    // 처음 실행 시 컨테이너가 없으면 생성하여 pub-controls 뒤에 삽입
+    if (!countContainer) {
+        countContainer = document.createElement('div');
+        countContainer.id = 'pub-count-display';
+        countContainer.className = 'pub-count-banner';
+        const controls = document.querySelector('.pub-controls');
+        if (controls) {
+            controls.parentNode.insertBefore(countContainer, controls.nextSibling);
+        }
+    }
+
+    countContainer.innerHTML = `Total <strong>${count}</strong> publication${count !== 1 ? 's' : ''} found`;
 }
 function renderPubPage(page) {
     const container = document.getElementById('pub-list'); container.innerHTML = ''; if (currentPubList.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#999;">No publications found.</div>'; return; }

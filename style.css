@@ -476,3 +476,35 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     width: 30px;
     border-radius: 5px;
 }
+
+/* style.css 추가 */
+
+.pub-count-banner {
+    margin: -10px 0 30px 5px; /* 필터창과의 간격 조정 */
+    font-size: 1.05rem;
+    color: var(--gray);
+    border-left: 4px solid var(--secondary); /* 포인트 라인 */
+    padding-left: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+.pub-count-banner strong {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 모바일 대응 */
+@media (max-width: 900px) {
+    .pub-count-banner {
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+        margin: 0 0 20px 0;
+    }
+}
