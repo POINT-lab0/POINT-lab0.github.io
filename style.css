@@ -151,15 +151,65 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     font-size: 1.1rem; font-weight: 700; color: var(--dark); margin: 0; line-height: 1.4; transition: color 0.2s;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
+/* style.css - 프리뷰 관련 스타일 업데이트 */
+
 .news-preview-pane {
-    width: 320px; height: 220px; flex-shrink: 0; position: sticky; top: 20px;
-    border-radius: 20px; overflow: hidden; background: #f1f5f9; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 320px;
+    height: 220px; /* 고정 높이 유지 */
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f1f5f9;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: flex;
+}
+
+.news-preview-content {
+    width: 100%;
+    height: 100%;
+    padding: 25px; /* 패딩 약간 축소 */
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-align: center;
+
+    /* [핵심] 위아래 잘림 방지를 위한 수직 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 요소 간 간격 고정 */
+}
+
+.news-preview-content i {
+    font-size: 32px !important; /* 아이콘 크기 약간 축소 */
+    margin-bottom: 5px;
+}
+
+.news-preview-content h3 {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.3;
+    /* 제목이 너무 길어질 경우 대비 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-preview-content p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+    /* 내용이 넘치지 않게 처리 */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .news-preview-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-.news-preview-content {
-    width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 30px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center;
-}
 
 /* --- Research Areas --- */
 .research-areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px; }

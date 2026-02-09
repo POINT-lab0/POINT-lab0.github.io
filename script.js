@@ -156,11 +156,21 @@ function renderHome() {
         if (latestNews.length > 0) updateHomeNewsPreview(previewPane, latestNews[0]);
     }
 }
+/* script.js - updateHomeNewsPreview 함수 수정 */
+
 function updateHomeNewsPreview(pane, item) {
-    if (item.image) pane.innerHTML = `<img src="${item.image}" class="news-preview-img" alt="Preview">`;
-    else {
-        const shortContent = item.content.length > 120 ? item.content.substring(0, 120) + "..." : item.content;
-        pane.innerHTML = `<div class="news-preview-content"><i class="far fa-newspaper" style="font-size:3rem; margin-bottom:15px; opacity:0.8;"></i><h3 style="margin-bottom:10px;">${item.title}</h3><p style="font-size:0.95rem; opacity:0.9;">${shortContent}</p></div>`;
+    if (item.image) {
+        pane.innerHTML = `<img src="${item.image}" class="news-preview-img" alt="Preview">`;
+    } else {
+        // [수정] 박스 크기에 맞춰 글자 수를 80자로 제한하여 잘림 방지
+        const shortContent = item.content.length > 80 ? item.content.substring(0, 80) + "..." : item.content;
+
+        pane.innerHTML = `
+            <div class="news-preview-content">
+                <i class="far fa-newspaper"></i>
+                <h3>${item.title}</h3>
+                <p>${shortContent}</p>
+            </div>`;
     }
 }
 
