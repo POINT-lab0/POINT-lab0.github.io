@@ -125,9 +125,9 @@ const memberData = [
 
     // Master Students (Current)
     { name: "Soyeon Nam (남소연)", role: "student", email: "synam@postech.ac.kr", image: "images/selfImage/soyeon.jpg", desc: "M.S. Student (CSE)" },
-    { name: "Suheon Nam (남수헌)", role: "student", email: "shnam@postech.ac.kr", image: "images/suheon.jpg", desc: "M.S. Student (CSE)" },
-    { name: "Geunho Lee (이근호)", role: "student", email: "ghlee@postech.ac.kr", image: "images/geungo.jpg", desc: "M.S. Student (CSE)" },
-    { name: "Doohong Kwon (권두홍)", role: "student", email: "dhkwon@postech.ac.kr", image: "images/duhong.jpg", desc: "M.S. Student (CSE)" },
+    { name: "Suheon Nam (남수헌)", role: "student", email: "shnam@postech.ac.kr", image: "images/selfImage/suheon.jpg", desc: "M.S. Student (CSE)" },
+    { name: "Geunho Lee (이근호)", role: "student", email: "ghlee@postech.ac.kr", image: "images/selfImage/geungo.jpg", desc: "M.S. Student (CSE)" },
+    { name: "Doohong Kwon (권두홍)", role: "student", email: "dhkwon@postech.ac.kr", image: "images/selfImage/duhong.jpg", desc: "M.S. Student (CSE)" },
 
     // Alumni (Full list from CV)
     { name: "Seokhee Jeon (전석희)", role: "alumni", desc: "Ph.D. (2010) / Assoc. Prof. at Kyung Hee Univ." },
