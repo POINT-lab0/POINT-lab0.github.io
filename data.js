@@ -121,13 +121,13 @@ const memberData = [
     { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Hyunyong Park (박현용)", role: "student", email: "hypark@postech.ac.kr", image: "images/selfImage/hyunyong.png", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Taehyeong Jeong (정태형)", role: "student", email: "thjeong@postech.ac.kr", image: "images/selfImage/taehyeong.jpg", desc: "Direct Ph.D. Student (CiTE)" },
-    { name: "Juhyeop Lee (이주협)", role: "student", email: "jhlee@postech.ac.kr", image: "images/selfImage/.jpg", desc: "Direct Ph.D. Student (CSE)" },
+    { name: "Juhyeop Lee (이주협)", role: "student", email: "jhlee@postech.ac.kr", image: "images/selfImage/juhyeop.jpg", desc: "Direct Ph.D. Student (CSE)" },
 
     // Master Students (Current)
     { name: "Soyeon Nam (남소연)", role: "student", email: "synam@postech.ac.kr", image: "images/selfImage/soyeon.jpg", desc: "M.S. Student (CSE)" },
     { name: "Suheon Nam (남수헌)", role: "student", email: "shnam@postech.ac.kr", image: "images/suheon.jpg", desc: "M.S. Student (CSE)" },
     { name: "Geunho Lee (이근호)", role: "student", email: "ghlee@postech.ac.kr", image: "images/geungo.jpg", desc: "M.S. Student (CSE)" },
-    { name: "Doohong Kwon (권두홍)", role: "student", email: "dhkwon@postech.ac.kr", image: "images/.jpg", desc: "M.S. Student (CSE)" },
+    { name: "Doohong Kwon (권두홍)", role: "student", email: "dhkwon@postech.ac.kr", image: "images/duhong.jpg", desc: "M.S. Student (CSE)" },
 
     // Alumni (Full list from CV)
     { name: "Seokhee Jeon (전석희)", role: "alumni", desc: "Ph.D. (2010) / Assoc. Prof. at Kyung Hee Univ." },
