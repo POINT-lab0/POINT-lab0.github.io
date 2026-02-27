@@ -433,8 +433,24 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
 
     /* 3. 그리드 및 레이아웃 */
     .youtube-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 유튜브 2x2 */
-    .member-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .member-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* 최소 너비를 140px로 축소 */
+          gap: 15px;
+          padding: 0 10px; /* 양옆 여백 추가로 잘림 방지 */
+      }
     .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
+    /* [추가] 모바일에서 카드 내부 이미지와 텍스트 크기 최적화 */
+    .member-card {
+        padding: 15px 10px;
+    }
+    .member-card img {
+            width: 100px !important; /* 이미지 크기를 줄여서 한 줄에 두 명씩 잘 보이게 함 */
+            height: 100px !important;
+            margin-bottom: 15px;
+    }
+    .name-eng { font-size: 1.1rem; } /* 이름 폰트 크기 조절 */
+    .name-kor { font-size: 0.9rem; }
+    .member-email { font-size: 0.75rem; }
 
     /* 4. 기타 */
     .news-split-layout { flex-direction: column; }
@@ -561,5 +577,12 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
         border-left: none;
         padding-left: 0;
         margin: 0 0 20px 0;
+    }
+}
+
+/* 아주 작은 모바일 기기 (아이폰 SE 등) 대응 */
+@media (max-width: 350px) {
+    .member-grid {
+        grid-template-columns: 1fr; /* 화면이 너무 작으면 1열로 표시 */
     }
 }
