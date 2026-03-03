@@ -146,8 +146,9 @@ const memberData = [
         }
     },
     { name: "Dajin Lee (이다진)", role: "student", email: "dajin@postech.ac.kr", image: "images/selfImage/dajin.JPG", desc: "Direct Ph.D. Student (CiTE)",
-        introduction: "My research explores the multisensory integration of sound and touch, with a particular focus on developing spatial audio-tactile rendering techniques and full-body haptic systems to enhance immersive experiences. Beyond rendering, I am deeply interested in embodied learning, investigating how sensory feedback can facilitate intuitive skill acquisition and cognitive engagement in extended reality.\n\nFrom June to November 2026, I will be a visiting researcher at the University of Waterloo, collaborating with Prof. Oliver Schneider to further explore human-centered haptic design.\n\nI am currently preparing for the next chapter of my career and am actively seeking new research positions starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
-            
+         detail: {   
+             introduction: "My research explores the multisensory integration of sound and touch, with a particular focus on developing spatial audio-tactile rendering techniques and full-body haptic systems to enhance immersive experiences. Beyond rendering, I am deeply interested in embodied learning, investigating how sensory feedback can facilitate intuitive skill acquisition and cognitive engagement in extended reality.\n\nFrom June to November 2026, I will be a visiting researcher at the University of Waterloo, collaborating with Prof. Oliver Schneider to further explore human-centered haptic design.\n\nI am currently preparing for the next chapter of my career and am actively seeking new research positions starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
+                    
             // 리스트 형식 (Keywords)
             keyword: [
                 "Spatial Audio-Tactile Rendering",
@@ -157,7 +158,7 @@ const memberData = [
                 "Driving Simulation",
                 "Accessibility"
             ]
-    }
+        }
     },
     { name: "Donggeun Kim (김동근)", role: "student", email: "dgkim94@postech.ac.kr", image: "images/selfImage/donggeun.jpg", desc: "Direct Ph.D. Student (CiTE)" },
     { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", desc: "Direct Ph.D. Student (CSE)",
@@ -218,15 +219,15 @@ const memberData = [
     },
     { name: "Uison Ju (주의손)", role: "student", email: "uison@postech.ac.kr", image: "images/selfImage/uison.jpg", desc: "Direct Ph.D. Student (CSE)",
         detail: {
-                // 줄글 형식 (Introduction)
-                introduction: "I received my B.S. degree in Computer Science Engineering from POSTECH and am currently pursuing a Ph.D. in the same department.\n\n My research interests include haptics, virtual reality, and artificial intelligence. Through my research, I aspire to contribute to enabling truly realistic virtual reality experiences in the future.",
-                
-                // 리스트 형식 (Keywords)
-                keyword: [
-                    "Haptics",
-                    "Virtual Reality",
-                    "Computer Vision"
-                ]
+            // 줄글 형식 (Introduction)
+            introduction: "I received my B.S. degree in Computer Science Engineering from POSTECH and am currently pursuing a Ph.D. in the same department.\n\n My research interests include haptics, virtual reality, and artificial intelligence. Through my research, I aspire to contribute to enabling truly realistic virtual reality experiences in the future.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptics",
+                "Virtual Reality",
+                "Computer Vision"
+            ]
         }
     },
     { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)",
