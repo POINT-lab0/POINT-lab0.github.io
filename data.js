@@ -116,7 +116,20 @@ const memberData = [
     { name: "Jaejun Park (박재준)", role: "student", email: "jaejun@postech.ac.kr", image: "images/selfImage/jaejun.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Junwoo Kim (김준우)", role: "student", email: "junwoo@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Heeji Son (손희지)", role: "student", email: "heeji@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)" },
-    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)" },
+    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)",
+        detail: {
+            education: [
+                "Ph.D. in Computer Science, POSTECH (2026–Present)",
+                "M.S. in Computer Science and Engineering, POSTECH (2024–2026)",
+                "B.S. in AI Computer Engineering, Handong Global University (2018–2023)"
+            ],
+            position: [
+                "Graduate Researcher, Interaction Laboratory, POSTECH"
+            ],
+            // 위의 옵션 중 하나를 복사해서 붙여넣으세요.
+            research: "My research focuses on Human-Computer Interaction (HCI), specifically in the fields of haptics and virtual reality (VR). I am currently developing a Gaze-Adaptive Haptic Rendering (GA-HR) system for cinematic and VR environments. Additionally, I am passionate about creating assistive technologies for Deaf and Hard-of-Hearing (DHH) users, utilizing multimodal sensory substitution to enhance immersive experiences."
+        }
+    },
     { name: "Uison Ju (주의손)", role: "student", email: "uison@postech.ac.kr", image: "images/selfImage/uison.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Hyunyong Park (박현용)", role: "student", email: "hypark@postech.ac.kr", image: "images/selfImage/hyunyong.jpg", desc: "Direct Ph.D. Student (CSE)" },
