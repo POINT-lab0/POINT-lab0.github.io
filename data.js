@@ -2,15 +2,38 @@
 const newsData = [
     {
         id: 1,
-        date: "2025-07-08",
-        title: "IEEE World Haptics Conference 2025 Held in Seoul",
-        content: "We successfully hosted the IEEE World Haptics Conference 2025. Over 500 researchers gathered to discuss the future of haptic technologies.",
-        image: "images/lab_intro1.jpg", // 뉴스 썸네일 (폴더에 있는 이미지 사용)
-        detailContent: "Detailed report about WHC 2025. Keynote speakers included... (Long text)"
+        date: "2026-03-03",
+        title: "Three Papers Accepted at ACM CHI 2026",
+        content: "Our lab's research on gaming experiences, haptic ring interfaces, and social touch analysis has been accepted at ACM CHI 2026.",
+        image: "images/news/chi2026.jpg", 
+        detailContent: "We are proud to announce that three full papers have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026). The accepted works and authors are: <br><br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong> - Heeji Sohn, Chaeyong Park, and Seungmoon Choi <br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong> - Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park <br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong> - Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim"
     },
-
+    {
+        id: 2,
+        date: "2026-02-15",
+        title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
+        content: "Research on steering wheel vibration and forearm stimulus identification will be presented at IEEE Haptics Symposium 2026.",
+        image: "images/news/haptics_symp.jpg",
+        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium 2026. The accepted papers and authors are: <br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong> - Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi <br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong> - Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
+    },
     {
         id: 3,
+        date: "2025-12-20",
+        title: "Paper Accepted in IEEE Transactions on Haptics",
+        content: "New research on 4D ride emotion modeling has been accepted as a Cover Paper in IEEE ToH.",
+        image: "images/news/toh_cover.jpg",
+        detailContent: "A new journal paper has been accepted for publication: <strong>'Modeling Emotion Induced by Motion in 4D Rides'</strong>. This work has been selected as a <strong>Cover Paper</strong> for IEEE Transactions on Haptics. <br><br><strong>Authors:</strong> Kimin Kwon, Sung H. Han, Dawoon Jeong, Junseong Park, and Seungmoon Choi"
+    },
+    {
+        id: 4,
+        date: "2025-07-08",
+        title: "Successful Hosting of IEEE World Haptics Conference 2025",
+        content: "The Interaction Lab successfully organized WHC 2025 in Seoul, bringing together over 500 haptics experts.",
+        image: "images/lab_intro1.jpg",
+        detailContent: "The Interaction Lab, led by General Chair Prof. Seungmoon Choi, successfully hosted the IEEE World Haptics Conference (WHC) 2025 in Seoul. Our lab members contributed as organizing committee members and presented various research works, including award-winning demonstrations like the 'Automatic Haptic Rendering Pipeline'."
+    },
+    {
+        id: 5,
         date: "2025-03-01",
         title: "Paper Accepted at IEEE VR 2025",
         content: "Our research on 'Human Dance Haptic Motion Effects' has been accepted for presentation at IEEE VR 2025.",
@@ -18,7 +41,7 @@ const newsData = [
         detailContent: "Abstract of the paper: This paper proposes a novel method..."
     },
     {
-        id: 4,
+        id: 6,
         date: "2024-03-01",
         title: "Prof. Choi Appointed as Dept. Head",
         content: "Prof. Seungmoon Choi has been appointed as the Department Head of Computer Science and Engineering at POSTECH.",
