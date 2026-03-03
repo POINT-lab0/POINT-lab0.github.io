@@ -6,7 +6,7 @@ const newsData = [
         title: "Three Papers Accepted at ACM CHI 2026",
         content: "Our lab's research on gaming experiences, haptic ring interfaces, and social touch analysis has been accepted at ACM CHI 2026.",
         image: "images/news/chi2026.png", 
-        detailContent: "We are proud to announce that three full papers have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026). The accepted works and authors are: <br><br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong> \n- Heeji Sohn, Chaeyong Park, and Seungmoon Choi <br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong> \n- Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park <br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong> \n- Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim"
+        detailContent: "We are proud to announce that three full papers have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026). The accepted works and authors are: <br><br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong> \n\n- Heeji Sohn, Chaeyong Park, and Seungmoon Choi <br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong> \n\n- Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park <br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong> \n\n- Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim"
     },
     {
         id: 2,
@@ -14,7 +14,7 @@ const newsData = [
         title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
         content: "Research on steering wheel vibration and forearm stimulus identification will be presented at IEEE Haptics Symposium 2026.",
         image: "images/news/haptics_symp_2026.png",
-        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium 2026. The accepted papers and authors are: <br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong> \n- Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi <br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong> \n- Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
+        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium 2026. The accepted papers and authors are: <br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong> \n\n- Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi <br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong> \n\n- Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
     },
     {
         id: 3,
