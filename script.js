@@ -231,17 +231,17 @@ function renderMemberDetail(index) {
     const websiteLink = m.website ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:15px; color:var(--primary); font-weight:700; text-decoration:none; font-size:1.1rem;"><i class="fas fa-globe"></i> Personal Website</a>` : '';
     
     if (m.detail) {
-        // 1. Education (리스트 형태)
-        if (m.detail.education) {
-            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Education</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.education.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        // 1. Introduction (줄글)
+        if (m.detail.introduction) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Introduction</h4><p style="margin-top:15px; font-size:1.1rem; line-height:1.8; color:#334155; white-space: pre-wrap;">${m.detail.introduction}</p></div>`;
         }
-        // 2. Positions (리스트 형태)
-        if (m.detail.position) {
-            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Positions</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.position.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        // 2. Keywords (리스트)
+        if (m.detail.keyword) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Keywords</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.keyword.map(k => `<li>${k}</li>`).join('')}</ul></div>`;
         }
-        // 3. Research (줄 글 형태)
-        if (m.detail.research) {
-            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Research</h4><p style="margin-top:15px; font-size:1.1rem; line-height:1.8; color:#334155; white-space: pre-wrap;">${m.detail.research}</p></div>`;
+        // 3. Interests (리스트)
+        if (m.detail.interest) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Interests</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.interest.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
         }
     } else { 
         extraInfo = `<div class="info-group"><h4>Info</h4><p>${m.desc}</p></div>`; 
