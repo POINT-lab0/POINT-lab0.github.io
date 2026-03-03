@@ -13,7 +13,7 @@ const newsData = [
         date: "2026-02-15",
         title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
         content: "Research on steering wheel vibration and forearm stimulus identification will be presented at IEEE Haptics Symposium 2026.",
-        image: "images/news/haptics_symp.jpg",
+        image: "images/news/haptics_symp_2026.png",
         detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium 2026. The accepted papers and authors are: <br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong> - Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi <br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong> - Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
     },
     {
