@@ -110,7 +110,7 @@ const memberData = [
         detail: {
             // 줄글 형식
             introduction: "I am Jiwan Lee, a postdoctoral researcher in Computer Science and Engineering at POSTECH, working under the supervision of Prof. Seungmoon Choi. I received my Ph.D. in CSE in 2025.\n\nMy research investigates multisensory perception and haptic experience design, focusing on how sensory cues and their combinations are perceived and translated into authoring for improved experience quality.\n\nI am currently extending my recent work and seeking postdoctoral opportunities that align with my expertise in haptics, multisensory perception, and immersive experience design.",
-            
+
             // 리스트 형식 (Keywords)
             keyword: [
                 "Haptics",
@@ -118,7 +118,7 @@ const memberData = [
                 "VR/AR",
                 "Psychophysics"
             ],
-            
+
             // 리스트 형식 (Interests)
             interest: [
                 "Multisensory Perception (Cross-modal Interaction, Multisensory Integration)",
@@ -132,7 +132,7 @@ const memberData = [
     // Ph.D. Students (Current)
     { name: "Jungeun Lee (이정은)", role: "student", email: "jungeun@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", desc: "Ph.D. Student, Robotics" },
     { name: "Dajin Lee (이다진)", role: "student", email: "dajin@postech.ac.kr", image: "images/selfImage/dajin.JPG", desc: "Direct Ph.D. Student (CiTE)" },
-    { name: "Donggeun Kim (김동근)", role: "student", email: "dgkim@postech.ac.kr", image: "images/selfImage/donggeun.jpg", desc: "Direct Ph.D. Student (CiTE)" },
+    { name: "Donggeun Kim (김동근)", role: "student", email: "dgkim94@postech.ac.kr", image: "images/selfImage/donggeun.jpg", desc: "Direct Ph.D. Student (CiTE)" },
     { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Jaejun Park (박재준)", role: "student", email: "jaejun@postech.ac.kr", image: "images/selfImage/jaejun.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Junwoo Kim (김준우)", role: "student", email: "junwoo@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
