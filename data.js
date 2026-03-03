@@ -5,7 +5,7 @@ const newsData = [
         date: "2026-03-03",
         title: "Three Papers Accepted at ACM CHI 2026",
         content: "Our lab's research on gaming experiences, haptic ring interfaces, and social touch analysis has been accepted at ACM CHI 2026.",
-        image: "images/news/chi2026.jpg", 
+        image: "images/news/chi2026.png", 
         detailContent: "We are proud to announce that three full papers have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026). The accepted works and authors are: <br><br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong> - Heeji Sohn, Chaeyong Park, and Seungmoon Choi <br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong> - Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park <br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong> - Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim"
     },
     {
