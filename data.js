@@ -130,24 +130,178 @@ const memberData = [
     },
 
     // Ph.D. Students (Current)
-    { name: "Jungeun Lee (이정은)", role: "student", email: "jungeun@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", desc: "Ph.D. Student, Robotics" },
-    { name: "Dajin Lee (이다진)", role: "student", email: "dajin@postech.ac.kr", image: "images/selfImage/dajin.JPG", desc: "Direct Ph.D. Student (CiTE)" },
+    { name: "Jungeun Lee (이정은)", role: "student", email: "jungeun@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", desc: "Ph.D. Student, Robotics",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am Jungeun Lee, a Ph.D. candidate in the Department of Convergence IT Engineering at POSTECH, advised by Prof. Seungmoon Choi.\n\n My research centers on Human-Robot Interaction (HRI) and motor learning, with a focus on haptic guidance to facilitate effective robot teleoperation. Beyond guidance, I am interested in creating new interaction methods and haptic devices to enhance user experience in Virtual Reality.\n\nAs I approach the final stage of my doctoral journey, I am looking forward to transitioning into new research opportunities starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Human-Robot Interaction (HRI)",
+                "Multimodal Haptic Rendering",
+                "Haptic Interaction",
+                "Haptic Hardware Design",
+                "Virtual Reality"
+            ]
+        }
+    },
+    { name: "Dajin Lee (이다진)", role: "student", email: "dajin@postech.ac.kr", image: "images/selfImage/dajin.JPG", desc: "Direct Ph.D. Student (CiTE)",
+        introduction: "My research explores the multisensory integration of sound and touch, with a particular focus on developing spatial audio-tactile rendering techniques and full-body haptic systems to enhance immersive experiences. Beyond rendering, I am deeply interested in embodied learning, investigating how sensory feedback can facilitate intuitive skill acquisition and cognitive engagement in extended reality.\n\nFrom June to November 2026, I will be a visiting researcher at the University of Waterloo, collaborating with Prof. Oliver Schneider to further explore human-centered haptic design.\n\nI am currently preparing for the next chapter of my career and am actively seeking new research positions starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Spatial Audio-Tactile Rendering",
+                "Full-body Haptic Perception",
+                "Embodied Learning",
+                "VR/AR",
+                "Driving Simulation",
+                "Accessibility"
+            ]
+    }
+    },
     { name: "Donggeun Kim (김동근)", role: "student", email: "dgkim94@postech.ac.kr", image: "images/selfImage/donggeun.jpg", desc: "Direct Ph.D. Student (CiTE)" },
-    { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
+    { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am a Ph.D. student in the Interaction Lab at POSTECH. I am deeply interested in haptics and virtual reality, and I am currently exploring research on intuitive and realistic interactions with virtual objects.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptics",
+                "Human-Computer Interaction",
+                "Virtual Reality"
+            ]
+        }
+    },
     { name: "Jaejun Park (박재준)", role: "student", email: "jaejun@postech.ac.kr", image: "images/selfImage/jaejun.jpg", desc: "Direct Ph.D. Student (CSE)" },
-    { name: "Junwoo Kim (김준우)", role: "student", email: "junwoo@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
-    { name: "Heeji Son (손희지)", role: "student", email: "heeji@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)" },
-    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)" },
-    { name: "Uison Ju (주의손)", role: "student", email: "uison@postech.ac.kr", image: "images/selfImage/uison.jpg", desc: "Direct Ph.D. Student (CSE)" },
-    { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)" },
-    { name: "Hyunyong Park (박현용)", role: "student", email: "hypark@postech.ac.kr", image: "images/selfImage/hyunyong.jpg", desc: "Direct Ph.D. Student (CSE)" },
+    { name: "Junwoo Kim (김준우)", role: "student", email: "junwoo@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+                // 줄글 형식 (Introduction)
+                introduction: "I am a Ph.D. student at the Interaction Lab in the Computer Science Engineering Department at POSTECH.\n\n I dream of providing realistic haptic feedback for immersive user experiences. I'm interested in various stimuli, including heat, vibration, force, and even motion effects. I like taking walks, especially when I travel to other cities for conferences.",
+                
+                // 리스트 형식 (Keywords)
+                keyword: [
+                    "Haptics",
+                    "Kinesthetic Rendering",
+                    "Virtual Reality",
+                    "Automatic Generation"
+                ]
+        }
+    },
+    { name: "Heeji Son (손희지)", role: "student", email: "heeji@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am a Ph.D. student in Computer Science and Engineering, with research interests in Haptics and Human-Computer Interaction (HCI).\n\n My research explores the design and evaluation of interactive systems, with a focus on haptic feedback to enhance user experience in gaming, immersive systems, and virtual environments.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptics",
+                "HCI",
+                "Gaming Experience"
+            ]
+        }
+    },
+    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction) - 요청하신 학위 배경 추가
+            introduction: "I received my Master's degree from POSTECH and am currently pursuing a Ph.D. in the same institution.\n\n I am a researcher deeply interested in immersive multimedia content technology driven by Artificial Intelligence. My primary goal is to develop advanced haptic rendering systems that enhance realism and content appreciation in next-generation VR and MR systems. I firmly believe in the bright future of AR glasses and am committed to pioneering haptic solutions that will define the next era of wearable interactive media.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "AI in Multimedia",
+                "Haptic Rendering",
+                "VR/MR Systems",
+                "AR Glasses Technology",
+                "Immersive Experience"
+            ]
+        }
+    },
+    { name: "Uison Ju (주의손)", role: "student", email: "uison@postech.ac.kr", image: "images/selfImage/uison.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+                // 줄글 형식 (Introduction)
+                introduction: "I received my B.S. degree in Computer Science Engineering from POSTECH and am currently pursuing a Ph.D. in the same department.\n\n My research interests include haptics, virtual reality, and artificial intelligence. Through my research, I aspire to contribute to enabling truly realistic virtual reality experiences in the future.",
+                
+                // 리스트 형식 (Keywords)
+                keyword: [
+                    "Haptics",
+                    "Virtual Reality",
+                    "Computer Vision"
+                ]
+        }
+    },
+    { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am a direct Ph.D. student at the Interaction Lab in the Computer Science Engineering Department at POSTECH.\n\n I’m interested in designing immersive VR-based human–robot interaction systems that leverage multimodal haptic feedback to improve user performance and embodiment. My research focuses on gesture-based teleoperation and shared-control interfaces, aiming to make robot control more intuitive, safe, and reliable.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptics",
+                "Robotics",
+                "Virtual Reality"
+            ]
+        }
+    },
+    { name: "Hyunyong Park (박현용)", role: "student", email: "hypark@postech.ac.kr", image: "images/selfImage/hyunyong.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I'm Hyunyong Park, a Ph.D. student at Pohang University of Science and Technology (POSTECH).\n\n My goal is to improve user experience and create more enjoyable, immersive, and realistic interactions through haptics and virtual reality. I am interested in Human-Computer Interaction (HCI), Virtual Reality (VR), and Haptics.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptic with Virtual Reality",
+                "Human-Computer Interaction"
+            ]
+        }
+    },
     { name: "Taehyeong Jeong (정태형)", role: "student", email: "thjeong@postech.ac.kr", image: "images/selfImage/taehyeong.jpg", desc: "Direct Ph.D. Student (CiTE)" },
-    { name: "Juhyeop Lee (이주협)", role: "student", email: "jhlee@postech.ac.kr", image: "images/selfImage/juhyeop.jpg", desc: "Direct Ph.D. Student (CSE)" },
+    { name: "Juhyeop Lee (이주협)", role: "student", email: "jhlee@postech.ac.kr", image: "images/selfImage/juhyeop.jpg", desc: "Direct Ph.D. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I graduated from Sogang University with a degree in Computer Science and am currently pursuing an integrated Ph.D. program at POSTECH.\n\n I am particularly passionate about VR and aim to contribute to its advancement by integrating haptics to create more immersive experiences through my doctoral research.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "VR/AR",
+                "Haptics",
+                "Perception",
+                "AI"
+            ]
+        }
+    },
 
     // Master Students (Current)
-    { name: "Soyeon Nam (남소연)", role: "student", email: "synam@postech.ac.kr", image: "images/selfImage/soyeon.jpg", desc: "M.S. Student (CSE)" },
+    { name: "Soyeon Nam (남소연)", role: "student", email: "synam@postech.ac.kr", image: "images/selfImage/soyeon.jpg", desc: "M.S. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am an M.S. student at the Interaction Lab, POSTECH, in Pohang, South Korea.\n\n I am interested in multimodal interaction and perception in virtual environments. My work explores how haptics and sound contribute to the realism and overall quality of user experience in interactive systems. Beyond my research, I enjoy traveling and trying new experiences.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptic-Audio Rendering",
+                "Multimodal Interaction",
+                "VR/AR",
+                "AI in HCI",
+                "Human-Computer Interaction"
+            ]
+        }
+    },
     { name: "Suheon Nam (남수헌)", role: "student", email: "shnam@postech.ac.kr", image: "images/selfImage/suheon.jpg", desc: "M.S. Student (CSE)" },
-    { name: "Geunho Lee (이근호)", role: "student", email: "ghlee@postech.ac.kr", image: "images/selfImage/geunho.png", desc: "M.S. Student (CSE)" },
+    { name: "Geunho Lee (이근호)", role: "student", email: "ghlee@postech.ac.kr", image: "images/selfImage/geunho.png", desc: "M.S. Student (CSE)",
+        detail: {
+            // 줄글 형식 (Introduction)
+            introduction: "I am a Master's student in the Interaction Lab at POSTECH, where I explore the intersection of haptics, perception, and human-computer interaction.\n\n I am particularly drawn to questions about how touch can serve as a primary channel for understanding and navigating the world—from constructing spatial mental models through haptic feedback alone, to designing systems where touch plays a central, indispensable role in everyday life. Beyond research, I believe in building a broad foundation of experience across diverse fields and perspectives.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptic Perception & Spatial Cognition",
+                "Multimodal Interaction Design",
+                "Accessible Haptic Technology",
+                "Real-time Haptic Rendering",
+                "Cross-domain HCI Applications"
+            ]
+        }
+    },
     { name: "Doohong Kwon (권두홍)", role: "student", email: "dhkwon@postech.ac.kr", image: "images/selfImage/duhong.jpg", desc: "M.S. Student (CSE)" },
 
     // Alumni (Full list from CV)
