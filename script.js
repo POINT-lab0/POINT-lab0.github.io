@@ -224,12 +224,29 @@ function createMemberCard(m, index) {
     return `<div class="member-card" onclick="location.href='members.html?id=${index}'"><img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">${keyword ? `<span class="member-keyword">${keyword}</span>` : ''}<div class="member-name-group"><div class="name-eng">${engName}</div>${korName ? `<div class="name-kor">${korName}</div>` : ''}</div><p class="member-email">${m.email || ''}</p></div>`;
 }
 function renderMemberDetail(index) {
-    const m = memberData[index]; const container = document.querySelector('.container'); let extraInfo = ''; const imgSrc = m.detailImage || m.image; const websiteLink = m.website ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:15px; color:var(--primary); font-weight:700; text-decoration:none; font-size:1.1rem;"><i class="fas fa-globe"></i> Personal Website</a>` : '';
+    const m = memberData[index]; 
+    const container = document.querySelector('.container'); 
+    let extraInfo = ''; 
+    const imgSrc = m.detailImage || m.image; 
+    const websiteLink = m.website ? `<a href="${m.website}" target="_blank" style="display:inline-block; margin-top:15px; color:var(--primary); font-weight:700; text-decoration:none; font-size:1.1rem;"><i class="fas fa-globe"></i> Personal Website</a>` : '';
+    
     if (m.detail) {
-        if (m.detail.education) extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Education</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.education.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
-        if (m.detail.position) extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Positions</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.position.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
-        if (m.detail.membership) extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Memberships</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.membership.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
-    } else { extraInfo = `<div class="info-group"><h4>Info</h4><p>${m.desc}</p></div>`; }
+        // 1. Education (리스트 형태)
+        if (m.detail.education) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Education</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.education.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        }
+        // 2. Positions (리스트 형태)
+        if (m.detail.position) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Positions</h4><ul style="padding-left:20px; margin-top:15px; font-size:1.1rem; line-height:1.8;">${m.detail.position.map(e => `<li>${e}</li>`).join('')}</ul></div>`;
+        }
+        // 3. Research (줄 글 형태)
+        if (m.detail.research) {
+            extraInfo += `<div class="info-group" style="margin-bottom:30px;"><h4 style="color:var(--primary); border-bottom:2px solid #f1f5f9; padding-bottom:10px; font-size:1.3rem;">Research</h4><p style="margin-top:15px; font-size:1.1rem; line-height:1.8; color:#334155; white-space: pre-wrap;">${m.detail.research}</p></div>`;
+        }
+    } else { 
+        extraInfo = `<div class="info-group"><h4>Info</h4><p>${m.desc}</p></div>`; 
+    }
+
     container.innerHTML = `<div style="max-width:900px; margin:0 auto; padding-top:20px;"><a href="members.html" class="back-btn" style="margin-bottom:50px; display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--dark); text-decoration:none; font-size:1.1rem;"><i class="fas fa-arrow-left"></i> Back to Members</a><div style="text-align:center; margin-bottom:60px;"><img src="${imgSrc}" class="detail-profile-img" onerror="this.src='images/member_placeholder.png'"><h1 style="font-size:3rem; margin:30px 0 10px; font-weight:800;">${m.name}</h1><p style="color:#64748b; font-size:1.3rem; margin-bottom:15px;">${m.email || ''}</p>${websiteLink}</div><div style="background:#fff; padding:50px; border-radius:30px; box-shadow:0 10px 40px rgba(0,0,0,0.05);">${extraInfo}</div></div>`;
     window.scrollTo(0, 0);
 }
