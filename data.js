@@ -106,7 +106,28 @@ const memberData = [
         }
     },
     // Researchers
-    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", desc: "Post-Doctoral Researcher, 4D motion" },
+    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", desc: "Post-Doctoral Researcher, 4D motion",
+        detail: {
+            // 줄글 형식
+            introduction: "I am Jiwan Lee, a postdoctoral researcher in Computer Science and Engineering at POSTECH, working under the supervision of Prof. Seungmoon Choi. I received my Ph.D. in CSE in 2025.\n\nMy research investigates multisensory perception and haptic experience design, focusing on how sensory cues and their combinations are perceived and translated into authoring for improved experience quality.\n\nI am currently extending my recent work and seeking postdoctoral opportunities that align with my expertise in haptics, multisensory perception, and immersive experience design.",
+            
+            // 리스트 형식 (Keywords)
+            keyword: [
+                "Haptics",
+                "HCI",
+                "VR/AR",
+                "Psychophysics"
+            ],
+            
+            // 리스트 형식 (Interests)
+            interest: [
+                "Multisensory Perception (Cross-modal Interaction, Multisensory Integration)",
+                "Self-motion Perception and Rendering",
+                "Haptic Experience Design",
+                "Automatic Haptic Rendering"
+            ]
+        }
+    },
 
     // Ph.D. Students (Current)
     { name: "Jungeun Lee (이정은)", role: "student", email: "jungeun@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", desc: "Ph.D. Student, Robotics" },
@@ -116,20 +137,7 @@ const memberData = [
     { name: "Jaejun Park (박재준)", role: "student", email: "jaejun@postech.ac.kr", image: "images/selfImage/jaejun.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Junwoo Kim (김준우)", role: "student", email: "junwoo@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Heeji Son (손희지)", role: "student", email: "heeji@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)" },
-    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)",
-        detail: {
-            education: [
-                "Ph.D. in Computer Science, POSTECH (2026–Present)",
-                "M.S. in Computer Science and Engineering, POSTECH (2024–2026)",
-                "B.S. in AI Computer Engineering, Handong Global University (2018–2023)"
-            ],
-            position: [
-                "Graduate Researcher, Interaction Laboratory, POSTECH"
-            ],
-            // 위의 옵션 중 하나를 복사해서 붙여넣으세요.
-            research: "My research focuses on Human-Computer Interaction (HCI), specifically in the fields of haptics and virtual reality (VR). I am currently developing a Gaze-Adaptive Haptic Rendering (GA-HR) system for cinematic and VR environments. Additionally, I am passionate about creating assistive technologies for Deaf and Hard-of-Hearing (DHH) users, utilizing multimodal sensory substitution to enhance immersive experiences."
-        }
-    },
+    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE)" },
     { name: "Uison Ju (주의손)", role: "student", email: "uison@postech.ac.kr", image: "images/selfImage/uison.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Minsung Noh (노민성)", role: "student", email: "msnoh@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)" },
     { name: "Hyunyong Park (박현용)", role: "student", email: "hypark@postech.ac.kr", image: "images/selfImage/hyunyong.jpg", desc: "Direct Ph.D. Student (CSE)" },
