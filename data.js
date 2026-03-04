@@ -188,6 +188,7 @@ const memberData = [
         role: "student",
         email: "dgkim94@postech.ac.kr",
         image: "images/selfImage/donggeun.jpg",
+        website:"https://dgkim94.github.io",
         desc: "Direct Ph.D. Student (CiTE), Perception",
         detail: {
             // 줄글 형식 (Introduction)
