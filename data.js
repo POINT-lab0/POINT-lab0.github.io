@@ -272,7 +272,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Minsung Noh (노민성)", role: "student", email: "noms4694@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)",
+    { name: "Minseong Noh (노민성)", role: "student", email: "noms4694@postech.ac.kr", image: "images/selfImage/minseong.jpg", desc: "Direct Ph.D. Student (CSE)",
         detail: {
             // 줄글 형식 (Introduction)
             introduction: "I am a direct Ph.D. student at the Interaction Lab in the Computer Science Engineering Department at POSTECH.\n\n I’m interested in designing immersive VR-based human–robot interaction systems that leverage multimodal haptic feedback to improve user performance and embodiment. My research focuses on gesture-based teleoperation and shared-control interfaces, aiming to make robot control more intuitive, safe, and reliable.",
