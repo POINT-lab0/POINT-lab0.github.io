@@ -1232,9 +1232,9 @@ const posterDemoPapers = [
         category: "poster",
         venueShort: "CHI",
         title: "Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso",
-        authors: "Dajin Lee and Seungjae Oh",
+        authors: "Dajin Lee and Seungmoon Choi",
         venue: "ACM CHI Conference on Human Factors in Computing Systems (Poster)",
-        link: 
+        link: ""
     },
     // --- 2025 ---
     {
