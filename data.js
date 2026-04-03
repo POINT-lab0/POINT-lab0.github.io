@@ -1226,6 +1226,16 @@ const journalPapers = [
 /* data.js - Poster & Demo Papers (2007-2025) */
 
 const posterDemoPapers = [
+    // --- 2026 ---
+    {
+        year: 2026,
+        category: "poster",
+        venueShort: "CHI",
+        title: "Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso",
+        authors: "Dajin Lee and Seungjae Oh",
+        venue: "ACM CHI Conference on Human Factors in Computing Systems (Poster)",
+        link: 
+    },
     // --- 2025 ---
     {
         year: 2025,
