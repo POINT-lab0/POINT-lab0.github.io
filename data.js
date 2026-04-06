@@ -168,7 +168,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Dajin Lee (이다진)", role: "student", email: "dj1122@postech.ac.kr", image: "images/selfImage/dajin.JPG", desc: "Direct Ph.D. Student (CiTE), Multisensory",
+    { name: "Dajin Lee (이다진)", role: "student", email: "dj1122@postech.ac.kr", image: "images/selfImage/dajin_image.png", desc: "Direct Ph.D. Student (CiTE), Multisensory",
          detail: {
              introduction: "My research explores the multisensory integration of sound and touch, with a particular focus on developing spatial audio-tactile rendering techniques and full-body haptic systems to enhance immersive experiences. Beyond rendering, I am deeply interested in embodied learning, investigating how sensory feedback can facilitate intuitive skill acquisition and cognitive engagement in extended reality.\n\nFrom June to November 2026, I will be a visiting researcher at the University of Waterloo, collaborating with Prof. Oliver Schneider to further explore human-centered haptic design.\n\nI am currently preparing for the next chapter of my career and am actively seeking new research positions starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
 
