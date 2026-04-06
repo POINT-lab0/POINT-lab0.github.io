@@ -153,7 +153,7 @@ const memberData = [
     },
 
     // Ph.D. Students (Current)
-    { name: "Jungeun Lee (이정은)", role: "student", email: "jungeunlee@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", desc: "Ph.D. Student, Robotics",
+    { name: "Jungeun Lee (이정은)", role: "student", email: "jungeunlee@postech.ac.kr", image: "images/selfImage/jeongeun.jpg", website:"https://jungeunlee93.github.io/", desc: "Ph.D. Student, Robotics",
         detail: {
             // 줄글 형식 (Introduction)
             introduction: "I am Jungeun Lee, a Ph.D. candidate in the Department of Convergence IT Engineering at POSTECH, advised by Prof. Seungmoon Choi.\n\n My research centers on Human-Robot Interaction (HRI) and motor learning, with a focus on haptic guidance to facilitate effective robot teleoperation. Beyond guidance, I am interested in creating new interaction methods and haptic devices to enhance user experience in Virtual Reality.\n\nAs I approach the final stage of my doctoral journey, I am looking forward to transitioning into new research opportunities starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
