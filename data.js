@@ -129,7 +129,7 @@ const memberData = [
         }
     },
     // Researchers
-    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan95@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", desc: "Post-Doctoral Researcher, 4D motion",
+    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan95@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", website:"https://leerubi.github.io/", desc: "Post-Doctoral Researcher, 4D motion",
         detail: {
             // 줄글 형식
             introduction: "I am Jiwan Lee, a postdoctoral researcher in Computer Science and Engineering at POSTECH, working under the supervision of Prof. Seungmoon Choi. I received my Ph.D. in CSE in 2025.\n\nMy research investigates multisensory perception and haptic experience design, focusing on how sensory cues and their combinations are perceived and translated into authoring for improved experience quality.\n\nI am currently extending my recent work and seeking postdoctoral opportunities that align with my expertise in haptics, multisensory perception, and immersive experience design.",
