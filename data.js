@@ -129,7 +129,7 @@ const memberData = [
         }
     },
     // Researchers
-    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan95@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", website:"https://leerubi.github.io/", desc: "Post-Doctoral Researcher, 4D motion",
+    { name: "Jiwan Lee (이지완)", role: "student", email: "jiwan95@postech.ac.kr", image: "images/selfImage/Jiwan.jpg", desc: "Post-Doctoral Researcher, 4D motion",
         detail: {
             // 줄글 형식
             introduction: "I am Jiwan Lee, a postdoctoral researcher in Computer Science and Engineering at POSTECH, working under the supervision of Prof. Seungmoon Choi. I received my Ph.D. in CSE in 2025.\n\nMy research investigates multisensory perception and haptic experience design, focusing on how sensory cues and their combinations are perceived and translated into authoring for improved experience quality.\n\nI am currently extending my recent work and seeking postdoctoral opportunities that align with my expertise in haptics, multisensory perception, and immersive experience design.",
@@ -168,7 +168,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Dajin Lee (이다진)", role: "student", email: "dj1122@postech.ac.kr", image: "images/selfImage/dajin_image.png", desc: "Direct Ph.D. Student (CiTE), Multisensory",
+    { name: "Dajin Lee (이다진)", role: "student", email: "dj1122@postech.ac.kr", image: "images/selfImage/dajin_image.png", website:"https://leerubi.github.io/", desc: "Direct Ph.D. Student (CiTE), Multisensory",
          detail: {
              introduction: "My research explores the multisensory integration of sound and touch, with a particular focus on developing spatial audio-tactile rendering techniques and full-body haptic systems to enhance immersive experiences. Beyond rendering, I am deeply interested in embodied learning, investigating how sensory feedback can facilitate intuitive skill acquisition and cognitive engagement in extended reality.\n\nFrom June to November 2026, I will be a visiting researcher at the University of Waterloo, collaborating with Prof. Oliver Schneider to further explore human-centered haptic design.\n\nI am currently preparing for the next chapter of my career and am actively seeking new research positions starting in 2027. I am open to both academic and industrial roles, so please feel free to reach out to me via email for potential collaborations or opportunities.",
 
