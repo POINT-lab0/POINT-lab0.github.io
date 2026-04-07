@@ -329,7 +329,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Suheon Nam (남수헌)", role: "student", email: "suheon1203@postech.ac.kr", image: "images/selfImage/suheon.jpg", desc: "M.S. Student (CSE)",
+    { name: "Suheon Nam (남수헌)", role: "student", email: "suheon1203@postech.ac.kr", image: "images/selfImage/suheon.jpg", website:"https://suheon-1203.github.io/", desc: "M.S. Student (CSE)",
          detail: {
             // 줄글 형식 (Introduction)
             introduction: "I'm a graduate student of the Interaction Lab in POSTECH. I constantly challenge myself and do everything with passion. Specifically, my research lies at the intersection of HCI and haptics, with a core focus on designing and evaluating next-generation wearable interfaces. Besides studying, I feel alive when doing sports, especially basketball. I'm really energetic and passionate.",
