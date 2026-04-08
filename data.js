@@ -512,15 +512,7 @@ const researchData = [
       "interoperability across platforms, enabling consistent sensation reproduction regardless " +
       "of the rendering hardware.",                                        // TODO
     keywords: ["Full-body Haptics", "Metaverse", "Vibrotactile", "Haptic Standards", "Immersive XR"], // TODO
-    papers: [
-      {
-        venueShort: "CHI",
-        title: "Real-time Semantic Full-Body Haptic Feedback Converted from Sound for Virtual Reality Gameplay",
-        authors: "Gyeore Yun and Seungmoon Choi",
-        venue: "ACM CHI 2025",
-        link: ""  // TODO: DOI / URL 추가
-      }
-    ]
+    papers: []
   },
 
   // ── Completed Projects ───────────────────────────────────
