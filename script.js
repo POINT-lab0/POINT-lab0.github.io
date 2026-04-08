@@ -425,13 +425,12 @@ function renderAreaDetail(index) {
     window.scrollTo(0, 0);
 }
 function renderProjectDetail(index) {
+    index = parseInt(index, 10);
     const r = researchData[index];
     const container = document.querySelector('.container');
-    const ongoingList = researchData.filter(p => p.status === 'Ongoing');
-    const ongoingIndex = ongoingList.findIndex((_, i) => researchData.indexOf(ongoingList[i]) === parseInt(index));
     const allIndices = researchData.map((_, i) => i);
     const prevIdx = allIndices.slice(0, index).reverse().find(i => researchData[i].status === r.status);
-    const nextIdx = allIndices.slice(parseInt(index) + 1).find(i => researchData[i].status === r.status);
+    const nextIdx = allIndices.slice(index + 1).find(i => researchData[i].status === r.status);
     const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
 
     // Teaser image
