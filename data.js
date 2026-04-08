@@ -409,23 +409,184 @@ const memberData = [
 ];
 
 // 3. Research Projects (Grants & Contracts)
-const researchData = [
-    // Ongoing Projects (2024년 이후 종료 예정인 것들)
-    { id: "G1", status: "Ongoing", title: "Generative Haptics for Flexible Tactile Interfaces", agency: "IITP", period: "2025-2028", description: "유연소재 촉각 인터페이스에 대한 지능적 촉각 생성과 미세 반응 추론 기술" },
-    { id: "G2", status: "Ongoing", title: "Material- and Shape-Changing Haptic Interface", agency: "NRF", period: "2024-2025", description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발" },
-    { id: "G3", status: "Ongoing", title: "Interaction Framework for Generative Experiences", agency: "NRF (Pioneer)", period: "2024-2025", description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크" },
-    { id: "G4", status: "Ongoing", title: "Human Cognition-Intelligence Augmentation", agency: "IITP (ITRC)", period: "2024-2031", description: "인간 인지-지능 한계 및 장애 극복 증강 기술" },
-    { id: "G5", status: "Ongoing", title: "Hyper-realistic Metaverse Haptics", agency: "NST", period: "2023-2029", description: "초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발" },
-    { id: "G6", status: "Ongoing", title: "Semantic Sound-to-Haptic Automatic Conversion", agency: "NRF", period: "2022-2026", description: "의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성" },
+// ============================================================
+// researchData — Expanded for research-detail.html
+// 각 Ongoing 과제에 아래 필드를 추가했습니다:
+//   tagline   : 한 줄 소개 (60자 이내)
+//   thumbnail : 티저 이미지 경로
+//   overview  : 연구 개요 (150-200자 영문 권장)
+//   keywords  : 핵심 키워드 배열 (3-5개)
+//   papers    : 관련 논문 배열 (journalPapers/confPapers 항목 복사)
+//
+// 담당자가 채워야 할 항목은 TODO 주석으로 표시했습니다.
+// ============================================================
 
-    // Completed Projects (2023년 이전 종료)
-    { id: "G10", status: "Completed", title: "Semantic Audio-to-Haptic Conversion", agency: "Google Research Award", period: "2021-2023", description: "Algorithms and Performance Metrics" },
-    { id: "G12", status: "Completed", title: "Real-Virtual Blended Exhibits for Science Culture", agency: "NRF", period: "2020-2022", description: "과학적 원리의 심도 있는 체화 학습을 위한 실제-가상 혼합형 전시물 개발" },
-    { id: "G13", status: "Completed", title: "Morphable Haptic Controller for VR/AR", agency: "IITP", period: "2020-2022", description: "다형성 햅틱 컨트롤러" },
-    { id: "G14", status: "Completed", title: "Vibration-Mediated Recognition of Hand Contact State", agency: "Microsoft Research Asia", period: "2019-2020", description: "Tangible/Surface Interaction" },
-    { id: "G15", status: "Completed", title: "Automatic Authoring of Physical Motion Effects", agency: "Samsung Research Funding", period: "2018-2023", description: "가상현실을 위한 물리적 및 지각/감성적 동작 효과의 자동 저작" },
-    { id: "G16", status: "Completed", title: "HD Haptic Technology for Hyper Reality Contents", agency: "IITP", period: "2017-2019", description: "HD 촉감 기술 기반 초실감 콘텐츠 재현 기술" },
-    { id: "G20", status: "Completed", title: "Automatic Generation of 4D Haptic Effects", agency: "NRF", period: "2013-2016", description: "몰입형 컨텐츠를 위한 4D 햅틱 효과의 자동 생성 기술" }
+const researchData = [
+
+  // ── Ongoing Projects ─────────────────────────────────────
+
+  {
+    id: "G1",
+    status: "Ongoing",
+    title: "Generative Haptics for Flexible Tactile Interfaces",
+    agency: "IITP",
+    period: "2025-2028",
+    description: "유연소재 촉각 인터페이스에 대한 지능적 촉각 생성과 미세 반응 추론 기술",
+
+    // ── 새로 추가된 필드 ──────────────────────────────────
+    tagline: "", // TODO: 담당자 수정
+    thumbnail: "images/research/g1_teaser.jpg",                             // TODO: 이미지 경로
+    overview:
+      "This project develops AI-driven methods to automatically generate high-fidelity " +
+      "haptic stimuli tailored to the unique material properties of flexible tactile interfaces. " +
+      "By combining generative models with micro-response inference, the system adapts tactile " +
+      "output in real time as the surface deforms, enabling consistent and realistic touch " +
+      "experiences across arbitrary form factors.",                          // TODO: 담당자 수정
+    keywords: ["Generative Haptics", "Flexible Displays", "Tactile Rendering", "Deep Learning", "HCI"], // TODO
+    papers: [
+      // TODO: 해당 과제 관련 논문을 journalPapers / confPapers 에서 복사해 넣으세요
+      // 예시 형식:
+      // {
+      //   venueShort: "ToH",
+      //   title: "Paper title here",
+      //   authors: "Author A, Author B, and Seungmoon Choi",
+      //   venue: "IEEE Transactions on Haptics, vol. X, no. Y, pp. Z",
+      //   link: "https://doi.org/..."
+      // },
+    ]
+  },
+
+  {
+    id: "G2",
+    status: "Ongoing",
+    title: "Material- and Shape-Changing Haptic Interface",
+    agency: "NRF",
+    period: "2024-2025",
+    description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발",
+
+    tagline: "", // TODO
+    thumbnail: "images/research/g2_teaser.jpg",                            // TODO
+    overview:
+      "We design haptic interfaces built on smart materials — such as shape-memory alloys and " +
+      "magnetorheological fluids — that dynamically alter their stiffness and geometry in response " +
+      "to virtual interactions. The goal is to bridge the gap between digital simulation and " +
+      "physical sensation, delivering convincing material properties during VR manipulation tasks.", // TODO
+    keywords: ["Shape-Changing Interfaces", "Smart Materials", "Haptic Devices", "VR", "Soft Robotics"], // TODO
+    papers: []
+  },
+
+  {
+    id: "G3",
+    status: "Ongoing",
+    title: "Interaction Framework for Generative Experiences",
+    agency: "NRF (Pioneer)",
+    period: "2024-2025",
+    description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크",
+
+    tagline: "", // TODO
+    thumbnail: "images/research/g3_teaser.jpg",                                        // TODO
+    overview:
+      "This project builds an interaction framework that links generative AI outputs — including " +
+      "text, image, audio, and video — with real-time multimodal feedback. By coordinating " +
+      "visual, auditory, and haptic channels, the framework enables users to navigate and " +
+      "experience AI-generated content in spatially and temporally coherent ways.",        // TODO
+    keywords: ["Generative AI", "Multimodal Interaction", "XR", "HCI Framework", "Haptics"], // TODO
+    papers: []
+  },
+
+  {
+    id: "G4",
+    status: "Ongoing",
+    title: "Human Cognition-Intelligence Augmentation",
+    agency: "IITP (ITRC)",
+    period: "2024-2031",
+    description: "인간 인지-지능 한계 및 장애 극복 증강 기술",
+
+    tagline: "", // TODO
+    thumbnail: "images/research/g4_teaser.jpg",                             // TODO
+    overview:
+      "A long-term research initiative exploring technologies that augment human cognitive " +
+      "and sensory capabilities. Our lab contributes haptic components — including tactile " +
+      "cueing and sensory substitution — that help users process information beyond natural " +
+      "perceptual limits, with specific focus on assistive applications for people with " +
+      "sensory or motor impairments.",                                        // TODO
+    keywords: ["Cognitive Augmentation", "Assistive Technology", "Haptics", "Sensory Substitution", "Accessibility"], // TODO
+    papers: []
+  },
+
+  {
+    id: "G5",
+    status: "Ongoing",
+    title: "Hyper-realistic Metaverse Haptics",
+    agency: "NST",
+    period: "2023-2029",
+    description: "초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발",
+
+    tagline: "", // TODO
+    thumbnail: "images/research/g5_teaser.jpg",                          // TODO
+    overview:
+      "This project develops an integrated full-body haptic system — spanning vibrotactile, " +
+      "thermal, and kinesthetic channels — that delivers hyper-realistic tactile experiences " +
+      "inside metaverse environments. We also establish haptic content standards to ensure " +
+      "interoperability across platforms, enabling consistent sensation reproduction regardless " +
+      "of the rendering hardware.",                                        // TODO
+    keywords: ["Full-body Haptics", "Metaverse", "Vibrotactile", "Haptic Standards", "Immersive XR"], // TODO
+    papers: [
+      {
+        venueShort: "CHI",
+        title: "Real-time Semantic Full-Body Haptic Feedback Converted from Sound for Virtual Reality Gameplay",
+        authors: "Gyeore Yun and Seungmoon Choi",
+        venue: "ACM CHI 2025",
+        link: ""  // TODO: DOI / URL 추가
+      }
+    ]
+  },
+
+  {
+    id: "G6",
+    status: "Ongoing",
+    title: "Semantic Sound-to-Haptic Automatic Conversion",
+    agency: "NRF",
+    period: "2022-2026",
+    description: "의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성",
+
+    tagline: "", // TODO
+    thumbnail: "images/research/g6_teaser.jpg",                       // TODO
+    overview:
+      "We develop algorithms that automatically convert audio signals into semantically " +
+      "meaningful haptic effects, going beyond simple amplitude mapping to capture the " +
+      "perceptual and contextual meaning of sound. Applications include full-body haptic " +
+      "suits for VR gameplay and accessibility tools that let Deaf and hard-of-hearing " +
+      "users experience sound through touch.",                          // TODO
+    keywords: ["Sound-to-Haptic", "Semantic Conversion", "Accessibility", "DHH", "Full-body Haptics", "VR"], // TODO
+    papers: [
+      {
+        venueShort: "ToH",
+        title: "Sound-to-Touch Crossmodal Pitch Matching for Short Sounds",
+        authors: "Dong-Geun Kim, Jungeun Lee, Gyeore Yun, Hong Z. Tan, and Seungmoon Choi",
+        venue: "IEEE Transactions on Haptics, vol. 17, no. 1, pp. 2–7, 2024",
+        link: "https://doi.org/10.1109/TOH.2023.3338224"
+      },
+      {
+        venueShort: "ToH",
+        title: "Perceptual Alignment of Spatial Auditory and Tactile Stimuli for Effective Directional Cueing",
+        authors: "Dajin Lee and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 31, no. 5, pp. 2589–2599, 2025",
+        link: "https://ieeexplore.ieee.org/document/10916976"
+      }
+    ]
+  },
+
+  // ── Completed Projects ───────────────────────────────────
+  // (기존 항목 그대로 유지 — 상세 필드 미추가)
+
+  { id: "G10", status: "Completed", title: "Semantic Audio-to-Haptic Conversion", agency: "Google Research Award", period: "2021-2023", description: "Algorithms and Performance Metrics" },
+  { id: "G12", status: "Completed", title: "Real-Virtual Blended Exhibits for Science Culture", agency: "NRF", period: "2020-2022", description: "과학적 원리의 심도 있는 체화 학습을 위한 실제-가상 혼합형 전시물 개발" },
+  { id: "G13", status: "Completed", title: "Morphable Haptic Controller for VR/AR", agency: "IITP", period: "2020-2022", description: "다형성 햅틱 컨트롤러" },
+  { id: "G14", status: "Completed", title: "Vibration-Mediated Recognition of Hand Contact State", agency: "Microsoft Research Asia", period: "2019-2020", description: "Tangible/Surface Interaction" },
+  { id: "G15", status: "Completed", title: "Automatic Authoring of Physical Motion Effects", agency: "Samsung Research Funding", period: "2018-2023", description: "가상현실을 위한 물리적 및 지각/감성적 동작 효과의 자동 저작" },
+  { id: "G16", status: "Completed", title: "HD Haptic Technology for Hyper Reality Contents", agency: "IITP", period: "2017-2019", description: "HD 촉감 기술 기반 초실감 콘텐츠 재현 기술" },
+  { id: "G20", status: "Completed", title: "Automatic Generation of 4D Haptic Effects", agency: "NRF", period: "2013-2016", description: "몰입형 컨텐츠를 위한 4D 햅틱 효과의 자동 생성 기술" }
 ];
 
 // data.js (수정됨)
