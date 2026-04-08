@@ -428,7 +428,7 @@ const researchData = [
   {
     id: "G1",
     status: "Ongoing",
-    title: "Generative Haptics for Flexible Tactile Interfaces",
+    title: "Generative Haptics and Fine Response Inference for Flexible Tactile Interfaces",
     agency: "IITP",
     period: "2025-2028",
     description: "유연소재 촉각 인터페이스에 대한 지능적 촉각 생성과 미세 반응 추론 기술",
@@ -459,7 +459,7 @@ const researchData = [
   {
     id: "G2",
     status: "Ongoing",
-    title: "Material- and Shape-Changing Haptic Interface",
+    title: "Development of the Material- and Shape-Changing Haptic Interface using Smart Materials for VR interactions",
     agency: "NRF",
     period: "2024-2025",
     description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발",
@@ -478,7 +478,7 @@ const researchData = [
   {
     id: "G3",
     status: "Ongoing",
-    title: "Interaction Framework for Generative Experiences",
+    title: "Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia: Centering on Social Communication Disorders",
     agency: "NRF (Pioneer)",
     period: "2024-2025",
     description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크",
@@ -497,7 +497,7 @@ const researchData = [
   {
     id: "G4",
     status: "Ongoing",
-    title: "Human Cognition-Intelligence Augmentation",
+    title: "Augmentation Technologies to Overcome the Limitations and Disabilities of Human Cognition and Intelligence",
     agency: "IITP (ITRC)",
     period: "2024-2031",
     description: "인간 인지-지능 한계 및 장애 극복 증강 기술",
@@ -517,7 +517,7 @@ const researchData = [
   {
     id: "G5",
     status: "Ongoing",
-    title: "Hyper-realistic Metaverse Haptics",
+    title: "Development of Tactile Standards and High-Fidelity Integrated Haptic System for the Realization of a Hyper-realistic Metaverse",
     agency: "NST",
     period: "2023-2029",
     description: "초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발",
@@ -542,44 +542,9 @@ const researchData = [
     ]
   },
 
-  {
-    id: "G6",
-    status: "Ongoing",
-    title: "Semantic Sound-to-Haptic Automatic Conversion",
-    agency: "NRF",
-    period: "2022-2026",
-    description: "의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성",
-
-    tagline: "", // TODO
-    thumbnail: "images/research/g6_teaser.jpg",                       // TODO
-    overview:
-      "We develop algorithms that automatically convert audio signals into semantically " +
-      "meaningful haptic effects, going beyond simple amplitude mapping to capture the " +
-      "perceptual and contextual meaning of sound. Applications include full-body haptic " +
-      "suits for VR gameplay and accessibility tools that let Deaf and hard-of-hearing " +
-      "users experience sound through touch.",                          // TODO
-    keywords: ["Sound-to-Haptic", "Semantic Conversion", "Accessibility", "DHH", "Full-body Haptics", "VR"], // TODO
-    papers: [
-      {
-        venueShort: "ToH",
-        title: "Sound-to-Touch Crossmodal Pitch Matching for Short Sounds",
-        authors: "Dong-Geun Kim, Jungeun Lee, Gyeore Yun, Hong Z. Tan, and Seungmoon Choi",
-        venue: "IEEE Transactions on Haptics, vol. 17, no. 1, pp. 2–7, 2024",
-        link: "https://doi.org/10.1109/TOH.2023.3338224"
-      },
-      {
-        venueShort: "ToH",
-        title: "Perceptual Alignment of Spatial Auditory and Tactile Stimuli for Effective Directional Cueing",
-        authors: "Dajin Lee and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 31, no. 5, pp. 2589–2599, 2025",
-        link: "https://ieeexplore.ieee.org/document/10916976"
-      }
-    ]
-  },
-
   // ── Completed Projects ───────────────────────────────────
   // (기존 항목 그대로 유지 — 상세 필드 미추가)
-
+  { id: "G9" , status: "Completed", title: "Semantic Sound-to-Haptic Automatic Conversion: Metaverse, Full-body Haptic Effects, and Accessibility", agency: "NRF", period: "2022-2026", description: "의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성" },
   { id: "G10", status: "Completed", title: "Semantic Audio-to-Haptic Conversion", agency: "Google Research Award", period: "2021-2023", description: "Algorithms and Performance Metrics" },
   { id: "G12", status: "Completed", title: "Real-Virtual Blended Exhibits for Science Culture", agency: "NRF", period: "2020-2022", description: "과학적 원리의 심도 있는 체화 학습을 위한 실제-가상 혼합형 전시물 개발" },
   { id: "G13", status: "Completed", title: "Morphable Haptic Controller for VR/AR", agency: "IITP", period: "2020-2022", description: "다형성 햅틱 컨트롤러" },
