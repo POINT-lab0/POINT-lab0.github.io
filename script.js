@@ -425,8 +425,98 @@ function renderAreaDetail(index) {
     window.scrollTo(0, 0);
 }
 function renderProjectDetail(index) {
-    const r = researchData[index]; const container = document.querySelector('.container'); const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
-    container.innerHTML = `<div style="max-width:800px; margin:0 auto; padding-top:20px;"><a href="research.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Projects</a><div style="margin-bottom:20px;"><span style="background:${statusColor}; color:white; padding:6px 15px; border-radius:20px; font-size:0.9rem; font-weight:bold;">${r.status}</span></div><h1 style="font-size:2.2rem; margin-bottom:15px; line-height:1.3;">${r.title}</h1><p style="color:#666; font-size:1.1rem; margin-bottom:40px; border-left:4px solid var(--secondary); padding-left:15px;"><strong>${r.agency}</strong> <br> ${r.period}</p><div style="background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:1.1rem; line-height:1.8;">${r.description}</div></div>`;
+    const r = researchData[index];
+    const container = document.querySelector('.container');
+    const ongoingList = researchData.filter(p => p.status === 'Ongoing');
+    const ongoingIndex = ongoingList.findIndex((_, i) => researchData.indexOf(ongoingList[i]) === parseInt(index));
+    const allIndices = researchData.map((_, i) => i);
+    const prevIdx = allIndices.slice(0, index).reverse().find(i => researchData[i].status === r.status);
+    const nextIdx = allIndices.slice(parseInt(index) + 1).find(i => researchData[i].status === r.status);
+    const statusColor = r.status === 'Ongoing' ? 'var(--primary)' : '#64748b';
+
+    // Teaser image
+    const teaserHtml = r.thumbnail
+        ? `<img src="${r.thumbnail}" alt="${r.title}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#8aaccc;gap:8px\'><i class=\'fas fa-image\' style=\'font-size:2rem\'></i><span style=\'font-size:13px\'>Teaser image</span></div>'">`
+        : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#8aaccc;gap:8px;"><i class="fas fa-image" style="font-size:2rem;"></i><span style="font-size:13px;">Teaser image</span></div>`;
+
+    // Keywords
+    const kwHtml = (r.keywords && r.keywords.length)
+        ? r.keywords.map(k => `<span style="background:#e6f1fb;color:#0c447c;font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;border:1px solid #b5d4f4;">${k}</span>`).join('')
+        : '<span style="color:#8a9ab0;font-size:13px;">—</span>';
+
+    // Related papers
+    const papersHtml = (r.papers && r.papers.length)
+        ? r.papers.map(p => `
+            <div style="background:#fff;border:1px solid #dde5f0;border-radius:10px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;">
+                <span style="background:#EEEDFE;color:#3C3489;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;white-space:nowrap;margin-top:2px;letter-spacing:.05em;">${p.venueShort || ''}</span>
+                <div>
+                    <div style="font-size:14px;font-weight:600;color:#1a2540;margin-bottom:3px;line-height:1.4;">${p.title}</div>
+                    <div style="font-size:12px;color:#6a7a90;margin-bottom:3px;">${p.authors}</div>
+                    <div style="font-size:12px;color:#8a9ab0;font-style:italic;margin-bottom:4px;">${p.venue}</div>
+                    ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" style="font-size:12px;color:#185FA5;text-decoration:none;font-weight:500;">View paper →</a>` : ''}
+                </div>
+            </div>`).join('')
+        : '<p style="color:#8a9ab0;font-size:14px;margin:0;">No publications linked yet.</p>';
+
+    // Prev / Next navigation
+    const truncate = (t, n) => t && t.length > n ? t.slice(0, n) + '…' : (t || '');
+    const prevBtn = prevIdx !== undefined
+        ? `<a href="research.html?id=${prevIdx}" style="background:#fff;border:1px solid #d0dae8;border-radius:8px;padding:10px 16px;font-size:13px;color:#3a4a60;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><i class="fas fa-chevron-left"></i> ${truncate(researchData[prevIdx].title, 32)}</a>`
+        : `<span style="opacity:.3;font-size:13px;padding:10px 0;">No previous</span>`;
+    const nextBtn = nextIdx !== undefined
+        ? `<a href="research.html?id=${nextIdx}" style="background:#fff;border:1px solid #d0dae8;border-radius:8px;padding:10px 16px;font-size:13px;color:#3a4a60;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">${truncate(researchData[nextIdx].title, 32)} <i class="fas fa-chevron-right"></i></a>`
+        : `<span style="opacity:.3;font-size:13px;padding:10px 0;">No next</span>`;
+
+    container.innerHTML = `
+        <div style="max-width:960px;margin:0 auto;padding-top:20px;padding-bottom:80px;">
+
+            <!-- Back button -->
+            <a href="research.html" class="back-btn" style="margin-bottom:28px;display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--dark);text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to Research
+            </a>
+
+            <!-- Hero -->
+            <div style="background:#1a3a6b;border-radius:16px;padding:36px 32px 30px;margin-bottom:28px;">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:14px;">
+                    <span style="background:${statusColor};color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;">${r.status}</span>
+                    <span style="background:rgba(255,255,255,.14);color:#c8daf4;font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px;">${r.agency}</span>
+                    <span style="color:#7fa8d4;font-size:12px;border:1px solid rgba(127,168,212,.35);padding:3px 10px;border-radius:20px;">${r.period}</span>
+                </div>
+                <h1 style="color:#fff;font-size:24px;font-weight:700;line-height:1.38;margin:0 0 12px;">${r.title}</h1>
+                ${r.tagline ? `<p style="color:#93b8e8;font-size:14px;font-style:italic;border-left:3px solid #378ADD;padding-left:12px;margin:0;">${r.tagline}</p>` : ''}
+            </div>
+
+            <!-- Teaser image -->
+            <div style="width:100%;aspect-ratio:16/7;background:#cdd8e6;border-radius:12px;margin-bottom:28px;overflow:hidden;border:1px solid #bccbdb;">
+                ${teaserHtml}
+            </div>
+
+            <!-- Overview + Keywords -->
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-bottom:28px;">
+                <div>
+                    <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a9ab0;margin:0 0 10px;">Research overview</p>
+                    <p style="font-size:15px;line-height:1.8;color:#2a3040;margin:0;">${r.overview || r.description || ''}</p>
+                </div>
+                <div>
+                    <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a9ab0;margin:0 0 10px;">Keywords</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;">${kwHtml}</div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr style="border:none;border-top:1px solid #dde5f0;margin:0 0 24px;" />
+
+            <!-- Related publications -->
+            <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a9ab0;margin:0 0 14px;">Related publications</p>
+            ${papersHtml}
+
+            <!-- Prev / Next -->
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:36px;">
+                ${prevBtn}
+                ${nextBtn}
+            </div>
+        </div>`;
+
     window.scrollTo(0, 0);
 }
 function renderAwardsPage() {
