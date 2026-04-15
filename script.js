@@ -435,8 +435,8 @@ function renderProjectDetail(index) {
 
     // Teaser image
     const teaserHtml = r.thumbnail
-        ? `<img src="${r.thumbnail}" alt="${r.title}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#8aaccc;gap:8px\'><i class=\'fas fa-image\' style=\'font-size:2rem\'></i><span style=\'font-size:13px\'>Teaser image</span></div>'">`
-        : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#8aaccc;gap:8px;"><i class="fas fa-image" style="font-size:2rem;"></i><span style="font-size:13px;">Teaser image</span></div>`;
+        ? `<img src="${r.thumbnail}" alt="${r.title}" style="width:100%;height:auto;display:block;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 0;color:#8aaccc;gap:8px\'><i class=\'fas fa-image\' style=\'font-size:2rem\'></i><span style=\'font-size:13px\'>Teaser image</span></div>'">`
+        : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 0;color:#8aaccc;gap:8px;"><i class="fas fa-image" style="font-size:2rem;"></i><span style="font-size:13px;">Teaser image</span></div>`;
 
     // Keywords
     const kwHtml = (r.keywords && r.keywords.length)
@@ -486,7 +486,7 @@ function renderProjectDetail(index) {
             </div>
 
             <!-- Teaser image -->
-            <div style="width:100%;aspect-ratio:16/7;background:#cdd8e6;border-radius:12px;margin-bottom:28px;overflow:hidden;border:1px solid #bccbdb;">
+            <div style="width:100%;background:#ffffff;border-radius:12px;margin-bottom:28px;overflow:hidden;border:1.5px solid #1a1a1a;box-shadow:6px 6px 0px #1a1a1a;">
                 ${teaserHtml}
             </div>
 
