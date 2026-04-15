@@ -465,13 +465,14 @@ const researchData = [
     description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크",
 
     tagline: "", // TODO
-    thumbnail: "images/research/g3_teaser.jpg",                                        // TODO
+    thumbnail: "images/researchImages/Fund1.png",                                        // TODO
     overview:
-      "This project builds an interaction framework that links generative AI outputs — including " +
-      "text, image, audio, and video — with real-time multimodal feedback. By coordinating " +
-      "visual, auditory, and haptic channels, the framework enables users to navigate and " +
-      "experience AI-generated content in spatially and temporally coherent ways.",        // TODO
-    keywords: ["Generative AI", "Multimodal Interaction", "XR", "HCI Framework", "Haptics"], // TODO
+      "This project aims to develop Time-Space Expanded Multimedia (TSEM),  " +
+      "a novel format that spatiotemporally expands conventional media. TSEM delivers realistic " +
+      "multisensory (visual, auditory, and haptic) feedback and affords bidirectional interaction with  " +
+      "personalized content. Our lab specifically focuses on developing novel haptic interfaces and rendering " ＋
+      "methods that enable realistic haptic interactions within the generated VR environments. ",        // TODO
+    keywords: ["Virtual Reality", "Generative Haptics", "Haptic Interfaces", "Multisensory Interaction"], // TODO
     papers: []
   },
 
