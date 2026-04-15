@@ -470,7 +470,7 @@ const researchData = [
       "This project aims to develop Time-Space Expanded Multimedia (TSEM),  " +
       "a novel format that spatiotemporally expands conventional media. TSEM delivers realistic " +
       "multisensory (visual, auditory, and haptic) feedback and affords bidirectional interaction with  " +
-      "personalized content. Our lab specifically focuses on developing novel haptic interfaces and rendering " ＋
+      "personalized content. Our lab specifically focuses on developing novel haptic interfaces and rendering " +
       "methods that enable realistic haptic interactions within the generated VR environments. ",        // TODO
     keywords: ["Virtual Reality", "Generative Haptics", "Haptic Interfaces", "Multisensory Interaction"], // TODO
     papers: []
