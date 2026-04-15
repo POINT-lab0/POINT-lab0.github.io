@@ -465,7 +465,7 @@ const researchData = [
     description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크",
 
     tagline: "", // TODO
-    thumbnail: "images/researchImages/Fund1.png",                                        // TODO
+    thumbnail: "images/resesarchImages/Fund1.png",                                        // TODO
     overview:
       "This project aims to develop Time-Space Expanded Multimedia (TSEM),  " +
       "a novel format that spatiotemporally expands conventional media. TSEM delivers realistic " +
