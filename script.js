@@ -486,7 +486,7 @@ function renderProjectDetail(index) {
             </div>
 
             <!-- Teaser image -->
-            <div style="width:100%;background:#ffffff;border-radius:12px;margin-bottom:28px;overflow:hidden;border:1.5px solid #1a1a1a;box-shadow:6px 6px 0px #1a1a1a;">
+            <div style="width:100%;background:#ffffff;border-radius:12px;margin-bottom:28px;overflow:hidden;border:1.5px solid #1a1a1a;">
                 ${teaserHtml}
             </div>
 
