@@ -455,7 +455,7 @@ const researchData = [
       // },
     ]
   },
-    
+
   {
     id: "G3",
     status: "Ongoing",
@@ -485,7 +485,7 @@ const researchData = [
     description: "인간 인지-지능 한계 및 장애 극복 증강 기술",
 
     tagline: "", // TODO
-    thumbnail: "images/research/g4_teaser.jpg",                             // TODO
+    thumbnail: "images/research/ITRC_teaser.png",                             // TODO
     overview:
       "A long-term research initiative exploring technologies that augment human cognitive " +
       "and sensory capabilities. Our lab contributes haptic components — including tactile " +
@@ -518,7 +518,7 @@ const researchData = [
 
   // ── Completed Projects ───────────────────────────────────
   // (기존 항목 그대로 유지 — 상세 필드 미추가)
-  { id: "G8" , status: "Completed", title: "Development of the Material- and Shape-Changing Haptic Interface using Smart Materials for VR interactions", agency: "NRF", period: "2024-2025", description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발" },  
+  { id: "G8" , status: "Completed", title: "Development of the Material- and Shape-Changing Haptic Interface using Smart Materials for VR interactions", agency: "NRF", period: "2024-2025", description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발" },
   { id: "G9" , status: "Completed", title: "Semantic Sound-to-Haptic Automatic Conversion: Metaverse, Full-body Haptic Effects, and Accessibility", agency: "NRF", period: "2022-2026", description: "의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성" },
   { id: "G10", status: "Completed", title: "Semantic Audio-to-Haptic Conversion", agency: "Google Research Award", period: "2021-2023", description: "Algorithms and Performance Metrics" },
   { id: "G12", status: "Completed", title: "Real-Virtual Blended Exhibits for Science Culture", agency: "NRF", period: "2020-2022", description: "과학적 원리의 심도 있는 체화 학습을 위한 실제-가상 혼합형 전시물 개발" },
