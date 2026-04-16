@@ -485,7 +485,7 @@ const researchData = [
     description: "인간 인지-지능 한계 및 장애 극복 증강 기술",
 
     tagline: "", // TODO
-    thumbnail: "images/research/ITRC_teaser.png",                             // TODO
+    thumbnail: "images/resesarchImages/ITRC_teaser.png",                             // TODO
     overview:
       "A long-term research initiative exploring technologies that augment human cognitive " +
       "and sensory capabilities. Our lab contributes haptic components — including tactile " +
