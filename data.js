@@ -2142,7 +2142,7 @@ const conferencePapers = [
         title: "Vibration-Augmented Buttons: Information Transmission Capacity and Application to Interaction Design",
         authors: "Chaeyong Park, Jeongwoo Kim, Dong-Geun Kim, Seungjae Oh, and Seungmoon Choi",
         venue: "ACM CHI Conference on Human Factors in Computing Systems",
-        link: "https://doi.org/10.1145/3491102.3501962"
+        link: "https://dl.acm.org/doi/10.1145/3491102.3501849"
     },
     {
         year: 2022,
