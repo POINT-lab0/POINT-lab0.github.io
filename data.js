@@ -487,12 +487,22 @@ const researchData = [
     tagline: "", // TODO
     thumbnail: "images/resesarchImages/ITRC_teaser.png",                             // TODO
     overview:
-      "A long-term research initiative exploring technologies that augment human cognitive " +
-      "and sensory capabilities. Our lab contributes haptic components — including tactile " +
-      "cueing and sensory substitution — that help users process information beyond natural " +
-      "perceptual limits, with specific focus on assistive applications for people with " +
-      "sensory or motor impairments.",                                        // TODO
-    keywords: ["Cognitive Augmentation", "Assistive Technology", "Haptics", "Sensory Substitution", "Accessibility"], // TODO
+    "This project is a long-term research initiative focused on developing core technologies " +
+    "for augmenting human cognition and intelligence beyond inherent biological limitations. " +
+    "The research spans multimodal domains including superhuman vision, language and affective " +
+    "intelligence augmentation, sensory substitution, and wearable AI systems. In particular, " +
+    "our lab contributes to the development of haptic-based sensory substitution technologies, " +
+    "such as tactile communication systems, enabling intuitive and efficient information delivery " +
+    "for users with sensory impairments. The project also aims to bridge fundamental research and " +
+    "real-world applications, ultimately improving accessibility, quality of life, and human–AI interaction.",
+
+  keywords: [
+    "Human Augmentation",
+    "Cognitive Augmentation",
+    "Haptics",
+    "Sensory Substitution",
+    "Accessibility"
+  ],// TODO
     papers: []
   },
 
