@@ -231,7 +231,7 @@ const memberData = [
                 ]
         }
     },
-    { name: "Heeji Son (손희지)", role: "student", email: "hsohn@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)",
+    { name: "Heeji Sohn (손희지)", role: "student", email: "hsohn@postech.ac.kr", image: "images/selfImage/heeji.jpg", desc: "Ph.D. Student (CSE)",
         detail: {
             // 줄글 형식 (Introduction)
             introduction: "I am a Ph.D. student in Computer Science and Engineering, with research interests in Haptics and Human-Computer Interaction (HCI).\n\n My research explores the design and evaluation of interactive systems, with a focus on haptic feedback to enhance user experience in gaming, immersive systems, and virtual environments.",
