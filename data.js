@@ -522,7 +522,7 @@ const researchData = [
         "authoring, and reproducing haptic data. Our laboratory specifically investigates interactions" +
         "with rigid and deformable objects using haptic gloves and the corresponding haptic rendering " +
         "techniques. Additionally, we conduct research on device-specific compensation methodologies " +
-        "for various haptic actuators."                                // TODO
+        "for various haptic actuators.",                                // TODO
     keywords: ["High-fidelity", "Haptic Rendering", "Rigid/Deformable Objects", "Metaverse", "Unimodal/Multimodal"], // TODO
     papers: []
   },
