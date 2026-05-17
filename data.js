@@ -435,14 +435,14 @@ const researchData = [
 
     // ── 새로 추가된 필드 ──────────────────────────────────
     tagline: "", // TODO: 담당자 수정
-    thumbnail: "images/research/g1_teaser.jpg",                             // TODO: 이미지 경로
+    thumbnail: "images/resesarchImages/g1_teaser.png",                             // TODO: 이미지 경로
     overview:
-      "This project develops AI-driven methods to automatically generate high-fidelity " +
-      "haptic stimuli tailored to the unique material properties of flexible tactile interfaces. " +
-      "By combining generative models with micro-response inference, the system adapts tactile " +
-      "output in real time as the surface deforms, enabling consistent and realistic touch " +
-      "experiences across arbitrary form factors.",                          // TODO: 담당자 수정
-    keywords: ["Generative Haptics", "Flexible Displays", "Tactile Rendering", "Deep Learning", "HCI"], // TODO
+      "This project aims to develop technologies for perceiving and generating high-resolution " +
+        "multimodal tactile sensations from physical signals measured by flexible tactile interfaces," +
+        "ultimately enabling the seamless integration of real and virtual haptic stimuli. Our lab " +
+        "specifically focuses on multimodal generative rendering and contact-aware haptic rendering methods" +
+        "for realistic multisensory interaction across visual, auditory, and tactile modalities.",
+    keywords: [], // TODO
     papers: [
       // TODO: 해당 과제 관련 논문을 journalPapers / confPapers 에서 복사해 넣으세요
       // 예시 형식:
@@ -459,7 +459,7 @@ const researchData = [
   {
     id: "G3",
     status: "Ongoing",
-    title: "Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia: Centering on Social Communication Disorders",
+    title: "Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia",
     agency: "NRF (Pioneer)",
     period: "2024-2025",
     description: "시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크",
@@ -515,14 +515,15 @@ const researchData = [
     description: "초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발",
 
     tagline: "", // TODO
-    thumbnail: "images/research/g5_teaser.jpg",                          // TODO
+    thumbnail: "images/researchImages/g5_teaser.png",                          // TODO
     overview:
-      "This project develops an integrated full-body haptic system — spanning vibrotactile, " +
-      "thermal, and kinesthetic channels — that delivers hyper-realistic tactile experiences " +
-      "inside metaverse environments. We also establish haptic content standards to ensure " +
-      "interoperability across platforms, enabling consistent sensation reproduction regardless " +
-      "of the rendering hardware.",                                        // TODO
-    keywords: ["Full-body Haptics", "Metaverse", "Vibrotactile", "Haptic Standards", "Immersive XR"], // TODO
+      "This project aims to develop high-fidelity haptic rendering technology based on tactile " +
+        "standard models, alongside a haptic interaction software framework for storing, editing, " +
+        "authoring, and reproducing haptic data. Our laboratory specifically investigates interactions" +
+        "with rigid and deformable objects using haptic gloves and the corresponding haptic rendering " +
+        "techniques. Additionally, we conduct research on device-specific compensation methodologies " +
+        "for various haptic actuators."                                // TODO
+    keywords: ["High-fidelity", "Haptic Rendering", "Rigid/Deformable Objects", "Metaverse", "Unimodal/Multimodal"], // TODO
     papers: []
   },
 
