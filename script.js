@@ -181,10 +181,16 @@ function renderNewsPage() {
     const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
     const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
     const sorted = getSortedNews(); container.innerHTML = '';
+    let lastYear = null;
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
-        const imgHtml = item.image ? `<img src="${item.image}" class="news-thumb" onerror="this.style.display='none'">` : '';
-        container.innerHTML += `<div class="news-card" onclick="location.href='news.html?id=${originalIndex}'">${imgHtml}<div class="news-body"><span class="news-date">${item.date}</span><h3>${item.title}</h3><p style="color:#666; font-size:0.95rem;">${item.content}</p><div class="read-more">Read More &rarr;</div></div></div>`;
+        const year = item.date ? item.date.split('-')[0] : '';
+        const monthDay = item.date ? item.date.slice(5) : '';
+        if (year !== lastYear) { container.innerHTML += `<div class="news-year-divider">${year}</div>`; lastYear = year; }
+        const imgHtml = item.image
+            ? `<img src="${item.image}" class="news-tl-img" onerror="this.style.display='none'">`
+            : '';
+        container.innerHTML += `<div class="news-tl-item" onclick="location.href='news.html?id=${originalIndex}'"><div class="news-tl-left"><div class="news-tl-dot"></div><div class="news-tl-date">${monthDay}</div></div><div class="news-tl-body"><h3>${item.title}</h3><p>${item.content}</p></div>${imgHtml}</div>`;
     });
 }
 function renderNewsDetail(index) {
