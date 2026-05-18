@@ -515,7 +515,7 @@ const researchData = [
     description: "초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발",
 
     tagline: "", // TODO
-    thumbnail: "images/researchImages/g5_teaser.png",                          // TODO
+    thumbnail: "images/resesarchImages/g5_teaser.png",                          // TODO
     overview:
       "This project aims to develop high-fidelity haptic rendering technology based on tactile " +
         "standard models, alongside a haptic interaction software framework for storing, editing, " +
