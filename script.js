@@ -413,11 +413,17 @@ function renderResearchPage() {
     const areaId = getQueryParam('area'); const projectId = getQueryParam('id');
     if (areaId !== null && researchAreas[areaId]) { renderAreaDetail(areaId); return; }
     if (projectId !== null && researchData[projectId]) { renderProjectDetail(projectId); return; }
-    const ongoingContainer = document.getElementById('ongoing-list'); const completedContainer = document.getElementById('completed-list'); const areaContainer = document.getElementById('research-areas');
+    const ongoingContainer = document.getElementById('ongoing-list'); const completedContainer = document.getElementById('completed-list');
     if (!ongoingContainer || typeof researchData === 'undefined') return;
-    if (areaContainer && typeof researchAreas !== 'undefined') { areaContainer.innerHTML = ''; researchAreas.forEach((area, idx) => { areaContainer.innerHTML += `<div class="area-card" onclick="location.href='research.html?area=${idx}'"><img src="${area.thumbnail}" class="area-img" onerror="this.src='images/lab_intro1.jpg'"><div class="area-content"><h3>${area.title}</h3><p>${area.desc}</p></div></div>`; }); }
     ongoingContainer.innerHTML = ''; completedContainer.innerHTML = '';
-    researchData.forEach((r, idx) => { const statusClass = r.status === 'Ongoing' ? 'ongoing' : 'completed'; const html = `<div class="project-card ${statusClass}" onclick="location.href='research.html?id=${idx}'"><div class="proj-info"><h4>${r.title}</h4><div class="proj-meta"><span class="proj-status ${statusClass}">${r.status}</span><span>${r.agency} | ${r.period}</span></div></div><i class="fas fa-chevron-right" style="color:#cbd5e1;"></i></div>`; if (r.status === 'Ongoing') ongoingContainer.innerHTML += html; else completedContainer.innerHTML += html; });
+    researchData.forEach((r, idx) => {
+        const statusClass = r.status === 'Ongoing' ? 'ongoing' : 'completed';
+        const thumbHtml = r.thumbnail
+            ? `<img src="${r.thumbnail}" class="proj-thumb-img" onerror="this.src='images/lab_intro1.jpg'">`
+            : `<div class="proj-thumb-placeholder"><i class="fas fa-image"></i></div>`;
+        const html = `<div class="proj-thumb-card ${statusClass}" onclick="location.href='research.html?id=${idx}'">${thumbHtml}<div class="proj-thumb-info"><span class="proj-status ${statusClass}">${r.status}</span><h4>${r.title}</h4><div class="proj-meta">${r.agency} | ${r.period}</div></div></div>`;
+        if (r.status === 'Ongoing') ongoingContainer.innerHTML += html; else completedContainer.innerHTML += html;
+    });
 }
 function renderAreaDetail(index) {
     const area = researchAreas[index]; const container = document.querySelector('.container');

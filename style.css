@@ -224,16 +224,15 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .area-img { width: 100%; height: 250px; object-fit: cover; }
 .area-content { padding: 30px; }
 
-.project-card {
-    background: var(--white); padding: 25px; border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center;
-    box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; border-left: 6px solid transparent;
-}
-.project-card:hover { transform: translateX(5px); }
-.project-card.ongoing { border-left-color: var(--primary); }
-.project-card.completed { border-left-color: #cbd5e1; }
-.proj-info h4 { font-size: 1.15rem; margin: 0 0 5px; color: var(--dark); }
-.proj-meta { font-size: 0.9rem; color: var(--gray); }
-.proj-status { font-size: 0.8rem; padding: 4px 10px; border-radius: 12px; font-weight: 600; margin-right: 10px; }
+.project-thumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+.proj-thumb-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition); }
+.proj-thumb-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.10); }
+.proj-thumb-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.proj-thumb-placeholder { width: 100%; height: 180px; background: #e8eef5; display: flex; align-items: center; justify-content: center; color: #a0b0c5; font-size: 2rem; }
+.proj-thumb-info { padding: 18px 20px 20px; }
+.proj-thumb-info h4 { font-size: 1rem; font-weight: 700; margin: 6px 0 8px; color: var(--dark); line-height: 1.4; }
+.proj-meta { font-size: 0.85rem; color: var(--gray); }
+.proj-status { display: inline-block; font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; font-weight: 600; margin-bottom: 4px; }
 .proj-status.ongoing { background: #e0e7ff; color: var(--primary); }
 .proj-status.completed { background: #f1f5f9; color: var(--gray); }
 
@@ -443,6 +442,7 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
           padding: 0 10px; /* 양옆 여백 추가로 잘림 방지 */
       }
     .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
+    .project-thumb-grid { grid-template-columns: 1fr; gap: 16px; }
     /* [추가] 모바일에서 카드 내부 이미지와 텍스트 크기 최적화 */
     .member-card {
         padding: 15px 10px;
