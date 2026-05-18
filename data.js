@@ -547,6 +547,43 @@ const researchData = [
 ///* data.js - publicationData 부분 교체 */
 
 const journalPapers = [
+    // --- 2026 ---
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "ToH",
+        title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
+        authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
+        venue: "IEEE Transactions on Haptics (Accepted)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "IJHCI",
+        title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
+        authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
+        venue: "International Journal of Human-Computer Interaction (Accepted)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "TVCG",
+        title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
+        authors: "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics (Accepted)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "Adv. Intell. Syst.",
+        title: "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
+        authors: "Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong",
+        venue: "Advanced Intelligent Systems (Accepted)",
+        link: ""
+    },
     // --- 2025 ---
     {
         year: 2025,
@@ -1876,6 +1913,24 @@ const posterDemoPapers = [
 
 const conferencePapers = [
 
+  {
+      year: 2026,
+      category: "conference",
+      venueShort: "EuroHaptics",
+      title: "A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves",
+      authors: "Jeongwoo Kim*, Uison Ju*, and Seungmoon Choi (*Co-first authors)",
+      venue: "EuroHaptics 2026 (Oral presentation; Acceptance rate 17%)",
+      link: ""
+  },
+  {
+      year: 2026,
+      category: "conference",
+      venueShort: "TVCG",
+      title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image",
+      authors: "Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi",
+      venue: "IEEE Transactions on Visualization and Computer Graphics (Special issue of IEEE VR 2026; Acceptance rate 20.6%)",
+      link: ""
+  },
   {
       year: 2026,
       category: "conference",
