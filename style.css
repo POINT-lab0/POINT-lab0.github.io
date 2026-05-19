@@ -56,6 +56,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 /* --- Layout --- */
 .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
 .page-header { text-align: center; margin-bottom: 60px; }
+.home-keyword-tag { display: inline-block; padding: 6px 16px; border-radius: 20px; background: #e8f0fb; color: var(--primary); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em; border: 1px solid #c7d9f5; }
 .page-header h1 { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
 .section-header { margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; display: flex; align-items: center; gap: 15px; }
 .section-header h2 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin: 0; }
