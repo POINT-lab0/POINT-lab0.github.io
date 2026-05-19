@@ -244,7 +244,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE), Haptic Rendering",
+    { name: "Hyunuk Kim (김현욱)", role: "student", email: "vldrjtmxkdlf@postech.ac.kr", image: "images/selfImage/hyunuk.jpg", desc: "Ph.D. Student (CSE), AI & Haptics",
         detail: {
             // 줄글 형식 (Introduction) - 요청하신 학위 배경 추가
             introduction: "I received my Master's degree from POSTECH and am currently pursuing a Ph.D. in the same institution.\n\n I am a researcher deeply interested in immersive multimedia content technology driven by Artificial Intelligence. My primary goal is to develop advanced haptic rendering systems that enhance realism and content appreciation in next-generation VR and MR systems. I firmly believe in the bright future of AR glasses and am committed to pioneering haptic solutions that will define the next era of wearable interactive media.",
