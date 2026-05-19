@@ -424,11 +424,15 @@ function renderResearchPage() {
     ongoingContainer.innerHTML = ''; completedContainer.innerHTML = '';
     researchData.forEach((r, idx) => {
         const statusClass = r.status === 'Ongoing' ? 'ongoing' : 'completed';
-        const thumbHtml = r.thumbnail
-            ? `<img src="${r.thumbnail}" class="proj-thumb-img" onerror="this.src='images/lab_intro1.jpg'">`
-            : `<div class="proj-thumb-placeholder"><i class="fas fa-image"></i></div>`;
-        const html = `<div class="proj-thumb-card ${statusClass}" onclick="location.href='research.html?id=${idx}'">${thumbHtml}<div class="proj-thumb-info"><span class="proj-status ${statusClass}">${r.status}</span><h4>${r.title}</h4><div class="proj-meta">${r.agency} | ${r.period}</div></div></div>`;
-        if (r.status === 'Ongoing') ongoingContainer.innerHTML += html; else completedContainer.innerHTML += html;
+        if (r.status === 'Ongoing') {
+            const thumbHtml = r.thumbnail
+                ? `<img src="${r.thumbnail}" class="proj-thumb-img" onerror="this.src='images/lab_intro1.jpg'">`
+                : `<div class="proj-thumb-placeholder"><i class="fas fa-image"></i></div>`;
+            ongoingContainer.innerHTML += `<div class="proj-thumb-card ongoing" onclick="location.href='research.html?id=${idx}'">${thumbHtml}<div class="proj-thumb-info"><span class="proj-status ongoing">${r.status}</span><h4>${r.title}</h4><div class="proj-meta">${r.agency} | ${r.period}</div></div></div>`;
+        } else {
+            const year = r.period ? r.period.split('~')[0].trim().split('.')[0] + (r.period.includes('~') ? ' ~ ' + r.period.split('~')[1].trim().split('.')[0] : '') : '';
+            completedContainer.innerHTML += `<div class="proj-list-item" onclick="location.href='research.html?id=${idx}'"><div class="proj-list-info"><h4>${r.title}</h4><div class="proj-list-meta"><span>${r.agency}</span><span class="proj-list-period">${year}</span></div></div><i class="fas fa-chevron-right"></i></div>`;
+        }
     });
 }
 function renderAreaDetail(index) {
