@@ -498,7 +498,7 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
 /* 메인 슬라이더 컨테이너 (80% 사이즈) */
 .main-slider-container {
     position: relative;
-    width: 80%;
+    width: 100%;
     margin: 40px auto;
     overflow: hidden;
     border-radius: 20px;
@@ -508,7 +508,7 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
 .slider-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 8; /* 사진 비율 유지 */
+    aspect-ratio: 16 / 9;
     background: #f8fafc;
 }
 
