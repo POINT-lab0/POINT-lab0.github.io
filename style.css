@@ -352,7 +352,16 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .detail-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; overflow-y: auto; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .detail-overlay.active { transform: translateY(0); }
 .detail-nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 15px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; z-index: 10; }
-.back-btn { background: none; border: none; font-size: 1.1rem; font-weight: 700; color: var(--dark); cursor: pointer; display: flex; gap: 8px; align-items: center; }
+.back-btn { background: none; border: none; font-size: 1rem; font-weight: 700; color: var(--dark); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; text-decoration: none; margin-bottom: 32px; }
+.news-detail-wrap { max-width: 800px; margin: 0 auto; padding-top: 20px; }
+.news-detail-hero { width: 100%; max-height: 420px; object-fit: cover; border-radius: 16px; margin-bottom: 32px; display: block; }
+.news-detail-header { margin-bottom: 32px; }
+.news-detail-date { display: inline-block; background: #e0e7ff; color: var(--primary); font-size: 0.82rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.04em; }
+.news-detail-header h1 { font-size: 2rem; font-weight: 800; color: var(--dark); line-height: 1.35; margin: 0; }
+.news-detail-content { background: var(--white); border-radius: 20px; box-shadow: var(--shadow-sm); padding: 40px 44px; font-size: 1rem; line-height: 1.9; color: #334155; }
+.news-detail-content strong { color: var(--dark); font-weight: 700; }
+.news-section-label { display: inline-block; background: var(--primary); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 12px; border-radius: 6px; margin: 20px 0 10px; letter-spacing: 0.06em; }
+.news-paper-num { display: inline-block; background: #f1f5f9; color: var(--primary); font-size: 0.8rem; font-weight: 700; padding: 2px 8px; border-radius: 5px; margin-right: 4px; }
 .detail-content { max-width: 800px; margin: 40px auto; padding: 0 24px; }
 .detail-body { background: #f8fafc; padding: 40px; border-radius: 20px; }
 .info-group h4 { color: var(--primary); margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }

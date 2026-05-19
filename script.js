@@ -195,8 +195,21 @@ function renderNewsPage() {
 }
 function renderNewsDetail(index) {
     const item = newsData[index]; const container = document.querySelector('.container');
-    const imgHtml = item.image ? `<img src="${item.image}" style="width:100%; max-height:400px; border-radius:16px; object-fit:cover; margin-bottom:30px;" onerror="this.style.display='none'">` : '';
-    container.innerHTML = `<div style="max-width:800px; margin:0 auto; padding-top:20px;"><a href="news.html" class="back-btn" style="margin-bottom:30px; display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to News</a>${imgHtml}<span style="color:var(--primary); font-weight:700; display:block; margin-bottom:10px;">${item.date}</span><h1 style="font-size:2.5rem; margin-bottom:30px; line-height:1.3;">${item.title}</h1><div style="font-size:1.15rem; line-height:1.8; color:#333; background:#fff; padding:40px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">${item.detailContent || item.content}</div></div>`;
+    const imgHtml = item.image ? `<img src="${item.image}" class="news-detail-hero" onerror="this.style.display='none'">` : '';
+    const rawContent = item.detailContent || item.content || '';
+    const formattedContent = rawContent
+        .replace(/\[([^\]]+)\]/g, '<div class="news-section-label">$1</div>')
+        .replace(/(\d+\))\s*/g, '<span class="news-paper-num">$1</span> ');
+    container.innerHTML = `
+        <div class="news-detail-wrap">
+            <a href="news.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to News</a>
+            ${imgHtml}
+            <div class="news-detail-header">
+                <span class="news-detail-date">${item.date}</span>
+                <h1>${item.title}</h1>
+            </div>
+            <div class="news-detail-content">${formattedContent}</div>
+        </div>`;
     window.scrollTo(0, 0);
 }
 
