@@ -216,26 +216,51 @@ function renderNewsDetail(index) {
 /* =========================================
    [4] 멤버 페이지 (Members)
    ========================================= */
+function getGroup(m) {
+    const d = m.desc.toLowerCase();
+    if (m.role === 'prof') return 'prof';
+    if (m.role === 'alumni') return 'alumni';
+    if (d.includes('post-doc') || d.includes('researcher')) return 'postdoc';
+    if (d.includes('ph.d') || d.includes('direct')) return 'phd';
+    if (d.includes('master') || d.includes('m.s')) return 'ms';
+    return 'phd';
+}
+function renderMembersContent(activeGroup) {
+    const content = document.getElementById('member-content');
+    if (!content || typeof memberData === 'undefined') return;
+    const groups = activeGroup === 'all' ? ['prof','postdoc','phd','ms','alumni'] : [activeGroup];
+    const labels = { prof:'Director', postdoc:'Post-Doctoral Researchers', phd:'Ph.D. Students', ms:'Master Students', alumni:'Alumni' };
+    let html = '';
+    groups.forEach(g => {
+        const members = memberData.map((m,i) => ({m,i})).filter(({m}) => getGroup(m) === g);
+        if (!members.length) return;
+        html += `<div class="member-section"><h2 class="section-header">${labels[g]}</h2>`;
+        if (g === 'alumni') {
+            members.sort((a,b) => { const yr = s => { const match = s.m.desc.match(/\((19|20)\d{2}\)/); return match ? parseInt(match[0].replace(/[()]/g,'')) : 0; }; return yr(b)-yr(a); });
+            html += `<div class="alumni-list">`;
+            members.forEach(({m}) => { html += `<div class="alumni-item"><strong>${m.name}</strong><span>${m.desc}</span></div>`; });
+            html += `</div>`;
+        } else {
+            const centered = g === 'prof' ? ' style="justify-content:center;"' : '';
+            html += `<div class="member-grid"${centered}>`;
+            members.forEach(({m,i}) => { html += createMemberCard(m, i); });
+            html += `</div>`;
+        }
+        html += `</div>`;
+    });
+    content.innerHTML = html;
+}
 function renderMembers() {
     const id = getQueryParam('id'); if (id !== null && memberData[id]) { renderMemberDetail(id); return; }
-    const profList = document.getElementById('prof-list'); const postdocList = document.getElementById('postdoc-list'); const postdocHeader = document.getElementById('postdoc-header'); const phdList = document.getElementById('phd-list'); const msList = document.getElementById('ms-list'); const alumniList = document.getElementById('alumni-list');
-    if (!profList) return; profList.innerHTML = ''; if (postdocList) postdocList.innerHTML = ''; phdList.innerHTML = ''; msList.innerHTML = ''; if (alumniList) alumniList.innerHTML = '';
-    if (typeof memberData === 'undefined') return;
-    let hasPostDoc = false;
-    memberData.forEach((m, index) => {
-        if (m.role !== 'alumni') {
-            const card = createMemberCard(m, index); const descLower = m.desc.toLowerCase();
-            if (m.role === 'prof') profList.innerHTML += card;
-            else if (descLower.includes('post-doc') || descLower.includes('researcher')) { if (postdocList) { postdocList.innerHTML += card; hasPostDoc = true; } }
-            else if (descLower.includes('ph.d') || descLower.includes('direct')) phdList.innerHTML += card;
-            else if (descLower.includes('master') || descLower.includes('m.s')) msList.innerHTML += card;
-        }
+    const content = document.getElementById('member-content'); if (!content) return;
+    renderMembersContent('all');
+    document.querySelectorAll('.member-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.member-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderMembersContent(btn.dataset.group);
+        });
     });
-    if (postdocHeader) postdocHeader.style.display = hasPostDoc ? 'block' : 'none';
-    if (alumniList) {
-        const alumni = memberData.filter(m => m.role === 'alumni'); alumni.sort((a, b) => { const getYear = (str) => { const match = str.match(/\((19|20)\d{2}\)/); return match ? parseInt(match[0].replace(/[()]/g, '')) : 0; }; return getYear(b.desc) - getYear(a.desc); });
-        alumni.forEach(m => { alumniList.innerHTML += `<div class="alumni-item" style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); border-left:4px solid #ccc;"><strong style="color:var(--dark);">${m.name}</strong><span style="font-size:0.85rem; color:#666; display:block; margin-top:4px;">${m.desc}</span></div>`; });
-    }
 }
 function createMemberCard(m, index) {
     let engName = m.name; let korName = ""; if (m.name.includes('(')) { const parts = m.name.split('('); engName = parts[0].trim(); korName = parts[1].replace(')', '').trim(); }

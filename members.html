@@ -14,20 +14,16 @@
             <p>Meet the researchers behind the innovation.</p>
         </div>
 
-        <h2 class="section-header">Director</h2>
-        <div id="prof-list" class="member-grid" style="display:flex; justify-content:center;"></div>
+        <div class="member-tabs">
+            <button class="member-tab-btn active" data-group="all">All</button>
+            <button class="member-tab-btn" data-group="prof">Director</button>
+            <button class="member-tab-btn" data-group="postdoc">Postdoc</button>
+            <button class="member-tab-btn" data-group="phd">Ph.D.</button>
+            <button class="member-tab-btn" data-group="ms">Master</button>
+            <button class="member-tab-btn" data-group="alumni">Alumni</button>
+        </div>
 
-        <h2 class="section-header" id="postdoc-header" style="display:none;">Post-Doctoral Researchers</h2>
-        <div id="postdoc-list" class="member-grid"></div>
-
-        <h2 class="section-header">Ph.D. Students</h2>
-        <div id="phd-list" class="member-grid"></div>
-
-        <h2 class="section-header">Master Students</h2>
-        <div id="ms-list" class="member-grid"></div>
-
-        <h2 class="section-header">Alumni</h2>
-        <div id="alumni-list" class="alumni-list"></div>
+        <div id="member-content"></div>
     </div>
 
     <div id="global-footer"></div>
