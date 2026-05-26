@@ -527,6 +527,28 @@ const researchData = [
     papers: []
   },
 
+  {
+    id: "HRI1",
+    status: "Ongoing",
+    title: "XR-based Human-Robot Interaction Framework with Shared Autonomy and Multisensory Haptic Feedback",
+    agency: "",
+    period: "",
+    description: "공유 자율성과 다감각 햅틱 피드백을 통합한 XR 기반 인간-로봇 상호작용 프레임워크",
+
+    tagline: "",
+    thumbnail: "images/researchImages/robot.png",
+    overview:
+      "This research project aims to develop and validate a comprehensive human-robot interaction (HRI) " +
+      "framework that integrates shared autonomy, multisensory haptic feedback, and gesture-based control " +
+      "within XR environments. Under this framework, the human operator receives the robot's status and " +
+      "remote environmental information through integrated visual, auditory, and tactile cues. Based on " +
+      "this feedback, the operator performs assigned tasks by intuitively controlling the robot via " +
+      "gesture-based commands. Finally, an XR-based learning system will be developed to evaluate the " +
+      "proposed system's performance and validate its overall task effectiveness.",
+    keywords: ["Shared Autonomy", "Multisensory Haptic Feedback", "Gesture-based Control", "Robot Teleoperation"],
+    papers: []
+  },
+
   // ── Completed Projects ───────────────────────────────────
   // (기존 항목 그대로 유지 — 상세 필드 미추가)
   { id: "G8" , status: "Completed", title: "Development of the Material- and Shape-Changing Haptic Interface using Smart Materials for VR interactions", agency: "NRF", period: "2024-2025", description: "VR 상호작용을 위한 스마트 물질 기반 물성 및 형상 변형 햅틱 인터페이스 개발" },
