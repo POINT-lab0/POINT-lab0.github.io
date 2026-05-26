@@ -536,7 +536,7 @@ const researchData = [
     description: "공유 자율성과 다감각 햅틱 피드백을 통합한 XR 기반 인간-로봇 상호작용 프레임워크",
 
     tagline: "",
-    thumbnail: "images/researchImages/robot.png",
+    thumbnail: "images/resesarchImages/Robot.png",
     overview:
       "This research project aims to develop and validate a comprehensive human-robot interaction (HRI) " +
       "framework that integrates shared autonomy, multisensory haptic feedback, and gesture-based control " +
