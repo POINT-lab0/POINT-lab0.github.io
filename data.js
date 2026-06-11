@@ -226,7 +226,7 @@ const memberData = [
                 keyword: [
                     "Haptic Rendering/Perception",
                     "Automatic Haptic Generation",
-                    "AI",
+                    "Multimodal AI",
                     "XR/VR"
                 ]
         }
