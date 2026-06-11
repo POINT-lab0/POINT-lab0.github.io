@@ -220,14 +220,14 @@ const memberData = [
     { name: "Junwoo Kim (김준우)", role: "student", email: "kjw8515@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE), Kinesthetic",
         detail: {
                 // 줄글 형식 (Introduction)
-                introduction: "I am a Ph.D. student at the Interaction Lab in the Computer Science Engineering Department at POSTECH.\n\n I dream of providing realistic haptic feedback for immersive user experiences. I'm interested in various stimuli, including heat, vibration, force, and even motion effects. I like taking walks, especially when I travel to other cities for conferences.",
+                introduction: "My research interests lie in Haptics/HCI/XR. I mainly focus on Haptic Rendering/Perception and AI-driven Multimodal Interaction in immersive environments. I am particularly interested in building immersive systems that translate multimedia and environmental signals into meaningful tactile experiences.",
 
                 // 리스트 형식 (Keywords)
                 keyword: [
-                    "Haptics",
-                    "Kinesthetic Rendering",
-                    "Virtual Reality",
-                    "Automatic Generation"
+                    "Haptic Rendering/Perception",
+                    "Automatic Haptic Generation",
+                    "AI",
+                    "XR/VR"
                 ]
         }
     },
