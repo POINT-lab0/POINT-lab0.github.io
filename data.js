@@ -217,7 +217,7 @@ const memberData = [
         }
     },
     { name: "Jaejun Park (박재준)", role: "student", email: "jjpark17@postech.ac.kr", image: "images/selfImage/jaejun.jpg", desc: "Direct Ph.D. Student (CSE), VR & Haptics" },
-    { name: "Junwoo Kim (김준우)", role: "student", email: "kjw8515@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE), Kinesthetic",
+    { name: "Junwoo Kim (김준우)", role: "student", email: "kjw8515@postech.ac.kr", image: "images/selfImage/junwoo.jpg", desc: "Direct Ph.D. Student (CSE), Haptic Rendering & AI",
         detail: {
                 // 줄글 형식 (Introduction)
                 introduction: "My research interests lie in Haptics/HCI/XR. I mainly focus on Haptic Rendering/Perception and AI-driven Multimodal Interaction in immersive environments. I am particularly interested in building immersive systems that translate multimedia and environmental signals into meaningful tactile experiences.",
