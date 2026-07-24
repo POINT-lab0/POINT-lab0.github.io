@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="POSTECH Interaction Lab Homecoming 2026">
+  <meta name="theme-color" content="#071f26">
+  <title>Interaction Lab Homecoming 2026</title>
+  <link rel="icon" type="image/png" href="../images/Logo_small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Interaction Lab 홈으로 이동">
+      <img src="../images/logo.png" alt="Interaction Lab">
+    </a>
+    <span class="header-label">HOMECOMING 2026</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-orb hero-orb-one"></div>
+      <div class="hero-orb hero-orb-two"></div>
+      <div class="hero-grid"></div>
+
+      <div class="hero-content">
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 id="hero-title"></h1>
+        <p class="hero-description" id="hero-description"></p>
+
+        <div class="hero-meta" aria-label="행사 기본 정보">
+          <div class="meta-item">
+            <span class="meta-kicker">DATE</span>
+            <strong id="date-label"></strong>
+            <span id="time-label"></span>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <span class="meta-kicker">VENUE</span>
+            <strong id="venue-name"></strong>
+            <span id="venue-area"></span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#schedule">일정 보기</a>
+          <a class="button button-secondary is-disabled" id="rsvp-button" href="#" aria-disabled="true"></a>
+        </div>
+      </div>
+
+      <div class="countdown-card" aria-label="행사까지 남은 시간">
+        <p>SEE YOU IN</p>
+        <div class="countdown" id="countdown">
+          <div><strong id="days">--</strong><span>DAYS</span></div>
+          <div><strong id="hours">--</strong><span>HOURS</span></div>
+          <div><strong id="minutes">--</strong><span>MIN</span></div>
+        </div>
+        <p class="countdown-caption" id="countdown-caption">함께할 날을 기다리고 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="section intro-section">
+      <div class="section-heading">
+        <p class="section-number">01</p>
+        <div>
+          <p class="section-kicker">WELCOME BACK</p>
+          <h2>오랜만입니다.</h2>
+        </div>
+      </div>
+      <div class="intro-copy">
+        <p>각자의 자리에서 새로운 경험을 쌓아 온 Interaction Lab 구성원들이 다시 한자리에 모입니다.</p>
+        <p>함께했던 연구실의 기억을 나누고, 지금의 서로를 알아가며, 다음 이야기를 이어가는 편안한 만남이 되길 바랍니다.</p>
+      </div>
+    </section>
+
+    <section class="section event-section">
+      <div class="section-heading">
+        <p class="section-number">02</p>
+        <div>
+          <p class="section-kicker">EVENT INFORMATION</p>
+          <h2>행사 안내</h2>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="info-icon" aria-hidden="true">01</span>
+          <p class="info-label">일시</p>
+          <h3 id="info-date"></h3>
+          <p id="info-time"></p>
+        </article>
+        <article class="info-card">
+          <span class="info-icon" aria-hidden="true">02</span>
+          <p class="info-label">장소</p>
+          <h3 id="info-venue"></h3>
+          <p id="info-area"></p>
+          <p class="info-note" id="venue-note"></p>
+          <a class="text-link is-hidden" id="map-link" href="#" target="_blank" rel="noopener">지도에서 보기 ↗</a>
+        </article>
+        <article class="info-card info-card-accent">
+          <span class="info-icon" aria-hidden="true">03</span>
+          <p class="info-label">프로그램</p>
+          <h3>세부 일정 준비 중</h3>
+          <p>확정되는 내용부터 이 페이지에 순차적으로 업데이트할 예정입니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section schedule-section" id="schedule">
+      <div class="section-heading">
+        <p class="section-number">03</p>
+        <div>
+          <p class="section-kicker">PROGRAM</p>
+          <h2>행사 일정</h2>
+        </div>
+      </div>
+      <p class="section-description" id="schedule-intro"></p>
+      <div class="schedule-list" id="schedule-list"></div>
+    </section>
+
+    <section class="section notice-section">
+      <div class="section-heading">
+        <p class="section-number">04</p>
+        <div>
+          <p class="section-kicker">NOTICE</p>
+          <h2>안내 사항</h2>
+        </div>
+      </div>
+      <ul class="notice-list" id="notice-list"></ul>
+    </section>
+
+    <section class="closing-section">
+      <p class="closing-kicker">INTERACTION LAB · POSTECH</p>
+      <h2>반가운 얼굴로<br>다시 만나요.</h2>
+      <p id="contact-line" class="contact-line is-hidden"></p>
+      <a class="button button-light is-disabled" id="closing-rsvp" href="#" aria-disabled="true">참가 신청 안내 예정</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Interaction Lab, POSTECH.</p>
+    <a href="../index.html">interaction.postech.ac.kr</a>
+  </footer>
+
+  <script src="event-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
