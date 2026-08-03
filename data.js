@@ -586,7 +586,7 @@ const journalPapers = [
         title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
         authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
         venue: "International Journal of Human-Computer Interaction, pp. 1-21",
-        link: ""
+        link: "https://doi.org/10.1080/10447318.2026.2631661"
     },
     {
         year: 2026,
@@ -595,7 +595,7 @@ const journalPapers = [
         title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
         authors: "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi",
         venue: "IEEE Transactions on Visualization and Computer Graphics (Accepted)",
-        link: ""
+        link: "https://doi.org/10.1109/TVCG.2026.3683951"
     },
     {
         year: 2026,
@@ -604,7 +604,7 @@ const journalPapers = [
         title: "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
         authors: "Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong",
         venue: "Advanced Intelligent Systems (Accepted)",
-        link: ""
+        link: "https://doi.org/10.1002/aisy.202501051"
     },
     // --- 2025 ---
     {
@@ -1951,7 +1951,7 @@ const conferencePapers = [
       title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image",
       authors: "Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi",
       venue: "IEEE Transactions on Visualization and Computer Graphics (Special issue of IEEE VR 2026; Acceptance rate 20.6%)",
-      link: ""
+      link: "https://doi.org/10.1109/tvcg.2026.3680620"
   },
   {
       year: 2026,
@@ -1960,7 +1960,7 @@ const conferencePapers = [
       title: "Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games",
       authors: "Heeji Sohn, Chaeyong Park, and Seungmoon Choi",
       venue: "ACM CHI Conference on Human Factors in Computing Systems",
-      link: ""
+      link: "https://doi.org/10.1145/3772318.3791144"
   },
   {
       year: 2026,
@@ -1969,7 +1969,7 @@ const conferencePapers = [
       title: "HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information",
       authors: "Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park",
       venue: "ACM CHI Conference on Human Factors in Computing Systems",
-      link: ""
+      link: "https://doi.org/10.1145/3772318.3791663"
   },
   {
       year: 2026,
@@ -1978,7 +1978,7 @@ const conferencePapers = [
       title: "Touch with Meaning: A Contextual Analysis of Social Touch",
       authors: "Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim",
       venue: "ACM CHI Conference on Human Factors in Computing Systems",
-      link: ""
+      link: "https://doi.org/10.1145/3772318.3791605"
   },
     {
         year: 2026,
