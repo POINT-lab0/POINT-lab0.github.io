@@ -188,7 +188,11 @@ footer p { margin: 0; }
   }
 
   .hero h1 {
-    font-size: clamp(3.2rem, 17vw, 5.1rem);
+    /* 긴 HOMECOMING 단어가 작은 화면에서 잘리지 않도록 실제 카드 폭에 맞춤 */
+    max-width: 100%;
+    font-size: clamp(2.25rem, 11vw, 5.1rem);
+    letter-spacing: -.06em;
+    white-space: nowrap;
   }
 
   .hero-date {
@@ -227,6 +231,17 @@ footer p { margin: 0; }
 
 @media (max-width: 420px) {
   .fee-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.05rem, 10.7vw, 2.4rem);
+  }
 }
 
 /* 찾아오는 길 */
