@@ -1,26 +1,18 @@
 # Interaction Lab Homecoming 2026
 
-`interaction.postech.ac.kr/homecoming/`에서 열리는 독립 정적 페이지입니다.
-기존 메인 화면과 내비게이션은 수정하지 않습니다.
+저장소 루트에 이 `homecoming` 폴더를 업로드하면 다음 주소에서 열립니다.
 
-## 저장소에 추가하는 방법
+- https://interaction.postech.ac.kr/homecoming/
 
-저장소 루트에 `homecoming` 폴더 전체를 업로드합니다.
+## 포함 정보
 
-```text
-POINT-lab0.github.io/
-├─ index.html
-├─ images/
-└─ homecoming/
-   ├─ index.html
-   ├─ style.css
-   └─ README.md
-```
+- 2026년 8월 9일 일요일
+- 행사 시작 오후 3시 / 식사 오후 6시
+- 군자역 그린라운지 B1층
+- 서울 광진구 용마산로3길 98
+- 졸업생 70,000원 / 재학생 50,000원
+- 신한 110471827043 / 예금주 이정은
+- 군자역 4번 출구에서 용마초등학교 방향 도보 약 5분
+- 지도 및 네이버지도·카카오맵 링크
 
-GitHub Pages 배포 후 다음 주소로 접근할 수 있습니다.
-
-```text
-https://interaction.postech.ac.kr/homecoming/
-```
-
-행사 정보는 `homecoming/index.html`에서 직접 수정합니다.
+기존 홈페이지의 메인 화면과 메뉴는 변경하지 않습니다.
