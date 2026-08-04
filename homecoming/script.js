@@ -4,8 +4,6 @@
 
   const account = panel.dataset.account || '';
   const feeButtons = Array.from(panel.querySelectorAll('.fee-choice'));
-  const copyAccountButton = document.getElementById('copy-account');
-  const copyAmountButton = document.getElementById('copy-amount');
   const copyPaymentInfoButton = document.getElementById('copy-payment-info');
   const selectionText = document.getElementById('payment-selection');
   const statusText = document.getElementById('copy-status');
@@ -54,45 +52,20 @@
         item.setAttribute('aria-pressed', String(item === button));
       });
 
-      copyAmountButton.disabled = false;
       copyPaymentInfoButton.disabled = false;
       selectionText.textContent = `${selectedType} 참가비 ${formatWon(selectedFee)}이 선택되었습니다.`;
       showStatus('');
     });
   });
 
-  copyAccountButton.addEventListener('click', async () => {
-    try {
-      await copyText(account);
-      showStatus('계좌번호가 복사되었습니다.');
-    } catch (error) {
-      showStatus('복사하지 못했습니다. 계좌번호를 직접 선택해 주세요.', true);
-    }
-  });
-
-  copyAmountButton.addEventListener('click', async () => {
-    if (!selectedFee) return;
-    try {
-      await copyText(String(selectedFee));
-      showStatus(`${formatWon(selectedFee)}이 복사되었습니다.`);
-    } catch (error) {
-      showStatus('금액을 복사하지 못했습니다.', true);
-    }
-  });
-
   copyPaymentInfoButton.addEventListener('click', async () => {
     if (!selectedFee) return;
-    const paymentInfo = [
-      `참가 구분: ${selectedType}`,
-      `참가비: ${formatWon(selectedFee)}`,
-      '은행: 신한은행',
-      `계좌번호: ${account}`,
-      '예금주: 이정은'
-    ].join('\n');
+
+    const paymentInfo = `신한은행 ${account} 이정은 / ${formatWon(selectedFee)}`;
 
     try {
       await copyText(paymentInfo);
-      showStatus('입금 정보 전체가 복사되었습니다.');
+      showStatus(`${paymentInfo} 복사 완료`);
     } catch (error) {
       showStatus('입금 정보를 복사하지 못했습니다.', true);
     }
