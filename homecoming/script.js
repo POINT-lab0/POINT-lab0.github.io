@@ -1,90 +1,100 @@
 (() => {
-  const event = window.HOMECOMING_EVENT;
-  if (!event) return;
+  const panel = document.querySelector('.payment-panel');
+  if (!panel) return;
 
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value || "";
-  };
+  const account = panel.dataset.account || '';
+  const feeButtons = Array.from(panel.querySelectorAll('.fee-choice'));
+  const copyAccountButton = document.getElementById('copy-account');
+  const copyAmountButton = document.getElementById('copy-amount');
+  const copyPaymentInfoButton = document.getElementById('copy-payment-info');
+  const selectionText = document.getElementById('payment-selection');
+  const statusText = document.getElementById('copy-status');
 
-  setText("eyebrow", event.eyebrow);
-  setText("hero-title", event.title);
-  setText("hero-description", event.description);
-  setText("date-label", event.dateLabel);
-  setText("time-label", event.timeLabel);
-  setText("venue-name", event.venueName);
-  setText("venue-area", event.venueArea);
-  setText("info-date", event.dateLabel);
-  setText("info-time", event.timeLabel);
-  setText("info-venue", event.venueName);
-  setText("info-area", event.venueArea);
-  setText("venue-note", event.venueNote);
-  setText("schedule-intro", event.scheduleIntro);
+  let selectedFee = null;
+  let selectedType = '';
+  let statusTimer = null;
 
-  const configureLink = (id, url, label) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.textContent = label;
-    if (url) {
-      el.href = url;
-      el.classList.remove("is-disabled", "is-hidden");
-      el.removeAttribute("aria-disabled");
-      if (url.startsWith("http")) {
-        el.target = "_blank";
-        el.rel = "noopener";
-      }
-    }
-  };
+  const formatWon = (value) => `${Number(value).toLocaleString('ko-KR')}원`;
 
-  configureLink("rsvp-button", event.rsvpUrl, event.rsvpButtonLabel);
-  configureLink("closing-rsvp", event.rsvpUrl, event.rsvpButtonLabel);
-  configureLink("map-link", event.mapUrl, "지도에서 보기 ↗");
-
-  const contactLine = document.getElementById("contact-line");
-  if (contactLine && event.contact) {
-    contactLine.textContent = `문의 · ${event.contact}`;
-    contactLine.classList.remove("is-hidden");
-  }
-
-  const scheduleList = document.getElementById("schedule-list");
-  if (scheduleList) {
-    scheduleList.innerHTML = event.schedule.map(item => `
-      <article class="schedule-item">
-        <div class="schedule-time">${item.time}</div>
-        <div class="schedule-copy">
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-        </div>
-        <span class="schedule-status ${item.status === "confirmed" ? "confirmed" : ""}">
-          ${item.status === "confirmed" ? "확정" : "예정"}
-        </span>
-      </article>
-    `).join("");
-  }
-
-  const noticeList = document.getElementById("notice-list");
-  if (noticeList) {
-    noticeList.innerHTML = event.notice.map(item => `<li>${item}</li>`).join("");
-  }
-
-  const target = new Date(event.dateTime).getTime();
-  const updateCountdown = () => {
-    const diff = target - Date.now();
-    if (diff <= 0) {
-      setText("days", "00");
-      setText("hours", "00");
-      setText("minutes", "00");
-      setText("countdown-caption", "오늘, 반가운 얼굴로 만나요.");
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
       return;
     }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    setText("days", String(days).padStart(2, "0"));
-    setText("hours", String(hours).padStart(2, "0"));
-    setText("minutes", String(minutes).padStart(2, "0"));
-  };
 
-  updateCountdown();
-  window.setInterval(updateCountdown, 60000);
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    const copied = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    if (!copied) throw new Error('copy failed');
+  }
+
+  function showStatus(message, isError = false) {
+    window.clearTimeout(statusTimer);
+    statusText.textContent = message;
+    statusText.dataset.state = isError ? 'error' : 'success';
+    statusTimer = window.setTimeout(() => {
+      statusText.textContent = '';
+      delete statusText.dataset.state;
+    }, 2600);
+  }
+
+  feeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedFee = Number(button.dataset.fee);
+      selectedType = button.querySelector('span')?.textContent.trim() || '';
+
+      feeButtons.forEach((item) => {
+        item.setAttribute('aria-pressed', String(item === button));
+      });
+
+      copyAmountButton.disabled = false;
+      copyPaymentInfoButton.disabled = false;
+      selectionText.textContent = `${selectedType} 참가비 ${formatWon(selectedFee)}이 선택되었습니다.`;
+      showStatus('');
+    });
+  });
+
+  copyAccountButton.addEventListener('click', async () => {
+    try {
+      await copyText(account);
+      showStatus('계좌번호가 복사되었습니다.');
+    } catch (error) {
+      showStatus('복사하지 못했습니다. 계좌번호를 직접 선택해 주세요.', true);
+    }
+  });
+
+  copyAmountButton.addEventListener('click', async () => {
+    if (!selectedFee) return;
+    try {
+      await copyText(String(selectedFee));
+      showStatus(`${formatWon(selectedFee)}이 복사되었습니다.`);
+    } catch (error) {
+      showStatus('금액을 복사하지 못했습니다.', true);
+    }
+  });
+
+  copyPaymentInfoButton.addEventListener('click', async () => {
+    if (!selectedFee) return;
+    const paymentInfo = [
+      `참가 구분: ${selectedType}`,
+      `참가비: ${formatWon(selectedFee)}`,
+      '은행: 신한은행',
+      `계좌번호: ${account}`,
+      '예금주: 이정은'
+    ].join('\n');
+
+    try {
+      await copyText(paymentInfo);
+      showStatus('입금 정보 전체가 복사되었습니다.');
+    } catch (error) {
+      showStatus('입금 정보를 복사하지 못했습니다.', true);
+    }
+  });
 })();

@@ -67,9 +67,34 @@
 
       <div class="info-row account-row">
         <p class="label">입금 계좌</p>
-        <div class="value">
-          <strong>신한 110471827043</strong>
-          <span>예금주 이정은</span>
+        <div class="payment-panel" data-account="110471827043">
+          <div class="account-details">
+            <strong>신한 110-471-827043</strong>
+            <span>예금주 이정은</span>
+          </div>
+
+          <div class="payment-choice" aria-labelledby="payment-choice-label">
+            <p id="payment-choice-label">참가 구분을 선택해 주세요.</p>
+            <div class="payment-choice-buttons" role="group" aria-label="참가비 선택">
+              <button type="button" class="fee-choice" data-fee="70000" aria-pressed="false">
+                <span>졸업생</span>
+                <strong>70,000원</strong>
+              </button>
+              <button type="button" class="fee-choice" data-fee="50000" aria-pressed="false">
+                <span>재학생</span>
+                <strong>50,000원</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="payment-actions">
+            <button type="button" class="copy-button primary" id="copy-account">계좌번호 복사</button>
+            <button type="button" class="copy-button" id="copy-amount" disabled>금액 복사</button>
+            <button type="button" class="copy-button" id="copy-payment-info" disabled>입금 정보 전체 복사</button>
+          </div>
+
+          <p class="payment-selection" id="payment-selection">참가 구분을 선택하면 금액 복사 버튼이 활성화됩니다.</p>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -238,6 +263,8 @@
       </div>
     </section>
   </main>
+
+  <script src="script.js"></script>
 
   <footer>
     <p>© 2026 Interaction Lab, POSTECH.</p>

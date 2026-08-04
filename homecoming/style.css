@@ -594,3 +594,163 @@ footer p { margin: 0; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* 참가비 송금 도우미 */
+.payment-panel {
+  min-width: 0;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.account-details strong {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.account-details span {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.payment-choice {
+  margin-top: 24px;
+}
+
+.payment-choice > p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.payment-choice-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.fee-choice {
+  min-width: 0;
+  min-height: 74px;
+  padding: 14px 16px;
+  border: 1px solid #cbd8d5;
+  border-radius: 14px;
+  color: var(--navy);
+  background: var(--white);
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  text-align: left;
+  transition: border-color .18s ease, background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.fee-choice:hover {
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.fee-choice[aria-pressed="true"] {
+  border-color: var(--navy);
+  color: var(--white);
+  background: var(--navy);
+}
+
+.fee-choice span {
+  color: inherit;
+  opacity: .74;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.fee-choice strong {
+  font-size: 1.08rem;
+}
+
+.payment-actions {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.copy-button {
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #bfcfcb;
+  border-radius: 11px;
+  color: var(--navy);
+  background: rgba(255, 255, 255, .78);
+  font-family: inherit;
+  font-size: .84rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color .18s ease, background-color .18s ease, opacity .18s ease;
+}
+
+.copy-button:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: var(--white);
+}
+
+.copy-button.primary {
+  border-color: var(--navy);
+  color: var(--white);
+  background: var(--navy);
+}
+
+.copy-button:disabled {
+  cursor: not-allowed;
+  opacity: .42;
+}
+
+.fee-choice:focus-visible,
+.copy-button:focus-visible {
+  outline: 3px solid rgba(0, 133, 202, .28);
+  outline-offset: 2px;
+}
+
+.payment-selection,
+.copy-status {
+  margin: 10px 0 0;
+  font-size: .82rem;
+  line-height: 1.55;
+}
+
+.payment-selection {
+  color: var(--muted);
+}
+
+.copy-status {
+  min-height: 1.25em;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .account-details strong {
+    font-size: 1.15rem;
+  }
+
+  .payment-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .copy-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .payment-choice-buttons {
+    grid-template-columns: 1fr;
+  }
+}
