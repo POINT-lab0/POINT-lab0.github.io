@@ -1,0 +1,22 @@
+POINT-lab0 URL ONLY PATCH
+==========================
+
+이 패치는 홈페이지 내용/디자인/데이터/script.js를 수정하지 않습니다.
+
+변경되는 것
+- 기존 HTML 7개에 clean-urls.js 로드 1줄 추가
+- clean-urls.js 신규 추가
+- 404.html 신규 추가
+
+동작
+- /news.html 로 정상 페이지를 먼저 로드
+- 페이지 로드 후 주소창만 /news 로 변경
+- /news 를 직접 입력하거나 새로고침하면 404.html이 /news.html로 연결
+- 다시 clean-urls.js가 주소창을 /news로 정리
+
+적용
+ZIP 안의 파일만 저장소 루트에 업로드/덮어쓰기 하면 됩니다.
+
+중요
+- news/, research/, members/ 같은 폴더는 만들지 않습니다.
+- script.js, data.js, style.css, images/는 건드리지 않습니다.

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction Lab</title>
+    <script>
+    (() => {
+        const routes = new Set([
+            "/news",
+            "/research",
+            "/members",
+            "/publications",
+            "/awards",
+            "/contact"
+        ]);
+
+        const path = window.location.pathname.replace(/\/+$/, "");
+
+        if (routes.has(path)) {
+            const target =
+                path + ".html" +
+                window.location.search +
+                window.location.hash;
+
+            window.location.replace(target);
+        }
+    })();
+    </script>
+</head>
+<body>
+    <p>Page not found.</p>
+</body>
+</html>
