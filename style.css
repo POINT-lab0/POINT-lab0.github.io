@@ -158,31 +158,33 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
 /* --- Member Cards --- */
+body.members-page { background: #ffffff; }
 .member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-    gap: 16px;
-    margin-bottom: 36px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 40px 20px;
+    margin-bottom: 56px;
 }
 .member-card {
-    background: #ffffff;
-    border: 1px solid #e8edf2;
-    border-radius: 12px;
-    padding: 18px 12px 14px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0 4px 4px;
     box-shadow: none;
     text-align: center;
     cursor: pointer;
-    transition: var(--transition);
+    transition: none;
 }
-.member-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,133,202,0.12);
-    border-color: rgba(0, 133, 202, 0.25);
+.member-card:hover { transform: none; box-shadow: none; }
+.member-card:hover img {
+    transform: scale(1.06);
+    box-shadow: 0 10px 28px rgba(0,133,202,0.22);
 }
 .member-card img {
-    width: 90px !important; height: 90px !important; border-radius: 50%; object-fit: cover;
-    margin-bottom: 12px; border: 3px solid #f1f5f9; display: inline-block;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 130px !important; height: 130px !important; border-radius: 50%; object-fit: cover;
+    margin: 0 auto 14px; border: 3px solid #e8edf2; display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 /* 멤버 키워드 스타일 */
 .member-keyword {
@@ -568,16 +570,17 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .member-tab-btn { padding: 9px 22px; border-radius: 30px; border: 1.5px solid #e2e8f0; background: var(--white); color: var(--gray); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
 .member-tab-btn:hover { border-color: var(--primary); color: var(--primary); }
 .member-tab-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(0,133,202,0.25); }
-.member-section { margin-bottom: 36px; }
+.member-section { margin-bottom: 52px; }
 /* Director / Postdoc — flexbox 센터 정렬, 카드 고정 너비 */
 .member-grid-center {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
-    margin-bottom: 36px;
+    gap: 48px 32px;
+    margin-bottom: 56px;
 }
-.member-grid-center .member-card { width: 180px; flex-shrink: 0; }
+.member-grid-center .member-card { width: 200px; flex-shrink: 0; }
+.member-grid-center .member-card img { width: 155px !important; height: 155px !important; }
 .award-item-style { border-left: 5px solid gold; align-items: center; }
 
 /* Detail Overlay */
@@ -690,17 +693,17 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     /* 3. 그리드 및 레이아웃 */
     .youtube-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 유튜브 2x2 */
     .member-grid {
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* 최소 너비를 140px로 축소 */
-          gap: 15px;
-          padding: 0 10px; /* 양옆 여백 추가로 잘림 방지 */
+          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+          gap: 28px 12px;
+          padding: 0;
       }
     .research-areas-grid { grid-template-columns: 1fr; gap: 20px; }
     .project-thumb-grid { grid-template-columns: 1fr; gap: 16px; }
-    /* [추가] 모바일에서 카드 내부 이미지와 텍스트 크기 최적화 */
-    .member-card { padding: 14px 8px 12px; }
-    .member-card img { width: 72px !important; height: 72px !important; margin-bottom: 10px; }
+    .member-card { padding: 0 2px 2px; }
+    .member-card img { width: 100px !important; height: 100px !important; margin: 0 auto 10px; }
     .name-eng { font-size: 0.88rem; }
     .name-kor { font-size: 0.73rem; }
+    .member-grid-center .member-card img { width: 110px !important; height: 110px !important; }
 
     /* 4. 기타 */
     .news-split-layout { flex-direction: column; }
