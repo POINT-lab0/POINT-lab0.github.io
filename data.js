@@ -8,7 +8,7 @@ const newsData = [
         title: "Two Papers Accepted at ACM UIST 2026",
         content: "CineHaptic and HAPTCHA will be presented at ACM UIST 2026 in October.",
         image: "",
-        detailContent: "Two papers from our lab have been accepted at the ACM Symposium on User Interface Software and Technology (UIST 2026).<br><br>1) <strong>'CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences'</strong><br>— Jeongwoo Kim, Hyunuk Kim, Han-Byul Oh, Junseok Kang, Tae-Hyun Oh, and Seungmoon Choi<br><br>2) <strong>'HAPTCHA: Eyes-Free Haptic CAPTCHA in Mobile Environments: Design Principle, Security Evaluation, and User Experience'</strong><br>— Dojoon Kweon, Dajin Lee, Seunghun Kim, and Seungmoon Choi"
+        detailContent: "Two papers from our lab have been accepted at the ACM Symposium on User Interface Software and Technology (UIST 2026).<br><br>1) <strong>'CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences'</strong><br>— Junwoo Kim, Hyunuk Kim, Hyun-Bin Oh, Jeonggoo Kang, Tae-Hyun Oh, and Seungmoon Choi<br><br>2) <strong>'HAPTCHA: Eyes-Free Haptic CAPTCHA in Mobile Environments: Design Principle, Security Evaluation, and User Experience'</strong><br>— Duhong Kweon, Dajin Lee, Seulbae Kim, and Seungmoon Choi"
     },
     {
         id: 2,
@@ -62,7 +62,7 @@ const newsData = [
         title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
         content: "Research on steering wheel vibration discomfort and forearm stimulus identification accepted at HAPTICS 2026.",
         image: "images/news/haptics_symp_2026.png",
-        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium (HAPTICS) 2026.<br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong><br>— Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi<br><br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong><br>— Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
+        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium (HAPTICS) 2026.<br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong><br>— Dajin Lee, Soyeon Nam, Minseong Noh, Sunyoung Jang, and Seungmoon Choi<br><br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong><br>— Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
     },
     {
         id: 8,
@@ -99,7 +99,7 @@ const newsData = [
         title: "Paper Accepted at IEEE VR 2025",
         content: "Research on generating haptic motion effects for human dance accepted at IEEE VR 2025.",
         image: "",
-        detailContent: "<strong>'Automatic Generation of Haptic Motion Effects Expressing Human Dance'</strong> has been accepted at the IEEE Conference on Virtual Reality and 3D User Interfaces (VR 2025).<br><br><strong>Authors:</strong> Junseo Ahn and Seungmoon Choi"
+        detailContent: "<strong>'Automatic Generation of Haptic Motion Effects Expressing Human Dance'</strong> has been accepted at the IEEE Conference on Virtual Reality and 3D User Interfaces (VR 2025).<br><br><strong>Authors:</strong> Jaehyeok Ahn and Seungmoon Choi"
     },
     // ── 2024 ──────────────────────────────────────────────
     {
@@ -2120,9 +2120,27 @@ const conferencePapers = [
     {
         year: 2026,
         category: "conference",
+        venueShort: "UIST",
+        title: "CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences",
+        authors: "Junwoo Kim, Hyunuk Kim, Hyun-Bin Oh, Jeonggoo Kang, Tae-Hyun Oh, and Seungmoon Choi",
+        venue: "ACM Symposium on User Interface Software and Technology (Acceptance rate 20.1%)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "conference",
+        venueShort: "UIST",
+        title: "HAPTCHA: Eyes-Free Haptic CAPTCHA in Mobile Environments: Design Principle, Security Evaluation, and User Experience",
+        authors: "Duhong Kweon, Dajin Lee, Seulbae Kim, and Seungmoon Choi",
+        venue: "ACM Symposium on User Interface Software and Technology (Acceptance rate 20.1%)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration",
-        authors: "Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi",
+        authors: "Dajin Lee, Soyeon Nam, Minseong Noh, Sunyoung Jang, and Seungmoon Choi",
         venue: "IEEE Haptics Symposium (Conditionally accepted)",
         link: ""
     },
@@ -2133,6 +2151,16 @@ const conferencePapers = [
         title: "Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification",
         authors: "Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi",
         venue: "IEEE Haptics Symposium (Conditionally accepted)",
+        link: ""
+    },
+
+    {
+        year: 2026,
+        category: "conference",
+        venueShort: "ISMAR",
+        title: "Perceiving Compliance in Virtual Reality: Effects of Interaction Direction and Sensory Discrepancy on Visuo-Haptic Weighting",
+        authors: "Taehyeong Jung, Jiwan Lee, Junwoo Kim, and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics (Special issue of ISMAR; Acceptance rate 16%)",
         link: ""
     },
 
