@@ -8,8 +8,8 @@ function loadCommonHead() {
     if (!document.querySelector('link[href="images/Logo_small.png"]')) {
         const favicon = document.createElement('link'); favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = 'images/Logo_small.png'; head.appendChild(favicon);
     }
-    if (!document.querySelector('link[href="style.css"]')) {
-        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css'; head.appendChild(style);
+    if (!document.querySelector('link[href*="style.css"]')) {
+        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=14'; head.appendChild(style);
     }
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link'); fa.rel = 'stylesheet'; fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'; head.appendChild(fa);
@@ -234,7 +234,6 @@ function renderNewsPage() {
 }
 
 function _renderNewsGrid(container, filterBar) {
-    // Remove everything except the filter bar
     Array.from(container.children).forEach(el => { if (el !== filterBar) el.remove(); });
 
     const sorted = getSortedNews();
@@ -248,52 +247,26 @@ function _renderNewsGrid(container, filterBar) {
         return;
     }
 
-    // ── Featured: most recent in filtered set ──────────────
-    const feat = filtered[0];
-    const featIdx = newsData.findIndex(n => n.id === feat.id);
-    const featIcon = NEWS_ICONS[feat.category] || '📌';
-    const featEl = document.createElement('div');
-    featEl.className = 'news-featured';
-    featEl.onclick = () => location.href = `news.html?id=${featIdx}`;
-    featEl.innerHTML = `
-        <div class="nf-top">
-            <div class="nf-icon-box">${featIcon}</div>
-            <div class="nf-eyebrow">
-                <span class="nf-latest-tag">Latest</span>
-                <span class="nf-date">${feat.date}</span>
-            </div>
-        </div>
-        <div class="nf-title">${feat.title}</div>
-        <div class="nf-body">${feat.content}</div>
-        <div class="nf-footer">${getCategoryBadge(feat.category)}<span class="nf-arrow">Read more →</span></div>`;
-    container.appendChild(featEl);
-
-    // ── Remaining: grouped by year, 3-col grid ──────────────
-    let curYear = null, gridEl = null;
-    filtered.slice(1).forEach(item => {
+    let curYear = null, listEl = null;
+    filtered.forEach(item => {
         const idx = newsData.findIndex(n => n.id === item.id);
         const year = item.date ? item.date.split('-')[0] : '';
-        const md   = item.date ? item.date.slice(5) : '';
-        const icon = NEWS_ICONS[item.category] || '📌';
+        const md   = item.date ? item.date.slice(5).replace('-', '/') : '';
 
         if (year !== curYear) {
             curYear = year;
             const sec = document.createElement('div');
-            sec.className = 'news-year-section';
-            sec.innerHTML = `<div class="news-mag-year">${year}</div><div class="news-mag-grid"></div>`;
+            sec.className = 'nls-section';
+            sec.innerHTML = `<div class="nls-year">${year}</div><ul class="nls-list"></ul>`;
             container.appendChild(sec);
-            gridEl = sec.querySelector('.news-mag-grid');
+            listEl = sec.querySelector('.nls-list');
         }
 
-        const card = document.createElement('div');
-        card.className = 'news-mag-card';
-        card.onclick = () => location.href = `news.html?id=${idx}`;
-        card.innerHTML = `
-            <div class="nmg-icon">${icon}</div>
-            <div class="nmg-meta">${getCategoryBadge(item.category)}<span class="nmg-date">${md}</span></div>
-            <div class="nmg-title">${item.title}</div>
-            <p class="nmg-excerpt">${item.content}</p>`;
-        gridEl.appendChild(card);
+        const row = document.createElement('li');
+        row.className = 'nls-row';
+        row.onclick = () => location.href = `news.html?id=${idx}`;
+        row.innerHTML = `<span class="nls-date">${md}</span>${getCategoryBadge(item.category)}<span class="nls-title">${item.title}</span><span class="nls-arrow">→</span>`;
+        listEl.appendChild(row);
     });
 }
 function renderNewsDetail(index) {

@@ -354,6 +354,34 @@ body.members-page { background: #ffffff; }
     margin-top: auto;
 }
 
+/* ── News list view ── */
+.nls-section { margin-bottom: 40px; }
+.nls-year {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em;
+    color: var(--primary); text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8f0fb;
+    margin-bottom: 4px;
+}
+.nls-list { list-style: none; margin: 0; padding: 0; }
+.nls-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 10px; border-bottom: 1px solid #f1f5f9;
+    cursor: pointer; border-radius: 8px;
+    transition: background 0.15s;
+}
+.nls-row:hover { background: #f8fafc; }
+.nls-row:hover .nls-title { color: var(--primary); }
+.nls-date {
+    font-size: 0.8rem; color: #94a3b8; font-variant-numeric: tabular-nums;
+    white-space: nowrap; min-width: 38px; flex-shrink: 0;
+}
+.nls-title {
+    flex: 1; font-size: 0.95rem; font-weight: 600; color: var(--dark);
+    line-height: 1.4; transition: color 0.15s;
+}
+.nls-arrow { font-size: 0.85rem; color: #cbd5e1; flex-shrink: 0; }
+
 /* --- Home News Section (Split Layout for index.html) --- */
 .news-split-layout {
     display: flex;
