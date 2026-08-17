@@ -188,20 +188,45 @@ function updateHomeNewsPreview(pane, item) {
 /* =========================================
    [3] 뉴스 페이지
    ========================================= */
+const NEWS_ICONS = { paper: '📄', award: '🏆', service: '🏛', event: '📣', grant: '💡' };
+
 function renderNewsPage() {
     const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
     const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
     const sorted = getSortedNews(); container.innerHTML = '';
-    let lastYear = null;
+
+    let currentGroup = null;
+    let trackEl = null;
+
     sorted.forEach(item => {
         const originalIndex = newsData.findIndex(n => n.id === item.id);
         const year = item.date ? item.date.split('-')[0] : '';
         const monthDay = item.date ? item.date.slice(5) : '';
-        if (year !== lastYear) { container.innerHTML += `<div class="news-year-divider">${year}</div>`; lastYear = year; }
+        const icon = NEWS_ICONS[item.category] || '📌';
         const imgHtml = item.image
             ? `<img src="${item.image}" class="news-tl-img" onerror="this.style.display='none'">`
             : '';
-        container.innerHTML += `<div class="news-tl-item" onclick="location.href='news.html?id=${originalIndex}'"><div class="news-tl-left"><div class="news-tl-dot"></div><div class="news-tl-date">${monthDay}</div></div><div class="news-tl-body"><div class="news-tl-meta">${getCategoryBadge(item.category)}</div><h3>${item.title}</h3><p>${item.content}</p></div>${imgHtml}</div>`;
+
+        if (year !== currentGroup) {
+            currentGroup = year;
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'news-year-group';
+            groupDiv.innerHTML = `<div class="news-year-divider"><span class="year-label">${year}</span><span class="year-line"></span></div><div class="news-tl-track"></div>`;
+            container.appendChild(groupDiv);
+            trackEl = groupDiv.querySelector('.news-tl-track');
+        }
+
+        const card = document.createElement('div');
+        card.className = 'news-tl-item';
+        card.onclick = () => location.href = `news.html?id=${originalIndex}`;
+        card.innerHTML = `
+            <div class="news-tl-icon">${icon}</div>
+            <div class="news-tl-body">
+                <div class="news-tl-meta">${getCategoryBadge(item.category)}<span class="news-tl-date">${monthDay}</span></div>
+                <div class="news-tl-title">${item.title}</div>
+                <p class="news-tl-excerpt">${item.content}</p>
+            </div>${imgHtml}`;
+        trackEl.appendChild(card);
     });
 }
 function renderNewsDetail(index) {
@@ -210,7 +235,9 @@ function renderNewsDetail(index) {
     const rawContent = item.detailContent || item.content || '';
     const formattedContent = rawContent
         .replace(/\[([^\]]+)\]/g, '<div class="news-section-label">$1</div>')
-        .replace(/(\d+\))\s*/g, '<span class="news-paper-num">$1</span> ');
+        .replace(/\b(\d{1,2}\))\s*/g, '<span class="news-paper-num">$1</span> ')
+        .replace(/'([^']{3,}?)'/g, '$1')
+        .replace(/—\s*/g, '');
     container.innerHTML = `
         <div class="news-detail-wrap">
             <a href="news.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to News</a>
