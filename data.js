@@ -26,7 +26,7 @@ const newsData = [
         title: "Paper Accepted at EuroHaptics 2026",
         content: "Research comparing force feedback strategies for haptic glove design accepted at EuroHaptics 2026.",
         image: "",
-        detailContent: "A paper from our lab has been accepted at EuroHaptics 2026 (Lecture Notes in Computer Science, vol. 16593).<br><br><strong>'A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves'</strong><br>— Jeongwoo Kim, Uison Ju, and Seungmoon Choi"
+        detailContent: "A paper from our lab has been accepted at EuroHaptics 2026 (Lecture Notes in Computer Science, vol. 16593), and received an award.<br><br><strong>A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves</strong><br>Jeongwoo Kim, Uison Ju, and Seungmoon Choi<br><br><strong>Honorable Mention, Best Student Paper Award</strong><br>EuroHaptics Conference 2026"
     },
     {
         id: 4,

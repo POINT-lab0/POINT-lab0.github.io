@@ -424,41 +424,40 @@ body.members-page { background: #ffffff; }
 .news-preview-content {
     width: 100%;
     height: 100%;
-    padding: 25px; /* 패딩 약간 축소 */
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
+    padding: 25px;
+    background: #ffffff;
+    color: var(--dark);
     text-align: center;
-
-    /* [핵심] 위아래 잘림 방지를 위한 수직 중앙 정렬 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* 요소 간 간격 고정 */
+    gap: 10px;
 }
 
 .news-preview-content i {
-    font-size: 32px !important; /* 아이콘 크기 약간 축소 */
-    margin-bottom: 5px;
+    font-size: 28px !important;
+    margin-bottom: 4px;
+    color: var(--primary);
 }
 
 .news-preview-content h3 {
-    font-size: 1rem;
+    font-size: 0.97rem;
     margin: 0;
-    line-height: 1.3;
-    /* 제목이 너무 길어질 경우 대비 */
+    line-height: 1.35;
+    color: var(--dark);
+    font-weight: 700;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .news-preview-content p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     margin: 0;
-    line-height: 1.4;
-    opacity: 0.9;
-    /* 내용이 넘치지 않게 처리 */
+    line-height: 1.45;
+    color: #64748b;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
