@@ -250,7 +250,7 @@ const memberData = [
     // Professor
     {
         name: "Seungmoon Choi (최승문)", role: "prof", email: "choism@postech.ac.kr", image: "images/prof.jpg", detailImage: "images/prof.jpg",
-        website:"https://docs.google.com/document/d/1Oa5GYXQ0V9c-TGxECMVl85A-pCn3ugMY/edit",
+        website:"https://choism.postech.ac.kr/home",
         desc: "Professor / Dept. Head of CSE / Ph.D. Purdue Univ.",
         detail: {
             position: [

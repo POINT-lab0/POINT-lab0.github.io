@@ -345,9 +345,12 @@ function renderMembersContent(activeGroup) {
             html += `<div class="alumni-list">`;
             members.forEach(({m}) => { html += `<div class="alumni-item"><strong>${m.name}</strong><span>${m.desc}</span></div>`; });
             html += `</div>`;
+        } else if (g === 'prof' || g === 'postdoc') {
+            html += `<div class="member-grid-center">`;
+            members.forEach(({m,i}) => { html += createMemberCard(m, i); });
+            html += `</div>`;
         } else {
-            const centered = g === 'prof' ? ' style="justify-content:center;"' : '';
-            html += `<div class="member-grid"${centered}>`;
+            html += `<div class="member-grid">`;
             members.forEach(({m,i}) => { html += createMemberCard(m, i); });
             html += `</div>`;
         }
@@ -368,12 +371,18 @@ function renderMembers() {
     });
 }
 function createMemberCard(m, index) {
-    let engName = m.name; let korName = ""; if (m.name.includes('(')) { const parts = m.name.split('('); engName = parts[0].trim(); korName = parts[1].replace(')', '').trim(); }
-    const descParts = m.desc.split(','); let keyword = ""; if (descParts.length > 1) { keyword = descParts.slice(1).join(', ').trim(); }
-    return `<div class="member-card" onclick="location.href='members.html?id=${index}'"><img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">${keyword ? `<span class="member-keyword">${keyword}</span>` : ''}<div class="member-name-group"><div class="name-eng">${engName}</div>${korName ? `<div class="name-kor">${korName}</div>` : ''}</div><p class="member-email">${m.email || ''}</p></div>`;
+    let engName = m.name; let korName = "";
+    if (m.name.includes('(')) { const parts = m.name.split('('); engName = parts[0].trim(); korName = parts[1].replace(')', '').trim(); }
+    const descParts = m.desc.split(','); let keyword = "";
+    if (descParts.length > 1) { keyword = descParts.slice(1).join(', ').trim(); }
+    const onclick = (m.role === 'prof' && m.website)
+        ? `window.open('${m.website}','_blank')`
+        : `location.href='members.html?id=${index}'`;
+    return `<div class="member-card" onclick="${onclick}"><img src="${m.image}" onerror="this.src='images/member_placeholder.png'" alt="${m.name}">${keyword ? `<span class="member-keyword">${keyword}</span>` : ''}<div class="member-name-group"><div class="name-eng">${engName}</div>${korName ? `<div class="name-kor">${korName}</div>` : ''}</div></div>`;
 }
 function renderMemberDetail(index) {
     const m = memberData[index];
+    if (m.role === 'prof' && m.website) { window.location.replace(m.website); return; }
     const container = document.querySelector('.container');
     const imgSrc = m.detailImage || m.image;
 
