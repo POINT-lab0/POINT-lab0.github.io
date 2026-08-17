@@ -216,79 +216,81 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 /* --- News Timeline (news.html) --- */
 .news-timeline { max-width: 800px; margin: 0 auto; padding-bottom: 60px; }
 
-.news-year-group { margin-bottom: 8px; }
-.news-year-divider {
-    display: flex; align-items: center; gap: 16px;
-    padding: 40px 0 20px 0;
-}
-.news-year-divider .year-label {
-    font-size: 1.75rem; font-weight: 800; color: var(--primary);
-    letter-spacing: -0.04em; line-height: 1; white-space: nowrap;
-}
-.news-year-divider .year-line {
-    flex: 1; height: 2px;
-    background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
-    border-radius: 2px;
+.news-year-group { margin-bottom: 40px; }
+
+/* Track: left gutter = 52px, line center at 21px, dot center at 21px */
+.news-tl-track {
+    position: relative;
+    padding-left: 52px;
+    padding-top: 32px; /* space for year tag above first card */
 }
 
-/* timeline track */
-.news-tl-track { position: relative; padding-left: 28px; }
+/* Year label: compact, in the top-left of the gutter */
+.news-year-tag {
+    position: absolute;
+    left: 0; top: 6px;
+    font-size: 0.85rem; font-weight: 800;
+    color: var(--primary); letter-spacing: -0.02em;
+    white-space: nowrap; line-height: 1;
+}
+
+/* Vertical line — starts below the year tag */
 .news-tl-track::before {
     content: '';
-    position: absolute; left: 7px; top: 8px; bottom: 8px;
+    position: absolute;
+    left: 20px; top: 36px; bottom: 6px;
     width: 2px;
-    background: linear-gradient(to bottom, var(--primary) 0%, #e2e8f0 100%);
+    background: linear-gradient(to bottom, var(--primary) 0%, #c7dff0 75%, transparent 100%);
     border-radius: 2px;
 }
 
+/* Card */
 .news-tl-item {
     position: relative;
-    display: flex; align-items: flex-start; gap: 20px;
+    display: flex; align-items: flex-start; gap: 16px;
     background: #fff;
     border: 1px solid #e8f0fb;
     border-radius: 14px;
-    padding: 20px 22px;
+    padding: 18px 20px;
     margin-bottom: 12px;
     cursor: pointer;
     transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
 }
 .news-tl-item:hover {
-    box-shadow: 0 6px 28px rgba(0, 133, 202, 0.13);
+    box-shadow: 0 6px 28px rgba(0, 133, 202, 0.12);
     transform: translateY(-2px);
     border-color: #b3d9f5;
 }
 .news-tl-item:hover .news-tl-title { color: var(--primary); }
 
-/* dot on the track */
+/* Dot — center: 52 - 34 + 5 = 23 = line center (20+1+2px line = 21... let me use 20+1=21) */
+/* Actually: G=52, dot-left=-34, dot-center=52-34+5=23; line-left=20, line-center=21. Off by 2px → adjust: */
+/* G=52, line-left=21 → center=22; dot-left=-35, dot-center=52-35+5=22 ✓ */
 .news-tl-item::before {
     content: '';
     position: absolute;
-    left: -23px; top: 22px;
+    left: -35px; top: 50%;
+    transform: translateY(-50%);
+    /* center from track: 52 - 35 + 5 = 22 = line center (21+1=22) ✓ */
     width: 10px; height: 10px;
     border-radius: 50%;
+    background: #fff;
+    border: 2.5px solid var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 133, 202, 0.14);
+    transition: transform 0.22s, background 0.22s;
+}
+.news-tl-item:hover::before {
     background: var(--primary);
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 2px var(--primary);
-    transition: transform 0.2s;
+    transform: translateY(-50%) scale(1.3);
 }
-.news-tl-item:hover::before { transform: scale(1.35); }
 
-.news-tl-icon {
-    font-size: 1.4rem; line-height: 1;
-    flex-shrink: 0; margin-top: 1px;
-}
+.news-tl-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
 .news-tl-body { flex: 1; min-width: 0; }
-.news-tl-meta {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap;
-}
-.news-tl-date {
-    font-size: 0.78rem; font-weight: 600; color: #94a3b8;
-    letter-spacing: 0.02em;
-}
+.news-tl-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap; }
+.news-tl-date { font-size: 0.78rem; font-weight: 600; color: #94a3b8; letter-spacing: 0.02em; }
 .news-tl-title {
     font-size: 1.05rem; font-weight: 700; color: var(--dark);
-    margin: 0 0 6px; line-height: 1.5;
-    transition: color 0.2s;
+    margin: 0 0 6px; line-height: 1.5; transition: color 0.2s;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .news-tl-excerpt {

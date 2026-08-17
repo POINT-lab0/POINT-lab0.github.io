@@ -211,7 +211,7 @@ function renderNewsPage() {
             currentGroup = year;
             const groupDiv = document.createElement('div');
             groupDiv.className = 'news-year-group';
-            groupDiv.innerHTML = `<div class="news-year-divider"><span class="year-label">${year}</span><span class="year-line"></span></div><div class="news-tl-track"></div>`;
+            groupDiv.innerHTML = `<div class="news-tl-track"><div class="news-year-tag">${year}</div></div>`;
             container.appendChild(groupDiv);
             trackEl = groupDiv.querySelector('.news-tl-track');
         }
