@@ -83,46 +83,68 @@ Interaction Lab 홈페이지 유지보수용 README입니다.
 
 ---
 
-## 4. Member 추가
+## 4. Member 추가 / 수정
 
 `data.js`의 `memberData`를 수정합니다.
+
+### 기본 형식 (재학생 · 포스닥)
 
 ```javascript
 {
     name: "Gildong Hong (홍길동)",
-    role: "student",
+    role: "student",                    // prof / student / alumni 중 하나
     email: "gildong@postech.ac.kr",
     image: "images/selfImage/gildong.jpg",
-    website: "https://example.com",
+    website: "https://example.com",     // 선택 사항
     desc: "Ph.D. Student (CSE), Haptics",
 
-    detail: {
-        introduction: "Introduction text.",
+    detail: {                           // 선택 사항 – 없으면 카드만 표시
+        introduction: "자기 소개 텍스트.",
         keyword: [
             "Haptics",
             "Human-Computer Interaction"
+        ],
+        interest: [                     // 선택 사항
+            "Multisensory Perception",
+            "Haptic Rendering"
         ]
     }
 },
 ```
 
-프로필 이미지는:
+프로필 이미지는 `images/selfImage/`에 넣습니다.
 
-```text
-images/selfImage/
+### 졸업생 (Alumni) 형식
+
+Alumni는 `role: "alumni"`를 사용하며, `detail` 없이 `name`과 `desc`만 입력합니다.
+`desc`의 `(연도)` 패턴을 기준으로 최근 졸업자가 목록 상단에 자동 정렬됩니다.
+
+```javascript
+{ name: "Gildong Hong (홍길동)", role: "alumni", desc: "Master (2026) / Company Name" },
 ```
 
-에 넣습니다.
+### 그룹 자동 분류 기준
 
-### Member 그룹 분류
+`script.js`의 `getGroup()` 함수가 `role`과 `desc`를 조합하여 그룹을 결정합니다 (대소문자 무관).
 
-현재 `script.js`는 `role` 및 `desc` 문자열을 기준으로 그룹을 자동 분류합니다.
+| 페이지 표시 그룹 | 판별 기준 |
+|---|---|
+| Director | `role: "prof"` |
+| Post-Doctoral Researchers | `role: "student"` + `desc`에 `post-doc` 또는 `researcher` 포함 |
+| Ph.D. Students | `role: "student"` + `desc`에 `ph.d` 또는 `direct` 포함 |
+| Master Students | `role: "student"` + `desc`에 `master` 또는 `m.s` 포함 |
+| Alumni | `role: "alumni"` |
 
-- 교수: `role: "prof"`
-- Alumni: `role: "alumni"`
-- Postdoc: `desc`에 `post-doc` 또는 `researcher`
-- Ph.D.: `desc`에 `ph.d` 또는 `direct`
-- Master: `desc`에 `master` 또는 `m.s`
+> **주의**: 재학생·포스닥 모두 `role: "student"`를 사용합니다.
+> 위 조건에 해당하지 않으면 Ph.D. Students로 자동 분류됩니다.
+
+### 멤버 탈퇴 처리
+
+졸업 또는 퇴직 시 해당 `student` 항목을 삭제하고, Alumni 목록 상단에 아래 형식으로 추가합니다.
+
+```javascript
+{ name: "Name (한글명)", role: "alumni", desc: "Ph.D./Master (졸업연도) / 소속" },
+```
 
 ---
 
@@ -377,4 +399,4 @@ CNAME
 
 ---
 
-Last updated: 2026-08-07
+Last updated: 2026-08-17
