@@ -159,6 +159,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 /* --- Member Cards --- */
 body.members-page { background: #ffffff; }
+body.news-page { background: #ffffff; }
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -425,8 +426,8 @@ body.members-page { background: #ffffff; }
     width: 100%;
     height: 100%;
     padding: 25px;
-    background: #ffffff;
-    color: var(--dark);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -436,28 +437,25 @@ body.members-page { background: #ffffff; }
 }
 
 .news-preview-content i {
-    font-size: 28px !important;
-    margin-bottom: 4px;
-    color: var(--primary);
+    font-size: 32px !important;
+    margin-bottom: 5px;
 }
 
 .news-preview-content h3 {
-    font-size: 0.97rem;
+    font-size: 1rem;
     margin: 0;
-    line-height: 1.35;
-    color: var(--dark);
-    font-weight: 700;
+    line-height: 1.3;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .news-preview-content p {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     margin: 0;
-    line-height: 1.45;
-    color: #64748b;
+    line-height: 1.4;
+    opacity: 0.9;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
