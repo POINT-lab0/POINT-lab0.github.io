@@ -194,39 +194,54 @@ function renderNewsPage() {
     const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
     const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
     const sorted = getSortedNews(); container.innerHTML = '';
+    if (sorted.length === 0) return;
 
-    let currentGroup = null;
-    let trackEl = null;
+    // ── Featured: most recent item ──────────────────────────
+    const feat = sorted[0];
+    const featIdx = newsData.findIndex(n => n.id === feat.id);
+    const featIcon = NEWS_ICONS[feat.category] || '📌';
+    const featEl = document.createElement('div');
+    featEl.className = 'news-featured';
+    featEl.onclick = () => location.href = `news.html?id=${featIdx}`;
+    featEl.innerHTML = `
+        <div class="nf-top">
+            <div class="nf-icon-box">${featIcon}</div>
+            <div class="nf-eyebrow">
+                <span class="nf-latest-tag">Latest</span>
+                <span class="nf-date">${feat.date}</span>
+            </div>
+        </div>
+        <div class="nf-title">${feat.title}</div>
+        <div class="nf-body">${feat.content}</div>
+        <div class="nf-footer">${getCategoryBadge(feat.category)}<span class="nf-arrow">Read more →</span></div>`;
+    container.appendChild(featEl);
 
-    sorted.forEach(item => {
-        const originalIndex = newsData.findIndex(n => n.id === item.id);
+    // ── Remaining: grouped by year, 3-col grid ──────────────
+    let curYear = null, gridEl = null;
+    sorted.slice(1).forEach(item => {
+        const idx = newsData.findIndex(n => n.id === item.id);
         const year = item.date ? item.date.split('-')[0] : '';
-        const monthDay = item.date ? item.date.slice(5) : '';
+        const md   = item.date ? item.date.slice(5) : '';
         const icon = NEWS_ICONS[item.category] || '📌';
-        const imgHtml = item.image
-            ? `<img src="${item.image}" class="news-tl-img" onerror="this.style.display='none'">`
-            : '';
 
-        if (year !== currentGroup) {
-            currentGroup = year;
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'news-year-group';
-            groupDiv.innerHTML = `<div class="news-tl-track"><div class="news-year-tag">${year}</div></div>`;
-            container.appendChild(groupDiv);
-            trackEl = groupDiv.querySelector('.news-tl-track');
+        if (year !== curYear) {
+            curYear = year;
+            const sec = document.createElement('div');
+            sec.className = 'news-year-section';
+            sec.innerHTML = `<div class="news-mag-year">${year}</div><div class="news-mag-grid"></div>`;
+            container.appendChild(sec);
+            gridEl = sec.querySelector('.news-mag-grid');
         }
 
         const card = document.createElement('div');
-        card.className = 'news-tl-item';
-        card.onclick = () => location.href = `news.html?id=${originalIndex}`;
+        card.className = 'news-mag-card';
+        card.onclick = () => location.href = `news.html?id=${idx}`;
         card.innerHTML = `
-            <div class="news-tl-icon">${icon}</div>
-            <div class="news-tl-body">
-                <div class="news-tl-meta">${getCategoryBadge(item.category)}<span class="news-tl-date">${monthDay}</span></div>
-                <div class="news-tl-title">${item.title}</div>
-                <p class="news-tl-excerpt">${item.content}</p>
-            </div>${imgHtml}`;
-        trackEl.appendChild(card);
+            <div class="nmg-icon">${icon}</div>
+            <div class="nmg-meta">${getCategoryBadge(item.category)}<span class="nmg-date">${md}</span></div>
+            <div class="nmg-title">${item.title}</div>
+            <p class="nmg-excerpt">${item.content}</p>`;
+        gridEl.appendChild(card);
     });
 }
 function renderNewsDetail(index) {
