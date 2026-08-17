@@ -17,7 +17,7 @@ const newsData = [
         title: "POINT Lab Receives Three Awards at Korea Haptics Conference 2026",
         content: "The Interaction Lab earned an Outstanding Contributing Institution Award and two Honorable Mentions at KHC 2026.",
         image: "",
-        detailContent: "The POSTECH Interaction Laboratory received three awards at the Korea Haptics Conference (KHC) 2026:<br><br><strong>Outstanding Contributing Institution Award</strong><br>— Interaction Laboratory, POSTECH<br><br><strong>Best Paper Award (Honorable Mention)</strong><br><br><strong>Best Demonstration Award (Honorable Mention)</strong>"
+        detailContent: "The POSTECH Interaction Laboratory received three awards at the Korea Haptics Conference (KHC) 2026:<br><br><strong>Outstanding Contributing Institution Award</strong><br>Interaction Laboratory at POSTECH<br>Korea Haptics Conference<br><br><strong>Best Paper Award (Honorable Mention)</strong><br>Korea Haptics Conference<br>GenTouchVR: An Automatic Generation Pipeline of a Touch-Enabled Virtual Environments from a Single Image<br><br><strong>Best Demonstration Award (Honorable Mention)</strong><br>Korea Haptics Conference<br>GenTouchVR Demo: Experiencing a Touch-Enabled Virtual Environments Automatically Generated from a Single Image"
     },
     {
         id: 3,
@@ -3705,6 +3705,10 @@ const patentData = [
 
 // 5. Awards Data (Selected)
 const awardData = [
+    { date: "2026", title: "Outstanding Contributing Institution Award", organization: "Korea Haptics Conference" },
+    { date: "2026", title: "Best Paper Award (Honorable Mention)", organization: "Korea Haptics Conference" },
+    { date: "2026", title: "Best Demonstration Award (Honorable Mention)", organization: "Korea Haptics Conference" },
+    { date: "2026", title: "Honorable Mention, Best Student Paper Award", organization: "EuroHaptics Conference" },
     { date: "2025", title: "People’s Choice Award (Hands-on Demo)", organization: "IEEE World Haptics Conference (Automatic Haptic Rendering)" },
     { date: "2025", title: "People’s Choice Award (Hands-on Demo)", organization: "IEEE World Haptics Conference (Haptic Motion Effects)" },
     { date: "2024", title: "Best Paper Award Nominee", organization: "IEEE ISMAR" },

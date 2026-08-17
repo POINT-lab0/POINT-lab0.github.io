@@ -624,7 +624,7 @@ body.members-page { background: #ffffff; }
 .news-detail-content { background: var(--white); border-radius: 20px; box-shadow: var(--shadow-sm); padding: 40px 44px; font-size: 1rem; line-height: 1.9; color: #334155; }
 .news-detail-content strong { color: var(--dark); font-weight: 700; }
 .news-section-label { display: inline-block; background: var(--primary); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 12px; border-radius: 6px; margin: 20px 0 10px; letter-spacing: 0.06em; }
-.news-paper-num { display: inline-block; background: #f1f5f9; color: var(--primary); font-size: 0.8rem; font-weight: 700; padding: 2px 8px; border-radius: 5px; margin-right: 4px; }
+.news-paper-num { font-weight: 700; color: var(--dark); margin-right: 4px; }
 .detail-content { max-width: 800px; margin: 40px auto; padding: 0 24px; }
 .detail-body { background: #f8fafc; padding: 40px; border-radius: 20px; }
 .info-group h4 { color: var(--primary); margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }
