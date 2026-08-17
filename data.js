@@ -451,21 +451,6 @@ const memberData = [
     },
 
     // Master Students (Current)
-    { name: "Soyeon Nam (남소연)", role: "student", email: "synam@postech.ac.kr", image: "images/selfImage/soyeon.jpg", desc: "M.S. Student (CSE), Multimodal",
-        detail: {
-            // 줄글 형식 (Introduction)
-            introduction: "I am an M.S. student at the Interaction Lab, POSTECH, in Pohang, South Korea.\n\n I am interested in multimodal interaction and perception in virtual environments. My work explores how haptics and sound contribute to the realism and overall quality of user experience in interactive systems. Beyond my research, I enjoy traveling and trying new experiences.",
-
-            // 리스트 형식 (Keywords)
-            keyword: [
-                "Haptic-Audio Rendering",
-                "Multimodal Interaction",
-                "VR/AR",
-                "AI in HCI",
-                "Human-Computer Interaction"
-            ]
-        }
-    },
     { name: "Suheon Nam (남수헌)", role: "student", email: "suheon1203@postech.ac.kr", image: "images/selfImage/suheon.jpg", website:"https://suheon-1203.github.io/", desc: "M.S. Student (CSE), Wearable HCI",
          detail: {
             // 줄글 형식 (Introduction)
@@ -498,9 +483,10 @@ const memberData = [
             ]
         }
     },
-    { name: "Doohong Kwon (권두홍)", role: "student", email: "duhongk27@postech.ac.kr", image: "images/selfImage/duhong.jpg", desc: "M.S. Student (CSE), Haptics" },
+    { name: "Duhong Kweon (권두홍)", role: "student", email: "duhongk27@postech.ac.kr", image: "images/selfImage/duhong.jpg", desc: "M.S. Student (CSE), Haptics" },
 
     // Alumni (Full list from CV)
+    { name: "Soyeon Nam (남소연)", role: "alumni", desc: "Master (2026)" },
     { name: "Seokhee Jeon (전석희)", role: "alumni", desc: "Ph.D. (2010) / Assoc. Prof. at Kyung Hee Univ." },
     { name: "Sungkil Lee (이성길)", role: "alumni", desc: "Ph.D. (2009) / Professor at Sungkyunkwan Univ." },
     { name: "Inwook Hwang (황인욱)", role: "alumni", desc: "Ph.D. (2013) / Researcher at ETRI" },
