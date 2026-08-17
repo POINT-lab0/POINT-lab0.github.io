@@ -200,17 +200,47 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .name-kor { font-size: 1.05rem; font-weight: 600; color: var(--gray); margin-top: 4px; }
 .member-email { font-size: 0.9rem; color: #888; margin-top: 8px; word-break: break-all; overflow-wrap: anywhere; line-height: 1.4; width: 100%; }
 
-/* 멤버 상세 페이지 프로필 사진 (큰 사각형) */
-.detail-profile-img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 24px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
+/* 멤버 상세 페이지 – 2단 히어로 레이아웃 */
+.member-detail-hero {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin: 30px 0 36px;
+}
+.member-detail-photo {
+    flex-shrink: 0;
+    width: 210px;
+    height: 250px;
     object-fit: cover;
-    display: inline-block;
+    object-position: top;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
     border: 1px solid rgba(0,0,0,0.05);
+}
+.member-detail-info { flex: 1; min-width: 0; padding-top: 6px; }
+.member-detail-name { font-size: 1.75rem; font-weight: 800; margin: 0 0 6px; line-height: 1.25; }
+.member-detail-role { color: var(--primary); font-size: 0.97rem; font-weight: 600; margin: 0 0 5px; }
+.member-detail-email { color: #94a3b8; font-size: 0.87rem; margin: 0 0 18px; }
+.member-detail-keywords { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.member-detail-kw {
+    background: #e8f4fb; color: var(--primary);
+    padding: 3px 11px; border-radius: 99px;
+    font-size: 0.78rem; font-weight: 700;
+}
+.member-detail-website {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.93rem;
+}
+.member-detail-website:hover { text-decoration: underline; }
+.member-detail-card {
+    background: #fff; padding: 40px;
+    border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+@media (max-width: 600px) {
+    .member-detail-hero { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+    .member-detail-photo { width: 150px; height: 178px; }
+    .member-detail-keywords { justify-content: center; }
+    .member-detail-card { padding: 24px 20px; }
 }
 
 /* --- News Magazine Layout (news.html) --- */
