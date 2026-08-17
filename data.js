@@ -1,52 +1,115 @@
-// 1. News Data (이미지 및 상세 내용 추가)
+// 1. News Data
 const newsData = [
+    // ── 2026 ──────────────────────────────────────────────
     {
         id: 1,
-        date: "2026-03-03",
-        title: "Three Papers and One Poster Accepted at ACM CHI 2026",
-        content: "Our lab's research on gaming experiences, haptic ring interfaces, and social touch analysis has been accepted at ACM CHI 2026.",
-        image: "images/news/chi2026.png",
-        detailContent: "We are proud to announce that three full papers have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026). The accepted works and authors are: <br><br>[Paper]<br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong> <br>- Heeji Sohn, Chaeyong Park, and Seungmoon Choi <br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong> <br>- Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park <br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong> <br>- Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim  <br><br> [Poster]<br>3) <strong>'Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso'</strong> <br>-  Dajin Lee and Seungmoon Choi"
+        date: "2026-08-01",
+        category: "paper",
+        title: "Two Papers Accepted at ACM UIST 2026",
+        content: "CineHaptic and HAPTCHA will be presented at ACM UIST 2026 in October.",
+        image: "",
+        detailContent: "Two papers from our lab have been accepted at the ACM Symposium on User Interface Software and Technology (UIST 2026).<br><br>1) <strong>'CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences'</strong><br>— Jeongwoo Kim, Hyunuk Kim, Han-Byul Oh, Junseok Kang, Tae-Hyun Oh, and Seungmoon Choi<br><br>2) <strong>'HAPTCHA: Eyes-Free Haptic CAPTCHA in Mobile Environments: Design Principle, Security Evaluation, and User Experience'</strong><br>— Dojoon Kweon, Dajin Lee, Seunghun Kim, and Seungmoon Choi"
     },
     {
         id: 2,
-        date: "2026-02-15",
-        title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
-        content: "Research on steering wheel vibration and forearm stimulus identification will be presented at IEEE Haptics Symposium 2026.",
-        image: "images/news/haptics_symp_2026.png",
-        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium 2026. The accepted papers and authors are: <br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong> \n\n- Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi <br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong> \n\n- Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
+        date: "2026-07-10",
+        category: "award",
+        title: "POINT Lab Receives Three Awards at Korea Haptics Conference 2026",
+        content: "The Interaction Lab earned an Outstanding Contributing Institution Award and two Honorable Mentions at KHC 2026.",
+        image: "",
+        detailContent: "The POSTECH Interaction Laboratory received three awards at the Korea Haptics Conference (KHC) 2026:<br><br><strong>Outstanding Contributing Institution Award</strong><br>— Interaction Laboratory, POSTECH<br><br><strong>Best Paper Award (Honorable Mention)</strong><br><br><strong>Best Demonstration Award (Honorable Mention)</strong>"
     },
     {
         id: 3,
-        date: "2025-12-20",
-        title: "Paper Accepted in IEEE Transactions on Haptics",
-        content: "New research on 4D ride emotion modeling has been accepted as a Cover Paper in IEEE ToH.",
-        image: "images/news/toh_cover.jpg",
-        detailContent: "A new journal paper has been accepted for publication: <strong>'Modeling Emotion Induced by Motion in 4D Rides'</strong>. This work has been selected as a <strong>Cover Paper</strong> for IEEE Transactions on Haptics. <br><br><strong>Authors:</strong> Kimin Kwon, Sung H. Han, Dawoon Jeong, Junseong Park, and Seungmoon Choi"
+        date: "2026-06-10",
+        category: "paper",
+        title: "Paper Accepted at EuroHaptics 2026",
+        content: "Research comparing force feedback strategies for haptic glove design accepted at EuroHaptics 2026.",
+        image: "",
+        detailContent: "A paper from our lab has been accepted at EuroHaptics 2026 (Lecture Notes in Computer Science, vol. 16593).<br><br><strong>'A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves'</strong><br>— Jeongwoo Kim, Uison Ju, and Seungmoon Choi"
     },
     {
         id: 4,
-        date: "2025-07-08",
-        title: "Successful Hosting of IEEE World Haptics Conference 2025",
-        content: "The Interaction Lab successfully organized WHC 2025 in Seoul, bringing together over 500 haptics experts.",
-        image: "images/lab_intro1.jpg",
-        detailContent: "The Interaction Lab, led by General Chair Prof. Seungmoon Choi, successfully hosted the IEEE World Haptics Conference (WHC) 2025 in Seoul. Our lab members contributed as organizing committee members and presented various research works, including award-winning demonstrations like the 'Automatic Haptic Rendering Pipeline'."
+        date: "2026-04-15",
+        category: "paper",
+        title: "Three Journal Papers Accepted in 2026",
+        content: "New papers accepted in IEEE TVCG, Advanced Intelligent Systems, and IJHCI.",
+        image: "",
+        detailContent: "We are pleased to announce three journal paper acceptances in 2026:<br><br>1) <strong>'HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions'</strong><br>IEEE Transactions on Visualization and Computer Graphics<br>— Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi<br><br>2) <strong>'Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback'</strong><br>Advanced Intelligent Systems<br>— Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong<br><br>3) <strong>'Investigating Luxuriousness of Steering Wheel Vibration Warning'</strong><br>International Journal of Human-Computer Interaction<br>— Kimin Kwon, Sung H. Han, Seungmoon Choi, et al."
     },
     {
         id: 5,
-        date: "2025-03-01",
-        title: "Paper Accepted at IEEE VR 2025",
-        content: "Our research on 'Human Dance Haptic Motion Effects' has been accepted for presentation at IEEE VR 2025.",
-        image: "", // 이미지가 없으면 기본 디자인
-        detailContent: "Abstract of the paper: This paper proposes a novel method..."
+        date: "2026-03-20",
+        category: "paper",
+        title: "GenTouchVR Presented at IEEE VR 2026",
+        content: "GenTouchVR — generating a touchable VR environment from a single image — featured at IEEE VR 2026.",
+        image: "",
+        detailContent: "<strong>'GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image'</strong> has been published in IEEE Transactions on Visualization and Computer Graphics (Special issue of IEEE VR 2026, Acceptance rate 20.6%).<br><br><strong>Authors:</strong> Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi<br><br>GenTouchVR is an end-to-end pipeline that automatically generates interactive, touchable VR environments from a single RGB image using vision-language models and real-time haptic rendering."
     },
     {
         id: 6,
+        date: "2026-03-03",
+        category: "paper",
+        title: "Three Papers and One Poster Accepted at ACM CHI 2026",
+        content: "Our lab's research on gaming haptics, haptic ring interfaces, and social touch accepted at ACM CHI 2026.",
+        image: "images/news/chi2026.png",
+        detailContent: "Three full papers and one poster have been accepted at the ACM CHI Conference on Human Factors in Computing Systems (CHI 2026).<br><br><strong>[Papers]</strong><br>1) <strong>'Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games'</strong><br>— Heeji Sohn, Chaeyong Park, and Seungmoon Choi<br><br>2) <strong>'HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information'</strong><br>— Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park<br><br>3) <strong>'Touch with Meaning: A Contextual Analysis of Social Touch'</strong><br>— Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim<br><br><strong>[Poster]</strong><br>4) <strong>'Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso'</strong><br>— Dajin Lee and Seungmoon Choi"
+    },
+    {
+        id: 7,
+        date: "2026-02-15",
+        category: "paper",
+        title: "Two Papers Accepted at IEEE Haptics Symposium 2026",
+        content: "Research on steering wheel vibration discomfort and forearm stimulus identification accepted at HAPTICS 2026.",
+        image: "images/news/haptics_symp_2026.png",
+        detailContent: "Our lab will be presenting two papers at the IEEE Haptics Symposium (HAPTICS) 2026.<br><br>1) <strong>'Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration'</strong><br>— Dajin Lee, Soyeon Nam, Minsung Noh, Sunyoung Jang, and Seungmoon Choi<br><br>2) <strong>'Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification'</strong><br>— Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi"
+    },
+    {
+        id: 8,
+        date: "2026-01-15",
+        category: "service",
+        title: "Prof. Choi Appointed to Presidential Advisory Council on Science & Technology",
+        content: "Prof. Seungmoon Choi joins the AI·ICT Committee of Korea's Presidential Advisory Council on Science & Technology.",
+        image: "",
+        detailContent: "Prof. Seungmoon Choi has been appointed as a member of the <strong>AI·ICT Committee, Presidential Advisory Council on Science and Technology</strong> (2025–2026).<br><br>In addition, Prof. Choi serves as:<br>• <strong>Chair, Steering Committee</strong>, IEEE World Haptics Conference (2025–present)<br>• <strong>Member, Management Committee</strong>, IEEE Transactions on Haptics (2025–present)"
+    },
+    // ── 2025 ──────────────────────────────────────────────
+    {
+        id: 9,
+        date: "2025-12-20",
+        category: "paper",
+        title: "Paper Accepted in IEEE Transactions on Haptics (Cover Paper)",
+        content: "New research on 4D ride emotion modeling selected as a Cover Paper in IEEE Transactions on Haptics.",
+        image: "images/news/toh_cover.jpg",
+        detailContent: "<strong>'Modeling Emotion Induced by Motion in 4D Rides'</strong> has been accepted and selected as a <strong>Cover Paper</strong> for IEEE Transactions on Haptics.<br><br><strong>Authors:</strong> Kimin Kwon, Sung H. Han, Dawoon Jeong, Junseong Park, and Seungmoon Choi"
+    },
+    {
+        id: 10,
+        date: "2025-07-08",
+        category: "event",
+        title: "POINT Lab Hosts IEEE World Haptics Conference 2025",
+        content: "The Interaction Lab successfully organized WHC 2025 in Seoul, with multiple awards received by lab members.",
+        image: "images/HomeImages/WHC_2025.jpg",
+        detailContent: "The Interaction Lab, led by General Chair Prof. Seungmoon Choi, successfully hosted the IEEE World Haptics Conference (WHC) 2025 in Seoul.<br><br>Lab members received the following awards at WHC 2025:<br>• <strong>Honorable Mention, Best WIP Paper Award</strong><br>• <strong>People's Choice Award ×2</strong>, Hands-on Demonstration (including 'Automatic Haptic Rendering Pipeline')"
+    },
+    {
+        id: 11,
+        date: "2025-03-01",
+        category: "paper",
+        title: "Paper Accepted at IEEE VR 2025",
+        content: "Research on generating haptic motion effects for human dance accepted at IEEE VR 2025.",
+        image: "",
+        detailContent: "<strong>'Automatic Generation of Haptic Motion Effects Expressing Human Dance'</strong> has been accepted at the IEEE Conference on Virtual Reality and 3D User Interfaces (VR 2025).<br><br><strong>Authors:</strong> Junseo Ahn and Seungmoon Choi"
+    },
+    // ── 2024 ──────────────────────────────────────────────
+    {
+        id: 12,
         date: "2024-03-01",
-        title: "Prof. Choi Appointed as Dept. Head",
+        category: "service",
+        title: "Prof. Choi Appointed as Department Head of CSE",
         content: "Prof. Seungmoon Choi has been appointed as the Department Head of Computer Science and Engineering at POSTECH.",
         image: "images/prof.jpg",
-        detailContent: "He will serve as the department head for two years..."
+        detailContent: "Prof. Seungmoon Choi has been appointed as the <strong>Head of the Department of Computer Science and Engineering</strong> at POSTECH."
     }
 ];
 

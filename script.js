@@ -69,6 +69,18 @@ function highlightActiveMenu() {
 function getQueryParam(param) { const urlParams = new URLSearchParams(window.location.search); return urlParams.get(param); }
 function getSortedNews() { if (typeof newsData === 'undefined') return []; return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)); }
 
+const NEWS_CATEGORIES = {
+    paper:   { label: 'Paper',   color: '#0085CA', bg: '#e8f4fb' },
+    award:   { label: 'Award',   color: '#b45309', bg: '#fef3c7' },
+    service: { label: 'Service', color: '#047857', bg: '#d1fae5' },
+    event:   { label: 'Event',   color: '#7c3aed', bg: '#ede9fe' },
+    grant:   { label: 'Grant',   color: '#0e7490', bg: '#cffafe' },
+};
+function getCategoryBadge(category) {
+    const cat = NEWS_CATEGORIES[category] || { label: category || 'News', color: '#64748b', bg: '#f1f5f9' };
+    return `<span class="news-cat-badge" style="background:${cat.bg};color:${cat.color}">${cat.label}</span>`;
+}
+
 /* =========================================
    [2] 메인 페이지 (Home) & 슬라이더
    ========================================= */
@@ -147,7 +159,7 @@ function renderHome() {
         latestNews.forEach((item, index) => {
             const originalIndex = newsData.findIndex(n => n.id === item.id);
             const li = document.createElement('div'); li.className = 'news-list-item';
-            li.innerHTML = `<span class="news-item-date">${item.date}</span><h3 class="news-item-title">${item.title}</h3>`;
+            li.innerHTML = `<div class="news-item-meta">${getCategoryBadge(item.category)}<span class="news-item-date">${item.date}</span></div><h3 class="news-item-title">${item.title}</h3>`;
             li.addEventListener('mouseenter', () => { updateHomeNewsPreview(previewPane, item); });
             li.addEventListener('click', () => { location.href = `news.html?id=${originalIndex}`; });
             listContainer.appendChild(li);
@@ -189,7 +201,7 @@ function renderNewsPage() {
         const imgHtml = item.image
             ? `<img src="${item.image}" class="news-tl-img" onerror="this.style.display='none'">`
             : '';
-        container.innerHTML += `<div class="news-tl-item" onclick="location.href='news.html?id=${originalIndex}'"><div class="news-tl-left"><div class="news-tl-dot"></div><div class="news-tl-date">${monthDay}</div></div><div class="news-tl-body"><h3>${item.title}</h3><p>${item.content}</p></div>${imgHtml}</div>`;
+        container.innerHTML += `<div class="news-tl-item" onclick="location.href='news.html?id=${originalIndex}'"><div class="news-tl-left"><div class="news-tl-dot"></div><div class="news-tl-date">${monthDay}</div></div><div class="news-tl-body"><div class="news-tl-meta">${getCategoryBadge(item.category)}</div><h3>${item.title}</h3><p>${item.content}</p></div>${imgHtml}</div>`;
     });
 }
 function renderNewsDetail(index) {
