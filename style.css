@@ -216,6 +216,30 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 /* --- News Magazine Layout (news.html) --- */
 .news-magazine { padding-bottom: 72px; }
 
+/* ── Category filter bar ── */
+.news-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+.news-filter-btn {
+    padding: 6px 18px;
+    border-radius: 99px;
+    border: 1.5px solid #e2e8f0;
+    background: transparent;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
+}
+.news-filter-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+.news-filter-btn.active { color: #fff; border-color: transparent; }
+.news-filter-btn[data-filter="all"].active { background: var(--dark); }
+.news-empty-msg { color: #94a3b8; font-size: 1rem; text-align: center; padding: 60px 0; }
+
 /* ── Featured card ── */
 .news-featured {
     background: #fff;

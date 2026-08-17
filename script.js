@@ -58,11 +58,12 @@ function loadLayout() {
 }
 
 function highlightActiveMenu() {
-    const path = window.location.pathname; const page = path.split("/").pop() || 'index.html';
+    const path = window.location.pathname;
+    const page = path.split("/").pop().replace(/\.html$/i, '') || 'index';
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
-        const linkPage = item.getAttribute('href');
-        if (page === linkPage || (page === '' && linkPage === 'index.html')) item.classList.add('active');
+        const linkPage = (item.getAttribute('href') || '').replace(/\.html$/i, '');
+        if (page === linkPage || (page === 'index' && linkPage === 'index')) item.classList.add('active');
         else item.classList.remove('active');
     });
 }
@@ -70,11 +71,12 @@ function getQueryParam(param) { const urlParams = new URLSearchParams(window.loc
 function getSortedNews() { if (typeof newsData === 'undefined') return []; return [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)); }
 
 const NEWS_CATEGORIES = {
-    paper:   { label: 'Paper',   color: '#0085CA', bg: '#e8f4fb' },
-    award:   { label: 'Award',   color: '#b45309', bg: '#fef3c7' },
-    service: { label: 'Service', color: '#047857', bg: '#d1fae5' },
-    event:   { label: 'Event',   color: '#7c3aed', bg: '#ede9fe' },
-    grant:   { label: 'Grant',   color: '#0e7490', bg: '#cffafe' },
+    paper:    { label: 'Paper',    color: '#0085CA', bg: '#e8f4fb' },
+    award:    { label: 'Award',    color: '#b45309', bg: '#fef3c7' },
+    service:  { label: 'Service',  color: '#047857', bg: '#d1fae5' },
+    event:    { label: 'Event',    color: '#7c3aed', bg: '#ede9fe' },
+    grant:    { label: 'Grant',    color: '#0e7490', bg: '#cffafe' },
+    graduate: { label: 'Graduate', color: '#be185d', bg: '#fce7f3' },
 };
 function getCategoryBadge(category) {
     const cat = NEWS_CATEGORIES[category] || { label: category || 'News', color: '#64748b', bg: '#f1f5f9' };
@@ -188,16 +190,66 @@ function updateHomeNewsPreview(pane, item) {
 /* =========================================
    [3] 뉴스 페이지
    ========================================= */
-const NEWS_ICONS = { paper: '📄', award: '🏆', service: '🏛', event: '📣', grant: '💡' };
+const NEWS_ICONS = { paper: '📄', award: '🏆', service: '🏛', event: '📣', grant: '💡', graduate: '🎓' };
+
+let _newsActiveFilter = 'all';
 
 function renderNewsPage() {
     const id = getQueryParam('id'); if (id !== null && newsData[id]) { renderNewsDetail(id); return; }
     const container = document.getElementById('news-grid-full'); if (!container || typeof newsData === 'undefined') return;
-    const sorted = getSortedNews(); container.innerHTML = '';
-    if (sorted.length === 0) return;
 
-    // ── Featured: most recent item ──────────────────────────
-    const feat = sorted[0];
+    // ── Filter bar ─────────────────────────────────────────
+    const filterOrder = ['all', 'paper', 'award', 'grant', 'graduate', 'service', 'event'];
+    const filterLabels = { all: 'All', paper: 'Paper', award: 'Award', service: 'Service', event: 'Event', grant: 'Grant', graduate: 'Graduate' };
+    const usedCats = new Set(newsData.map(n => n.category));
+    const visibleFilters = filterOrder.filter(f => f === 'all' || usedCats.has(f));
+
+    const filterBar = document.createElement('div');
+    filterBar.className = 'news-filter-bar';
+    visibleFilters.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'news-filter-btn' + (cat === _newsActiveFilter ? ' active' : '');
+        if (cat !== 'all' && NEWS_CATEGORIES[cat]) {
+            btn.dataset.color = NEWS_CATEGORIES[cat].color;
+            if (cat === _newsActiveFilter) btn.style.background = NEWS_CATEGORIES[cat].color;
+        }
+        btn.textContent = filterLabels[cat];
+        btn.dataset.filter = cat;
+        btn.addEventListener('click', () => {
+            _newsActiveFilter = cat;
+            document.querySelectorAll('.news-filter-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = '';
+            });
+            btn.classList.add('active');
+            if (cat !== 'all' && NEWS_CATEGORIES[cat]) btn.style.background = NEWS_CATEGORIES[cat].color;
+            _renderNewsGrid(container, filterBar);
+        });
+        filterBar.appendChild(btn);
+    });
+    container.innerHTML = '';
+    container.appendChild(filterBar);
+
+    _renderNewsGrid(container, filterBar);
+}
+
+function _renderNewsGrid(container, filterBar) {
+    // Remove everything except the filter bar
+    Array.from(container.children).forEach(el => { if (el !== filterBar) el.remove(); });
+
+    const sorted = getSortedNews();
+    const filtered = _newsActiveFilter === 'all' ? sorted : sorted.filter(n => n.category === _newsActiveFilter);
+
+    if (filtered.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'news-empty-msg';
+        empty.textContent = 'No news in this category yet.';
+        container.appendChild(empty);
+        return;
+    }
+
+    // ── Featured: most recent in filtered set ──────────────
+    const feat = filtered[0];
     const featIdx = newsData.findIndex(n => n.id === feat.id);
     const featIcon = NEWS_ICONS[feat.category] || '📌';
     const featEl = document.createElement('div');
@@ -218,7 +270,7 @@ function renderNewsPage() {
 
     // ── Remaining: grouped by year, 3-col grid ──────────────
     let curYear = null, gridEl = null;
-    sorted.slice(1).forEach(item => {
+    filtered.slice(1).forEach(item => {
         const idx = newsData.findIndex(n => n.id === item.id);
         const year = item.date ? item.date.split('-')[0] : '';
         const md   = item.date ? item.date.slice(5) : '';
@@ -636,11 +688,12 @@ function renderAwardsPage() {
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     loadLayout();
-    const path = window.location.pathname; const page = path.split("/").pop() || 'index.html';
-    if (page === 'index.html' || page === '') renderHome();
-    else if (page === 'news.html') renderNewsPage();
-    else if (page === 'members.html') renderMembers();
-    else if (page === 'research.html') renderResearchPage();
-    else if (page === 'publications.html') renderPublications();
-    else if (page === 'awards.html') renderAwardsPage();
+    const path = window.location.pathname;
+    const page = path.split("/").pop().replace(/\.html$/i, '') || 'index';
+    if (page === 'index' || page === '') renderHome();
+    else if (page === 'news') renderNewsPage();
+    else if (page === 'members') renderMembers();
+    else if (page === 'research') renderResearchPage();
+    else if (page === 'publications') renderPublications();
+    else if (page === 'awards') renderAwardsPage();
 });

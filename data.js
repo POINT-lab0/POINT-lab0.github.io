@@ -110,6 +110,80 @@ const newsData = [
         content: "Prof. Seungmoon Choi has been appointed as the Department Head of Computer Science and Engineering at POSTECH.",
         image: "images/prof.jpg",
         detailContent: "Prof. Seungmoon Choi has been appointed as the <strong>Head of the Department of Computer Science and Engineering</strong> at POSTECH."
+    },
+    // ── Graduate ──────────────────────────────────────────
+    {
+        id: 13,
+        date: "2026-08-01",
+        category: "graduate",
+        title: "Soyeon Nam Completes Master's Degree (2026 Summer)",
+        content: "Soyeon Nam graduates with an M.S. in Computer Science and Engineering from POSTECH.",
+        image: "",
+        detailContent: "Congratulations to <strong>Soyeon Nam (남소연)</strong> on completing her Master's degree!<br><br>• <strong>Soyeon Nam</strong> — M.S., Computer Science and Engineering, POSTECH (2026.8)<br><br>Her research focused on multimodal haptic-audio rendering and human-computer interaction in virtual environments."
+    },
+    {
+        id: 14,
+        date: "2026-02-01",
+        category: "graduate",
+        title: "Hyunwook Kim Completes Master's Degree, Continues as Ph.D. Student (2026 Spring)",
+        content: "Hyunwook Kim graduates with an M.S. and continues in the Ph.D. program at POSTECH.",
+        image: "",
+        detailContent: "Congratulations to <strong>Hyunwook Kim (김현욱)</strong> on completing his Master's degree!<br><br>• <strong>Hyunwook Kim</strong> — M.S., Computer Science and Engineering, POSTECH (2026.2)<br>Thesis: <em>Generating Gaze-Adaptive Semantic Cinematic Haptic Effects</em><br>Continuing as Ph.D. student in the Interaction Lab."
+    },
+    {
+        id: 15,
+        date: "2025-08-01",
+        category: "graduate",
+        title: "Lab Graduates in Summer 2025: One Ph.D. and One Master's",
+        content: "Jiwan Lee earns his Ph.D. and stays as Post-Doctoral Researcher; Heeji Sohn completes her Master's and continues to Ph.D.",
+        image: "",
+        detailContent: "Congratulations to our 2025 summer graduates!<br><br><strong>Ph.D. Graduate</strong><br>• <strong>Jiwan Lee (이지완)</strong> — Ph.D., Computer Science and Engineering, POSTECH (2025.8)<br>Thesis: <em>Perceptually-Grounded Motion Effect Generation for Multisensory Experience Design</em><br>Now Post-Doctoral Researcher in the Interaction Lab.<br><br><strong>Master's Graduate</strong><br>• <strong>Heeji Sohn (손희지)</strong> — M.S., Computer Science and Engineering, POSTECH (2025.8)<br>Thesis: <em>Effects of Haptic Feedback on Gaming Experiences: A Case Study for Players and Spectators in FPS Games</em><br>Continuing as Ph.D. student in the Interaction Lab."
+    },
+    {
+        id: 16,
+        date: "2024-08-01",
+        category: "graduate",
+        title: "Four Lab Members Graduate in Summer 2024",
+        content: "Two Ph.D. and two Master's graduates in Summer 2024 — two alumni become faculty at Korean universities.",
+        image: "",
+        detailContent: "Congratulations to our 2024 summer graduates!<br><br><strong>Ph.D. Graduates</strong><br>• <strong>Gyeore Yun (윤겨레)</strong> — Ph.D., Computer Science and Engineering, POSTECH (2024.8)<br>Thesis: <em>Automatic Generation of Sound-Based Haptic Effects for Augmenting Game Experiences</em><br>Now Assistant Professor, Kyungpook National University.<br><br>• <strong>Chaeyong Park (박채용)</strong> — Ph.D., Computer Science and Engineering, POSTECH (2024.8)<br>Thesis: <em>Multimodal Haptic Rendering and Perception for Handheld VR Controllers</em><br>Post-Doctoral Researcher at POSTECH (2024.9–2025.8) → Now Assistant Professor, Korea University.<br><br><strong>Master's Graduates</strong><br>• <strong>Heeyeon Kim (김희연)</strong> — M.S., Convergence IT Engineering, POSTECH (2024.8)<br>Thesis: <em>Expressing the Social Intent of Touch Initiator in Virtual Reality Using Multimodal Haptics</em><br>Now at KT.<br><br>• <strong>Jaehyeok Ahn (안재혁)</strong> — M.S., Computer Science and Engineering, POSTECH (2024.8)<br>Thesis: <em>Automatic Generation of Motion Effect Expressing Human Dancing</em><br>Now at ByondR."
+    },
+    // ── Grants ────────────────────────────────────────────
+    {
+        id: 17,
+        date: "2025-04-01",
+        category: "grant",
+        title: "New IITP Grant: Generative Haptics for Flexible Tactile Interfaces (2025–2028)",
+        content: "The Interaction Lab receives a major IITP grant on generative haptics and fine response inference for flexible tactile interfaces.",
+        image: "",
+        detailContent: "The Interaction Lab has been awarded a new research grant from the Institute for Information and Communication Technology Promotion (IITP).<br><br><strong>Project:</strong> Generative Haptics and Fine Response Inference for Flexible Tactile Interfaces<br>유연소재 촉각 인터페이스에 대한 지능적 촉각 생성과 미세 반응 추론 기술<br><br><strong>Agency:</strong> IITP (Hyper-Sense Cognitive Spatial Computing Technology Development)<br><strong>Period:</strong> April 2025 – December 2028<br><strong>Budget:</strong> KRW 4,900M (approx. USD 3.5M)<br><strong>PI:</strong> Sang Ho Yoon (co-PI: Seungmoon Choi, and others)<br><br>This project aims to develop intelligent tactile generation and fine response inference technologies for flexible tactile interfaces, enabling realistic multisensory interaction in next-generation XR environments."
+    },
+    {
+        id: 18,
+        date: "2024-07-01",
+        category: "grant",
+        title: "Two Major Grants Awarded in 2024: IITP ITRC and NRF Pioneer",
+        content: "The Interaction Lab receives two landmark grants: a large-scale IITP center grant and a 5-year NRF Pioneer grant.",
+        image: "",
+        detailContent: "The Interaction Lab has been awarded two significant research grants in 2024.<br><br><strong>[1] IITP University ICT Research Center (ITRC)</strong><br>Project: Augmentation Technologies to Overcome the Limitations and Disabilities of Human Cognition and Intelligence<br>인간 인지-지능 한계 및 장애 극복 증강 기술<br><strong>Agency:</strong> IITP<br><strong>Period:</strong> July 2024 – December 2031<br><strong>Budget:</strong> KRW 9,138M (approx. USD 6.6M)<br><strong>PI:</strong> Seungmoon Choi (with 12 co-PIs)<br><br><strong>[2] NRF Pioneer Program</strong><br>Project: Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia<br>시공간 확장형 다중매체 기반 생성형 경험 연결 상호작용 프레임워크<br><strong>Agency:</strong> National Research Foundation (NRF)<br><strong>Period:</strong> July 2024 – December 2029<br><strong>Budget:</strong> KRW 9,000M (approx. USD 6.5M)<br><strong>PI:</strong> Seungmoon Choi (with 5 co-PIs)"
+    },
+    {
+        id: 19,
+        date: "2023-07-01",
+        category: "grant",
+        title: "NST Convergence Research Grant: Haptic Standards for Hyper-Realistic Metaverse (2023–2029)",
+        content: "A landmark national convergence research grant to develop tactile standards and high-fidelity haptic systems for the metaverse.",
+        image: "",
+        detailContent: "The POSTECH Interaction Lab is participating in a major national convergence research project funded by the National Research Council of Science and Technology (NST).<br><br><strong>Project:</strong> Development of Tactile Standards and High-Fidelity Integrated Haptic System for the Realization of a Hyper-realistic Metaverse<br>초실감 메타버스 구현을 위한 촉감표준 및 고충실도 통합 햅틱 시스템 개발<br><br><strong>Agency:</strong> NST Convergence Research Center<br><strong>Period:</strong> July 2023 – June 2029<br><strong>Budget:</strong> KRW 39,000M (approx. USD 28M)<br><strong>PI:</strong> Minsuk Kim (co-PI: Seungmoon Choi, and 15 others)<br><br>This large-scale collaborative project focuses on establishing tactile standards and developing high-fidelity integrated haptic systems to realize truly immersive metaverse experiences."
+    },
+    {
+        id: 20,
+        date: "2022-09-01",
+        category: "grant",
+        title: "NRF Mid-Career Grant: Semantic Sound-to-Haptic Automatic Conversion (2022–2026)",
+        content: "Prof. Choi receives an NRF Mid-Career Researcher grant on semantic audio-to-haptic conversion covering metaverse, full-body haptics, and accessibility.",
+        image: "",
+        detailContent: "Prof. Seungmoon Choi has been awarded a new Mid-Career Researcher grant from the National Research Foundation of Korea (NRF).<br><br><strong>Project:</strong> Semantic Sound-to-Haptic Automatic Conversion: Metaverse, Full-body Haptic Effects, and Accessibility<br>의미론적 소리-햅틱 효과 자동 변환: 메타버스, 전신 햅틱 효과, 접근성<br><br><strong>Agency:</strong> NRF (Mid-Career Researcher Program)<br><strong>Period:</strong> September 2022 – February 2026<br><strong>Budget:</strong> KRW 700M (approx. USD 500K)<br><strong>PI:</strong> Seungmoon Choi<br><br>This project investigates automatic methods for converting semantic audio features into haptic effects, with applications spanning metaverse environments, full-body haptic experiences, and accessibility technologies for users with sensory impairments."
     }
 ];
 
