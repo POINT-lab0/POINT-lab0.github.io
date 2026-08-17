@@ -130,7 +130,6 @@ function getSortedNews() { if (typeof newsData === 'undefined') return []; retur
    // 페이지 로드 시 실행
    document.addEventListener('DOMContentLoaded', initSlider);
 function renderHome() {
-    initSlider(); // 슬라이더 초기화
     const ytContainer = document.getElementById('youtube-gallery');
     if (ytContainer && typeof youtubeVideos !== 'undefined') {
         ytContainer.innerHTML = '';

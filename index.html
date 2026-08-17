@@ -4,74 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Interaction Lab - POSTECH</title>
+    <title>POSTECH Interaction Laboratory</title>
 </head>
 <body>
     <div id="global-header"></div>
 
-    <div class="container" style="padding: 60px 20px;">
-        <div style="max-width: 900px; margin: 0 auto; text-align: left;">
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;">
-                POSTECH
+    <div class="container home-hero">
+        <h1 class="home-title">POSTECH Interaction Laboratory</h1>
+
+        <div class="home-intro">
+            <p>
+                The POSTECH Interaction Laboratory (POINT) pursues easy, effective, and novel methods for human-system interaction, with a primary focus on physical and multisensory experiences across computers, robots, smart vehicles, and mobile devices. Our research is inherently interdisciplinary, integrating haptics, human-computer interaction (HCI), virtual reality (VR), robotics, and perceptual psychology. Recognized globally for our pioneering contributions to touch-based, immersive interfaces and multisensory perception, POINT strives to advance the fundamental science of physical interaction while bridging the gap between human capabilities and technology.
             </p>
-            <p style="font-size: 0.82rem; font-weight: 600; color: #64748b; letter-spacing: 0.04em; margin-bottom: 14px;">
-                Department of Computer Science and Engineering
+            <p>
+                POINT was established by Prof. Seungmoon Choi in 2005 as the Haptics and Virtual Reality Laboratory. In 2020, the lab was renamed the Interaction Laboratory to reflect our broadened research vision and growing impact on next-generation interactive systems.
             </p>
-            <h1 style="font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 24px; letter-spacing: -1px; line-height: 1.2;">
-                Interaction Lab
-            </h1>
-
-            <div style="font-size: 1.1rem; line-height: 1.9; color: #475569; margin-bottom: 32px;">
-                <p style="margin-bottom: 16px;">
-                    We are an interdisciplinary research group dedicated to understanding and designing <strong>haptic interaction</strong> — the science and engineering of touch-based feedback between humans and computers.
-                </p>
-                <p>
-                    Our work spans <strong>haptic rendering &amp; perception</strong>, <strong>multisensory interaction in XR</strong>, <strong>wearable &amp; assistive haptic devices</strong>, and <strong>novel haptic interfaces</strong>. By combining human perception studies with cutting-edge hardware and software, we create immersive experiences that feel as natural as the real world.
-                </p>
-            </div>
-
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;">
-                <span class="home-keyword-tag">Haptic Rendering</span>
-                <span class="home-keyword-tag">Multisensory XR</span>
-                <span class="home-keyword-tag">Tactile Perception</span>
-                <span class="home-keyword-tag">Wearable Haptics</span>
-                <span class="home-keyword-tag">Virtual Reality</span>
-                <span class="home-keyword-tag">Human-Computer Interaction</span>
-            </div>
-
-            <div class="main-slider-container">
-              <div class="slider-wrapper" id="main-slider">
-                  <img src="images/HomeImages/CHI2026.jpg" class="slide active" alt="CHI 2026">
-                  <img src="images/HomeImages/WHC_2025.jpg" class="slide" alt="WHC 2025">
-                  <img src="images/HomeImages/Graduation_2025.jpg" class="slide" alt="Graduation 2025">
-                  <img src="images/HomeImages/UIST_2025.jpg" class="slide" alt="UIST 2025">
-                  <img src="images/HomeImages/KCHI_2025.jpg" class="slide" alt="KCHI 2025">
-                  <img src="images/HomeImages/KHC_2024.jpg" class="slide" alt="KHC 2024">
-                  <img src="images/HomeImages/Labdinner.jpg" class="slide" alt="Lab Dinner">
-              </div>
-
-              <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">
-                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
-              </button>
-              <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">
-                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
-              </button>
-
-              <div class="slider-dots" id="slider-dots"></div>
-          </div>
+            <p class="home-video-lead">
+                The videos below highlight our representative past and ongoing research endeavors in reverse chronological order.
+            </p>
         </div>
-    </div>
 
-    <div class="container" style="padding-top:20px;">
-        <div class="section-header">
-            <h2>Lab Introduction</h2>
-        </div>
         <div class="youtube-grid" id="youtube-gallery"></div>
     </div>
 
-    <div class="container" style="background:#fff; border-radius:24px; margin-bottom:60px; padding:40px 40px 30px; box-shadow:0 4px 20px rgba(0,0,0,0.02); border: 1px solid #f1f5f9;">
+    <div class="container home-news-section">
         <div class="section-header" style="margin-bottom: 25px;">
-            <h2 style="font-size: 1.5rem;">Latest News</h2>
+            <h2 style="font-size: 1.5rem;">News</h2>
             <a href="news.html" style="margin-left:auto; font-weight:700; color:var(--primary); font-size: 0.9rem;">View All →</a>
         </div>
         <div id="home-news"></div>
