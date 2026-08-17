@@ -316,7 +316,7 @@ function renderMembersContent(activeGroup) {
         if (g === 'alumni') {
             members.sort((a,b) => { const yr = s => { const match = s.m.desc.match(/\((19|20)\d{2}\)/); return match ? parseInt(match[0].replace(/[()]/g,'')) : 0; }; return yr(b)-yr(a); });
             html += `<div class="alumni-list">`;
-            members.forEach(({m}) => { html += `<div class="alumni-item"><strong>${m.name}</strong><span>${m.desc}</span></div>`; });
+            members.forEach(({m}) => { const parts = m.desc.split(' / '); html += `<div class="alumni-item"><strong>${m.name}</strong>${parts.map(p => `<span>${p}</span>`).join('')}</div>`; });
             html += `</div>`;
         } else if (g === 'prof' || g === 'postdoc') {
             html += `<div class="member-grid-center">`;
