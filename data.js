@@ -2241,7 +2241,7 @@ const conferencePapers = [
         title: "Participatory Design for In-Vehicle Vibrotactile Warnings on Driver’s Seat",
         authors: "Dajin Lee, Jaejun Park, Jeonggoo Kang, Taekun Yun, Dong-Chul Park, and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://dl.acm.org/doi/10.1007/978-3-031-70061-3_29"
+        link: "https://doi.org/10.1007/978-3-031-70061-3_29"
     },
     {
         year: 2024,
@@ -2250,7 +2250,7 @@ const conferencePapers = [
         title: "A Feasibility Study of Tactile Enhancement of Mid-Air Ultrasonic Stimulation by Wrist Vibration",
         authors: "Dong-Geun Kim and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://dl.acm.org/doi/10.1007/978-3-031-70061-3_1"
+        link: "https://doi.org/10.1007/978-3-031-70061-3_1"
     },
     {
         year: 2024,
@@ -2259,7 +2259,7 @@ const conferencePapers = [
         title: "Data-driven Haptic Modeling of Inhomogeneous Viscoelastic Deformable Objects",
         authors: "Gautam Kumar, Shashi Prakash, Hojun Cha, Amit Bhardwaj, and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://dl.acm.org/doi/10.1007/978-3-031-70058-3_33"
+        link: "https://doi.org/10.1007/978-3-031-70058-3_33"
     },
     {
         year: 2024,
@@ -2268,7 +2268,7 @@ const conferencePapers = [
         title: "Audiovisual-Haptic Simultaneity Across the Body in Gameplay Viewing Experiences",
         authors: "Jiwan Lee, Gyeore Yun, and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://dl.acm.org/doi/10.1007/978-3-031-70058-3_4"
+        link: "https://doi.org/10.1007/978-3-031-70058-3_4"
     },
     {
         year: 2024,
@@ -2277,7 +2277,7 @@ const conferencePapers = [
         title: "Human Identification Performance of Vibrotactile Stimuli Applied on the Torso along Azimuth or Elevation",
         authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://dl.acm.org/doi/10.1007/978-3-031-70058-3_1"
+        link: "https://doi.org/10.1007/978-3-031-70058-3_1"
     },
     {
         year: 2024,
@@ -2362,7 +2362,7 @@ const conferencePapers = [
         title: "A Preliminary Study on the Perceptual Independence Between Vibrotactile and Thermal Senses",
         authors: "Jaejun Park, Jeongwoo Kim, Chaeyong Park, Seungjae Oh, Junseok Park, and Seungmoon Choi",
         venue: "EuroHaptics Conference",
-        link: "https://link.springer.com/chapter/10.1007/978-3-031-06249-0_9"
+        link: "https://doi.org/10.1007/978-3-031-06249-0_9"
     },
     {
         year: 2022,
@@ -2586,7 +2586,7 @@ const conferencePapers = [
       title: "A Soft Vibrotactile Actuator with Knitted PVC Gel Fabric",
       authors: "Won-Hyeong Park, Yongjae Yoo, Gobong Choi, Seungmoon Choi, and Sang-Youn Kim",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-319-93399-3_14"
+      link: "https://doi.org/10.1007/978-3-319-93399-3_14"
   },
   {
       year: 2018,
@@ -2819,7 +2819,7 @@ const conferencePapers = [
       title: "Improved Haptic Music Player with Auditory Saliency Estimation",
       authors: "Inwook Hwang and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-662-44193-0_30"
+      link: "https://doi.org/10.1007/978-3-662-44193-0_30"
   },
   {
       year: 2014,
@@ -2828,7 +2828,7 @@ const conferencePapers = [
       title: "An Initial Study on Pitch Correction Guidance for String Instruments Using Haptic Feedback",
       authors: "Yongjae Yoo and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-662-44193-0_31"
+      link: "https://doi.org/10.1007/978-3-662-44193-0_31"
   },
   {
       year: 2014,
@@ -2931,7 +2931,7 @@ const conferencePapers = [
       title: "Effect of Mechanical Ground on the Vibrotactile Perceived Intensity of a Handheld Object",
       authors: "Inwook Hwang, and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-642-31404-9_11"
+      link: "https://doi.org/10.1007/978-3-642-31404-9_11"
   },
   {
       year: 2012,
@@ -2940,7 +2940,7 @@ const conferencePapers = [
       title: "Saliency-driven Tactile Effect Authoring for Real-time Visuotactile Feedback",
       authors: "Myongchan Kim, Sungkil Lee, and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-642-31401-8_24"
+      link: "https://doi.org/10.1007/978-3-642-31401-8_24"
   },
   {
       year: 2012,
@@ -2996,7 +2996,7 @@ const conferencePapers = [
       title: "Consonance Perception of Vibrotactile Chords: A Feasibility Study",
       authors: "Yongjae Yoo, Inwook Hwang, and Seungmoon Choi",
       venue: "International Workshop on Haptic and Audio Interaction Design",
-      link: "https://link.springer.com/chapter/10.1007/978-3-642-22950-3_5"
+      link: "https://doi.org/10.1007/978-3-642-22950-3_5"
   },
   {
       year: 2011,
@@ -3061,7 +3061,7 @@ const conferencePapers = [
       title: "Extended Rate-Hardness: A Measure for Perceived Hardness",
       authors: "Gabjong Han and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-642-14064-8_18"
+      link: "https://doi.org/10.1007/978-3-642-14064-8_18"
   },
   {
       year: 2010,
@@ -3164,7 +3164,7 @@ const conferencePapers = [
       title: "Benefits of Perceptually Transparent Vibration Rendering in Mobile Device",
       authors: "Jonghyun Ryu and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-540-69057-3_90"
+      link: "https://doi.org/10.1007/978-3-540-69057-3_90"
   },
   {
       year: 2008,
@@ -3173,7 +3173,7 @@ const conferencePapers = [
       title: "Haptic Pottery Modeling Using Circular Sector Element Method",
       authors: "Jaebong Lee, Gabjong Han, and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-540-69057-3_84"
+      link: "https://doi.org/10.1007/978-3-540-69057-3_84"
   },
   {
       year: 2008,
@@ -3182,7 +3182,7 @@ const conferencePapers = [
       title: "Modulating Real Object Stiffness for Haptic Augmented Reality",
       authors: "Seokhee Jeon and Seungmoon Choi",
       venue: "EuroHaptics Conference",
-      link: "https://link.springer.com/chapter/10.1007/978-3-540-69057-3_78"
+      link: "https://doi.org/10.1007/978-3-540-69057-3_78"
   },
   {
       year: 2008,
@@ -3247,7 +3247,7 @@ const conferencePapers = [
       title: "Power Consumption and Perceived Magnitude of Vibration Feedback in Mobile Devices",
       authors: "Jaehoon Jung and Seungmoon Choi",
       venue: "Human-Computer Interaction International",
-      link: "https://link.springer.com/chapter/10.1007/978-3-540-73107-8_40"
+      link: "https://doi.org/10.1007/978-3-540-73107-8_40"
   },
   {
       year: 2007,
@@ -3721,9 +3721,16 @@ const awardData = [
     { date: "2011", title: "Early Career Award", organization: "IEEE Technical Committee on Haptics" }
 ];
 
+// 국내 논문 (Korean domestic papers — add entries here)
+const koreanPapers = [
+    // Example entry format:
+    // { year: 2024, category: "korean", venueShort: "KHC", title: "...", authors: "...", venue: "한국햅틱스학술대회" }
+];
+
 const publicationData = [
     ...journalPapers,
     ...conferencePapers,
     ...posterDemoPapers,
-    ...patentData// 이 부분 추가
+    ...koreanPapers,
+    ...patentData
 ];

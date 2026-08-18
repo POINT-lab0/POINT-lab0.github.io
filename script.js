@@ -9,7 +9,7 @@ function loadCommonHead() {
         const favicon = document.createElement('link'); favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = 'images/Logo_small.png'; head.appendChild(favicon);
     }
     if (!document.querySelector('link[href*="style.css"]')) {
-        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=14'; head.appendChild(style);
+        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=15'; head.appendChild(style);
     }
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link'); fa.rel = 'stylesheet'; fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'; head.appendChild(fa);
@@ -436,7 +436,14 @@ function updateVenueOptions() {
     const startYear = startInput ? (parseInt(startInput.value) || 0) : 0; const endYear = endInput ? (parseInt(endInput.value) || 9999) : 9999;
     const currentVenue = venueSelect.value;
     const targetPubs = publicationData.filter(pub => {
-        let catMatch = category === 'all' || (category === 'poster' ? (pub.category === 'poster' || pub.category === 'demo') : pub.category === category);
+        let catMatch;
+        if (category === 'all') {
+            catMatch = pub.category === 'journal' || pub.category === 'conference' || pub.category === 'poster' || pub.category === 'demo';
+        } else if (category === 'poster') {
+            catMatch = pub.category === 'poster' || pub.category === 'demo';
+        } else {
+            catMatch = pub.category === category;
+        }
         return catMatch && pub.year >= startYear && pub.year <= endYear;
     });
     const venueSet = new Set(); targetPubs.forEach(pub => { if (pub.venueShort) venueSet.add(pub.venueShort); });
@@ -475,7 +482,14 @@ function applyPubFilter() {
     const selectedVenue = venueSelect ? venueSelect.value : 'all';
 
     currentPubList = publicationData.filter(pub => {
-        let catMatch = category === 'all' || (category === 'poster' ? (pub.category === 'poster' || pub.category === 'demo') : pub.category === category);
+        let catMatch;
+        if (category === 'all') {
+            catMatch = pub.category === 'journal' || pub.category === 'conference' || pub.category === 'poster' || pub.category === 'demo';
+        } else if (category === 'poster') {
+            catMatch = pub.category === 'poster' || pub.category === 'demo';
+        } else {
+            catMatch = pub.category === category;
+        }
         const yearMatch = pub.year >= startYear && pub.year <= endYear;
         const textMatch = pub.title.toLowerCase().includes(searchKeyword) ||
                           pub.authors.toLowerCase().includes(searchKeyword);
@@ -516,20 +530,27 @@ function renderPubPage(page) {
     let lastYear = null;
     batch.forEach(pub => {
         if (pub.year !== lastYear) { const yearHeader = document.createElement('div'); yearHeader.className = 'pub-year-header'; yearHeader.innerText = pub.year; container.appendChild(yearHeader); lastYear = pub.year; }
-        const itemDiv = document.createElement('div'); itemDiv.className = 'pub-item';
-        let linkButtons = '';
-        if (pub.link && !pub.link.includes('youtu')) {
-            let btnText = pub.category === 'patent' ? "Patent" : "Paper";
-            let btnIcon = pub.category === 'patent' ? "fa-certificate" : "fa-file-alt";
-            linkButtons += `<a href="${pub.link}" class="pub-link btn-paper" target="_blank"><i class="fas ${btnIcon}"></i><span>${btnText}</span></a>`;
+        const itemDiv = document.createElement('div');
+        if (pub.category === 'korean') {
+            itemDiv.className = 'pub-item korean-pub-item';
+            const linkHtml = pub.link ? ` <a href="${pub.link}" target="_blank" class="korean-pub-link"><i class="fas fa-external-link-alt"></i></a>` : '';
+            itemDiv.innerHTML = `<div class="pub-content"><div class="korean-pub-title">${pub.title}${linkHtml}</div><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${pub.venue || ''}</div></div>`;
+        } else {
+            itemDiv.className = 'pub-item';
+            let linkButtons = '';
+            if (pub.link && !pub.link.includes('youtu')) {
+                let btnText = pub.category === 'patent' ? "Patent" : "Paper";
+                let btnIcon = pub.category === 'patent' ? "fa-certificate" : "fa-file-alt";
+                linkButtons += `<a href="${pub.link}" class="pub-link btn-paper" target="_blank"><i class="fas ${btnIcon}"></i><span>${btnText}</span></a>`;
+            }
+            let videoUrl = pub.video || (pub.link && pub.link.includes('youtu') ? pub.link : null);
+            if (videoUrl) linkButtons += `<a href="${videoUrl}" class="pub-link btn-video" target="_blank"><i class="fab fa-youtube"></i><span>Video</span></a>`;
+            const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`; const venueBadge = (pub.category === 'patent' && pub.venueShort) ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
+            const awardRegex = /(Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)/i;
+            let displayTitle = pub.title.replace('👑', '').trim(); if (pub.venue && awardRegex.test(pub.venue)) displayTitle = "👑 " + displayTitle;
+            let highlightedVenue = pub.venue || ""; if (highlightedVenue) highlightedVenue = highlightedVenue.replace(/(\([^)]*(?:Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)[^)]*\))/gi, '<span class="award-text">$1</span>');
+            itemDiv.innerHTML = `<div class="pub-content"><div class="badge-container">${catBadge}${venueBadge}</div><h3>${displayTitle}</h3><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${highlightedVenue}</div></div><div class="pub-actions">${linkButtons}</div>`;
         }
-        let videoUrl = pub.video || (pub.link && pub.link.includes('youtu') ? pub.link : null);
-        if (videoUrl) linkButtons += `<a href="${videoUrl}" class="pub-link btn-video" target="_blank"><i class="fab fa-youtube"></i><span>Video</span></a>`;
-        const catBadge = `<span class="pub-badge ${pub.category}">${pub.category}</span>`; const venueBadge = (pub.category === 'patent' && pub.venueShort) ? `<span class="pub-badge venue-tag">${pub.venueShort}</span>` : '';
-        const awardRegex = /(Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)/i;
-        let displayTitle = pub.title.replace('👑', '').trim(); if (pub.venue && awardRegex.test(pub.venue)) displayTitle = "👑 " + displayTitle;
-        let highlightedVenue = pub.venue || ""; if (highlightedVenue) highlightedVenue = highlightedVenue.replace(/(\([^)]*(?:Best|Award|Honorable|Prize|Choice|Candidate|Finalist|Teaser|Cover)[^)]*\))/gi, '<span class="award-text">$1</span>');
-        itemDiv.innerHTML = `<div class="pub-content"><div class="badge-container">${catBadge}${venueBadge}</div><h3>${displayTitle}</h3><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${highlightedVenue}</div></div><div class="pub-actions">${linkButtons}</div>`;
         container.appendChild(itemDiv);
     });
 }
