@@ -685,6 +685,487 @@ const researchData = [
   { id: "G20", status: "Completed", title: "Automatic Generation of 4D Haptic Effects", agency: "NRF", period: "2013-2016", description: "몰입형 컨텐츠를 위한 4D 햅틱 효과의 자동 생성 기술" }
 ];
 
+// ── Research Topics (10 focus areas) ────────────────────────────────────────
+const researchTopics = [
+  {
+    id: 1, num: "01",
+    title: "4D Effect Generation from Audiovisual Media",
+    tagline: "Automatically synthesizing motion and vibrotactile effects from raw audiovisual streams for cinema, gaming, and in-cabin automotive XR.",
+    keywords: ["4D Cinema", "Motion Synthesis", "Audio-Haptic", "VR / XR", "Psychophysics"],
+    overview: [
+      "Audiovisual media predominantly engage sight and hearing. True physical immersion requires synchronized multisensory experiences through motion chairs, full-body tactile suits, and distributed vibrotactile actuators. Traditionally, creating 4D physical motion and tactile tracks demanded laborious manual authoring by specialized designers.",
+      "Our laboratory pioneers end-to-end computational frameworks that automatically synthesize, optimize, and render physically plausible and emotionally engaging 4D motion and vibrotactile effects from raw audiovisual streams — enabling real-time, scalable, context-aware 4D media generation across cinemas, VR environments, gaming platforms, and next-generation in-cabin automotive experiences."
+    ],
+    thrusts: [
+      { badge: "A", name: "Vision-to-Motion Effect Synthesis", items: [
+        "<strong>Camera Motion Synthesis</strong> — Extract optical flow, camera trajectories, and ego-motion from video to drive motion simulator chairs across roll, pitch, yaw, heave, surge, and sway.",
+        "<strong>Object & Actor Motion Extraction</strong> — Isolate salient object motions and articulated bodies using visual saliency and gaze tracking, prioritizing focal events in camera coordinates.",
+        "<strong>Motion Composition & Blending</strong> — Decouple and merge global camera motion with local object dynamics into physical DoF constraints, avoiding motion artifacts and vestibular conflicts."
+      ]},
+      { badge: "B", name: "Semantic Sound-to-Touch & Crossmodal Audio-Haptic Conversion", items: [
+        "<strong>Real-Time Audio Translation</strong> — Apply frequency decomposition and psychoacoustic filters to map acoustic transients to crisp vibrotactile cues in real time.",
+        "<strong>Semantic Sound-to-Haptic Mapping</strong> — Classify environmental sounds (gunshots, footsteps, ambient textures) using AI and route feedback to targeted body locations — vests, gloves, seats.",
+        "<strong>Crossmodal Pitch & Rhythm Alignment</strong> — Map acoustic dynamics and pitch to perceived vibrotactile frequency and intensity for coherent audiovisual-haptic experiences."
+      ]},
+      { badge: "C", name: "Perceptual Space, Psychophysics & Affective Modeling of Motion", items: [
+        "<strong>Vestibular & Tactile Thresholds</strong> — Rigorously quantify absolute and differential detection thresholds for vestibular self-motion and full-body tactile stimuli.",
+        "<strong>Perceptual Motion Spaces</strong> — Construct multidimensional spaces that guide automated waveform modulation to evoke specific emotions — excitement, luxury, suspense.",
+        "<strong>Multisensory Simultaneity</strong> — Define temporal binding windows and cue-integration models across visual, auditory, tactile, and vestibular stimuli to maximize immersion and reduce cybersickness."
+      ]},
+      { badge: "D", name: "Context-Aware In-Vehicle & Interactive Gaming Experiences", items: [
+        "<strong>In-Cabin 4D Experiences (CineHaptic)</strong> — Deploy real-time, context-aware audiovisual-to-haptic engines and smart vibration seats for cinematic media consumption in autonomous vehicles.",
+        "<strong>FPS & Spectatorship Augmentation</strong> — Synthesize telemetry and audio-driven haptic effects that significantly enhance engagement, presence, and performance for both players and spectators."
+      ]}
+    ],
+    grants: [
+      { org: "Samsung Research Funding & Incubation Center", name: "Automatic Authoring of Physical and Perceptual/Affective Motion Effects for Virtual Reality", amount: "KRW 1.7B", years: "2018–2023", role: "PI" },
+      { org: "Google Research Awards", name: "Semantic Audio-to-Haptic Conversion: Algorithms and Performance Metrics", amount: "3 Awards", years: "2021–2024", role: "PI" },
+      { org: "National Research Foundation — Mid-Career Program", name: "Semantic Sound-to-Haptic Automatic Conversion for Metaverse & Accessibility", amount: "KRW 700M", years: "2022–2026", role: "PI" },
+      { org: "Hyundai Motor Company / NGV", name: "Smart Vibrating Seats; Luxury Steering Wheel Haptics; Vehicle Vibration Perception", amount: "Multi-year", years: "2017–2026", role: "PI" },
+      { org: "National Research Foundation — Core Research Program", name: "Automatic Generation of 4D Haptic Effects for Immersive Content", amount: "KRW 306M", years: "2013–2016", role: "PI" }
+    ],
+    journals: [
+      { authors: "K. Kwon, S. H. Han, D. Jeong, J. Park, and <strong>S. Choi</strong>", title: "Modeling Emotion Induced by Motion in 4D Rides", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 18, no. 4, pp. 1033–1044, 2025", award: "Cover Paper" },
+      { authors: "S. Han, J. Lee, G. Yun, S. H. Han, and <strong>S. Choi</strong>", title: "Motion Effects: Perceptual Space and Synthesis for Specific Perceptual Properties", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 15, no. 3, pp. 626–637, 2022" },
+      { authors: "J. Lee, S. H. Han, and <strong>S. Choi</strong>", title: "Sensory Cue Integration of Visual and Vestibular Stimuli: A Case Study for 4D Rides", venue: "Virtual Reality", venueClass: "tvcg", year: "vol. 27, no. 3, pp. 1671–1683, 2023" },
+      { authors: "J. Lee, B. Han, and <strong>S. Choi</strong>", title: "Motion Effects Synthesis for 4D Films", venue: "IEEE Trans. TVCG", venueClass: "tvcg", year: "vol. 22, no. 10, pp. 2300–2314, 2016" },
+      { authors: "M. Kim, S. Lee, and <strong>S. Choi</strong>", title: "Saliency-Driven Real-Time Video-to-Tactile Translation", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 7, no. 3, pp. 394–404, 2014" },
+      { authors: "I. Hwang, H. Lee, and <strong>S. Choi</strong>", title: "Real-time Dual-band Haptic Music Player for Mobile Devices", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 6, no. 3, pp. 340–351, 2013" }
+    ],
+    conferences: [
+      { authors: "J. Kim, H. Kim, H.-B. Oh, J. Kang, T.-H. Oh, and <strong>S. Choi</strong>", title: "CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences", venue: "ACM UIST", venueClass: "uist", year: "2026" },
+      { authors: "J. Lee, D. Jeong, S. H. Han, and <strong>S. Choi</strong>", title: "Automatic Tuning of Haptic Motion Effects to Evoke Specific Feelings in Multisensory Content", venue: "ACM CHI", venueClass: "chi", year: "2025" },
+      { authors: "G. Yun and <strong>S. Choi</strong>", title: "Real-time Semantic Full-Body Haptic Feedback Converted from Sound for Virtual Reality Gameplay", venue: "ACM CHI", venueClass: "chi", year: "2025" },
+      { authors: "J. Ahn and <strong>S. Choi</strong>", title: "Automatic Generation of Haptic Motion Effects Expressing Human Dance", venue: "IEEE VR", venueClass: "tvcg", year: "2025" },
+      { authors: "S. Han, J. Ahn, and <strong>S. Choi</strong>", title: "Generating Haptic Motion Effects for General Scenes to Improve 4D Experiences", venue: "IEEE ISMAR", venueClass: "ismar", year: "2024" },
+      { authors: "S. Han, J. Park, and <strong>S. Choi</strong>", title: "Generating Haptic Motion Effects for Multiple Articulated Bodies for Improved 4D Experiences: A Camera Space Approach", venue: "ACM CHI", venueClass: "chi", year: "2023" },
+      { authors: "G. Yun, M. Mun, J. Lee, D.-G. Kim, H. Z. Tan, and <strong>S. Choi</strong>", title: "Generating Real-Time, Selective, and Multimodal Haptic Effects from Sound for Gaming Experience Enhancement", venue: "ACM CHI", venueClass: "chi", year: "2023" },
+      { authors: "J. Lee and <strong>S. Choi</strong>", title: "Real-Time Perception-Level Translation from Audio Signals to Vibrotactile Effects", venue: "ACM CHI", venueClass: "chi", year: "2013" }
+    ]
+  },
+  {
+    id: 2, num: "02",
+    title: "Generative Haptics & AI-Driven Touch Synthesis",
+    tagline: "Automatically generating touch-enabled VR environments and force fields from single images and large AI models.",
+    keywords: ["Generative AI", "Haptic Synthesis", "VR / XR", "LLM / VLM", "Spatial Computing"],
+    overview: [
+      "The next frontier in haptics lies in automatically generating touch-enabled virtual experiences from visual content — enabling users to feel objects in VR environments that were previously visual-only. Traditional haptic content requires expert manual programming; our generative haptics framework automates this pipeline using large AI models.",
+      "We develop end-to-end systems that infer physical properties from single images, generate collision meshes and tactile material parameters, and render kinesthetic and tactile force feedback through physics simulation — democratizing haptic content creation for XR spatial computing, accessibility, and social interaction applications."
+    ],
+    thrusts: [
+      { badge: "A", name: "Single-Image-to-Touchable-VR Pipelines (GenTouchVR)", items: [
+        "<strong>Automated 3D Scene & Collision Generation</strong> — Use vision-language models to infer 3D geometry, segment objects, and generate physics-ready collision meshes from a single RGB image.",
+        "<strong>Multimodal Physical Property Inference</strong> — Estimate stiffness, friction, surface texture, and mass distribution from visual appearance, color, and material cues using foundation models.",
+        "<strong>Real-Time Haptic Rendering Integration</strong> — Couple the generated scene representation with a real-time physics engine to render kinesthetic and vibrotactile feedback during user interaction."
+      ]},
+      { badge: "B", name: "LLM/VLM-Grounded Kinesthetic & Tactile Force Fields", items: [
+        "<strong>Physics-Grounded AI Reasoning</strong> — Ground large language and vision-language models in physical simulation to infer plausible force interactions beyond visual appearance.",
+        "<strong>Automatic Haptic Rendering Pipeline</strong> — Build a generalized pipeline that leverages AI perception to drive haptic rendering across diverse object categories without manual authoring."
+      ]},
+      { badge: "C", name: "Dynamic Haptic Synthesis for Generative Virtual Environments", items: [
+        "<strong>Generative Interaction for Spatial Computing</strong> — Extend generative haptics to dynamic environments in AR headsets and spatial computing platforms, supporting real-time object generation and interaction.",
+        "<strong>Generative Haptics for Accessibility & Social Communication</strong> — Apply AI-driven touch synthesis to enable visually impaired users to explore generative visual scenes through tactile feedback."
+      ]}
+    ],
+    grants: [
+      { org: "IITP — Hyper-Sense Cognitive Spatial Computing", name: "Convergence Research Center for Cognitive Spatial XR Computing", amount: "KRW 4.9B", years: "2025–2028", role: "Co-PI" },
+      { org: "National Research Foundation — Pioneer Program", name: "AI-Augmented Haptic Interaction for Social Communication and Accessibility", amount: "KRW 9.0B", years: "2024–2029", role: "PI" },
+      { org: "IITP — University ICT Research Center", name: "Immersive Haptic Interaction Technology for Next-Generation XR", amount: "KRW 9.138B", years: "2024–2031", role: "PI" },
+      { org: "Google Research Awards", name: "Semantic Audio-to-Haptic Conversion: Algorithms and Performance Metrics", amount: "3 Awards", years: "2021–2024", role: "PI" }
+    ],
+    journals: [
+      { authors: "J. Park, S. Nam, J. Kim, U. Ju, and <strong>S. Choi</strong>", title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image", venue: "IEEE Trans. TVCG", venueClass: "tvcg", year: "Special Issue of IEEE VR, 2026", award: "Acceptance rate 20.6%" }
+    ],
+    conferences: [
+      { authors: "J. Kim, J. Park, S. Nam, U. Ju, and <strong>S. Choi</strong>", title: "Automatic Haptic Rendering Pipeline Using AI Models for Generative Virtual Environments", venue: "IEEE WHC", venueClass: "haptics", year: "2025 (Hands-on Demo)" },
+      { authors: "<strong>S. Choi</strong>", title: "Making Generated Scenes Touchable: Generative Haptics for Spatial Computing", venue: "ACM CHI Workshop", venueClass: "chi", year: "2026" }
+    ]
+  },
+  {
+    id: 3, num: "03",
+    title: "Multisensory XR Perception & Interaction",
+    tagline: "Mapping crossmodal visuo-haptic, audio-tactile, and social touch interactions to design immersive and embodied XR experiences.",
+    keywords: ["Crossmodal Perception", "Visuo-Haptic", "Audio-Tactile", "Phantom Sensations", "Social Touch"],
+    overview: [
+      "When humans interact with virtual or augmented environments, perception is inherently multisensory: visual, tactile, proprioceptive, and auditory cues are tightly integrated. Understanding and exploiting crossmodal interactions — how one sensory channel influences another — is fundamental to designing compelling XR systems.",
+      "Our research maps the perceptual spaces of visuo-haptic, audio-tactile, and embodied social touch interactions, develops computational models of crossmodal binding, and applies these insights to create immersive phantom sensations, egocentric navigation aids, and authentic social communication through haptic-enabled XR avatars."
+    ],
+    thrusts: [
+      { badge: "A", name: "Crossmodal Visuo-Haptic Perception & Shape Illusions", items: [
+        "<strong>Inertial Tensor & Moment of Inertia Modulations</strong> — Exploit how visual mass distribution cues override kinesthetic sensing to create compelling weight and inertia illusions in handheld VR controllers.",
+        "<strong>Visuo-Haptic Compliance Weighting</strong> — Model how visual stiffness signals are weighted against tactile and kinesthetic cues across different interaction conditions to design optimal force feedback.",
+        "<strong>Pseudo-Haptic Illusions</strong> — Use visually-induced haptic sensations to simulate surface features such as bumps, stiffness variation, and texture in the absence of physical actuators."
+      ]},
+      { badge: "B", name: "Spatial Audio-Tactile Cueing & Directional Alignment", items: [
+        "<strong>Perceptual Alignment of Audio and Touch</strong> — Characterize temporal and spatial binding windows between auditory and tactile stimuli for coherent multisensory rendering on the body surface.",
+        "<strong>Egocentric Spatial Navigation</strong> — Represent egocentric directions using torso-applied vibrotactile patterns to support eyes-free spatial awareness in immersive environments.",
+        "<strong>Crossmodal Sound-to-Touch Matching</strong> — Map acoustic pitch and timbre to vibrotactile frequency and intensity for perceptually consistent audio-haptic rendering of short contact sounds."
+      ]},
+      { badge: "C", name: "Tactile Illusions & Body-Penetrating Phantom Sensations", items: [
+        "<strong>Moving Phantom Sensations</strong> — Design continuous spatial tactile illusions along the body surface using actuator patterns that exploit cutaneous funneling and motion perception mechanisms.",
+        "<strong>Body-Penetrating Phantom Sensations (SkinHaptics)</strong> — Create the perceptual illusion that tactile stimuli pass through the body, enabling novel interaction paradigms for XR embodiment and social touch."
+      ]},
+      { badge: "D", name: "Embodied Social Touch & Self-Haptics in XR", items: [
+        "<strong>Social Intent Communication</strong> — Analyze the contextual meaning of social touch gestures and design haptic avatars that convey affect, intent, and social signals through body-worn actuators.",
+        "<strong>Self-Haptic Perception & Virtual Embodiment</strong> — Study how self-generated touch (SkinHaptics) differs from externally applied touch and leverage these differences for immersive virtual body ownership."
+      ]}
+    ],
+    grants: [
+      { org: "NST — Convergence Research Center", name: "Future Human-Environment Interface Technology", amount: "KRW 39.0B", years: "2023–2029", role: "Co-PI" },
+      { org: "National Research Foundation — Pioneer Program", name: "AI-Augmented Haptic Interaction for Social Communication and Accessibility", amount: "KRW 9.0B", years: "2024–2029", role: "PI" },
+      { org: "IITP", name: "5G & XR-based Remote Haptic Interaction Technology", amount: "KRW 7.98B", years: "2022–2026", role: "Co-PI" },
+      { org: "Korea Creative Content Agency (KOCCA)", name: "Immersive XR Content Technology", amount: "KRW 3.0B", years: "2021–2023", role: "Co-PI" }
+    ],
+    journals: [
+      { authors: "T. Jung, C. Park, J. Kim, and <strong>S. Choi</strong>", title: "Perceiving Compliance in Virtual Reality: Crossmodal Visuo-Haptic Cue Integration", venue: "IEEE Trans. TVCG", venueClass: "tvcg", year: "2026" },
+      { authors: "D. Lee and <strong>S. Choi</strong>", title: "Perceptual Alignment of Spatial Auditory and Tactile Stimuli Presented on the Body Surface", venue: "IEEE Trans. TVCG", venueClass: "tvcg", year: "vol. 31, 2025" },
+      { authors: "J. Kim, D. Lee, and <strong>S. Choi</strong>", title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "2026" },
+      { authors: "D.-G. Kim, G. Yun, and <strong>S. Choi</strong>", title: "Sound-to-Touch Crossmodal Pitch Matching for Short Sounds", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 17, no. 3, 2024" },
+      { authors: "C. Park, J. Kim, and <strong>S. Choi</strong>", title: "Length Perception Model for Handheld Controllers in Virtual Reality", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 14, no. 3, pp. 576–587, 2021" },
+      { authors: "Y. Yoo, I. Hwang, and <strong>S. Choi</strong>", title: "Perceived Intensity Model of Dual-Frequency Superimposed Vibration for Vibrotactile Rendering", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 15, no. 1, pp. 98–108, 2022" }
+    ],
+    conferences: [
+      { authors: "C. Park, J. Kim, and <strong>S. Choi</strong>", title: "Visuo-haptic Crossmodal Shape Perception Model for Handheld Controllers in VR", venue: "ACM CHI", venueClass: "chi", year: "2023" },
+      { authors: "C. Park and <strong>S. Choi</strong>", title: "Augmenting Perceived Length of Handheld Controllers in VR via Visual-Weight Illusion", venue: "ACM CHI", venueClass: "chi", year: "2024" },
+      { authors: "J. Lee, D. Lee, U. Ju, and <strong>S. Choi</strong>", title: "SkinHaptics: Creating Body-Penetrating Tactile Phantom Sensations from the Hand", venue: "ACM CHI", venueClass: "chi", year: "2025" },
+      { authors: "H. Kim and <strong>S. Choi</strong>", title: "Expressing the Social Intent of Touch Using a Haptic Avatar", venue: "IEEE ISMAR", venueClass: "ismar", year: "2024" },
+      { authors: "J. Kim, S. Choi, and <strong>S. Choi</strong>", title: "Body-Penetrating Tactile Phantom Sensations", venue: "ACM CHI", venueClass: "chi", year: "2020" },
+      { authors: "H. Kim, D. Lee, and <strong>S. Choi</strong>", title: "Enhancing Body-Penetrating Phantom Sensations via Audio-Tactile Congruence", venue: "IEEE WHC", venueClass: "haptics", year: "2025" }
+    ]
+  },
+  {
+    id: 4, num: "04",
+    title: "Multimodal Haptics & Actuation Systems",
+    tagline: "Designing compound VR controllers, EMS-integrated wearables, smart rings, and flexible sensors to deliver the full spectrum of touch sensations.",
+    keywords: ["Haptic Devices", "VR Controllers", "EMS", "Wearables", "Smart Ring"],
+    overview: [
+      "Effective haptic interfaces require hardware that faithfully delivers the full range of tactile and kinesthetic sensations — from precise vibrotactile textures to strong kinesthetic forces for rigid contact simulation. Novel actuator designs, hybrid sensory combinations, and wearable form factors are key challenges in the field.",
+      "Our laboratory designs and evaluates multimodal haptic devices — including compound VR controllers with multiple actuator types, EMS-integrated wearables for neuromuscular guidance, smart ring displays, and flexible sensor arrays — advancing the physical substrate for realistic touch rendering across VR, XR, and everyday interaction contexts."
+    ],
+    thrusts: [
+      { badge: "A", name: "Compound Tactile Actuation & Handheld VR Controllers", items: [
+        "<strong>Multimodal Handheld Controllers (HaptiCraft, MMGrip)</strong> — Integrate vibrotactile transducers, pneumatic arrays, and braking mechanisms into ergonomic VR controller designs that deliver concurrent kinesthetic and tactile feedback.",
+        "<strong>Braking vs. Active Force Feedback for Haptic Gloves</strong> — Compare unidirectional and braking force feedback strategies for stiffness rendering and derive principled design guidelines for next-generation haptic gloves."
+      ]},
+      { badge: "B", name: "Hybrid Vibrotactile & Electrical Muscle Stimulation (EMS)", items: [
+        "<strong>Neuromuscular Collision Rendering</strong> — Combine surface electromyography with vibrotactile feedback to render virtual collisions with high temporal fidelity and perceptual realism.",
+        "<strong>Tactile-EMS Teleoperation Guidance</strong> — Superimpose EMS-based muscle guidance on voluntary motor commands to provide unobtrusive directional assistance during teleoperation tasks."
+      ]},
+      { badge: "C", name: "Wearable Micro-Haptics & Smart Rings (HaRing, Haptic Enchanters)", items: [
+        "<strong>Haptic Smart Ring Displays (HaRing)</strong> — Design a finger-worn haptic ring that delivers spatial and directional vibrotactile cues for one-handed interaction with high-dimensional spatial information.",
+        "<strong>Attachable/Detachable Modular Actuators</strong> — Develop modular, magnetic haptic enchanter modules that snap onto standard objects to add vibrotactile feedback without dedicated haptic hardware."
+      ]},
+      { badge: "D", name: "Thermal-Tactile Integration, Mid-Air & Smart Materials", items: [
+        "<strong>Dynamic Heat Transfer Modeling</strong> — Model and predict perceived skin temperature during thermal-tactile interaction using thermodynamic models calibrated on human perception data.",
+        "<strong>Mid-Air Non-Contact Tactile Displays</strong> — Enhance the perceived intensity and spatial resolution of mid-air ultrasonic tactile stimulation via perceptual and signal processing strategies.",
+        "<strong>Flexible Tactile & Shear Sensor Arrays</strong> — Develop stretchable electronics that simultaneously decode static, dynamic, and thermal stimuli for dexterous robotic grasping and prosthetic feedback."
+      ]}
+    ],
+    grants: [
+      { org: "IITP", name: "5G & XR-based Remote Haptic Interaction Technology", amount: "KRW 7.98B", years: "2022–2026", role: "Co-PI" },
+      { org: "IITP — Morphable Haptic Controller", name: "Morphable Haptic Controller for VR/AR", amount: "KRW 2.7B", years: "2020–2022", role: "Co-PI" },
+      { org: "IITP — HD Haptic Technology", name: "HD Haptic Technology for Hyper-Reality Content", amount: "KRW 2.75B", years: "2017–2019", role: "PI" },
+      { org: "National Research Foundation — Pioneer Research Center", name: "Interaction Science and Technology (InSciTe) Center", amount: "KRW 5.47B", years: "2011–2017", role: "Co-PI" },
+      { org: "National Research Foundation — Support Program", name: "Multimodal Haptic Device Evaluation Framework", amount: "KRW 200M", years: "2024–2025", role: "PI" }
+    ],
+    journals: [
+      { authors: "C. Park, J. Kim, Y.-G. Song, S.-Y. Kim, and <strong>S. Choi</strong>", title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive VR Interactions", venue: "IEEE Trans. TVCG", venueClass: "tvcg", year: "2026" },
+      { authors: "J. Lee and <strong>S. Choi</strong>", title: "Multimodal Haptic Feedback for Rendering Virtual Collisions in VR", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 17, no. 2, 2024" },
+      { authors: "D.-G. Kim and <strong>S. Choi</strong>", title: "Tactile Enhancement of Mid-Air Ultrasonic Stimulation via Perceptual Upscaling", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "2025" },
+      { authors: "H. Choi et al.", title: "Simultaneous Decoding of Static, Dynamic, and Thermal Tactile Stimuli for Intelligent Skin", venue: "npj Flexible Electronics", venueClass: "other", year: "2025" },
+      { authors: "G. Park, H. Cha, and <strong>S. Choi</strong>", title: "Haptic Enchanters: Attachable and Detachable Vibrotactile Modules for Augmented Haptic Feedback", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 12, no. 2, pp. 211–221, 2019" },
+      { authors: "W.-H. Park et al.", title: "Soft Haptic Actuator Based on Knitted PVC Gel Fabric", venue: "IEEE Trans. Industrial Electronics", venueClass: "other", year: "vol. 67, no. 1, pp. 677–685, 2020" }
+    ],
+    conferences: [
+      { authors: "S. Nam, J. Son, <strong>S. Choi</strong>, and C. Park", title: "HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information", venue: "ACM CHI", venueClass: "chi", year: "2026" },
+      { authors: "J. Kim, U. Ju, and <strong>S. Choi</strong>", title: "A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves", venue: "EuroHaptics", venueClass: "haptics", year: "2026", award: "Best Student Paper HM" },
+      { authors: "C. Park, J. Kim, and <strong>S. Choi</strong>", title: "Realistic Haptic Rendering of Collision Effects Using Multimodal Vibrotactile and Kinesthetic Feedback", venue: "IEEE WHC", venueClass: "haptics", year: "2019" },
+      { authors: "S. Nam and <strong>S. Choi</strong>", title: "Augmenting Pinch Selection with Vibrotactile Feedback Using a Haptic Ring", venue: "IEEE WHC", venueClass: "haptics", year: "2025" }
+    ]
+  },
+  {
+    id: 5, num: "05",
+    title: "Haptic Assistance & Sensorimotor Skill Transfer",
+    tagline: "Building computational models of human motor skills and adaptive haptic guidance paradigms to accelerate learning in music, surgery, and industry.",
+    keywords: ["Motor Learning", "Haptic Guidance", "Musical Training", "Teleoperation", "Surgical Robotics"],
+    overview: [
+      "Haptic interfaces offer a unique channel for skill transfer: by guiding or disturbing a trainee's movements through precisely designed force feedback, we can accelerate motor learning for sports, surgery, musical performance, and industrial operation.",
+      "Our research builds computational models of human sensorimotor skills, develops adaptive haptic guidance and error-augmentation paradigms, and evaluates their efficacy in longitudinal training studies — with applications spanning rhythm-based musical instrument learning, bilateral surgical teleoperation, and neuromuscular rehabilitation."
+    ],
+    thrusts: [
+      { badge: "A", name: "Computational Modeling of Human Sensorimotor Skills", items: [
+        "<strong>Statistical & Deep Learning Skill Modeling</strong> — Capture the kinematics, dynamics, and timing patterns of expert motor performance using neural networks and probabilistic models.",
+        "<strong>Skill Level Quantification</strong> — Develop objective metrics that decompose motor performance into interpretable components (timing, force, trajectory) for personalized feedback design."
+      ]},
+      { badge: "B", name: "Adaptive Haptic Assistance & Guidance Paradigms", items: [
+        "<strong>Haptic Guidance vs. Error Augmentation</strong> — Systematically compare guidance forces (correcting errors) against disturbance forces (amplifying errors) across different skill stages and task types.",
+        "<strong>Hybrid Haptic Assistance</strong> — Dynamically blend guidance and disturbance as a function of skill level, motor variability, and task phase to maximize long-term retention.",
+        "<strong>Human-like Adaptive Force Feedback</strong> — Model how expert teachers physically guide learners and replicate this adaptive, context-sensitive force profile in robotic haptic interfaces."
+      ]},
+      { badge: "C", name: "Multimodal Motor & Musical Skill Training Systems", items: [
+        "<strong>Rhythm & Bimanual Timing Acquisition</strong> — Guide drumming and keyboard timing using vibrotactile cues delivered to the hands, wrists, or feet to convey target rhythm patterns.",
+        "<strong>Longitudinal String Instrument Guidance (HapTune)</strong> — Provide continuous pitch-correction guidance for string instrument learners through haptic feedback on the bow arm, enabling ears-free practice.",
+        "<strong>Sight Reading & Multimodal Training</strong> — Combine vibrotactile cues with auditory and visual prompts to accelerate the acquisition of simultaneous reading and playing in musicians."
+      ]},
+      { badge: "D", name: "Bilateral Teleoperation & Shared Autonomy", items: [
+        "<strong>Surgical Robotics & Human-Guided Procedures</strong> — Develop bilateral teleoperation systems for minimally invasive and spinal fusion procedures, with haptic force feedback that conveys tissue stiffness and drilling depth.",
+        "<strong>Industrial Digital Twin Teleoperation</strong> — Evaluate novel haptic interface designs for high-accuracy remote manipulation of industrial equipment through real-time digital twin coupling."
+      ]}
+    ],
+    grants: [
+      { org: "National Research Foundation — NRL Program", name: "Haptics Technology for Modeling and Transfer of Sensorimotor Skills", amount: "KRW 1.1B", years: "2008–2013", role: "PI" },
+      { org: "IITP — University ICT Research Center", name: "Immersive Haptic Interaction Technology for Next-Generation XR", amount: "KRW 9.138B", years: "2024–2031", role: "PI" },
+      { org: "National Research Foundation — Pioneer Program", name: "Human-Robot Real-Time Remote Control via Haptic Interface", amount: "KRW 5.0B", years: "2022–2026", role: "Co-PI" },
+      { org: "POSCO", name: "Haptic Interface for Steel Plant Teleoperation", amount: "KRW 450M", years: "2017–2019", role: "Co-PI" },
+      { org: "Ministry of Health & Welfare", name: "Haptic-Guided Rehabilitation for Stroke Patients", amount: "KRW 200M", years: "2005–2007", role: "Co-PI" }
+    ],
+    journals: [
+      { authors: "H. Lee, H. Kim, and <strong>S. Choi</strong>", title: "Driving Skill Modeling Using Neural Networks for Adaptive Haptic Guidance", venue: "IEEE Trans. Human-Machine Systems", venueClass: "other", year: "vol. 51, no. 1, pp. 45–55, 2021" },
+      { authors: "J. Park et al.", title: "Assessment of Novel Haptic Interfaces for Digital Twin Teleoperation of Industrial Equipment", venue: "IEEE Trans. Industrial Informatics", venueClass: "other", year: "2025" },
+      { authors: "D. Lee, D. Nam, and <strong>S. Choi</strong>", title: "A Comparative Study of Physical and Haptic Interaction in Museum Exhibit Learning", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "2024" },
+      { authors: "H. Lee et al.", title: "Haptic Assistance for Memorization of 2D Sequential Motor Patterns", venue: "IEEE Trans. Human-Machine Systems", venueClass: "other", year: "vol. 43, no. 3, pp. 337–347, 2013" },
+      { authors: "J. Lee et al.", title: "Cooperative Robotic Assistant with Drill-By-Wire for Spinal Fusion Surgery", venue: "Industrial Robot", venueClass: "other", year: "vol. 36, no. 1, pp. 60–72, 2009" }
+    ],
+    conferences: [
+      { authors: "H. Lee and <strong>S. Choi</strong>", title: "Combining Haptic Guidance and Error Augmentation for Motor Skill Learning", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2014" },
+      { authors: "I. Lee and <strong>S. Choi</strong>", title: "Vibrotactile Guidance for Learning Drumming Sequences", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2014" },
+      { authors: "Y. Yoo and <strong>S. Choi</strong>", title: "HapTune: A Longitudinal Study of Haptic Pitch-Correction Guidance for String Instruments", venue: "IEEE WHC", venueClass: "haptics", year: "2017" },
+      { authors: "J. Lee and <strong>S. Choi</strong>", title: "Effects of Haptic Guidance and Disturbance on Learning a Timing-Based Motor Task", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2010" }
+    ]
+  },
+  {
+    id: 6, num: "06",
+    title: "Haptic Surface & Texture Rendering",
+    tagline: "From psychophysics of texture discrimination to data-driven electrovibration displays and viscoelastic material modeling for realistic surface touch.",
+    keywords: ["Surface Haptics", "Electrovibration", "Texture Rendering", "Psychophysics", "Data-Driven"],
+    overview: [
+      "Haptic texture rendering enables users to feel the surface characteristics of virtual and real objects — from rough stone to smooth glass — through force feedback displays. Bridging the psychophysical foundations of touch perception with data-driven rendering pipelines is central to this research area.",
+      "Our work encompasses rigorous perceptual studies of texture discrimination, novel electrovibration displays for touchscreen friction modulation, data-driven viscoelastic material modeling using fractional derivatives and machine learning, and haptic augmented reality systems that superimpose virtual stiffness and friction onto real physical objects."
+    ],
+    thrusts: [
+      { badge: "A", name: "Psychophysics & Perceptual Foundations of Texture Rendering", items: [
+        "<strong>Perceptual Instability & Update Rates</strong> — Identify the critical rendering update rates and signal bandwidths required for stable, artifact-free texture perception across different surface geometries.",
+        "<strong>Force Constancy & Topography Compensation</strong> — Develop methods to maintain constant perceived normal force while tracking surface topography, eliminating rendering artifacts during lateral finger movement.",
+        "<strong>Hardness Perception & Rate-Hardness</strong> — Model how perceived hardness depends on indentation rate and velocity to enable perceptually accurate softness rendering in virtual deformable bodies."
+      ]},
+      { badge: "B", name: "Electrovibration Displays & Surface Haptics", items: [
+        "<strong>Friction Modulation & 3D Curvature on Touch Surfaces</strong> — Modulate touchscreen friction through electrovibration to render virtual surface curvature, edges, and fine texture features on flat displays.",
+        "<strong>Data-Driven Inverse Neural Networks</strong> — Train inverse neural network models that map target perceptual texture attributes to electrovibration waveform parameters without manual tuning.",
+        "<strong>Perceptual Space of Electrovibration Textures</strong> — Construct the multidimensional perceptual space of electrovibration-rendered textures using psychophysical rating and multidimensional scaling."
+      ]},
+      { badge: "C", name: "Data-Driven Modeling of Viscoelastic & Deformable Bodies", items: [
+        "<strong>Fractional Derivatives & Machine Learning</strong> — Combine fractional calculus force models with neural networks to capture the time-dependent creep and relaxation behavior of soft biological tissues.",
+        "<strong>Photometric Stereo Texture Acquisition</strong> — Use photometric stereo imaging to measure the micro-geometry of real textures and construct high-fidelity haptic rendering models from physical samples."
+      ]},
+      { badge: "D", name: "Haptic Augmented Reality (HAR) & Medical Palpation", items: [
+        "<strong>Stiffness & Friction Modulation of Real Objects</strong> — Overlay virtual stiffness and friction profiles onto physical objects through haptic augmented reality, enabling programmable material feel.",
+        "<strong>Medical Palpation Simulators</strong> — Render virtual subcutaneous tumors, cysts, and lumps within real tissue mock-ups using HAR, providing realistic palpation training for clinical skills."
+      ]}
+    ],
+    grants: [
+      { org: "National Research Foundation — Mid-Career Researcher Program", name: "Data-Driven Surface Haptic Rendering for Touchscreen Devices", amount: "KRW 300M", years: "2017–2019", role: "PI" },
+      { org: "ETRI Contracts", name: "Surface Haptic Texture Rendering for Touchscreen Interaction", amount: "Multi-year", years: "2015–2017", role: "PI" },
+      { org: "Strategic Korean-Swiss Cooperative Program (NRF)", name: "Breast Cancer Screening via Haptic Augmented Reality Palpation", amount: "Multi-year", years: "2009–2011", role: "PI" },
+      { org: "Korea Research Foundation — Young Researcher Programs", name: "Vibrotactile Rendering Based on Multidimensional Perceptual Space", amount: "Multi-year", years: "2007–2009", role: "PI" }
+    ],
+    journals: [
+      { authors: "C. Basdogan et al.", title: "A Review of Surface Haptics: Enabling Tactile Effects on Touch Surfaces", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 13, no. 3, pp. 450–470, 2020" },
+      { authors: "R. H. Osgouei et al.", title: "Data-driven Texture Modeling and Rendering on an Electrovibration Display", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 13, no. 4, pp. 786–799, 2020" },
+      { authors: "H. Cha et al.", title: "Data-Driven Haptic Modeling of Viscoelastic Behavior Using Fractional Derivatives", venue: "IEEE Access", venueClass: "other", year: "vol. 10, pp. 72315–72326, 2022" },
+      { authors: "S. Yim et al.", title: "Data-Driven Haptic Modeling and Rendering of Viscoelastic and Frictional Responses of Deformable Objects", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 9, no. 3, pp. 356–368, 2016" },
+      { authors: "S. Jeon and <strong>S. Choi</strong>", title: "Real Stiffness Augmentation of a Virtual Object in Haptic Augmented Reality", venue: "Presence: Teleoperators & Virtual Environments", venueClass: "other", year: "vol. 20, no. 4, pp. 323–340, 2011" },
+      { authors: "<strong>S. Choi</strong> and H. Z. Tan", title: "Towards Realistic Haptic Rendering of Surface Texture", venue: "IEEE Computer Graphics & Applications", venueClass: "other", year: "vol. 24, no. 2, pp. 40–47, 2004" }
+    ],
+    conferences: [
+      { authors: "S. Mun et al.", title: "Perceptual Space of Regular Homogeneous Haptic Textures Rendered by Electrovibration", venue: "IEEE WHC", venueClass: "haptics", year: "2019" },
+      { authors: "R. H. Osgouei et al.", title: "An Inverse Neural Network Model for Electrovibration Texture Rendering on Touch Surfaces", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2018" },
+      { authors: "S. Shin and <strong>S. Choi</strong>", title: "Geometry-based Haptic Texture Modeling and Rendering Using a Photometric Stereo Approach", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2018" },
+      { authors: "A. Bhardwaj et al.", title: "Data-Driven Haptic Modeling and Rendering of Normal Interactions with Deformable Objects", venue: "IEEE RA-L / ICRA", venueClass: "other", year: "2019" },
+      { authors: "S. Jeon and <strong>S. Choi</strong>", title: "Stiffness Modulation for Haptic Augmented Reality: Extension to 3D Tool-Based Interaction", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2010" }
+    ]
+  },
+  {
+    id: 7, num: "07",
+    title: "Mobile Haptics & Vibrotactile Interaction Design",
+    tagline: "Establishing psychophysical foundations for handheld vibration, developing spatial tactile illusions, and creating graphical authoring tools for vibrotactile UI/UX.",
+    keywords: ["Mobile Haptics", "Vibrotactile", "Tactile Flow", "Authoring Tools", "UI/UX Design"],
+    overview: [
+      "Mobile devices with built-in vibration actuators are ubiquitous, yet their haptic capabilities remain underutilized due to limited understanding of vibrotactile perception and the lack of principled design tools for vibrotactile user interfaces.",
+      "Our research establishes psychophysical foundations for handheld vibrotactile perception, develops spatial tactile illusion algorithms (tactile flows), and creates graphical authoring tools enabling designers to create expressive vibrotactile effects for touchscreens, buttons, and wearables without specialized expertise."
+    ],
+    thrusts: [
+      { badge: "A", name: "Psychophysics & Perceptual Models for Handheld Vibration", items: [
+        "<strong>Perceived Intensity Across Frequencies & Directions</strong> — Systematically measure vibrotactile intensity perception on mobile devices across frequencies, orientations, and grip conditions, producing calibrated rendering models.",
+        "<strong>Perceptual Spaces of Complex Vibration</strong> — Map the multidimensional perceptual space of sinusoidal and composite vibrations using psychophysical scaling and adjective rating studies.",
+        "<strong>Perceptually Transparent Rendering & Low-Power Optimization</strong> — Design rendering algorithms that reproduce target vibration percepts with minimal actuator energy consumption for wearable and mobile applications."
+      ]},
+      { badge: "B", name: "Tactile Flows & Continuous Spatial Illusions on Mobile Devices", items: [
+        "<strong>2D Vibrotactile Flow Algorithms</strong> — Create the illusion of continuous tactile motion across the surface of a mobile device by coordinating multiple actuators with psychophysically optimized timing and amplitude profiles.",
+        "<strong>Directional Information Transfer (Edge Flows)</strong> — Design edge-constrained vibrotactile flow patterns that convey navigational and directional cues to users with high spatial resolution."
+      ]},
+      { badge: "C", name: "Vibrotactile UI/UX Design & Authoring Tools", items: [
+        "<strong>Graphical Authoring Tools (posVibEditor, Vibrotactile Score)</strong> — Build intuitive graphical tools that allow designers and developers to create, edit, and preview vibrotactile effects using timeline and score metaphors.",
+        "<strong>Touchscreen Virtual Buttons & Programmable Feel</strong> — Enable touchscreen surfaces to simulate button presses with distinct mechanical click feelings through precisely timed vibrotactile feedback.",
+        "<strong>Vibration-Augmented Physical Buttons</strong> — Augment physical buttons with vibrotactile feedback to expand their information transmission capacity beyond binary click-release signals."
+      ]}
+    ],
+    grants: [
+      { org: "Microsoft Research Asia", name: "Haptic Interface for Mobile Touch Devices", amount: "2 Awards", years: "2006–2013", role: "PI" },
+      { org: "LG Electronics", name: "Vibrotactile Feedback Design for Mobile Phones", amount: "Multi-year", years: "2008–2011", role: "PI" },
+      { org: "Samsung Electronics", name: "Vibrotactile Effect Authoring for Galaxy Devices", amount: "KRW 170M", years: "2012–2013", role: "PI" },
+      { org: "ETRI Contracts", name: "Tactile Interface for Mobile and Wearable Devices", amount: "Multi-year", years: "2010–2012", role: "PI" }
+    ],
+    journals: [
+      { authors: "<strong>S. Choi</strong> and K. J. Kuchenbecker", title: "Vibrotactile Display: Perception, Technology, and Applications", venue: "Proceedings of the IEEE", venueClass: "other", year: "vol. 101, no. 9, pp. 2093–2104, 2013" },
+      { authors: "H. Z. Tan et al.", title: "Methodology for Maximizing Information Transmission of Haptic Devices: A Survey", venue: "Proceedings of the IEEE", venueClass: "other", year: "vol. 108, no. 6, pp. 945–965, 2020" },
+      { authors: "I. Hwang et al.", title: "Vibrotactile Perceived Intensity for Mobile Devices as a Function of Direction, Frequency, and Amplitude", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 6, no. 3, pp. 352–362, 2013" },
+      { authors: "J. Seo and <strong>S. Choi</strong>", title: "Perceptual Analysis of Vibrotactile Flows on a Mobile Device", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 6, no. 4, pp. 402–410, 2013" }
+    ],
+    conferences: [
+      { authors: "C. Park et al.", title: "Vibration-Augmented Buttons: Information Transmission Capacity and Perceived Quality of Vibrotactile Clicks", venue: "ACM CHI", venueClass: "chi", year: "2022" },
+      { authors: "C. Park et al.", title: "Augmenting Physical Buttons with Vibrotactile Feedback for Programmable Feels", venue: "ACM UIST", venueClass: "uist", year: "2020" },
+      { authors: "J. Seo and <strong>S. Choi</strong>", title: "Edge Flows: Improving Information Transmission in Tactile Flows by Controlling Flow Direction", venue: "IEEE WHC", venueClass: "haptics", year: "2015" },
+      { authors: "G. Park et al.", title: "Tactile Effect Design and Evaluation for a Haptic Touchscreen-Based Mobile Gaming Environment", venue: "ACM MobileHCI", venueClass: "other", year: "2011" }
+    ]
+  },
+  {
+    id: 8, num: "08",
+    title: "Haptic Augmented Reality & Medical Palpation",
+    tagline: "Developing the taxonomy and technology of HAR — modifying the perceived properties of real objects — with clinical applications in cancer screening and surgical training.",
+    keywords: ["Haptic AR", "Stiffness Augmentation", "Medical Simulation", "Palpation", "Contact Force"],
+    overview: [
+      "Haptic augmented reality (HAR) modifies the perceived properties of real physical objects — such as stiffness, friction, or surface texture — through additional haptic cues while the user simultaneously manipulates the actual object. This creates new interaction possibilities in medical training, rehabilitation, and industrial design.",
+      "We developed the foundational taxonomy of HAR interaction paradigms, invented contact centroid-based force decomposition for multi-finger augmentation, and built palpation simulators that render virtual subcutaneous tumors in real tissue mock-ups — with applications in breast cancer screening and surgical skills training."
+    ],
+    thrusts: [
+      { badge: "A", name: "Foundational Taxonomy & Theory of Haptic Augmented Reality", items: [
+        "<strong>Stiffness & Compliance Modulation</strong> — Render virtual elastic properties on top of real objects by measuring interaction forces and injecting scaled corrective forces that shift apparent stiffness toward a target value.",
+        "<strong>Friction & Weight Augmentation</strong> — Extend HAR beyond stiffness to modulate perceived surface friction and gravitational weight, enabling programmable feel for physical object manipulation."
+      ]},
+      { badge: "B", name: "Contact Centroid-Based Force Decomposition", items: [
+        "<strong>Normal & Tangential Force Separation</strong> — Decompose measured multi-finger contact forces into normal and tangential components using contact pressure distribution, enabling independent augmentation of friction and stiffness.",
+        "<strong>Multi-Contact Augmentation</strong> — Support simultaneous two-finger and multi-finger HAR with perceptually consistent force profiles that account for contact geometry changes during manipulation."
+      ]},
+      { badge: "C", name: "Medical Palpation Simulators & Virtual Tumor Simulation", items: [
+        "<strong>Subcutaneous Lump & Tumor Rendering</strong> — Render virtual tumors of controllable size, depth, and stiffness within real silicone tissue phantoms using layered HAR, providing realistic clinical palpation experiences.",
+        "<strong>Finite Element Modeling for Palpation</strong> — Couple finite element soft-tissue models with real-time haptic rendering to simulate the mechanical behavior of subcutaneous masses during finger palpation.",
+        "<strong>Novel Palpation Indicators</strong> — Develop objective measures of palpation quality that quantify detection sensitivity and specificity, enabling skills assessment for medical training programs."
+      ]}
+    ],
+    chapters: [
+      { authors: "S. Jeon, <strong>S. Choi</strong>, and M. Harders", title: "Haptic Augmented Reality: Taxonomy, Research Status, and Challenges", venue: "CRC Press", year: "2017" },
+      { authors: "S. Jeon, <strong>S. Choi</strong>, and M. Harders", title: "Haptic Augmentation in Soft Tissue Interaction", venue: "Springer", year: "2014" }
+    ],
+    grants: [
+      { org: "Strategic Korean-Swiss Cooperative Program (NRF)", name: "Breast Cancer Screening via Haptic Augmented Reality Palpation", amount: "Multi-year", years: "2009–2011", role: "PI" },
+      { org: "Korea Research Foundation — Young Researcher Program", name: "Modulating Haptic Sensations in Augmented Reality", amount: "Multi-year", years: "2007–2008", role: "PI" },
+      { org: "New Professor Program, POSTECH", name: "Haptic Augmented Reality for Medical Simulation", amount: "Multi-year", years: "2005–2007", role: "PI" }
+    ],
+    journals: [
+      { authors: "S. Jeon et al.", title: "Rendering Virtual Tumors in Real Tissue Mock-Ups Using Haptic Augmented Reality", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 5, no. 1, pp. 77–83, 2012" },
+      { authors: "S. Jeon and <strong>S. Choi</strong>", title: "Haptic Augmented Reality: Taxonomy and an Example", venue: "Presence: Teleoperators & Virtual Environments", venueClass: "other", year: "vol. 18, no. 5, pp. 387–408, 2009" },
+      { authors: "H. Kim et al.", title: "Contact Force Decomposition Using Contact Pressure Distribution for Multi-Finger Haptic Augmented Reality", venue: "IEEE RA-L", venueClass: "other", year: "vol. 2, no. 3, pp. 1624–1631, 2017" },
+      { authors: "S. Yim et al.", title: "Topography Compensation for Haptization of Touchscreen Interface", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 8, no. 3, pp. 283–293, 2015" }
+    ],
+    conferences: [
+      { authors: "S. Yim et al.", title: "Multi-Contact Stiffness and Friction Augmentation in Haptic Augmented Reality", venue: "IEEE WHC", venueClass: "haptics", year: "2021" },
+      { authors: "S. Jeon et al.", title: "Extensions to Haptic Augmented Reality: Modulating Friction and Weight", venue: "IEEE WHC", venueClass: "haptics", year: "2011" },
+      { authors: "S. Jeon and <strong>S. Choi</strong>", title: "Stiffness Modulation for Haptic Augmented Reality: Extension to 3D Tool-Based Interaction", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2010" },
+      { authors: "S. Jeon and <strong>S. Choi</strong>", title: "Modulating Real Object Stiffness for Haptic Augmented Reality Using Model-Based Control", venue: "EuroHaptics", venueClass: "haptics", year: "2008" }
+    ]
+  },
+  {
+    id: 9, num: "09",
+    title: "Assistive Haptics & Accessibility Computing",
+    tagline: "Designing haptic systems that expand digital access for the visually impaired, hearing impaired, and users with cognitive disabilities.",
+    keywords: ["Accessibility", "Visual Impairment", "Sensory Substitution", "Haptic CAPTCHA", "Inclusive Design"],
+    overview: [
+      "Haptic interfaces can dramatically expand digital access for people with sensory or motor impairments by substituting or augmenting missing sensory modalities. From visually-guided photography aids to tactile music players, accessibility haptics bridges the gap between mainstream digital experiences and users with diverse abilities.",
+      "Our laboratory designs and evaluates haptic systems for the visually impaired (tactile navigation, aiming assistance, image exploration), hearing-impaired users (vibrotactile music perception), and broader accessible computing challenges — including haptic CAPTCHAs, therapeutic VR interventions, and museum exhibit augmentation."
+    ],
+    thrusts: [
+      { badge: "A", name: "Accessible Photography & Non-Visual Image Understanding (TouchPhoto)", items: [
+        "<strong>2D Haptic Contour Guidance</strong> — Render the dominant contours of a smartphone camera's viewfinder as continuous vibrotactile guidance, enabling visually impaired users to compose well-framed photographs.",
+        "<strong>Haptic Image Exploration</strong> — Design interaction techniques for exploring and understanding digital images through vibrotactile feedback on touch-based devices."
+      ]},
+      { badge: "B", name: "Tactile Navigation & Aiming Aids for the Visually Impaired", items: [
+        "<strong>Foot Vibrotactile Navigation (FeetNavi)</strong> — Deliver directional navigation cues through foot-worn vibrotactile actuators, enabling eyes-free spatial guidance in indoor and outdoor environments.",
+        "<strong>Target Aiming on Large Displays</strong> — Develop vibrotactile feedback strategies that guide users with visual impairments to accurately locate and select targets on large-format touchscreen displays."
+      ]},
+      { badge: "C", name: "Sensory Substitution for the Hearing Impaired (TouchMusic)", items: [
+        "<strong>Tactile Music Perception</strong> — Design vibrotactile wristband systems that convey the rhythmic and melodic content of music to hearing-impaired users through the skin, enabling non-auditory music appreciation.",
+        "<strong>On-Device Environmental Hazard Detection</strong> — Develop real-time sound classification and vibrotactile alerting systems for hearing-impaired users to receive immediate tactile feedback for environmental hazards."
+      ]},
+      { badge: "D", name: "Eyes-Free Cybersecurity & Interaction (HAPTCHA)", items: [
+        "<strong>Haptic CAPTCHA (HAPTCHA)</strong> — Design and evaluate CAPTCHA challenges based entirely on vibrotactile patterns, providing an eyes-free and screen-reader-independent authentication mechanism for users with visual disabilities.",
+        "<strong>Therapeutic VR Interventions</strong> — Develop visuo-haptic multimodal VR environments for anxiety and phobia treatment, combining exposure therapy with haptic feedback for enhanced therapeutic outcomes."
+      ]}
+    ],
+    grants: [
+      { org: "IITP — University ICT Research Center", name: "Immersive Haptic Interaction Technology for Next-Generation XR", amount: "KRW 9.138B", years: "2024–2031", role: "PI" },
+      { org: "National Research Foundation — Pioneer Program", name: "AI-Augmented Haptic Interaction for Social Communication and Accessibility", amount: "KRW 9.0B", years: "2024–2029", role: "PI" },
+      { org: "National Research Foundation — X-Project", name: "Touch Photo: Accessible Photography for the Visually Impaired", amount: "KRW 100M", years: "2016–2017", role: "PI" },
+      { org: "Samsung Electronics", name: "Touch Music: Vibrotactile Music Appreciation for Hearing-Impaired Users", amount: "Sponsored", years: "2014", role: "PI" },
+      { org: "National Research Foundation — Mental Health", name: "VR-based Cognitive Behavioral Therapy for Anxiety Disorders", amount: "KRW 1.58B", years: "2016–2020", role: "Co-PI" }
+    ],
+    journals: [
+      { authors: "D. Lee, D. Nam, and <strong>S. Choi</strong>", title: "Digital Augmentation of Outdated Museum Exhibits with Real-Virtual Blended Interaction", venue: "Int'l Journal of Human-Computer Studies", venueClass: "other", year: "2025" },
+      { authors: "K. Kim et al.", title: "Assisting People with Visual Impairments in Aiming at a Target on a Large-Scale Display", venue: "Int'l Journal of Human-Computer Studies", venueClass: "other", year: "vol. 95, pp. 67–79, 2016" },
+      { authors: "Y. I. Kim et al.", title: "Visuo-haptic-based Multimodal Feedback VR Solution to Improve Anxiety Symptoms for Patients with Anxiety Disorders", venue: "Psychiatry Investigation", venueClass: "other", year: "vol. 16, no. 7, pp. 540–547, 2019" }
+    ],
+    conferences: [
+      { authors: "D. Kweon, D. Lee, S. Kim, and <strong>S. Choi</strong>", title: "HAPTCHA: Eyes-Free Haptic CAPTCHA in Mobile Environments — Design Principle, Security Evaluation, and User Experience", venue: "ACM UIST", venueClass: "uist", year: "2026" },
+      { authors: "J. Lim et al.", title: "TouchPhoto: Accessible Photography for People with Visual Impairments via Vibrotactile Guidance", venue: "ACM ICMI", venueClass: "other", year: "2019" },
+      { authors: "J. Lim et al.", title: "Guidance-based Two-Dimensional Haptic Contour Rendering for the TouchPhoto System", venue: "IEEE WHC", venueClass: "haptics", year: "2019" },
+      { authors: "H. Cho et al.", title: "Equal-Level Interaction: Using Vibrotactile Feedback to Navigate AR Interfaces for Visually Impaired Users", venue: "IEEE HAVE", venueClass: "other", year: "2018" }
+    ]
+  },
+  {
+    id: 10, num: "10",
+    title: "Automotive Haptics & In-Cabin User Experience",
+    tagline: "Designing haptic safety warnings, luxury steering feedback, driver discomfort models, and smart vibrating seats through sustained industry collaboration.",
+    keywords: ["Automotive", "Safety Warnings", "Luxury Haptics", "Driver Experience", "Smart Seats"],
+    overview: [
+      "Modern vehicles offer a rich sensory environment for haptic interaction — from steering wheel warnings and seatbelt signals to seat vibrations for immersive in-cabin entertainment. Designing effective, comfortable, and emotionally resonant haptic experiences in automotive contexts requires deep understanding of human psychophysics in motion.",
+      "Our long-term collaboration with automotive industry partners investigates safety warning design, the psychophysics of perceived luxuriousness, driver comfort and biomechanical vibration discomfort, and smart vibrating seat systems — spanning fundamental psychophysical studies to deployed prototypes in production vehicles."
+    ],
+    thrusts: [
+      { badge: "A", name: "Active In-Vehicle Safety Warnings & Ergonomic Guidelines", items: [
+        "<strong>Collision Warnings on Steering Wheels & Seatbelts</strong> — Design and evaluate vibrotactile collision avoidance warnings on steering wheels and seatbelts, measuring detection speed, driver preference, and traffic conflict reduction.",
+        "<strong>Human Factors Design Guidelines</strong> — Develop comprehensive design guidelines for automotive vibrotactile interfaces, covering placement, waveform, timing, and driver population considerations."
+      ]},
+      { badge: "B", name: "Perceived Luxuriousness & Affective Modeling of Steering Wheel Haptics", items: [
+        "<strong>Psychophysical Modeling of Tactile Luxury</strong> — Quantify the relationship between vibrotactile waveform parameters and perceived luxuriousness of steering wheel materials, informing premium vehicle haptic design.",
+        "<strong>Affective Natural Language Analysis (VOC)</strong> — Analyze large corpora of consumer voices (VOC) using natural language processing to extract affective dimensions of vehicle haptic experience."
+      ]},
+      { badge: "C", name: "Driver Comfort & Biomechanical Vibration Perception", items: [
+        "<strong>Vibration Discomfort Curves</strong> — Measure frequency-dependent whole-body vibration discomfort curves for seated drivers across different vehicle vibration transmission paths.",
+        "<strong>Driver Information System (DIS) Optimization</strong> — Evaluate vibrotactile display designs for driver information systems, optimizing information transfer rate within the biomechanical comfort envelope."
+      ]},
+      { badge: "D", name: "Smart Vibrating Seats for In-Cabin Entertainment & Wellness", items: [
+        "<strong>Audiovisual-Haptic Cinematic Synchronization</strong> — Develop smart seat vibration systems that synchronize with audiovisual content in real time, providing enhanced immersive entertainment in autonomous vehicles.",
+        "<strong>Healing & Relaxation Seat Patterns</strong> — Design and evaluate vibrotactile seat patterns that induce relaxation, reduce driving fatigue, and improve passenger wellbeing during long journeys."
+      ]}
+    ],
+    grants: [
+      { org: "Hyundai Motor Company & NGV", name: "Long-Term Collaborative Research on In-Cabin Haptic Experience (Multiple Projects)", amount: "Multi-year", years: "2008–2026", role: "PI" },
+      { org: "SL Corp.", name: "Vibrotactile Turn Signal Indicator Design", amount: "Sponsored", years: "2012–2013", role: "PI" }
+    ],
+    journals: [
+      { authors: "K. Kwon, S. H. Han, and <strong>S. Choi</strong>", title: "Investigating Luxuriousness of Steering Wheel Vibration Warning: Psychophysical Modeling and Consumer Voice Analysis", venue: "Int'l Journal of Human-Computer Interaction", venueClass: "other", year: "2026" },
+      { authors: "J. Chun et al.", title: "Efficacy of Haptic Blind Spot Warning in Preventing Unintended Lane Changes", venue: "Transportation Research Part F", venueClass: "other", year: "vol. 22, pp. 161–173, 2013" },
+      { authors: "J. Chun et al.", title: "Evaluation of Vibrotactile Feedback for Forward Collision Warning in an Automobile", venue: "Int'l Journal of Industrial Ergonomics", venueClass: "other", year: "vol. 42, no. 6, pp. 521–530, 2012" },
+      { authors: "J. Ryu et al.", title: "Vibrotactile Feedback for Information Delivery in the Vehicle", venue: "IEEE Trans. Haptics", venueClass: "toh", year: "vol. 3, no. 2, pp. 138–147, 2010" }
+    ],
+    conferences: [
+      { authors: "J. Kim, H. Kim, H.-B. Oh, J. Kang, T.-H. Oh, and <strong>S. Choi</strong>", title: "CineHaptic: Context-Aware Real-Time Audiovisual-to-Haptic Rendering System for In-Vehicle 4D Cinematic Experiences", venue: "ACM UIST", venueClass: "uist", year: "2026" },
+      { authors: "D. Lee et al.", title: "Effects of Frequency, Magnitude, and Inter-subject Variability on Vibrotactile Perceived Discomfort in Vehicle Seats", venue: "IEEE Haptics Symposium", venueClass: "haptics", year: "2026" },
+      { authors: "D. Lee et al.", title: "Participatory Design for In-Vehicle Vibrotactile Warnings: User Preferences Across Alert Types", venue: "EuroHaptics", venueClass: "haptics", year: "2024" },
+      { authors: "J. Chun et al.", title: "Development of Human Factors Design Guidelines for Automotive Haptic Interfaces", venue: "IIE Asian Conference", venueClass: "other", year: "2011" }
+    ]
+  }
+];
+
 // data.js (수정됨)
 
 // ... [News, Member, Research 데이터는 기존 유지] ...

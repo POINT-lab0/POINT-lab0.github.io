@@ -9,7 +9,7 @@ function loadCommonHead() {
         const favicon = document.createElement('link'); favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = 'images/Logo_small.png'; head.appendChild(favicon);
     }
     if (!document.querySelector('link[href*="style.css"]')) {
-        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=15'; head.appendChild(style);
+        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=16'; head.appendChild(style);
     }
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link'); fa.rel = 'stylesheet'; fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'; head.appendChild(fa);
@@ -573,23 +573,147 @@ function changePage(page) { currentPage = page; renderPubPage(page); renderPagin
    ========================================= */
 function renderResearchPage() {
     const areaId = getQueryParam('area'); const projectId = getQueryParam('id');
-    if (areaId !== null && researchAreas[areaId]) { renderAreaDetail(areaId); return; }
-    if (projectId !== null && researchData[projectId]) { renderProjectDetail(projectId); return; }
-    const ongoingContainer = document.getElementById('ongoing-list'); const completedContainer = document.getElementById('completed-list');
-    if (!ongoingContainer || typeof researchData === 'undefined') return;
-    ongoingContainer.innerHTML = ''; completedContainer.innerHTML = '';
-    researchData.forEach((r, idx) => {
-        const statusClass = r.status === 'Ongoing' ? 'ongoing' : 'completed';
-        if (r.status === 'Ongoing') {
-            const thumbHtml = r.thumbnail
-                ? `<img src="${r.thumbnail}" class="proj-thumb-img" onerror="this.src='images/lab_intro1.jpg'">`
-                : `<div class="proj-thumb-placeholder"><i class="fas fa-image"></i></div>`;
-            ongoingContainer.innerHTML += `<div class="proj-thumb-card ongoing" onclick="location.href='research.html?id=${idx}'">${thumbHtml}<div class="proj-thumb-info"><span class="proj-status ongoing">${r.status}</span><h4>${r.title}</h4><div class="proj-meta">${r.agency} | ${r.period}</div></div></div>`;
-        } else {
-            const year = r.period ? r.period.split('~')[0].trim().split('.')[0] + (r.period.includes('~') ? ' ~ ' + r.period.split('~')[1].trim().split('.')[0] : '') : '';
-            completedContainer.innerHTML += `<div class="proj-list-item" onclick="location.href='research.html?id=${idx}'"><div class="proj-list-info"><h4>${r.title}</h4><div class="proj-list-meta"><span>${r.agency}</span><span class="proj-list-period">${year}</span></div></div><i class="fas fa-chevron-right"></i></div>`;
-        }
-    });
+    if (areaId !== null && researchAreas && researchAreas[areaId]) { renderAreaDetail(areaId); return; }
+    if (projectId !== null && researchData && researchData[projectId]) { renderProjectDetail(projectId); return; }
+    renderResearchHub();
+}
+
+function renderResearchHub() {
+    const root = document.getElementById('research-root') || document.querySelector('.container');
+    if (!root || typeof researchTopics === 'undefined') return;
+    const cardsHtml = researchTopics.map(t => `
+        <a href="research-detail.html?topic=${t.id}" class="rtopic-card">
+            <div class="rtopic-num">${t.num}</div>
+            <div class="rtopic-body">
+                <h3 class="rtopic-title">${t.title}</h3>
+                <p class="rtopic-tagline">${t.tagline}</p>
+                <div class="rtopic-keys">${t.keywords.map(k => `<span class="rtopic-key">${k}</span>`).join('')}</div>
+            </div>
+            <i class="fas fa-arrow-right rtopic-arrow"></i>
+        </a>`).join('');
+    root.innerHTML = `
+        <div class="page-header">
+            <h1>Research</h1>
+            <p>Ten focus areas spanning haptics, XR, and human-computer interaction.</p>
+        </div>
+        <div class="rtopic-grid">${cardsHtml}</div>`;
+}
+
+function renderResearchTopicPage() {
+    const root = document.getElementById('research-detail-root');
+    if (!root || typeof researchTopics === 'undefined') return;
+    const topicId = parseInt(getQueryParam('topic'), 10);
+    const t = researchTopics.find(x => x.id === topicId);
+    if (!t) { root.innerHTML = '<p style="padding:60px 0;color:#64748b;">Topic not found.</p>'; return; }
+
+    const thrustsHtml = t.thrusts.map(th => `
+        <div class="rtd-thrust">
+            <div class="rtd-thrust-header">
+                <div class="thrust-badge">${th.badge}</div>
+                <h3 class="thrust-name">Thrust ${th.badge}: ${th.name}</h3>
+            </div>
+            <ul class="thrust-body">${th.items.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>`).join('');
+
+    const grantsHtml = (t.grants && t.grants.length) ? `
+        <div class="rtd-section">
+            <h2 class="rtd-section-title">Major Grants</h2>
+            <div style="overflow-x:auto;">
+            <table class="grant-table">
+                <thead><tr><th>Funding Organization</th><th>Project</th><th>Amount</th><th>Period</th><th>Role</th></tr></thead>
+                <tbody>${t.grants.map(g => `<tr>
+                    <td class="grant-org">${g.org}</td>
+                    <td>${g.name}</td>
+                    <td style="white-space:nowrap;">${g.amount}</td>
+                    <td style="white-space:nowrap;">${g.years}</td>
+                    <td style="white-space:nowrap;">${g.role}</td>
+                </tr>`).join('')}</tbody>
+            </table>
+            </div>
+        </div>` : '';
+
+    const chaptersHtml = (t.chapters && t.chapters.length) ? `
+        <div class="rtd-section">
+            <h2 class="rtd-section-title">Book Chapters</h2>
+            ${t.chapters.map(c => `
+                <div class="rtd-pub-item">
+                    <span class="venue-chip other">${c.venue}</span>
+                    <div class="rtd-pub-body">
+                        <div class="rtd-pub-title">${c.title}</div>
+                        <div class="rtd-pub-authors">${c.authors}</div>
+                        <div class="rtd-pub-venue">${c.venue}, ${c.year}</div>
+                    </div>
+                </div>`).join('')}
+        </div>` : '';
+
+    const makePubItems = arr => (arr && arr.length)
+        ? arr.map(p => `
+            <div class="rtd-pub-item">
+                <span class="venue-chip ${p.venueClass}">${p.venue}</span>
+                <div class="rtd-pub-body">
+                    <div class="rtd-pub-title">${p.title}${p.award ? ` <span class="rtd-award"><i class="fas fa-trophy"></i> ${p.award}</span>` : ''}</div>
+                    <div class="rtd-pub-authors">${p.authors}</div>
+                    <div class="rtd-pub-venue">${p.venue}, ${p.year}</div>
+                </div>
+            </div>`).join('')
+        : '<p style="color:#94a3b8;font-size:0.9rem;padding:10px 0;">No papers listed.</p>';
+
+    // prev / next navigation
+    const idx = researchTopics.indexOf(t);
+    const prev = researchTopics[idx - 1];
+    const next = researchTopics[idx + 1];
+    const navHtml = `
+        <div class="rtd-nav">
+            ${prev ? `<a href="research-detail.html?topic=${prev.id}" class="rtd-nav-btn"><i class="fas fa-arrow-left"></i> ${prev.num} ${prev.title.split('&')[0].trim()}</a>` : '<span></span>'}
+            ${next ? `<a href="research-detail.html?topic=${next.id}" class="rtd-nav-btn rtd-nav-btn--right">${next.num} ${next.title.split('&')[0].trim()} <i class="fas fa-arrow-right"></i></a>` : '<span></span>'}
+        </div>`;
+
+    root.innerHTML = `
+        <div style="max-width:960px;margin:0 auto;padding-bottom:80px;">
+            <nav class="rtd-breadcrumb">
+                <a href="research.html">Research</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>${t.title}</span>
+            </nav>
+            <div class="rtd-header">
+                <div class="topic-watermark">${t.num}</div>
+                <div class="rtd-header-content">
+                    <div class="rtd-num-badge">Topic ${t.num}</div>
+                    <h1 class="rtd-title">${t.title}</h1>
+                    <div class="rtd-keys">${t.keywords.map(k => `<span class="rtd-key">${k}</span>`).join('')}</div>
+                </div>
+            </div>
+            <div class="rtd-section">
+                <h2 class="rtd-section-title">Overview</h2>
+                <div class="rtd-overview">${t.overview.map(p => `<p>${p}</p>`).join('')}</div>
+            </div>
+            <div class="rtd-section">
+                <h2 class="rtd-section-title">Research Thrusts</h2>
+                <div class="rtd-thrusts">${thrustsHtml}</div>
+            </div>
+            ${grantsHtml}
+            ${chaptersHtml}
+            <div class="rtd-section">
+                <h2 class="rtd-section-title">Representative Publications</h2>
+                <div class="rtd-pub-tabs">
+                    <button class="rtd-tab active" onclick="switchRtdTab(this,'rtd-journals-${t.id}')">Journal</button>
+                    <button class="rtd-tab" onclick="switchRtdTab(this,'rtd-confs-${t.id}')">Conference</button>
+                </div>
+                <div id="rtd-journals-${t.id}">${makePubItems(t.journals)}</div>
+                <div id="rtd-confs-${t.id}" style="display:none;">${makePubItems(t.conferences)}</div>
+            </div>
+            ${navHtml}
+        </div>`;
+    window.scrollTo(0, 0);
+}
+
+function switchRtdTab(btn, targetId) {
+    const section = btn.closest('.rtd-section');
+    section.querySelectorAll('.rtd-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tabParent = section.parentElement;
+    tabParent.querySelectorAll('[id^="rtd-journals-"],[id^="rtd-confs-"]').forEach(el => el.style.display = 'none');
+    document.getElementById(targetId).style.display = 'block';
 }
 function renderAreaDetail(index) {
     const area = researchAreas[index]; const container = document.querySelector('.container');
@@ -707,6 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (page === 'news') renderNewsPage();
     else if (page === 'members') renderMembers();
     else if (page === 'research') renderResearchPage();
+    else if (page === 'research-detail') renderResearchTopicPage();
     else if (page === 'publications') renderPublications();
     else if (page === 'awards') renderAwardsPage();
 });
