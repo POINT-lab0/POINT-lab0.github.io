@@ -886,7 +886,7 @@ function renderPhotosPage() {
     if (!container) return;
     const albums = typeof photosData !== 'undefined' ? photosData : [];
 
-    const headerHtml = `<div class="page-header"><h1>Lab Photos</h1><p>Moments from our research group.</p></div>`;
+    const headerHtml = `<div class="page-header"><h1>Lab Photos</h1></div>`;
 
     if (albums.length === 0) {
         container.innerHTML = headerHtml + `

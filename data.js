@@ -4273,7 +4273,13 @@ const awardData = [
 
 // 6. Photos Data
 const photosData = [
-    // Add photo entries here: { year: 2025, title: "Lab Year-End Gathering", date: "2025-12", src: "images/photos/filename.jpg" }
+    { year: 2026, title: "CHI 2026",                        src: "images/HomeImages/CHI2026.jpg" },
+    { year: 2025, title: "Graduation 2025",                  src: "images/HomeImages/Graduation_2025.jpg" },
+    { year: 2025, title: "K-CHI 2025",                       src: "images/HomeImages/KCHI_2025.jpg" },
+    { year: 2025, title: "UIST 2025",                        src: "images/HomeImages/UIST_2025.jpg" },
+    { year: 2025, title: "World Haptics Conference 2025",    src: "images/HomeImages/WHC_2025.jpg" },
+    { year: 2025, title: "Lab Dinner",                       src: "images/HomeImages/Labdinner.jpg" },
+    { year: 2024, title: "Korea Haptics Conference 2024",    src: "images/HomeImages/KHC_2024.jpg" },
 ];
 
 // 국내 논문 (Korean domestic papers — add entries here)
