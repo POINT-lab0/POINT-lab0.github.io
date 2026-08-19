@@ -9,7 +9,7 @@ function loadCommonHead() {
         const favicon = document.createElement('link'); favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = 'images/Logo_small.png'; head.appendChild(favicon);
     }
     if (!document.querySelector('link[href*="style.css"]')) {
-        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=16'; head.appendChild(style);
+        const style = document.createElement('link'); style.rel = 'stylesheet'; style.href = 'style.css?v=17'; head.appendChild(style);
     }
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const fa = document.createElement('link'); fa.rel = 'stylesheet'; fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'; head.appendChild(fa);
@@ -30,6 +30,7 @@ function loadLayout() {
                     <li><a href="members.html" class="nav-item">Members</a></li>
                     <li><a href="publications.html" class="nav-item">Publications</a></li>
                     <li><a href="awards.html" class="nav-item">Awards</a></li>
+                    <li><a href="photos.html" class="nav-item">Photos</a></li>
                     <li><a href="contact.html" class="nav-item">Contact</a></li>
                 </ul>
             </div>
@@ -238,8 +239,10 @@ function _renderNewsGrid(container, filterBar) {
 
     const sorted = getSortedNews();
     const filtered = _newsActiveFilter === 'all' ? sorted : sorted.filter(n => n.category === _newsActiveFilter);
+    const current  = filtered.filter(n => (n.date || '').startsWith('2026'));
+    const archived = filtered.filter(n => !(n.date || '').startsWith('2026'));
 
-    if (filtered.length === 0) {
+    if (current.length === 0 && archived.length === 0) {
         const empty = document.createElement('p');
         empty.className = 'news-empty-msg';
         empty.textContent = 'No news in this category yet.';
@@ -247,27 +250,55 @@ function _renderNewsGrid(container, filterBar) {
         return;
     }
 
-    let curYear = null, listEl = null;
-    filtered.forEach(item => {
-        const idx = newsData.findIndex(n => n.id === item.id);
-        const year = item.date ? item.date.split('-')[0] : '';
-        const md   = item.date ? item.date.slice(5).replace('-', '/') : '';
+    if (current.length > 0) {
+        const sec = document.createElement('div');
+        sec.className = 'nls-section';
+        sec.innerHTML = `<div class="nls-year">2026</div><ul class="nls-list"></ul>`;
+        container.appendChild(sec);
+        const listEl = sec.querySelector('.nls-list');
+        current.forEach(item => {
+            const idx = newsData.findIndex(n => n.id === item.id);
+            const md  = item.date ? item.date.slice(5).replace('-', '/') : '';
+            const row = document.createElement('li');
+            row.className = 'nls-row';
+            row.onclick = () => location.href = `news.html?id=${idx}`;
+            row.innerHTML = `<span class="nls-date">${md}</span>${getCategoryBadge(item.category)}<span class="nls-title">${item.title}</span><span class="nls-arrow">→</span>`;
+            listEl.appendChild(row);
+        });
+    }
 
-        if (year !== curYear) {
-            curYear = year;
-            const sec = document.createElement('div');
-            sec.className = 'nls-section';
-            sec.innerHTML = `<div class="nls-year">${year}</div><ul class="nls-list"></ul>`;
-            container.appendChild(sec);
-            listEl = sec.querySelector('.nls-list');
-        }
+    if (archived.length > 0) {
+        const yearMap = {};
+        archived.forEach(item => {
+            const yr = (item.date || '').split('-')[0] || 'Unknown';
+            if (!yearMap[yr]) yearMap[yr] = [];
+            yearMap[yr].push(item);
+        });
+        const years = Object.keys(yearMap).sort((a, b) => parseInt(b) - parseInt(a));
 
-        const row = document.createElement('li');
-        row.className = 'nls-row';
-        row.onclick = () => location.href = `news.html?id=${idx}`;
-        row.innerHTML = `<span class="nls-date">${md}</span>${getCategoryBadge(item.category)}<span class="nls-title">${item.title}</span><span class="nls-arrow">→</span>`;
-        listEl.appendChild(row);
-    });
+        const archiveDiv = document.createElement('div');
+        archiveDiv.className = 'news-archive';
+        archiveDiv.innerHTML = `<div class="news-archive-label">Archive</div>`;
+
+        years.forEach(yr => {
+            const yearDiv = document.createElement('div');
+            yearDiv.className = 'news-archive-year';
+            const rows = yearMap[yr].map(item => {
+                const idx = newsData.findIndex(n => n.id === item.id);
+                const md  = item.date ? item.date.slice(5).replace('-', '/') : '';
+                return `<li class="nls-row" style="cursor:pointer;" onclick="location.href='news.html?id=${idx}'"><span class="nls-date">${md}</span>${getCategoryBadge(item.category)}<span class="nls-title">${item.title}</span><span class="nls-arrow">→</span></li>`;
+            }).join('');
+            yearDiv.innerHTML = `
+                <button class="news-archive-btn" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="news-archive-yr">${yr}</span>
+                    <span class="news-archive-count">${yearMap[yr].length} items</span>
+                    <i class="fas fa-chevron-down news-archive-chevron"></i>
+                </button>
+                <ul class="nls-list news-archive-list">${rows}</ul>`;
+            archiveDiv.appendChild(yearDiv);
+        });
+        container.appendChild(archiveDiv);
+    }
 }
 function renderNewsDetail(index) {
     const item = newsData[index]; const container = document.querySelector('.container');
@@ -610,7 +641,7 @@ function renderResearchTopicPage() {
         <div class="rtd-thrust">
             <div class="rtd-thrust-header">
                 <div class="thrust-badge">${th.badge}</div>
-                <h3 class="thrust-name">Thrust ${th.badge}: ${th.name}</h3>
+                <h3 class="thrust-name">${th.name}</h3>
             </div>
             <ul class="thrust-body">${th.items.map(item => `<li>${item}</li>`).join('')}</ul>
         </div>`).join('');
@@ -815,9 +846,78 @@ function renderProjectDetail(index) {
     window.scrollTo(0, 0);
 }
 function renderAwardsPage() {
-    const container = document.getElementById('award-list-container'); if (!container || typeof awardData === 'undefined') return;
-    container.innerHTML = ''; const sorted = [...awardData].sort((a, b) => parseInt(b.date) - parseInt(a.date));
-    sorted.forEach(item => { container.innerHTML += `<div class="pub-item award-item-style"><div class="pub-year" style="min-width:80px;">${item.date}</div><div class="pub-content"><h3>${item.title}</h3><div class="pub-venue" style="color:#666; font-style:normal;">${item.organization}</div></div></div>`; });
+    const container = document.getElementById('award-list-container');
+    if (!container || typeof awardData === 'undefined') return;
+    container.innerHTML = '';
+
+    const sorted = [...awardData].sort((a, b) => b.year - a.year);
+    const byYear = {};
+    sorted.forEach(item => {
+        if (!byYear[item.year]) byYear[item.year] = [];
+        byYear[item.year].push(item);
+    });
+    const years = Object.keys(byYear).sort((a, b) => parseInt(b) - parseInt(a));
+
+    const typeLabel = { intl: 'International', domestic: 'Domestic', personal: 'Personal / Service' };
+    const typeBadgeClass = { intl: 'award-badge-intl', domestic: 'award-badge-domestic', personal: 'award-badge-personal' };
+
+    years.forEach(yr => {
+        const group = document.createElement('div');
+        group.className = 'award-year-group';
+        group.innerHTML = `<div class="award-year-header">${yr}</div>`;
+
+        byYear[yr].forEach(item => {
+            const paperHtml    = item.paper    ? `<div class="award-paper">&ldquo;${item.paper}&rdquo;</div>` : '';
+            const recipientHtml = item.recipient ? `<div class="award-recipient"><i class="fas fa-user"></i> ${item.recipient}</div>` : '';
+            const badge = item.type ? `<span class="award-type-badge ${typeBadgeClass[item.type] || ''}">${typeLabel[item.type] || item.type}</span>` : '';
+            group.innerHTML += `
+                <div class="award-item">
+                    ${badge}
+                    <div class="award-item-name">${item.award}</div>
+                    <div class="award-item-venue">${item.venue}</div>
+                    ${paperHtml}${recipientHtml}
+                </div>`;
+        });
+        container.appendChild(group);
+    });
+}
+function renderPhotosPage() {
+    const container = document.getElementById('photos-root') || document.querySelector('.container');
+    if (!container) return;
+    const albums = typeof photosData !== 'undefined' ? photosData : [];
+
+    const headerHtml = `<div class="page-header"><h1>Lab Photos</h1><p>Moments from our research group.</p></div>`;
+
+    if (albums.length === 0) {
+        container.innerHTML = headerHtml + `
+            <div class="photos-empty">
+                <i class="fas fa-camera"></i>
+                <p>Photos coming soon.</p>
+            </div>`;
+        return;
+    }
+
+    const byYear = {};
+    albums.forEach(p => {
+        if (!byYear[p.year]) byYear[p.year] = [];
+        byYear[p.year].push(p);
+    });
+    const years = Object.keys(byYear).sort((a, b) => parseInt(b) - parseInt(a));
+
+    const gridHtml = years.map(yr => `
+        <div class="photo-year-group">
+            <div class="photo-year-label">${yr}</div>
+            <div class="photo-grid">
+                ${byYear[yr].map(p => `
+                    <div class="photo-card">
+                        <img src="${p.src}" alt="${p.title}" onerror="this.parentElement.style.display='none'">
+                        <div class="photo-card-title">${p.title}</div>
+                        ${p.date ? `<div class="photo-card-date">${p.date}</div>` : ''}
+                    </div>`).join('')}
+            </div>
+        </div>`).join('');
+
+    container.innerHTML = headerHtml + `<div class="photos-content">${gridHtml}</div>`;
 }
 
 /* =========================================
@@ -834,4 +934,5 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (page === 'research-detail') renderResearchTopicPage();
     else if (page === 'publications') renderPublications();
     else if (page === 'awards') renderAwardsPage();
+    else if (page === 'photos') renderPhotosPage();
 });

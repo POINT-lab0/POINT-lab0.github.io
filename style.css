@@ -1230,3 +1230,159 @@ footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 4
     .rtd-section { padding: 22px 18px; }
     .rtd-nav-btn { max-width: 100%; }
 }
+
+/* ═══════════════════════════════════════════════
+   News Archive Accordion
+   ═══════════════════════════════════════════════ */
+.news-archive {
+    margin-top: 32px;
+    border-top: 2px solid var(--border, #e2e8f0);
+    padding-top: 24px;
+}
+.news-archive-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+.news-archive-year { margin-bottom: 6px; }
+.news-archive-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark, #0f172a);
+    transition: background 0.15s, border-color 0.15s;
+    text-align: left;
+}
+.news-archive-btn:hover { background: #f8fafc; border-color: var(--primary, #0085CA); }
+.news-archive-yr { flex: 0 0 auto; }
+.news-archive-count { margin-left: auto; font-size: 0.8rem; font-weight: 500; color: #94a3b8; }
+.news-archive-chevron { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; }
+.news-archive-year.open .news-archive-chevron { transform: rotate(180deg); }
+.news-archive-list { display: none; padding: 4px 0 8px 0; }
+.news-archive-year.open .news-archive-list { display: block; }
+
+/* ═══════════════════════════════════════════════
+   Awards Page — Year-Based Layout
+   ═══════════════════════════════════════════════ */
+.award-year-group {
+    margin-bottom: 40px;
+}
+.award-year-header {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary, #0085CA);
+    border-bottom: 2px solid var(--primary, #0085CA);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+.award-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.award-item:last-child { border-bottom: none; }
+.award-type-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+    width: fit-content;
+}
+.award-badge-intl     { background: #dbeafe; color: #1e40af; }
+.award-badge-domestic { background: #dcfce7; color: #166534; }
+.award-badge-personal { background: #fef9c3; color: #854d0e; }
+.award-item-name {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--dark, #0f172a);
+    line-height: 1.4;
+}
+.award-item-venue {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+.award-paper {
+    font-size: 0.83rem;
+    color: #475569;
+    font-style: italic;
+    line-height: 1.5;
+}
+.award-recipient {
+    font-size: 0.83rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.award-recipient i { color: #94a3b8; font-size: 0.75rem; }
+
+/* ═══════════════════════════════════════════════
+   Photos Page
+   ═══════════════════════════════════════════════ */
+.photos-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    color: #94a3b8;
+    text-align: center;
+}
+.photos-empty i { font-size: 3rem; margin-bottom: 16px; }
+.photos-empty p { font-size: 1.1rem; margin: 0; }
+.photo-year-group { margin-bottom: 48px; }
+.photo-year-label {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary, #0085CA);
+    border-bottom: 2px solid var(--primary, #0085CA);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+.photo-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.photo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.photo-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+.photo-card-title {
+    padding: 10px 14px 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark, #0f172a);
+}
+.photo-card-date {
+    padding: 0 14px 10px;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
