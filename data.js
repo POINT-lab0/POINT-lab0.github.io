@@ -4274,6 +4274,9 @@ const awardData = [
 // 6. Photos Data
 const photosData = [
     { year: 2026, title: "CHI 2026",                        src: "images/HomeImages/CHI2026.jpg" },
+    { year: 2026, title: "EuroHaptics 2026",                src: "images/HomeImages/EuroHaptics_2026.jpg" },
+    { year: 2026, title: "Haptics Symposium 2026",          src: "images/HomeImages/Haptics Symposium_2026.jpg" },
+    { year: 2026, title: "Korea Haptics Conference 2026",   src: "images/HomeImages/KHC_2026.jpg" },
     { year: 2025, title: "Graduation 2025",                  src: "images/HomeImages/Graduation_2025.jpg" },
     { year: 2025, title: "KHCI 2025",                         src: "images/HomeImages/KCHI_2025.jpg" },
     { year: 2025, title: "UIST 2025",                        src: "images/HomeImages/UIST_2025.jpg" },
