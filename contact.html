@@ -3,37 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Interaction Lab</title>
+    <title>Join Us & Contact - Interaction Lab</title>
 </head>
 <body>
     <div id="global-header"></div>
 
     <div class="container">
+
+        <!-- ── JOIN US ── -->
         <div class="page-header">
-            <h1>Contact Us</h1>
+            <h1>Join Us</h1>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; margin-top:40px;">
-            <div style="border-radius:24px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); height:400px;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1613.673911930576!2d129.3223898090622!3d36.0117988044916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356701d59136e10b%3A0x32bade799ed5cfe4!2z7Y-s7ZWt6rO16rO864yA7ZWZ6rWQIOygnDTqs7XtlZnqtIA!5e0!3m2!1sko!2skr!4v1772517317381!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p class="join-intro">
+            The POSTECH Interaction Laboratory (POINT) is constantly seeking highly motivated students and researchers
+            who are eager to push the boundaries of haptics, human-computer interaction (HCI), virtual reality (VR),
+            robotics, and multisensory perception. At POINT, you will conduct cutting-edge research, collaborate with
+            world-class international institutions and industry partners, and contribute to technologies that reshape
+            how humans experience the digital and physical worlds.
+        </p>
+
+        <!-- Position Cards -->
+        <div class="join-cards">
+            <div class="join-card">
+                <div class="join-card-icon"><i class="fas fa-flask"></i></div>
+                <div class="join-card-body">
+                    <h3>Postdoctoral Researchers</h3>
+                    <p>We welcome talented researchers with a strong publication record in haptics, HCI, VR/AR, robotics, or related fields. Postdoctoral fellows at POINT are given substantial research autonomy and opportunities to lead high-impact interdisciplinary projects and grant proposals.</p>
+                </div>
             </div>
 
-            <div style="background:#fff; padding:40px; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-                <h3 style="margin-top:0; color:var(--primary); font-size:1.5rem;">Address</h3>
-                <p style="font-size:1.1rem; color:#444; margin-bottom:30px;">
-                    Engineering Building 4, Room 115<br>
-                    77 Cheongam-Ro, Nam-Gu, Pohang, Gyeongbuk<br>
-                    37673, Republic of Korea
-                </p>
+            <div class="join-card">
+                <div class="join-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="join-card-body">
+                    <h3>Graduate Students <span class="join-card-sub">M.S. / Ph.D. / Integrated Ph.D.</span></h3>
+                    <p>We are looking for passionate graduate students with solid backgrounds in Computer Science, Electrical Engineering, Mechanical Engineering, Cognitive Science, or related disciplines. Students with a strong drive for research excellence, problem-solving skills, and a solid foundation in programming or mathematics are encouraged to apply.</p>
+                </div>
+            </div>
 
-                <h3 style="color:var(--primary); font-size:1.5rem;">Email</h3>
-                <p style="font-size:1.1rem; color:#444;">choism@postech.ac.kr</p>
-
-                <h3 style="color:var(--primary); font-size:1.5rem; margin-top:30px;">Phone</h3>
-                <p style="font-size:1.1rem; color:#444;">+82-54-279-2228</p>
+            <div class="join-card">
+                <div class="join-card-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="join-card-body">
+                    <h3>Undergraduate Research Assistants <span class="join-card-sub">Interns</span></h3>
+                    <p>We offer undergraduate research participation opportunities for motivated students interested in gaining hands-on experience in research. Interns work closely with senior researchers and graduate students on active lab projects.</p>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- How to Apply -->
+        <div class="join-apply">
+            <h2 class="join-apply-title"><i class="fas fa-paper-plane"></i> How to Apply</h2>
+            <p class="join-apply-desc">
+                If you are interested in joining POINT, please contact
+                <strong>Prof. Seungmoon Choi</strong> via email
+                (<a href="mailto:choism@postech.ac.kr">choism@postech.ac.kr</a>)
+                with the following documents:
+            </p>
+            <ul class="join-apply-list">
+                <li>
+                    <span class="join-doc-badge">CV</span>
+                    <span><strong>Curriculum Vitae</strong> — including education, research experience, and publication list if applicable</span>
+                </li>
+                <li>
+                    <span class="join-doc-badge">Transcript</span>
+                    <span><strong>Academic Transcripts</strong> — for student applicants</span>
+                </li>
+                <li>
+                    <span class="join-doc-badge">SoP</span>
+                    <span><strong>Statement of Purpose</strong> — explaining your background, research interests, and motivation for joining POINT</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ── CONTACT ── -->
+        <div class="contact-section-divider">
+            <h2 class="contact-section-label">Contact Us</h2>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-map-wrap">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1613.673911930576!2d129.3223898090622!3d36.0117988044916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356701d59136e10b%3A0x32bade799ed5cfe4!2z7Y-s7ZWt6rO16rO864yA7ZWZ6rWQIOygnDTqs7XtlZnqtIA!5e0!3m2!1sko!2skr!4v1772517317381!5m2!1sko!2skr"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="contact-info-card">
+                <div class="contact-info-row">
+                    <i class="fas fa-building contact-info-icon"></i>
+                    <div>
+                        <div class="contact-info-label">Office / Lab</div>
+                        <div class="contact-info-value">POSTECH Engineering Building 4, Room 115</div>
+                    </div>
+                </div>
+                <div class="contact-info-row">
+                    <i class="fas fa-map-marker-alt contact-info-icon"></i>
+                    <div>
+                        <div class="contact-info-label">Address</div>
+                        <div class="contact-info-value">77 Cheongam-ro, Nam-gu, Pohang<br>Gyeongsangbuk-do, 37673<br>Republic of Korea</div>
+                    </div>
+                </div>
+                <div class="contact-info-row">
+                    <i class="fas fa-envelope contact-info-icon"></i>
+                    <div>
+                        <div class="contact-info-label">Email</div>
+                        <div class="contact-info-value"><a href="mailto:choism@postech.ac.kr">choism@postech.ac.kr</a></div>
+                    </div>
+                </div>
+                <div class="contact-info-row">
+                    <i class="fas fa-phone contact-info-icon"></i>
+                    <div>
+                        <div class="contact-info-label">Phone</div>
+                        <div class="contact-info-value">+82-54-279-2228</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /container -->
 
     <div id="global-footer"></div>
 
