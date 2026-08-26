@@ -444,6 +444,10 @@ function renderMemberDetail(index) {
 let currentPubList = []; let currentPage = 1; const itemsPerPage = 10;
 function renderPublications() {
     const container = document.getElementById('pub-list'); if (!container || typeof publicationData === 'undefined') return;
+    if (typeof koreanPapers !== 'undefined' && koreanPapers.length > 0) {
+        const existingIds = new Set(publicationData.map(p => p.title));
+        koreanPapers.forEach(p => { if (!existingIds.has(p.title)) { publicationData.push(p); existingIds.add(p.title); } });
+    }
     const startInput = document.getElementById('year-start'); const endInput = document.getElementById('year-end');
     let minYear = 2000; let maxYear = new Date().getFullYear();
     if (startInput && endInput && publicationData.length > 0) {
