@@ -40,7 +40,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 .logo img { height: 40px; transition: transform 0.3s; }
 .logo img:hover { transform: scale(1.05); }
-.menu-toggle { display: none !important; }
+.menu-toggle { display: none; }
 
 /* 네비게이션 링크 */
 .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
