@@ -569,7 +569,9 @@ function renderPubPage(page) {
         if (pub.category === 'korean') {
             itemDiv.className = 'pub-item korean-pub-item';
             const linkHtml = pub.link ? ` <a href="${pub.link}" target="_blank" class="korean-pub-link"><i class="fas fa-external-link-alt"></i></a>` : '';
-            itemDiv.innerHTML = `<div class="pub-content"><div class="korean-pub-title">${pub.title}${linkHtml}</div><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${pub.venue || ''}</div></div>`;
+            const chipLabel = pub.venueShort || (pub.type === 'journal' ? 'Journal' : 'Conf.');
+            const chipClass = pub.type === 'journal' ? 'venue-chip journal' : 'venue-chip conference';
+            itemDiv.innerHTML = `<span class="${chipClass}" style="flex-shrink:0;align-self:flex-start;margin-top:4px;">${chipLabel}</span><div class="pub-content"><div class="korean-pub-title">${pub.title}${linkHtml}</div><div class="pub-authors">${pub.authors}</div><div class="pub-venue">${pub.venue || ''}</div></div>`;
         } else {
             itemDiv.className = 'pub-item';
             let linkButtons = '';

@@ -4366,7 +4366,16 @@ const koreanPapers = [
       authors: "G. Han, J. Kim, and S. Choi",
       venue: "Journal of Korean Institute of Next Generation Computing, vol. 3, no. 4, pp. 17–21, 2007 (invited)" },
 
-    // ── Domestic Conference Papers (2025–2019) ───────────────────────────────
+    // ── Domestic Conference Papers (2026–2019) ───────────────────────────────
+    { year: 2026, category: "korean", type: "conference", venueShort: "KHC",
+      title: "GenTouchVR: An Automatic Generation Pipeline of Touch-Enabled Virtual Environments from a Single Image",
+      authors: "J. Park, J. Kim, S. Han, C. Park, J. Park, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), 2026 (Best Paper Award – Honorable Mention)" },
+    { year: 2026, category: "korean", type: "conference", venueShort: "KHC",
+      title: "GenTouchVR Demo: Experiencing a Touch-Enabled Environment Automatically Generated from a Single Image",
+      authors: "J. Park, J. Kim, S. Han, C. Park, J. Park, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), 2026 (Best Demonstration Award – Honorable Mention)" },
+
     { year: 2025, category: "korean", type: "conference", venueShort: "HCI Korea",
       title: "Technology Acceptance of First-Person Shooters by Haptic Feedback",
       authors: "H. Sohn, C. Park, G. Yun, J. Lee, and S. Choi",
