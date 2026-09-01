@@ -31,7 +31,7 @@ function loadLayout() {
                     <li><a href="publications.html" class="nav-item">Publications</a></li>
                     <li><a href="awards.html" class="nav-item">Awards</a></li>
                     <li><a href="photos.html" class="nav-item">Photos</a></li>
-                    <li><a href="contact.html" class="nav-item">Join Us & Contact</a></li>
+                    <li><a href="contact.html" class="nav-item">Join & Contact Us</a></li>
                 </ul>
             </div>
         </nav>`;
