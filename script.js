@@ -851,10 +851,43 @@ function renderProjectDetail(index) {
 
     window.scrollTo(0, 0);
 }
+function _openAwardModal(src) {
+    const modal = document.getElementById('award-modal');
+    const body = document.getElementById('award-modal-body');
+    if (!modal || !body) return;
+    const isPdf = src.toLowerCase().endsWith('.pdf');
+    body.innerHTML = isPdf
+        ? `<iframe src="${src}" style="width:100%;height:80vh;border:none;border-radius:8px;"></iframe>`
+        : `<img src="${src}" alt="Award certificate" style="max-width:100%;max-height:80vh;border-radius:8px;display:block;margin:auto;">`;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function _closeAwardModal() {
+    const modal = document.getElementById('award-modal');
+    if (modal) modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+function _ensureAwardModal() {
+    if (document.getElementById('award-modal')) return;
+    const modal = document.createElement('div');
+    modal.id = 'award-modal';
+    modal.innerHTML = `
+        <div id="award-modal-overlay"></div>
+        <div id="award-modal-content">
+            <button id="award-modal-close" aria-label="Close">&times;</button>
+            <div id="award-modal-body"></div>
+        </div>`;
+    document.body.appendChild(modal);
+    document.getElementById('award-modal-overlay').addEventListener('click', _closeAwardModal);
+    document.getElementById('award-modal-close').addEventListener('click', _closeAwardModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeAwardModal(); });
+}
+
 function renderAwardsPage() {
     const container = document.getElementById('award-list-container');
     if (!container || typeof awardData === 'undefined') return;
     container.innerHTML = '';
+    _ensureAwardModal();
 
     const sorted = [...awardData].sort((a, b) => b.year - a.year);
     const byYear = {};
@@ -876,13 +909,19 @@ function renderAwardsPage() {
             const paperHtml    = item.paper    ? `<div class="award-paper">&ldquo;${item.paper}&rdquo;</div>` : '';
             const recipientHtml = item.recipient ? `<div class="award-recipient"><i class="fas fa-user"></i> ${item.recipient}</div>` : '';
             const badge = item.type ? `<span class="award-type-badge ${typeBadgeClass[item.type] || ''}">${typeLabel[item.type] || item.type}</span>` : '';
-            group.innerHTML += `
-                <div class="award-item">
-                    ${badge}
-                    <div class="award-item-name">${item.award}</div>
-                    <div class="award-item-venue">${item.venue}</div>
-                    ${paperHtml}${recipientHtml}
-                </div>`;
+            const imgSrc = item.image ? `images/Awards/${item.image}` : null;
+            const hasImg = !!imgSrc;
+            const certBtn = hasImg ? `<span class="award-cert-btn"><i class="fas fa-image"></i> View Certificate</span>` : '';
+            const row = document.createElement('div');
+            row.className = 'award-item' + (hasImg ? ' award-item-clickable' : '');
+            row.innerHTML = `
+                ${badge}
+                <div class="award-item-name">${item.award}</div>
+                <div class="award-item-venue">${item.venue}</div>
+                ${paperHtml}${recipientHtml}
+                ${certBtn}`;
+            if (hasImg) row.addEventListener('click', () => _openAwardModal(imgSrc));
+            group.appendChild(row);
         });
         container.appendChild(group);
     });
