@@ -441,7 +441,7 @@ function renderMemberDetail(index) {
 /* =========================================
    [5] 논문 페이지 (베뉴 연동 & 페이지네이션)
    ========================================= */
-let currentPubList = []; let currentPage = 1; const itemsPerPage = 10;
+let currentPubList = [];
 function renderPublications() {
     const container = document.getElementById('pub-list'); if (!container || typeof publicationData === 'undefined') return;
     if (typeof koreanPapers !== 'undefined' && koreanPapers.length > 0) {
@@ -537,9 +537,7 @@ function applyPubFilter() {
     // [신규] 필터링된 개수 표시 로직
     updatePubCount(currentPubList.length);
 
-    currentPage = 1;
-    renderPubPage(currentPage);
-    renderPagination();
+    renderPubPage();
 }
 
 // [신규] 개수 표시 헬퍼 함수
@@ -559,11 +557,10 @@ function updatePubCount(count) {
 
     countContainer.innerHTML = `Total <strong>${count}</strong> publication${count !== 1 ? 's' : ''} found`;
 }
-function renderPubPage(page) {
+function renderPubPage() {
     const container = document.getElementById('pub-list'); container.innerHTML = ''; if (currentPubList.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#999;">No publications found.</div>'; return; }
-    const startIndex = (page - 1) * itemsPerPage; const endIndex = Math.min(startIndex + itemsPerPage, currentPubList.length); const batch = currentPubList.slice(startIndex, endIndex);
     let lastYear = null;
-    batch.forEach(pub => {
+    currentPubList.forEach(pub => {
         if (pub.year !== lastYear) { const yearHeader = document.createElement('div'); yearHeader.className = 'pub-year-header'; yearHeader.innerText = pub.year; container.appendChild(yearHeader); lastYear = pub.year; }
         const itemDiv = document.createElement('div');
         if (pub.category === 'korean') {
@@ -591,19 +588,6 @@ function renderPubPage(page) {
         container.appendChild(itemDiv);
     });
 }
-function renderPagination() {
-    const oldPag = document.getElementById('pub-pagination'); if (oldPag) oldPag.remove();
-    const container = document.getElementById('pub-list'); if (currentPubList.length <= itemsPerPage) return;
-    const totalPages = Math.ceil(currentPubList.length / itemsPerPage); const pagDiv = document.createElement('div'); pagDiv.id = 'pub-pagination'; pagDiv.className = 'pagination';
-    let html = ''; if (currentPage > 1) html += `<button class="page-btn prev" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
-    let startPage = Math.max(1, currentPage - 2); let endPage = Math.min(totalPages, currentPage + 2);
-    if (startPage > 1) { html += `<button class="page-btn" onclick="changePage(1)">1</button>`; if (startPage > 2) html += `<span class="dots">...</span>`; }
-    for (let i = startPage; i <= endPage; i++) html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
-    if (endPage < totalPages) { if (endPage < totalPages - 1) html += `<span class="dots">...</span>`; html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`; }
-    if (currentPage < totalPages) html += `<button class="page-btn next" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>`;
-    pagDiv.innerHTML = html; container.parentNode.appendChild(pagDiv);
-}
-function changePage(page) { currentPage = page; renderPubPage(page); renderPagination(); const pubSection = document.querySelector('.pub-controls'); if(pubSection) pubSection.scrollIntoView({ behavior: 'smooth' }); }
 
 /* =========================================
    [6] 연구/수상/기타 페이지
