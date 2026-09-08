@@ -491,9 +491,8 @@ function renderQuickYearFilters(minDataYear, maxDataYear) {
     if (!controls || !searchContainer) return;
     const existing = document.querySelector('.quick-year-container'); if (existing) existing.remove();
     const quickContainer = document.createElement('div'); quickContainer.className = 'quick-year-container';
-    const allBtn = document.createElement('button'); allBtn.className = 'year-chip active'; allBtn.innerText = 'All Time'; allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn); quickContainer.appendChild(allBtn);
-    for (let i = 0; i < 5; i++) { const year = maxDataYear - i; const btn = document.createElement('button'); btn.className = 'year-chip'; btn.innerText = year; btn.onclick = () => setYearRange(year, year, btn); quickContainer.appendChild(btn); }
-    const cutoffYear = maxDataYear - 5; const prevBtn = document.createElement('button'); prevBtn.className = 'year-chip'; prevBtn.innerText = `~ ${cutoffYear}`; prevBtn.onclick = () => setYearRange(minDataYear, cutoffYear, prevBtn); quickContainer.appendChild(prevBtn);
+    const allBtn = document.createElement('button'); allBtn.className = 'year-chip active'; allBtn.innerText = 'All'; allBtn.onclick = () => setYearRange(minDataYear, maxDataYear, allBtn); quickContainer.appendChild(allBtn);
+    for (let year = maxDataYear; year >= minDataYear; year--) { const btn = document.createElement('button'); btn.className = 'year-chip'; btn.innerText = year; btn.onclick = () => setYearRange(year, year, btn); quickContainer.appendChild(btn); }
     controls.insertBefore(quickContainer, searchContainer);
 }
 function setYearRange(start, end, activeBtn) {

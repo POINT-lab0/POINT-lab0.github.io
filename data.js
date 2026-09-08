@@ -1173,44 +1173,79 @@ const researchTopics = [
 ///* data.js - publicationData 부분 교체 */
 
 const journalPapers = [
-    // --- 2026 ---
+    // --- 2025 ---
     {
-        year: 2026,
+        year: 2025,
         category: "journal",
         venueShort: "ToH",
         title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
         authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
-        venue: "IEEE Transactions on Haptics (Accepted)",
+        venue: "IEEE Transactions on Haptics, vol. 19, no. 2, pp. 249-261",
         link: ""
     },
     {
-        year: 2026,
+        year: 2025,
         category: "journal",
         venueShort: "IJHCI",
         title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
         authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
-        venue: "International Journal of Human-Computer Interaction, pp. 1-21",
+        venue: "International Journal of Human-Computer Interaction (Accepted)",
         link: "https://doi.org/10.1080/10447318.2026.2631661"
     },
     {
-        year: 2026,
+        year: 2025,
         category: "journal",
         venueShort: "TVCG",
         title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
         authors: "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics (Accepted)",
+        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 7, pp. 6493-6506",
         link: "https://doi.org/10.1109/TVCG.2026.3683951"
     },
     {
-        year: 2026,
+        year: 2025,
         category: "journal",
         venueShort: "Adv. Intell. Syst.",
         title: "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
         authors: "Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong",
-        venue: "Advanced Intelligent Systems (Accepted)",
+        venue: "Advanced Intelligent Systems, vol. 8, no. 5, e202501051",
         link: "https://doi.org/10.1002/aisy.202501051"
     },
-    // --- 2025 ---
+    {
+        year: 2025,
+        category: "journal",
+        venueShort: "TVCG",
+        title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image",
+        authors: "Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 5, pp. 4385-4395",
+        link: "https://doi.org/10.1109/tvcg.2026.3680620"
+    },
+    {
+        year: 2025,
+        category: "journal",
+        venueShort: "TVCG",
+        title: "Perceiving Compliance in Virtual Reality: Effects of Interaction Direction and Sensory Discrepancy on Visuo-Haptic Weighting",
+        authors: "Taehyeong Jung, Jiwan Lee, Junwoo Kim, and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics (Accepted, ISMAR Special Issue)",
+        link: ""
+    },
+    {
+        year: 2025,
+        category: "journal",
+        venueShort: "ACM THRI",
+        title: "Haptic Guidance Using Electrical Muscle Stimulation for Gesture-based Mobile Robot Teleoperation",
+        authors: "Dajin Lee, Minseong Noh, and Seungmoon Choi",
+        venue: "ACM Transactions on Human-Robot Interaction (Accepted)",
+        link: ""
+    },
+    {
+        year: 2025,
+        category: "journal",
+        venueShort: "Virtual Reality",
+        title: "Perceptual Effects of Co-Located Vibrotactile and Auditory Cues on the Head",
+        authors: "Dajin Lee, Uison Ju, and Seungmoon Choi",
+        venue: "Virtual Reality (Under minor revision)",
+        link: ""
+    },
     {
         year: 2025,
         category: "journal",
@@ -2020,7 +2055,7 @@ const posterDemoPapers = [
     // --- 2026 ---
     {
         year: 2026,
-        category: "poster",
+        category: "conference",
         venueShort: "CHI",
         title: "Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso",
         authors: "Dajin Lee and Seungmoon Choi",
@@ -2084,7 +2119,7 @@ const posterDemoPapers = [
     },
     {
         year: 2025,
-        category: "poster",
+        category: "conference",
         venueShort: "WHC",
         title: "Identification of Spatio-Temporal Vibrotactile Stimuli Across the Torso: Toward Egocentric Haptic Navigation",
         authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
@@ -2093,7 +2128,7 @@ const posterDemoPapers = [
     },
     {
         year: 2025,
-        category: "poster",
+        category: "conference",
         venueShort: "WHC",
         title: "Effects of Haptic Feedback on Gaming Experiences: A Case Study for Players and Spectators in an FPS game",
         authors: "Heeji Sohn, Chaeyong Park, and Seungmoon Choi",
@@ -2102,7 +2137,7 @@ const posterDemoPapers = [
     },
     {
         year: 2025,
-        category: "poster",
+        category: "conference",
         venueShort: "WHC",
         title: "Tactile Localization in Forearm-Mounted Multi-Tactor Displays: The Effect of Tactor Number and Position",
         authors: "Dong-Geun Kim, Suheon Nam, Chaeyong Park, Geunho Lee, and Seungmoon Choi",
@@ -2113,7 +2148,7 @@ const posterDemoPapers = [
     // --- 2024 ---
     {
         year: 2024,
-        category: "poster",
+        category: "conference",
         venueShort: "ICRA W",
         title: "Multimodal Haptic Feedback for Effectively Expressing the Social Intent of Touch Gestures in VR",
         authors: "Heeyeon Kim and Seungmoon Choi",
@@ -2142,7 +2177,16 @@ const posterDemoPapers = [
     },
     {
         year: 2023,
-        category: "poster",
+        category: "conference",
+        venueShort: "WHC",
+        title: "Multimodal Haptic Feedback for Collisions Combining Vibration and Electrical Muscle Stimulation",
+        authors: "Jungeun Lee and Seungmoon Choi",
+        venue: "Proc. IEEE World Haptics Conference, July 10-13, 2023 (Work in Progress)",
+        link: ""
+    },
+    {
+        year: 2023,
+        category: "conference",
         venueShort: "WHC",
         title: "A Comparative Study of Physical and Haptic Exhibits in Informal Learning Environment",
         authors: "Dajin Lee, Daehyeon Nam, Seokwon Jeong, Keehoon Kim, and Seungmoon Choi",
@@ -2153,7 +2197,7 @@ const posterDemoPapers = [
     // --- 2022 ---
     {
         year: 2022,
-        category: "poster",
+        category: "conference",
         venueShort: "SIGGRAPH Asia",
         title: "MMGrip: A Handheld Multimodal Haptic Device Combining Vibration, Impact, and Shear for Realistic Expression of Contact",
         authors: "Dong-Geun Kim, Jungeun Lee, and Seungmoon Choi",
@@ -2164,7 +2208,7 @@ const posterDemoPapers = [
     // --- 2021 ---
     {
         year: 2021,
-        category: "poster",
+        category: "conference",
         venueShort: "UR",
         title: "Data-Driven Viscoelasticity Modeling Using Random Forests with Position and Velocity Pair",
         authors: "Hojun Cha, Amit Bhardwaj, and Seungmoon Choi",
@@ -2175,7 +2219,7 @@ const posterDemoPapers = [
     // --- 2020 ---
     {
         year: 2020,
-        category: "poster",
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Perceived Magnitude Function of Friction Rendered by the Dahl Model",
         authors: "Beomsu Lim, Junkyeong Choi, Yongjae Yoo, and Seungmoon Choi",
@@ -2184,7 +2228,7 @@ const posterDemoPapers = [
     },
     {
         year: 2020,
-        category: "poster",
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Vestibular Detection Thresholds and Psychometric Functions of Motion Effects in Cardinal Directions",
         authors: "Jiwan Lee and Seungmoon Choi",
@@ -2289,6 +2333,15 @@ const posterDemoPapers = [
     // --- 2017 ---
     {
         year: 2017,
+        category: "conference",
+        venueShort: "VRST",
+        title: "'Drop the beat': Virtual Reality based Mindfulness and Cognitive Behavioral Therapy for Panic Disorder - A Pilot Study",
+        authors: "Eunbi Seol, Chul-Hyun Cho, Dooyoung Jung, Ji-Won Hur, Heon-Jeong Lee, Sungkil Lee, Gerard J. Kim, Seungmoon Choi, and Seung-Moo Lee",
+        venue: "Proc. ACM Symposium on Virtual Reality Software and Technology, no. 57, 2017",
+        link: ""
+    },
+    {
+        year: 2017,
         category: "demo",
         venueShort: "WHC",
         title: "Mid-air Tactile Application Using Indirect Laser Radiation for Contour-Following Stimulation",
@@ -2298,7 +2351,7 @@ const posterDemoPapers = [
     },
     {
         year: 2017,
-        category: "poster",
+        category: "conference",
         venueShort: "URAI",
         title: "Haptic Texture Rendering Using Random Fractal Surface",
         authors: "Seongwon Cho, Sunghwan Shin and Seungmoon Choi",
@@ -2354,7 +2407,7 @@ const posterDemoPapers = [
     },
     {
         year: 2016,
-        category: "poster",
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Haptic Texture Modeling Using Photometric Stereo",
         authors: "Sunghwan Shin and Seungmoon Choi",
@@ -2363,7 +2416,7 @@ const posterDemoPapers = [
     },
     {
         year: 2016,
-        category: "poster",
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Vibrotactile Rendering of Gunshot Events for 4D Films",
         authors: "Jongman Seo, Reza Haghighi Osgouei, Soon-Cheol Chung, and Seungmoon Choi",
@@ -2372,7 +2425,7 @@ const posterDemoPapers = [
     },
     {
         year: 2016,
-        category: "poster",
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Large-Scale Survey on Adjectival Representation of Vibrotactile Stimuli",
         authors: "Yongjae Yoo, Jaebong Lee, Jongman Seo, Eunhwa Lee, Jeongseok Lee, Yudong Bae, Daekwang Jung, and Seungmoon Choi",
@@ -2410,7 +2463,7 @@ const posterDemoPapers = [
     },
     {
         year: 2015,
-        category: "poster",
+        category: "conference",
         venueShort: "WHC",
         title: "Preliminary Study on Perceived Intensity of Electrovibration Using High-Frequency Carrier-Signal Voltage",
         authors: "Jeonggoo Kang, Heewon Kim, Seungmoon Choi, Ki-Duk Kim, and Jeha Ryu",
@@ -2419,7 +2472,7 @@ const posterDemoPapers = [
     },
     {
         year: 2015,
-        category: "poster",
+        category: "conference",
         venueShort: "URAI",
         title: "Decomposition of Contact Force Using Contact Pressure for Haptic Augmented Reality",
         authors: "Hyoungkyun Kim, Seungmoon Choi, and Wan Kyun Chung",
@@ -2456,10 +2509,50 @@ const posterDemoPapers = [
         link:""
     },
 
+    // --- 2010 ---
+    {
+        year: 2010,
+        category: "conference",
+        venueShort: "PPCOE",
+        title: "Evaluating the Effectiveness of Haptic Feedback on a Steering Wheel for Forward Collision and Blind Spot Warnings",
+        authors: "Jaemin Chun, Gunhyuk Park, Seunghwan Oh, Jongman Seo, Sung H. Han, and Seungmoon Choi",
+        venue: "Proc. PPCOE, 2010",
+        link: ""
+    },
+    {
+        year: 2010,
+        category: "conference",
+        venueShort: "ISUVR",
+        title: "Modulating Real Object Stiffness for Haptic Augmented Reality",
+        authors: "Seokhee Jeon and Seungmoon Choi",
+        venue: "Proc. International Symposium on Ubiquitous Virtual Reality, 2010",
+        link: ""
+    },
+    {
+        year: 2010,
+        category: "conference",
+        venueShort: "MobileHCI W",
+        title: "Presenting Directional Information on a Mobile Device Using Vibrotactile Flow",
+        authors: "Seungmoon Choi, Jin Ryong Kim, and Jongman Seo",
+        venue: "Workshop, Proc. MobileHCI, 2010",
+        link: ""
+    },
+
+    // --- 2009 ---
+    {
+        year: 2009,
+        category: "conference",
+        venueShort: "ICMIT",
+        title: "Haptic Pottery Modeling System Using Improved Circular Sector Element Method",
+        authors: "In Lee and Seungmoon Choi",
+        venue: "Proc. International Conference on Mechatronics and Information Technology, pp. 7-9, 2009",
+        link: ""
+    },
+
     // --- 2013 ---
     {
         year: 2013,
-        category: "poster",
+        category: "conference",
         venueShort: "RO-MAN",
         title: "Haptic-Enabled Driving Training System",
         authors: "Reza Haghighi Osgouei, Hojin Lee and Seungmoon Choi",
@@ -2508,7 +2601,7 @@ const posterDemoPapers = [
     },
     {
         year: 2010,
-        category: "poster",
+        category: "conference",
         venueShort: "ISMAR",
         title: "Haptic Simulation of Breast Cancer Palpation: A Case Study of Haptic Augmented Reality",
         authors: "Seokhee Jeon, Benjamin Knoerlein, Matthias Harders, and Seungmoon Choi",
@@ -2519,20 +2612,40 @@ const posterDemoPapers = [
     // --- 2008 ---
     {
         year: 2008,
-        category: "poster",
-        venueShort: "HAPTICS",
-        title: "Perceived Magnitudes of Vibrations Transmitted Through Mobile Device",
-        authors: "Jonghyun Ryu, Jaehoon Jung, and Seungmoon Choi",
-        venue: "IEEE Haptics Symposium (Poster)",
+        category: "conference",
+        venueShort: "ISUVR",
+        title: "Image Browsing in Mobile Device Using User Motion Tracking",
+        authors: "Sunghoon Yim, Jane Hwang, Seungmoon Choi, and Gerard J. Kim",
+        venue: "Proc. International Symposium on Ubiquitous Virtual Reality, 2008",
         link: ""
     },
     {
         year: 2008,
-        category: "poster",
+        category: "conference",
+        venueShort: "HAPTICS",
+        title: "Perceived Magnitudes of Vibrations Transmitted Through Mobile Device",
+        authors: "Jonghyun Ryu, Jaehoon Jung, and Seungmoon Choi",
+        venue: "IEEE Haptics Symposium (Poster), pp. 139-140, 2008",
+        link: ""
+    },
+    {
+        year: 2008,
+        category: "conference",
         venueShort: "HAPTICS",
         title: "Haptic Weather",
         authors: "Chaehyun Lee, Bernard D. Adelstein, and Seungmoon Choi",
-        venue: "IEEE Haptics Symposium (Poster)",
+        venue: "IEEE Haptics Symposium (Poster), pp. 473-474, 2008",
+        link: ""
+    },
+
+    // --- 2007 ---
+    {
+        year: 2007,
+        category: "conference",
+        venueShort: "HAVID Workshop",
+        title: "Mobile Haptic Interface for Large Immersive Virtual Environments: PoMHI v0.5",
+        authors: "In Lee, Inwook Hwang, Kyung-Lyong Han, Oh Kyu Choi, Seungmoon Choi, and Jin S. Lee",
+        venue: "Poster, 2nd International Workshop on Haptic Audio Visual Interaction Design, pp. 7-8, 2007",
         link: ""
     }
 ];
@@ -2547,15 +2660,6 @@ const conferencePapers = [
       authors: "Jeongwoo Kim*, Uison Ju*, and Seungmoon Choi (*Co-first authors)",
       venue: "EuroHaptics 2026 (Oral presentation; Acceptance rate 17%)",
       link: ""
-  },
-  {
-      year: 2026,
-      category: "conference",
-      venueShort: "TVCG",
-      title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image",
-      authors: "Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi",
-      venue: "IEEE Transactions on Visualization and Computer Graphics (Special issue of IEEE VR 2026; Acceptance rate 20.6%)",
-      link: "https://doi.org/10.1109/tvcg.2026.3680620"
   },
   {
       year: 2026,
@@ -2621,15 +2725,6 @@ const conferencePapers = [
         link: ""
     },
 
-    {
-        year: 2026,
-        category: "conference",
-        venueShort: "ISMAR",
-        title: "Perceiving Compliance in Virtual Reality: Effects of Interaction Direction and Sensory Discrepancy on Visuo-Haptic Weighting",
-        authors: "Taehyeong Jung, Jiwan Lee, Junwoo Kim, and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics (Special issue of ISMAR; Acceptance rate 16%)",
-        link: ""
-    },
 
     // --- 2025 ---
     {
@@ -3473,6 +3568,15 @@ const conferencePapers = [
   {
       year: 2011,
       category: "conference",
+      venueShort: "IIE Asian Conf.",
+      title: "Development of Human Factors Design Guidelines for Haptic Collision Warning Systems",
+      authors: "Jaemin Chun, Gunhyuk Park, Seunghwan Oh, Jongman Seo, In Lee, Seungmoon Choi, Sung H. Han, and Jeonghoon Park",
+      venue: "Proc. IIE Asian Conference, pp. 249-254, 2011",
+      link: ""
+  },
+  {
+      year: 2011,
+      category: "conference",
       venueShort: "HAID",
       title: "Consonance Perception of Vibrotactile Chords: A Feasibility Study",
       authors: "Yongjae Yoo, Inwook Hwang, and Seungmoon Choi",
@@ -3534,6 +3638,15 @@ const conferencePapers = [
       authors: "Jonghyun Ryu, Chil-Woo Lee, and Seungmoon Choi",
       venue: "International Conference on Human-Computer Interaction with Mobile Devices and Services",
       link: "https://dl.acm.org/doi/10.1145/1851600.1851643"
+  },
+  {
+      year: 2010,
+      category: "conference",
+      venueShort: "ICAM",
+      title: "Research Issues on Mobile Haptic Interface for Large Virtual Environments",
+      authors: "Seungmoon Choi and In Lee",
+      venue: "Proc. International Conference on Advanced Mechatronics, pp. 626-630, 2010",
+      link: ""
   },
   {
       year: 2010,
@@ -3756,6 +3869,24 @@ const conferencePapers = [
       authors: "Jaeyoung Cheon and Seungmoon Choi",
       venue: "IEEE World Haptics Conference",
       link: "https://ieeexplore.ieee.org/document/4145156"
+  },
+  {
+      year: 2007,
+      category: "conference",
+      venueShort: "URAI",
+      title: "Mobile Haptic Interface for Large Immersive Virtual Environments: PoMHI v0.5",
+      authors: "In Lee, Inwook Hwang, Kyung-Lyong Han, Oh Kyu Choi, Seungmoon Choi, and Jin S. Lee",
+      venue: "Proc. International Conference on Ubiquitous Robots and Ambient Intelligence, pp. 106-111, 2007",
+      link: ""
+  },
+  {
+      year: 2007,
+      category: "conference",
+      venueShort: "ICOIN-C",
+      title: "👑 Virtual Pottery Modeling with Force Feedback Using Cylindrical Element Method",
+      authors: "Gabjong Han, Seojoon Kim, and Seungmoon Choi",
+      venue: "Proc. ICOIN-C, pp. 125-129, 2007 (Best Paper Award)",
+      link: ""
   },
   {
     year: 2006,
