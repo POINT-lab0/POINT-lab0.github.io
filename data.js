@@ -1233,7 +1233,7 @@ const journalPapers = [
         category: "journal",
         venueShort: "ACM THRI",
         title: "Haptic Guidance Using Electrical Muscle Stimulation for Gesture-based Mobile Robot Teleoperation",
-        authors: "Dajin Lee, Minseong Noh, and Seungmoon Choi",
+        authors: "Jungeun Lee, Minseong Noh, and Seungmoon Choi",
         venue: "ACM Transactions on Human-Robot Interaction, 2026 (Accepted)",
         link: ""
     },
