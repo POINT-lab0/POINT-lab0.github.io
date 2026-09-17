@@ -1216,7 +1216,7 @@ const journalPapers = [
         venueShort: "IJHCI",
         title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
         authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
-        venue: "International Journal of Human-Computer Interaction, 2026 (Accepted)",
+        venue: "International Journal of Human-Computer Interaction, 2026 (Published online: 2 March 2026)",
         link: "https://doi.org/10.1080/10447318.2026.2631661"
     },
     {
