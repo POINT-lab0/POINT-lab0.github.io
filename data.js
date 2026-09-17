@@ -1173,68 +1173,77 @@ const researchTopics = [
 ///* data.js - publicationData 부분 교체 */
 
 const journalPapers = [
-    // --- 2025 ---
+    // --- 2026 ---
     {
-        year: 2025,
-        category: "journal",
-        venueShort: "ToH",
-        title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
-        authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
-        venue: "IEEE Transactions on Haptics, vol. 19, no. 2, pp. 249-261",
-        link: ""
-    },
-    {
-        year: 2025,
-        category: "journal",
-        venueShort: "IJHCI",
-        title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
-        authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
-        venue: "International Journal of Human-Computer Interaction (Accepted)",
-        link: "https://doi.org/10.1080/10447318.2026.2631661"
-    },
-    {
-        year: 2025,
-        category: "journal",
-        venueShort: "TVCG",
-        title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
-        authors: "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 7, pp. 6493-6506",
-        link: "https://doi.org/10.1109/TVCG.2026.3683951"
-    },
-    {
-        year: 2025,
-        category: "journal",
-        venueShort: "Adv. Intell. Syst.",
-        title: "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
-        authors: "Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong",
-        venue: "Advanced Intelligent Systems, vol. 8, no. 5, e202501051",
-        link: "https://doi.org/10.1002/aisy.202501051"
-    },
-    {
-        year: 2025,
+        year: 2026,
         category: "journal",
         venueShort: "TVCG",
         title: "GenTouchVR: Generating a Touchable Virtual Reality Environment from a Single Image",
         authors: "Jaejun Park, Soyeon Nam, Jeongwoo Kim, Uison Ju, and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 5, pp. 4385-4395",
-        link: "https://doi.org/10.1109/tvcg.2026.3680620"
+        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 5, pp. 4385-4395, 2026 (Special issue of the 2026 IEEE Conference on Virtual Reality and 3D User Interfaces (VR); Acceptance rate 20.6%)",
+        link: "https://doi.org/10.1109/TVCG.2026.3680620"
     },
     {
-        year: 2025,
+        year: 2026,
+        category: "journal",
+        venueShort: "Adv. Intell. Syst.",
+        title: "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
+        authors: "Yebin Park, Jaehyun Kim, Taeyeong Kim, Woosung Cho, Junchen Luo, Myeongryun Seong, Chaeyong Park, Anna Lee, Seungmoon Choi, Insang You, and Unyong Jeong",
+        venue: "Advanced Intelligent Systems, vol. 8, no. 5, e202501051, 2026",
+        link: "https://doi.org/10.1002/aisy.202501051"
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "ToH",
+        title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
+        authors: "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, and Seungmoon Choi",
+        venue: "IEEE Transactions on Haptics, vol. 19, no. 2, pp. 249-261, 2026",
+        link: "https://doi.org/10.1109/TOH.2026.3667214"
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "TVCG",
+        title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
+        authors: "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, and Seungmoon Choi",
+        venue: "IEEE Transactions on Visualization and Computer Graphics, vol. 32, no. 7, pp. 6493-6506, 2026",
+        link: "https://doi.org/10.1109/TVCG.2026.3683951"
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "IJHCI",
+        title: "Investigating Luxuriousness of Steering Wheel Vibration Warning",
+        authors: "Kimin Kwon, Sung H. Han, Seungmoon Choi, Beomyoung Jeong, Jeongwoo Kim, Jungeun Lee, Dong-Geun Kim, and Wonseok Lee",
+        venue: "International Journal of Human-Computer Interaction, 2026 (Accepted)",
+        link: "https://doi.org/10.1080/10447318.2026.2631661"
+    },
+    {
+        year: 2026,
         category: "journal",
         venueShort: "TVCG",
         title: "Perceiving Compliance in Virtual Reality: Effects of Interaction Direction and Sensory Discrepancy on Visuo-Haptic Weighting",
         authors: "Taehyeong Jung, Jiwan Lee, Junwoo Kim, and Seungmoon Choi",
-        venue: "IEEE Transactions on Visualization and Computer Graphics (Accepted, ISMAR Special Issue)",
+        venue: "IEEE Transactions on Visualization and Computer Graphics, 2026 (Special issue of the 2026 IEEE International Symposium on Mixed and Augmented Reality (ISMAR); Acceptance rate 16%)",
         link: ""
     },
     {
-        year: 2025,
+        year: 2026,
         category: "journal",
         venueShort: "ACM THRI",
         title: "Haptic Guidance Using Electrical Muscle Stimulation for Gesture-based Mobile Robot Teleoperation",
         authors: "Dajin Lee, Minseong Noh, and Seungmoon Choi",
-        venue: "ACM Transactions on Human-Robot Interaction (Accepted)",
+        venue: "ACM Transactions on Human-Robot Interaction, 2026 (Accepted)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "journal",
+        venueShort: "ToH",
+        title: "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
+        authors: "Jeongwoo Kim, Hyunyong Park, Chaeyong Park, and Seungmoon Choi",
+        venue: "IEEE Transactions on Haptics, 2026 (Accepted)",
         link: ""
     },
     {
