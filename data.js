@@ -2832,9 +2832,9 @@ const conferencePapers = [
         year: 2024,
         category: "conference",
         venueShort: "EuroHaptics",
-        title: "A Feasibility Study of Tactile Enhancement of Mid-Air Ultrasonic Stimulation by Wrist Vibration",
+        title: "A Feasibility Study on Tactile Enhancement of Mid-Air Ultrasonic Stimulation by Wrist Vibration",
         authors: "Dong-Geun Kim and Seungmoon Choi",
-        venue: "EuroHaptics Conference",
+        venue: "EuroHaptics Conference, Lecture Notes in Computer Science, vol. 14769, pp. 3-14, 2024 (Oral presentation; Acceptance rate 26.1%)",
         link: "https://doi.org/10.1007/978-3-031-70061-3_1"
     },
     {
