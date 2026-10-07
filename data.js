@@ -340,7 +340,7 @@ const memberData = [
             ]
         }
     },
-    { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim0417@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", desc: "Direct Ph.D. Student (CSE), Haptics",
+    { name: "Jeongwoo Kim (김정우)", role: "student", email: "jwkim0417@postech.ac.kr", image: "images/selfImage/jeongwoo.jpg", website: "https://jwkim0417.github.io/", desc: "Direct Ph.D. Student (CSE), Haptics",
         detail: {
             // 줄글 형식 (Introduction)
             introduction: "I am a Ph.D. student in the Interaction Lab at POSTECH. I am deeply interested in haptics and virtual reality, and I am currently exploring research on intuitive and realistic interactions with virtual objects.",
@@ -2077,8 +2077,8 @@ const posterDemoPapers = [
         venueShort: "CHI",
         title: "Spatial Tactile Optimizer: Toward Perceptual Optimization for Multi-Point Vibrotactile Cues on the Torso",
         authors: "Dajin Lee and Seungmoon Choi",
-        venue: "ACM CHI Conference on Human Factors in Computing Systems (Posters)",
-        link: ""
+        venue: "ACM CHI Conference on Human Factors in Computing Systems (Extended Abstracts, Article No. 611, pp. 1-6; Poster; Acceptance rate 38.4%)",
+        link: "https://doi.org/10.1145/3772363.3798642"
     },
 
     // --- 2025 ---
@@ -2239,7 +2239,7 @@ const posterDemoPapers = [
         title: "MMGrip: A Handheld Multimodal Haptic Device Combining Vibration, Impact, and Shear for Realistic Expression of Contact",
         authors: "Dong-Geun Kim, Jungeun Lee, and Seungmoon Choi",
         venue: "SIGGRAPH Asia Posters",
-        link: "https://doi.org/10.1145/3550082.3564197"
+        link: "https://doi.org/10.1145/3550082.3564177"
     },
 
     // --- 2021 ---
@@ -2382,9 +2382,9 @@ const posterDemoPapers = [
         category: "conference",
         venueShort: "VRST",
         title: "'Drop the beat': Virtual Reality based Mindfulness and Cognitive Behavioral Therapy for Panic Disorder - A Pilot Study",
-        authors: "Eunbi Seol, Chul-Hyun Cho, Dooyoung Jung, Ji-Won Hur, Heon-Jeong Lee, Sungkil Lee, Gerard J. Kim, Seungmoon Choi, and Seung-Moo Lee",
+        authors: "Eunbi Seol, Seulki Min, Sungho Seo, Seoyeon Jung, Youngil Lee, Jaedong Lee, Gerard Kim, Chungyean Cho, Seungmoo Lee, Chul-Hyun Cho, Seungmoon Choi, and Dooyoung Jung",
         venue: "Proc. ACM Symposium on Virtual Reality Software and Technology, no. 57, 2017",
-        link: ""
+        link: "https://doi.org/10.1145/3139131.3141199"
     },
 {
         year: 2017,
@@ -2392,8 +2392,8 @@ const posterDemoPapers = [
         venueShort: "URAI",
         title: "Haptic Texture Rendering Using Random Fractal Surface",
         authors: "Seongwon Cho, Sunghwan Shin and Seungmoon Choi",
-        venue: "International Conference on Ubiquitous Robots and Ambient Intelligence (URAI)",
-        link: ""
+        venue: "International Conference on Ubiquitous Robots and Ambient Intelligence (URAI), pp. 290-292, 2017",
+        link: "https://doi.org/10.1109/URAI.2017.7992732"
     },
 
     // --- 2016 ---
@@ -2513,8 +2513,8 @@ const posterDemoPapers = [
         venueShort: "URAI",
         title: "Decomposition of Contact Force Using Contact Pressure for Haptic Augmented Reality",
         authors: "Hyoungkyun Kim, Seungmoon Choi, and Wan Kyun Chung",
-        venue: "International Conference on Ubiquitous Robots and Ambient Intelligence (URAI)",
-        link:""
+        venue: "International Conference on Ubiquitous Robots and Ambient Intelligence (URAI), pp. 194-196, 2015",
+        link: "https://doi.org/10.1109/URAI.2015.7358866"
     },
 
     // --- 2014 ---
@@ -2571,8 +2571,8 @@ const posterDemoPapers = [
         venueShort: "RO-MAN",
         title: "Haptic-Enabled Driving Training System",
         authors: "Reza Haghighi Osgouei, Hojin Lee and Seungmoon Choi",
-        venue: "IEEE International Symposium on Robot & Human Interactive Communication (Work-in-Progress)",
-        link:""
+        venue: "IEEE International Symposium on Robot & Human Interactive Communication (Work-in-Progress), pp. 302-303, 2013",
+        link: "https://doi.org/10.1109/ROMAN.2013.6628494"
     },
 
     // --- 2012 ---
@@ -2684,7 +2684,7 @@ const posterDemoPapers = [
         category: "conference",
         venueShort: "MobileHCI W",
         title: "Presenting Directional Information on a Mobile Device Using Vibrotactile Flow",
-        authors: "Seungmoon Choi, Jin Ryong Kim, and Jongman Seo",
+        authors: "Seungmoon Choi, Sang-Youn Kim, and Jongman Seo",
         venue: "Workshop, Proc. MobileHCI, 2010",
         link: ""
     },
@@ -2694,8 +2694,8 @@ const posterDemoPapers = [
         venueShort: "ISMAR",
         title: "Haptic Simulation of Breast Cancer Palpation: A Case Study of Haptic Augmented Reality",
         authors: "Seokhee Jeon, Benjamin Knoerlein, Matthias Harders, and Seungmoon Choi",
-        venue: "IEEE International Symposium on Mixed and Augmented Reality (Poster)",
-        link: ""
+        venue: "IEEE International Symposium on Mixed and Augmented Reality (Poster), pp. 237-238, 2010",
+        link: "https://doi.org/10.1109/ISMAR.2010.5643585"
     },
 
     // --- 2009 ---
@@ -2722,7 +2722,7 @@ const posterDemoPapers = [
         category: "conference",
         venueShort: "ICMIT",
         title: "Haptic Pottery Modeling System Using Improved Circular Sector Element Method",
-        authors: "In Lee and Seungmoon Choi",
+        authors: "Jaebong Lee and Seungmoon Choi",
         venue: "Proc. International Conference on Mechatronics and Information Technology, pp. 7-9, 2009",
         link: ""
     },
@@ -2744,7 +2744,7 @@ const posterDemoPapers = [
         title: "Perceived Magnitudes of Vibrations Transmitted Through Mobile Device",
         authors: "Jonghyun Ryu, Jaehoon Jung, and Seungmoon Choi",
         venue: "IEEE Haptics Symposium (Poster), pp. 139-140, 2008",
-        link: ""
+        link: "https://doi.org/10.1109/HAPTICS.2008.4479932"
     },
 {
         year: 2008,
@@ -2753,17 +2753,17 @@ const posterDemoPapers = [
         title: "Haptic Weather",
         authors: "Chaehyun Lee, Bernard D. Adelstein, and Seungmoon Choi",
         venue: "IEEE Haptics Symposium (Poster), pp. 473-474, 2008",
-        link: ""
+        link: "https://doi.org/10.1109/HAPTICS.2008.4479996"
     },
 
     // --- 2007 ---
 {
         year: 2007,
         category: "conference",
-        venueShort: "HAVID Workshop",
+        venueShort: "HAID Workshop",
         title: "Mobile Haptic Interface for Large Immersive Virtual Environments: PoMHI v0.5",
-        authors: "In Lee, Inwook Hwang, Kyung-Lyong Han, Oh Kyu Choi, Seungmoon Choi, and Jin S. Lee",
-        venue: "Poster, 2nd International Workshop on Haptic Audio Visual Interaction Design, pp. 7-8, 2007",
+        authors: "Chaehyun Lee, Min Sik Hong, In Lee, Oh Kyu Choi, Kyung-Lyong Han, Yoo Yeon Kim, Seungmoon Choi, and Jin S. Lee",
+        venue: "Poster and Demo Proceedings of the 2nd International Workshop on Haptic and Audio Interaction Design (HAID), pp. 7-8, 2007",
         link: ""
     }
 ];
@@ -2774,10 +2774,10 @@ const conferencePapers = [
       year: 2026,
       category: "conference",
       venueShort: "EuroHaptics",
-      title: "A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves",
+      title: "👑 A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves",
       authors: "Jeongwoo Kim*, Uison Ju*, and Seungmoon Choi (*Co-first authors)",
-      venue: "EuroHaptics 2026 (Oral presentation; Acceptance rate 17%)",
-      link: ""
+      venue: "EuroHaptics 2026, Lecture Notes in Computer Science, vol. 16593, pp. 21-39, 2026 (Oral presentation; Acceptance rate 17%; Best Student Paper Award Honorable Mention)",
+      link: "https://doi.org/10.1007/978-3-032-32230-2_3"
   },
   {
       year: 2026,
@@ -2785,7 +2785,7 @@ const conferencePapers = [
       venueShort: "CHI",
       title: "Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games",
       authors: "Heeji Sohn, Chaeyong Park, and Seungmoon Choi",
-      venue: "ACM CHI Conference on Human Factors in Computing Systems",
+      venue: "ACM CHI Conference on Human Factors in Computing Systems, Article No. 846, pp. 1-16, 2026 (Acceptance rate 25.3%)",
       link: "https://doi.org/10.1145/3772318.3791144"
   },
   {
@@ -2794,7 +2794,7 @@ const conferencePapers = [
       venueShort: "CHI",
       title: "HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information",
       authors: "Suheon Nam, Juhyung Son, Seungmoon Choi, and Chaeyong Park",
-      venue: "ACM CHI Conference on Human Factors in Computing Systems",
+      venue: "ACM CHI Conference on Human Factors in Computing Systems, Article No. 1119, pp. 1-15, 2026 (Acceptance rate 25.3%)",
       link: "https://doi.org/10.1145/3772318.3791663"
   },
   {
@@ -2803,7 +2803,7 @@ const conferencePapers = [
       venueShort: "CHI",
       title: "Touch with Meaning: A Contextual Analysis of Social Touch",
       authors: "Ayush Bhardwaj, Ashish Pratap, Abbas Khawaja, Yapeng Tian, Uison Ju, Dajin Lee, Seungmoon Choi, and Jin Ryong Kim",
-      venue: "ACM CHI Conference on Human Factors in Computing Systems",
+      venue: "ACM CHI Conference on Human Factors in Computing Systems, Article No. 1254, pp. 1-26, 2026 (Acceptance rate 25.3%)",
       link: "https://doi.org/10.1145/3772318.3791605"
   },
     {
@@ -2830,8 +2830,8 @@ const conferencePapers = [
         venueShort: "HAPTICS",
         title: "Effects of Frequency, Magnitude, and Inter-subject Variability on Discomfort from Steering Wheel Vibration",
         authors: "Dajin Lee, Soyeon Nam, Minseong Noh, Sunyoung Jang, and Seungmoon Choi",
-        venue: "IEEE Haptics Symposium (Conditionally accepted)",
-        link: ""
+        venue: "IEEE Haptics Symposium (Long Paper)",
+        link: "https://doi.org/10.1109/HAPTICS66823.2026.11495461"
     },
     {
         year: 2026,
@@ -2839,8 +2839,8 @@ const conferencePapers = [
         venueShort: "HAPTICS",
         title: "Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification",
         authors: "Dong-Geun Kim, Geunho Lee, Suheon Nam, Chaeyong Park, and Seungmoon Choi",
-        venue: "IEEE Haptics Symposium (Conditionally accepted)",
-        link: ""
+        venue: "IEEE Haptics Symposium (Long Paper)",
+        link: "https://doi.org/10.1109/HAPTICS66823.2026.11495459"
     },
 
 
@@ -4189,7 +4189,7 @@ const patentData = [
         venueShort: "Int. Patent",
         title: "Method and Apparatus for Generating Haptic Signal with Auditory Saliency Estimation",
         authors: "Seungmoon Choi",
-        venue: "Registered International Patent (US 9,640,047 B2)",
+        venue: "Open/Dropped International Patent (US 9,640,047 B2)",
         link: "https://patents.google.com/patent/US9640047B2"
     },
     {
@@ -4230,6 +4230,15 @@ const patentData = [
         title: "Method and Device for Transforming DoF in Mulse-media System (다중감각미디어시스템에서 자유도변환방법 및 장치)",
         authors: "Seungmoon Choi",
         venue: "Registered Domestic Patent (KR 10-2806247)",
+        link: ""
+    },
+    {
+        year: 2025,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method and Device for Texture Motion Rendering in Multisensorymedia System (다중감각미디어시스템에서 질감모션효과를 제공하는 방법 및 모션효과렌더링장치)",
+        authors: "Seungmoon Choi",
+        venue: "Registered Domestic Patent (KR 10-2890328)",
         link: ""
     },
     {
@@ -4292,7 +4301,7 @@ const patentData = [
         venueShort: "Dom. Patent",
         title: "The Method of Decompositioning Contact Force and the Haptic Apparatus Thereof (접촉힘을 분해하는 방법 및 이를 적용한 햅틱 장치)",
         authors: "Seungmoon Choi",
-        venue: "Registered Domestic Patent (KR 10-1728733)",
+        venue: "Open/Dropped Domestic Patent (KR 10-1728733)",
         link: ""
     },
     {
@@ -4429,6 +4438,192 @@ const patentData = [
         authors: "Seungmoon Choi",
         venue: "Registered Domestic Patent (KR 10-0837819)",
         link: ""
+    },
+
+    // --- Open/Dropped International Patents ---
+    {
+        year: 2013,
+        category: "patent",
+        venueShort: "Int. Patent",
+        title: "Apparatus and Method for Providing Haptic Augmented Reality",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped International Patent (US 8,344,863 B2)",
+        link: "https://patents.google.com/patent/US20100141409A1"
+    },
+    {
+        year: 2014,
+        category: "patent",
+        venueShort: "Int. Patent",
+        title: "Method of Converting Audio Signal to Haptic Signal and Apparatus Thereof",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped International Patent (US 2014/0167940 A1)",
+        link: "https://patents.google.com/patent/US20140167940"
+    },
+    {
+        year: 2015,
+        category: "patent",
+        venueShort: "Int. Patent",
+        title: "Apparatus and Method for Providing Motion Haptic Effect Using Video Analysis",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped International Patent (US 2015/0109528 A1)",
+        link: "https://patents.google.com/patent/US20150109528A1"
+    },
+    {
+        year: 2015,
+        category: "patent",
+        venueShort: "Int. Patent",
+        title: "Apparatus and Method for Generating Motion Effects by Analyzing Motion of Object",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped International Patent (US App. 16/191,378)",
+        link: ""
+    },
+
+    // --- Open/Dropped Domestic Patents (Korea) ---
+    {
+        year: 2009,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Vibration Apparatus and Method for Controlling Vibration of the Same (진동 장치 및 진동 장치의 진동 제어 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-0886126)",
+        link: ""
+    },
+    {
+        year: 2009,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method and System of Generating Saliency Map Using Graphics Hardware and Programmable Shader and Recording Medium Therewith (그래픽스 하드웨어 및 프로그래머블 쉐이더를 이용한 돌출맵 생성 방법, 그 시스템 및 이를 기록한 기록매체)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-0914312)",
+        link: ""
+    },
+    {
+        year: 2010,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Apparatus and Method for Providing Haptic Augmented Reality (햅틱 증강현실 제공 장치 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-0992567)",
+        link: ""
+    },
+    {
+        year: 2011,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Apparatus and Method for Materializing Tactile Flow (촉각 흐름 구현 기기 및 그 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-1091571)",
+        link: ""
+    },
+    {
+        year: 2014,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method for Generating Vibration Pattern and for the Same (진동 패턴 생성 방법 및 장치)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-1370547)",
+        link: ""
+    },
+    {
+        year: 2014,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "System for Warning Forward Head Posture and Method Thereof (거북목 경고 시스템 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-1443666)",
+        link: ""
+    },
+    {
+        year: 2014,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method and Device for Generating Vibration from Adjective Space (형용사 공간에서 진동 생성 방법 및 디바이스)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR App. 2014-0012213)",
+        link: ""
+    },
+    {
+        year: 2015,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Musical Instrument Training System and Method Using Haptic Stimuli (햅틱 자극을 활용한 악기 교육 시스템 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-1496546)",
+        link: ""
+    },
+    {
+        year: 2017,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Suit for Tactile Inducing, Laser Output Device and System for Communicating and Tactile Inducing (체감유도형 수트, 레이저 조사장치 및 이를 활용한 커뮤니케이션 시스템 및 체감유도 시스템)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-1745532)",
+        link: ""
+    },
+    {
+        year: 2017,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method for Generating Virtual Environment Based On User Movement or Vehicle Movement and Apparatus for the Same (사용자 또는 운송 객체의 움직임을 기초로 가상 환경을 생성하는 장치 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR App. 10-2017-0047498)",
+        link: ""
+    },
+    {
+        year: 2018,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method for Generating Vibration Based on Perceptual Response by Vibration and Apparatus for the Same (진동에 대한 인지적 응답에 기반한 진동 생성 방법 및 장치)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR 10-2018-0006806)",
+        link: ""
+    },
+    {
+        year: 2018,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Apparatus and Method for Providing a Kinesthetic Signal (역감 신호 제공 장치 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Open/Dropped Domestic Patent (KR App. 10-2018-0054857)",
+        link: ""
+    },
+
+    // --- Applied Domestic Patents (Korea) ---
+    {
+        year: 2026,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "System and Method for Automatically Generating Interactive Virtual Reality Scenes Including Kinesthetic Force Feedback Using Multimodal Inputs (다중매체 입력을 이용하여 운동감각 힘 피드백을 포함하는 상호작용형 가상현실 장면을 자동 생성하는 시스템 및 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Applied Domestic Patent (KR App. 10-2026-0030169)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method and Apparatus for Multi-Point Haptic Rendering Using Perceptual Optimization (지각 최적화를 이용한 다중 지점 촉각 렌더링 방법 및 장치)",
+        authors: "Seungmoon Choi",
+        venue: "Applied Domestic Patent (KR App. 10-2026-0077186)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Wearable Ring Device and Tactile Information Output Method Based on A Pin Array (핀 어레이 기반 촉각 정보 출력용 웨어러블 링 장치 및 이의 촉각 정보 출력 방법)",
+        authors: "Seungmoon Choi",
+        venue: "Applied Domestic Patent (KR App. 10-2026-0077301)",
+        link: ""
+    },
+    {
+        year: 2026,
+        category: "patent",
+        venueShort: "Dom. Patent",
+        title: "Method and Electronic Device for Human Verification Using Haptic Interaction (헵틱 상호작용 기반 인간 검증 방법 및 전자기기)",
+        authors: "Seungmoon Choi",
+        venue: "Applied Domestic Patent (KR App. 10-2026-0110607)",
+        link: ""
     }
 ];
 // ... [Awards 데이터 등 나머지는 기존 유지] ...
@@ -4439,10 +4634,9 @@ const patentData = [
 const awardData = [
     // ── 2026 ──────────────────────────────────────────
     { year: 2026, type: "intl",     award: "Honorable Mention, Best Student Paper Award",                 venue: "EuroHaptics Conference",                 paper: "A Perceptual Comparison of Unidirectional and Braking Force Feedback for Stiffness Rendering and Its Implications for Haptic Gloves", recipient: "Jeongwoo Kim" },
-    { year: 2026, type: "intl",     award: "Honorable Mention, Best WIP Paper Award",                     venue: "IEEE World Haptics Conference",           paper: "Effects of Haptic Feedback on Gaming Experiences: A Case Study for Players and Spectators in an FPS Game",                          recipient: "Heeji Sohn" },
     { year: 2026, type: "domestic", award: "Outstanding Contributing Institution Award",                   venue: "Korea Haptics Conference",               paper: null,                                                                                                                               recipient: "Interaction Laboratory at POSTECH", image: "2026 우수참여기관상 한국햅틱스학술대회.png" },
     { year: 2026, type: "domestic", award: "Best Paper Award (Honorable Mention)",                         venue: "Korea Haptics Conference",               paper: "GenTouchVR: An Automatic Generation Pipeline of Touch-Enabled Virtual Environments from a Single Image",                           recipient: "Jaejun Park" },
-    { year: 2026, type: "domestic", award: "Best Demonstration Award (Honorable Mention)",                 venue: "Korea Haptics Conference",               paper: "GenTouchVR Demo: Experiencing a Touch-Enabled Environment Automatically Generated from a Single Image",                           recipient: "Jaejun Park" },
+    { year: 2026, type: "domestic", award: "Best Demonstration Award (Honorable Mention)",                 venue: "Korea Haptics Conference",               paper: "GenTouchVR Demo: Experiencing a Touch-Enabled Virtual Environments Automatically Generated from a Single Image",                  recipient: "Jaejun Park" },
     // ── 2025 ──────────────────────────────────────────
     { year: 2025, type: "intl",     award: "People’s Choice Award, Hands-on Demonstration",               venue: "IEEE World Haptics Conference",           paper: "Automatic Haptic Rendering Pipeline Using AI Models for Generative Virtual Environments",                                         recipient: "Junwoo Kim" },
     { year: 2025, type: "intl",     award: "People’s Choice Award, Hands-on Demonstration",               venue: "IEEE World Haptics Conference",           paper: "Automatic Generation of Haptic Motion Effects from Audiovisual Content",                                                          recipient: null },
@@ -4481,7 +4675,7 @@ const awardData = [
     { year: 2016, type: "intl",     award: "Honorable Mention, Student Innovation Challenge (as Advisor)", venue: "IEEE Haptics Symposium",                 paper: "MOVieVib: Vibrotactile Cues of Camera Movement in 4D Films",                                                                       recipient: null },
     { year: 2016, type: "domestic", award: "Best Paper Presentation Award",                               venue: "Korea Computer Congress",                paper: "Drag and Roll: Gesture Interaction for Fine-Tuning Task on Touchscreen",                                                          recipient: null },
     // ── 2015 ──────────────────────────────────────────
-    { year: 2015, type: "domestic", award: "Best Paper Presentation Award",                               venue: "KISE Winter Conference",                 paper: "Bare-Hand Haptic Rendering System Using Image-Based Method",                                                                       recipient: null },
+    { year: 2015, type: "domestic", award: "Best Paper Presentation Award",                               venue: "KIISE Winter Conference",                paper: "Bare-Hand Haptic Rendering System Using Image-Based Method",                                                                       recipient: null },
     // ── 2014 ──────────────────────────────────────────
     { year: 2014, type: "intl",     award: "Honorable Mention, Best Demo Award",                          venue: "Asia Haptics",                           paper: "Normal and Tangential Force Decomposition and Augmentation Based on Contact Centroid",                                             recipient: null },
     { year: 2014, type: "intl",     award: "Candidate, Best Paper Award",                                 venue: "IEEE Haptics Symposium",                 paper: "Vibrotactile Guidance for Drumming Learning: Method and Perceptual Assessment",                                                   recipient: null },
@@ -4498,7 +4692,7 @@ const awardData = [
     { year: 2011, type: "intl",     award: "Candidate, Best Student Paper Award",                         venue: "IEEE World Haptics Conference",           paper: "Perceptual Space of Amplitude-Modulated Vibrotactile Stimuli: Similarity Ratings and Adjective Ratings",                         recipient: null },
     { year: 2011, type: "intl",     award: "Best Poster Award",                                           venue: "International Symposium on Ubiquitous Virtual Reality", paper: "The Dynamic Haptics Library: Real-Time Vibrotactile Rendering Library Using Dynamics Engine",                    recipient: null },
     { year: 2011, type: "personal", award: "Early Career Award",                                          venue: "IEEE Technical Committee on Haptics",    paper: null,                                                                                                                               recipient: "Seungmoon Choi" },
-    { year: 2011, type: "domestic", award: "Best Paper Award",                                            venue: "KISE Fall Conference",                   paper: "Modeling and Recognition of Human Driving Behavior Using Hidden Markov Models",                                                   recipient: null },
+    { year: 2011, type: "domestic", award: "Best Paper Award",                                            venue: "KIISE Fall Conference",                  paper: "Modeling and Recognition of Human Driving Behavior Using Hidden Markov Models",                                                   recipient: null },
     // ── 2010 ──────────────────────────────────────────
     { year: 2010, type: "intl",     award: "Best Demonstration Award",                                    venue: "IEEE Haptics Symposium",                 paper: "Stiffness Modulation for Haptic Augmented Reality: Extension to 3D Interaction",                                                  recipient: null, image: "HS10_BestDemoAward.jpg" },
     { year: 2010, type: "intl",     award: "Candidate, Best Paper Award",                                 venue: "IEEE Haptics Symposium",                 paper: "Effects of Haptic Guidance and Disturbance on Motor Learning: Potential Advantage of Haptic Disturbance",                        recipient: null },
@@ -4509,12 +4703,12 @@ const awardData = [
     { year: 2009, type: "domestic", award: "Candidate, Best Paper Award",                                 venue: "HCI Korea",                              paper: "Design and Evaluation of Motion-based Interface for Image Browsing in Mobile Devices",                                            recipient: null },
     // ── 2008 ──────────────────────────────────────────
     { year: 2008, type: "personal", award: "Citation for Meritorious Service (Reviewer)",                 venue: "IEEE Transactions on Haptics",           paper: null,                                                                                                                               recipient: "Seungmoon Choi", image: "IEEE_ToH_Meritorious_Service_2009.pdf" },
-    { year: 2008, type: "domestic", award: "Best Paper Award",                                            venue: "KISE Fall Conference",                   paper: "HMM-based Motion Recognition with 3-D Acceleration Signal",                                                                        recipient: null },
-    { year: 2008, type: "domestic", award: "Best Paper Award",                                            venue: "HCI Korea",                              paper: "Real-Time Depth of Field Rendering Using Anisotropically Filtered Mipmap",                                                        recipient: null },
+    { year: 2008, type: "domestic", award: "Best Paper Award",                                            venue: "KIISE Fall Conference",                  paper: "HMM-based Motion Recognition with 3-D Acceleration Signal",                                                                        recipient: null },
+    { year: 2008, type: "domestic", award: "Best Paper Award",                                            venue: "HCI Korea",                              paper: "Real-Time Depth of Field Rendering Using Anisotropically Filtered Mipmap Interpolation",                                                        recipient: null },
     // ── 2007 ──────────────────────────────────────────
     { year: 2007, type: "intl",     award: "Best Paper Award",                                            venue: "ICOIN-C",                                paper: "Virtual Pottery Modeling with Force Feedback Using Cylindrical Element Method",                                                    recipient: null },
     { year: 2007, type: "intl",     award: "Candidate, Best Paper Award",                                 venue: "ACM VRST",                               paper: "Real-Time Tracking of Visually Attended Objects in Interactive Virtual Environments",                                              recipient: null },
-    { year: 2007, type: "domestic", award: "Candidate, Best Paper Award",                                 venue: "HCI Korea",                              paper: "Motion-Recognizing Remote Controller with Tactile Feedback",                                                                       recipient: null },
+    { year: 2008, type: "domestic", award: "Candidate, Best Paper Award",                                 venue: "HCI Korea",                              paper: "Motion-Recognizing Remote Controller with Tactile Feedback",                                                                       recipient: null },
     { year: 2007, type: "domestic", award: "Best Paper Award",                                            venue: "International Conference on Next-Generation Computing", paper: "Virtual Pottery Modeling with Force Feedback Using Cylindrical Element Method",                                  recipient: null },
     // ── 2005 ──────────────────────────────────────────
     { year: 2005, type: "intl",     award: "Candidate, Best Paper Award",                                 venue: "World Haptics Conference",               paper: "Perceptibility of Haptic Digital Watermarking of Virtual Textures",                                                               recipient: null },
@@ -4622,9 +4816,9 @@ const koreanPapers = [
       title: "GenTouchVR: An Automatic Generation Pipeline of Touch-Enabled Virtual Environments from a Single Image",
       authors: "J. Park, J. Kim, S. Han, C. Park, J. Park, and S. Choi",
       venue: "한국햅틱스학술대회 (KHC), 2026 (Best Paper Award – Honorable Mention)" },
-    { year: 2026, category: "korean", type: "conference", venueShort: "KHC",
-      title: "GenTouchVR Demo: Experiencing a Touch-Enabled Environment Automatically Generated from a Single Image",
-      authors: "J. Park, J. Kim, S. Han, C. Park, J. Park, and S. Choi",
+    { year: 2026, category: "korean", type: "demo", venueShort: "KHC",
+      title: "GenTouchVR Demo: Experiencing a Touch-Enabled Virtual Environments Automatically Generated from a Single Image",
+      authors: "J. Park, J. Lee, and S. Choi",
       venue: "한국햅틱스학술대회 (KHC), 2026 (Best Demonstration Award – Honorable Mention)" },
 
     { year: 2025, category: "korean", type: "conference", venueShort: "HCI Korea",
@@ -4761,6 +4955,390 @@ const koreanPapers = [
       title: "Motion and Haptic Effects Classification of a 4D Cinema Seat",
       authors: "D.Y. Jeong, S.H. Han, S. Choi, M. Lee, H. Kang, S. Han, G. Yun, H.S. Lee, J. Lee, and D. Lee",
       venue: "Ergonomics Society of Korea Spring Conference, pp. 121–124, 2019" },
+
+    { year: 2019, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Optimization of Vibration-based Hand-held Object Identification",
+      authors: "S. Oh and S. Choi",
+      venue: "HCI Korea, 2019" },
+    { year: 2019, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Vibration and Impact Haptic Feedback for Realistic Collision Effect",
+      authors: "C. Park, J. Lee, S. Oh, and S. Choi",
+      venue: "HCI Korea, 2019" },
+    { year: 2019, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "A REMEM-VR: Augmenting Realistic Experience with Motion Estimation Module in Virtual Reality",
+      authors: "S. Han, H. Lee, and S. Choi",
+      venue: "HCI Korea, 2019" },
+    { year: 2019, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Table Manners Education System Based on Projected Augmented Reality",
+      authors: "I. Koh, H. Lee, D. Lee, S. Ahn, and S. Choi",
+      venue: "HCI Korea, 2019" },
+
+    { year: 2018, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Data-driven Thermal Rendering",
+      authors: "H. Choi, S. Cho, S. Shin, H. Lee, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 92–93, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Haptic Texture Modeling and Rendering Using Photometric Stereo",
+      authors: "S. Shin and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 94–95, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Driving Skill Modeling Using Neural Networks for Robot-Mediated Haptic Training",
+      authors: "H. Lee, H. Kim, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 113–114, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Visual Rendering of Foot Motion for Improving Immersion in Virtual Reality",
+      authors: "S. Mun, J. Lim, and S. Choi",
+      venue: "HCI Korea, pp. 257–260, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "VR Skywalking: A VR Fitness System Using a Skywalk Equipment",
+      authors: "H. Choi, H. Cha, and S. Choi",
+      venue: "HCI Korea, pp. 280–283, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "TouchPhoto: System for Photo Taking and Understanding for Visually Impaired People",
+      authors: "J. Lim, Y. Yoo, H. Cho, and S. Choi",
+      venue: "HCI Korea, pp. 311–314, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "VBand: Implementation of Collaborative VR Band System with Haptic Feedback",
+      authors: "I. Koh, S. Cho, C. Park, and S. Choi",
+      venue: "HCI Korea, pp. 324–328, 2018" },
+    { year: 2018, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Implementation of Music Composition System Based on Gesture Recognition Using Natural User Interface",
+      authors: "G. Yun, Y. Yoo, and S. Choi",
+      venue: "HCI Korea, pp. 329–332, 2018" },
+
+    { year: 2017, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Data-driven Texture Rendering on Electrovibration Display: A Preliminary Study",
+      authors: "R.H. Osgouei, J.R. Kim, and S. Choi",
+      venue: "HCI Korea, pp. 24–26, 2017" },
+    { year: 2017, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Thermal Tactile Rendering of Musical Features",
+      authors: "H. Choi, Y. Yoo, and S. Choi",
+      venue: "HCI Korea, pp. 265–268, 2017" },
+    { year: 2017, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "FeetNavi: Feet Vibrotactile Feedback for Blind Navigation",
+      authors: "Y. Yoo, S. Oh, and S. Choi",
+      venue: "HCI Korea, pp. 269–271, 2017" },
+    { year: 2017, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Implementation of a Photography Guidance and Viewing System for the Visually Impaired",
+      authors: "J. Lim, H. Cho, I. Koh, S. Seo, Y. Yoo, and S. Choi",
+      venue: "HCI Korea, pp. 272–275, 2017" },
+    { year: 2017, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Audio-Vibration Conversion Method for 4D Film Events",
+      authors: "J. Seo, R.H. Osgouei, and S. Choi",
+      venue: "HCI Korea, pp. 276–279, 2017" },
+
+    { year: 2016, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "A Secure Input Method Using Surface Texture Rendering",
+      authors: "H. Cha, Y. Yoo, and S. Choi",
+      venue: "Extended Abstracts of HCI Korea, pp. 86–87, 2016" },
+    { year: 2016, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Attachable Haptic Device and its User Studies",
+      authors: "G. Park, H. Cha, and S. Choi",
+      venue: "Extended Abstracts of HCI Korea, pp. 120–122, 2016" },
+    { year: 2016, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Characterizing Friction Modulation in an Electrostatic Tablet Device",
+      authors: "R.H. Osgouei, J.R. Kim, and S. Choi",
+      venue: "Extended Abstracts of HCI Korea, pp. 123–124, 2016" },
+    { year: 2016, category: "korean", type: "conference", venueShort: "KCC",
+      title: "Drag and Roll: Gesture Interaction for Fine-tuning Task on Touchscreen",
+      authors: "K. Park, Y. Yoo, and S. Choi",
+      venue: "한국컴퓨터종합학술대회 (KCC), pp. 1381–1383, 2016 (Best Paper Award)" },
+    { year: 2016, category: "korean", type: "conference", venueShort: "KCC",
+      title: "Gesture Interface and Vibration Feedback for Improvement of Office Environment",
+      authors: "S. Han, Y. Yoo, and S. Choi",
+      venue: "한국컴퓨터종합학술대회 (KCC), pp. 1405–1407, 2016" },
+
+    { year: 2015, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Texanner: A Motorized Scanning Device for Haptic Texture Measurement",
+      authors: "R.H. Osgouei, S. Shin, and S. Choi",
+      venue: "Extended Abstracts of HCI Korea, pp. 72–73, 2015" },
+    { year: 2015, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Haptic Emotional Communication for Mobile Phone Calls",
+      authors: "G. Moon, J. Seo, and S. Choi",
+      venue: "Extended Abstracts of HCI Korea, pp. 77–79, 2015" },
+    { year: 2015, category: "korean", type: "conference", venueShort: "KIISE",
+      title: "Bare-hand Haptic Rendering System Using Image-based Method",
+      authors: "S. Shin and S. Choi",
+      venue: "한국정보과학회 동계학술대회 (KIISE), pp. 1125–1127, 2015 (Best Paper Award)" },
+
+    { year: 2014, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Automatic Generation of 4D Motion Effects",
+      authors: "J. Lee and S. Choi",
+      venue: "HCI Korea, pp. 29–31, 2014 (Best Paper Award)" },
+    { year: 2014, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "HapTune: A Haptic Feedback System for Pitch Learning of String Players",
+      authors: "Y. Yoo and S. Choi",
+      venue: "HCI Korea, pp. 149–151, 2014" },
+    { year: 2014, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Incorporation of Vibrotactile Flow into the Scroll-Bar Manipulation UI of Mobile Devices",
+      authors: "J. Seo and S. Choi",
+      venue: "HCI Korea, pp. 607–609, 2014" },
+    { year: 2014, category: "korean", type: "conference", venueShort: "KCC",
+      title: "An Initial Study on Congruence between Visual and Haptic Icons Based on Emotional Responses",
+      authors: "T. Yoo, Y. Yoo, and S. Choi",
+      venue: "한국컴퓨터종합학술대회 (KCC), pp. 1294–1296, 2014 (Best Paper Award)" },
+    { year: 2014, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Data-driven Haptic Modeling and Rendering of Frictional Sliding Contact with Soft Objects",
+      authors: "S. Yim, S. Jeon, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 37–40, 2014" },
+
+    { year: 2013, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Haptic Texture Synthesis System Using Neural Network Structure",
+      authors: "S. Shin and S. Choi",
+      venue: "HCI Korea, pp. 62–64, 2013" },
+    { year: 2013, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Hybrid Assistance Combining Haptic Guidance and Disturbance for Steering Task",
+      authors: "H. Lee and S. Choi",
+      venue: "HCI Korea, pp. 215–217, 2013" },
+    { year: 2013, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Haptic Accelerator Pedal for Providing Force Feedback in Virtual Driving Environment",
+      authors: "H. Lee, R.H. Osgouei, I. Lee, S. Shin, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 257–258, 2013" },
+    { year: 2013, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Immersive Computer-Assisted Language Learning Using Haptic Chair",
+      authors: "J. Lee and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 360–361, 2013" },
+
+    { year: 2012, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Shape Modeling of Soft Real Objects Using Haptic Interface with Force Sensor",
+      authors: "S. Yim and S. Choi",
+      venue: "HCI Korea, pp. 3–5, 2012" },
+    { year: 2012, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Human Driving Patterns Modeling Using Hidden Markov Models and GMM-based Clustering",
+      authors: "R.H. Osgouei and S. Choi",
+      venue: "HCI Korea, pp. 252–254, 2012" },
+    { year: 2012, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Consonance Perception of Vibrotactile Chords: A Feasibility Study",
+      authors: "Y. Yoo, I. Hwang, and S. Choi",
+      venue: "HCI Korea, pp. 282–284, 2012" },
+    { year: 2012, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Modeling System Improvement for Haptic Augmented Reality",
+      authors: "S. Yim and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 251–254, 2012" },
+    { year: 2012, category: "korean", type: "conference", venueShort: "KCC",
+      title: "Haptic Texture Modeling Using Neural Network Structure",
+      authors: "S. Shin and S. Choi",
+      venue: "한국컴퓨터종합학술대회 (KCC), pp. 382–384, 2012" },
+
+    { year: 2011, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Drum Training System with Multimodal Guidance",
+      authors: "K. Hong, I. Lee, G. Han, and S. Choi",
+      venue: "HCI Korea, pp. 161–163, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Effect of Active and Passive Haptic Sensory Information on Memory for 2D Sequential Selection Task",
+      authors: "H. Lee, G. Han, I. Lee, S. Yim, K. Hong, and S. Choi",
+      venue: "HCI Korea, pp. 248–250, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Dual-band Vibrotactile Music Player for Real-time Playback in Mobile Devices",
+      authors: "I. Hwang, S. Choi, M. Joung, S. Kim, K. Hwang, and J. Sa",
+      venue: "HCI Korea, pp. 251–253, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Button Click Modeling Using Vibrotactile Feedback on Touchscreen Mobile Phone",
+      authors: "G. Park, K. Hwang, S. Kim, J. Sa, M. Joung, and S. Choi",
+      venue: "HCI Korea, pp. 254–256, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Perceptual Characteristics of Superimposed Amplitude Modulation on a Mobile Device with Two Linear Resonant Actuators",
+      authors: "K. Hong, J. Seo, H. Kim, and S. Choi",
+      venue: "HCI Korea, pp. 434–436, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Stiffness Modulation of Inhomogeneous Real Objects for Haptic Augmented Reality",
+      authors: "S. Yim, S. Jeon, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 161–164, 2011" },
+    { year: 2011, category: "korean", type: "conference", venueShort: "KIISE",
+      title: "Modeling and Recognition of Human Driving Behavior Using Hidden Markov Models",
+      authors: "R.H. Osgouei and S. Choi",
+      venue: "한국정보과학회 가을 학술발표논문집 (KIISE), vol. 38, no. 2(B), pp. 323–326, 2011 (Best Paper Award)" },
+
+    { year: 2010, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Modulating Real Object Stiffness for Haptic Augmented Reality: Extension to 3D Interaction",
+      authors: "S. Jeon and S. Choi",
+      venue: "HCI Korea, pp. 179–181, 2010" },
+    { year: 2010, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Creating Linearly Moving Vibrotactile Sensation on Mobile Device",
+      authors: "J. Seo and S. Choi",
+      venue: "HCI Korea, pp. 193–195, 2010" },
+    { year: 2010, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Usability Improvements in Mobile Haptic Interface",
+      authors: "I. Lee and S. Choi",
+      venue: "HCI Korea, pp. 199–202, 2010" },
+    { year: 2010, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Improving Vibration Identification Using Perceptually Transparent Vibration Rendering in Mobile Device",
+      authors: "J. Ryu and S. Choi",
+      venue: "HCI Korea, pp. 203–205, 2010" },
+    { year: 2010, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Measuring Perceived Hardness of Virtual Surfaces Using Extended Rate-Hardness",
+      authors: "G. Han and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 214–215, 2010" },
+    { year: 2010, category: "korean", type: "conference", venueShort: "KIISE",
+      title: "Color Information Transfer with Vibration Feedback",
+      authors: "G. Park, S. Oh, H. Lee, and S. Choi",
+      venue: "한국정보과학회 가을 학술발표논문집 (KIISE), vol. 37, no. 2(A), pp. 58–59, 2010" },
+
+    { year: 2009, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Design and Evaluation of Motion-based Interface for Image Browsing in Mobile Devices",
+      authors: "S. Yim and S. Choi",
+      venue: "HCI Korea, pp. 40–44, 2009 (Candidate for Best Paper Award)" },
+    { year: 2009, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Practical Issues of Mobile Haptic Interface and Their Improvements",
+      authors: "I. Lee, I. Hwang, K.L. Han, O.K. Choi, J.S. Lee, and S. Choi",
+      venue: "HCI Korea, pp. 390–395, 2009" },
+    { year: 2009, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Improved Motion-Recognizing Remote Controller for Realistic Contents",
+      authors: "G. Park, S. Kim, S. Yim, G. Han, S. Choi, S. Choi, H. Eoh, and S. Cho",
+      venue: "HCI Korea, pp. 396–401, 2009" },
+    { year: 2009, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Stiffness Shifting: A Novel Method for Improving Perceived Hardness of Haptic Rendering",
+      authors: "G. Han, S. Jeon, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 83–84, 2009" },
+    { year: 2009, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Effect of Haptic Sensory Information on Short-term Memory Chunking in 2D Sequential Selection",
+      authors: "J. Lee, I. Lee, G. Han, S. Jeon, and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 455–457, 2009" },
+
+    { year: 2008, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Motion-Recognizing Remote Controller with Tactile Feedback",
+      authors: "S. Jeon, S. Kim, G. Park, G. Han, S. Lee, S. Choi, S. Choi, and H. Eoh",
+      venue: "HCI Korea, vol. 1, pp. 1–6, 2008 (Candidate for Best Paper Award)" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Real-Time Depth of Field Rendering Using Anisotropically Filtered Mipmap Interpolation",
+      authors: "S. Lee, G.J. Kim, and S. Choi",
+      venue: "HCI Korea, vol. 1, pp. 33–38, 2008 (Best Paper Award)" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Pottery Modeling Using Circular Sector Element Method",
+      authors: "J. Lee, G. Han, and S. Choi",
+      venue: "HCI Korea, vol. 1, pp. 78–84, 2008" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "posVibEditor: Authoring Tool for Designing Vibrotactile Patterns in Mobile Devices",
+      authors: "J. Ryu and S. Choi",
+      venue: "HCI Korea, vol. 1, pp. 256–261, 2008" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Perceptual Characteristics of Mobile Device Vibrations",
+      authors: "S. Choi",
+      venue: "HCI Korea, vol. 3, pp. 30–35, 2008 (invited)" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "KRoC",
+      title: "Performance Evaluation of Velocity Estimation Methods for Haptic Rendering",
+      authors: "G. Han and S. Choi",
+      venue: "한국로봇종합학술대회 (KRoC), pp. 205–207, 2008" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "KIIE",
+      title: "Evaluating a Learning Effect of Mapping Vibration Feedbacks to DIS Menu Items",
+      authors: "J. Chun, J. Ryu, G. Park, W. Park, S.H. Han, and S. Choi",
+      venue: "대한산업공학회 추계학술대회 (KIIE), 2008" },
+    { year: 2008, category: "korean", type: "conference", venueShort: "KIISE",
+      title: "HMM-based Motion Recognition with 3-D Acceleration Signal",
+      authors: "S. Kim, G. Park, S. Jeon, S. Yim, G. Han, S. Choi, and S. Choi",
+      venue: "한국정보과학회 가을 학술발표논문집 (KIISE), vol. 35, no. 2(A), pp. 69–70, 2008 (Best Paper Award)" },
+
+    { year: 2007, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "3D Pottery Modeling in Augmented Reality",
+      authors: "G. Han, J. Hwang, S. Choi, and G.J. Kim",
+      venue: "HCI Korea, pp. 83–88, 2007" },
+    { year: 2007, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Remote Control for Motion-Based Interactions",
+      authors: "J. Jung, I. Hwang, I. Lee, C. Lee, G. Park, J. Hwang, S. Choi, and G.J. Kim",
+      venue: "HCI Korea, pp. 115–122, 2007" },
+    { year: 2007, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Image Browsing in Mobile Devices Using User Motion Tracking",
+      authors: "S. Yim, J. Hwang, S. Choi, and G.J. Kim",
+      venue: "HCI Korea, pp. 440–446, 2007" },
+    { year: 2007, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Motion Planning for Mobile Haptic Display",
+      authors: "C. Lee, I. Lee, and S. Choi",
+      venue: "HCI Korea, pp. 578–584, 2007" },
+
+    { year: 2006, category: "korean", type: "conference", venueShort: "HCI Korea",
+      title: "Perceptually Correct Haptic Rendering of Surface Topography with Nonuniform Stiffness",
+      authors: "J. Cheon, S. Choi, and G.J. Kim",
+      venue: "HCI Korea, pp. 203–209, 2006" },
+
+    { year: 1997, category: "korean", type: "conference", venueShort: "ERC",
+      title: "A New Global Path Planning for Two Cooperating Robot Manipulators",
+      authors: "S. Choi and B.H. Lee",
+      venue: "ERC Workshop, 1997" },
+    { year: 1996, category: "korean", type: "conference", venueShort: "KACC",
+      title: "Collision-Free Path Planning for Two Cooperating Robot Manipulators Using Reduced Dimensional Configuration Space",
+      authors: "S. Choi, S. Lee, and B.H. Lee",
+      venue: "한국자동제어학술회의 (KACC), pp. 904–907, 1996" },
+    { year: 1995, category: "korean", type: "conference", venueShort: "KACC",
+      title: "Development of In-Line Monitoring System",
+      authors: "W. Kwon, S. Choi, G. Cho, D. Kim, and B.H. Lee",
+      venue: "한국자동제어학술회의 (KACC), pp. 989–992, 1995" },
+
+    // ── Demonstrations in Domestic Conferences ───────────────────────────────
+    { year: 2024, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Automatic Authoring of Physical and Perceptual Motion Effects for Virtual Reality",
+      authors: "J. Lee, J. Park, J. Ahn, H. Sohn, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), Aug. 2024 (Best Demonstration Award)" },
+    { year: 2024, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Generating Real-Time, Semantic, Sound-based, Full-Body Haptic Effects for Virtual Reality First-Person Shooter Games",
+      authors: "G. Yun, H. Kim, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), Aug. 2024" },
+    { year: 2024, category: "korean", type: "demo", venueShort: "HCI Korea",
+      title: "Comfort-Inducing Haptic Rendering for Relaxation in Virtual Reality",
+      authors: "H. Kim, J. Ahn, H. Sohn, J. Lee, and S. Choi",
+      venue: "HCI Korea, pp. 1195–1197, 2024 (Creative Award)" },
+
+    { year: 2023, category: "korean", type: "demo", venueShort: "KHC",
+      title: "VR Pet Therapy with a Multimodal Interface",
+      authors: "H. Kim and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), Nov. 2023" },
+    { year: 2023, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Effects of Event-Independent Haptic Feedback for VR Rhythm Game",
+      authors: "J. Ahn, G. Yun, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), Nov. 2023" },
+    { year: 2023, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Wearable Haptic Device for Tactile-based Cue Delivery",
+      authors: "J. Kim, J. Lee, C. Park, H. Kim, and S. Choi",
+      venue: "한국햅틱스학술대회 (KHC), Nov. 2023" },
+
+    { year: 2019, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Data-Driven Haptic Modeling of Normal Interactions on Viscoelastic Deformable Objects Using a Random Forest",
+      authors: "H. Cha, A. Bhardwaj, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2019 (Best Demo Award)" },
+    { year: 2019, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Realistic Haptic Rendering of Collision Effects Using Multimodal Vibrotactile and Impact Feedback",
+      authors: "C. Park, J. Park, S. Oh, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2019" },
+    { year: 2019, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Phantom Sensations Moving across a Wide Range of Body",
+      authors: "G. Yun, S. Oh, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2019" },
+
+    { year: 2017, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Photograph Taking and Understanding System for Visually-Impaired Users",
+      authors: "J. Lim, Y. Yoo, H. Cho, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2017" },
+
+    { year: 2016, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Vibrotactile Collision Effect Library Using Physics Engine",
+      authors: "G. Park and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2016" },
+    { year: 2016, category: "korean", type: "demo", venueShort: "KHC",
+      title: "MOVieVib: Vibrotactile Effects for 4D films Based on Camera Motion",
+      authors: "J. Seo, J. Lee, J. Park, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2016" },
+
+    { year: 2015, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Touch Music: Visual-Tactile Music Experiencing System for Hearing-Impaired Users",
+      authors: "Y. Yoo and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2015" },
+    { year: 2015, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Mid-air Tactile Stimulation Method Using Thermoelastic Effects of Laser",
+      authors: "H. Lee and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2015" },
+
+    { year: 2014, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Decomposition of Reaction Force Using Contact Centroid and Its Application to Haptic Augmented Reality",
+      authors: "S. Yim, S. Jeon, and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2014" },
+
+    { year: 2011, category: "korean", type: "demo", venueShort: "KHC",
+      title: "The dynamic Haptics Library: Real-time Dynamic Haptic Rendering Library Using Physics Engine",
+      authors: "G. Park and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2011" },
+    { year: 2011, category: "korean", type: "demo", venueShort: "KHC",
+      title: "Arkanoid Game Using Tactile Flow on Mobile Device",
+      authors: "J. Seo and S. Choi",
+      venue: "한국 햅틱스 연구회 워크샵 (KHC), 2011" },
 ];
 
 const publicationData = [
