@@ -1235,7 +1235,7 @@ const journalPapers = [
         title: "Haptic Guidance Using Electrical Muscle Stimulation for Gesture-based Mobile Robot Teleoperation",
         authors: "Jungeun Lee, Minseong Noh, and Seungmoon Choi",
         venue: "ACM Transactions on Human-Robot Interaction, 2026 (Accepted)",
-        link: ""
+        link: "https://doi.org/10.1145/3849625"
     },
     {
         year: 2026,
@@ -1244,7 +1244,7 @@ const journalPapers = [
         title: "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
         authors: "Jeongwoo Kim, Hyunyong Park, Chaeyong Park, and Seungmoon Choi",
         venue: "IEEE Transactions on Haptics, 2026 (Accepted)",
-        link: ""
+        link: "https://doi.org/10.1109/TOH.2026.3734692"
     },
     {
         year: 2025,
