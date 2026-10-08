@@ -1234,7 +1234,7 @@ const journalPapers = [
         venueShort: "ACM THRI",
         title: "Haptic Guidance Using Electrical Muscle Stimulation for Gesture-based Mobile Robot Teleoperation",
         authors: "Jungeun Lee, Minseong Noh, and Seungmoon Choi",
-        venue: "ACM Transactions on Human-Robot Interaction, 2026 (Accepted)",
+        venue: "ACM Transactions on Human-Robot Interaction, 2026 (Published online: 23 September 2026)",
         link: "https://doi.org/10.1145/3849625"
     },
     {
@@ -1243,7 +1243,7 @@ const journalPapers = [
         venueShort: "ToH",
         title: "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
         authors: "Jeongwoo Kim, Hyunyong Park, Chaeyong Park, and Seungmoon Choi",
-        venue: "IEEE Transactions on Haptics, 2026 (Accepted)",
+        venue: "IEEE Transactions on Haptics, pp. 1-7, 2026 (Early Access)",
         link: "https://doi.org/10.1109/TOH.2026.3734692"
     },
     {
@@ -1261,7 +1261,7 @@ const journalPapers = [
         venueShort: "ToH",
         title: "👑 Modeling Emotion Induced by Motion in 4D Rides",
         authors: "Kimin Kwon, Sung H. Han, Dawoon Jeong, Junseong Park, and Seungmoon Choi",
-        venue: "IEEE Transactions on Haptics (Accepted, Cover Paper)",
+        venue: "IEEE Transactions on Haptics, vol. 18, no. 4, pp. 1033-1044, 2025 (Cover Paper)",
         link: "https://doi.org/10.1109/TOH.2025.3630042"
     },
     {
